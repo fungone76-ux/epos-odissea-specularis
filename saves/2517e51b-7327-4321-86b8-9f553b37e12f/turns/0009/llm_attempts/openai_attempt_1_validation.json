@@ -1,0 +1,22 @@
+{
+  "valid": false,
+  "phase": "final_scene",
+  "validation_stage": "semantic",
+  "validation_reason": "resort_npc_response_required",
+  "errors": [
+    {
+      "code": "resort_npc_response_required",
+      "path": "dialogue|npc_actions|initiatives",
+      "message": "Resort: il turno deve contenere una risposta, reazione o iniziativa di almeno una NPC presente",
+      "details": {
+        "present_npcs": [
+          "stella"
+        ]
+      }
+    }
+  ],
+  "warnings": [],
+  "problems": [
+    "Resort: il turno deve contenere una risposta, reazione o iniziativa di almeno una NPC presente"
+  ]
+}

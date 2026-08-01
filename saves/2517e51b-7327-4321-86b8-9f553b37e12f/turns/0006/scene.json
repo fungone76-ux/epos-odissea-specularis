@@ -1,0 +1,128 @@
+{
+  "narration": "La richiesta viene recapitata a Stella. Poco dopo, Stella ti raggiunge nella Spiaggia privata.",
+  "dialogue": [
+    {
+      "speaker": "Stella",
+      "text": "Mi hai fatto chiamare. Eccomi qui: dimmi pure di cosa hai bisogno.",
+      "to": "player"
+    }
+  ],
+  "npc_actions": [
+    {
+      "npc_id": "stella",
+      "action": "raggiunge il cliente VIP nella Spiaggia privata"
+    }
+  ],
+  "intentions": [],
+  "initiatives": [],
+  "disclosure_events": [],
+  "mutations": [
+    {
+      "type": "location_change",
+      "target": "stella",
+      "payload": {
+        "location_id": "loc_private_beach"
+      },
+      "reason": "La NPC accetta la richiesta di raggiungere il giocatore."
+    },
+    {
+      "type": "outfit_remove",
+      "target": "stella",
+      "payload": {
+        "item": "fitted resort hostess micro dress"
+      },
+      "reason": "Cambio automatico all'outfit da spiaggia perché non esiste un override manuale."
+    },
+    {
+      "type": "outfit_remove",
+      "target": "stella",
+      "payload": {
+        "item": "plunging neckline"
+      },
+      "reason": "Cambio automatico all'outfit da spiaggia perché non esiste un override manuale."
+    },
+    {
+      "type": "outfit_remove",
+      "target": "stella",
+      "payload": {
+        "item": "very short hem"
+      },
+      "reason": "Cambio automatico all'outfit da spiaggia perché non esiste un override manuale."
+    },
+    {
+      "type": "outfit_remove",
+      "target": "stella",
+      "payload": {
+        "item": "sheer stockings"
+      },
+      "reason": "Cambio automatico all'outfit da spiaggia perché non esiste un override manuale."
+    },
+    {
+      "type": "outfit_remove",
+      "target": "stella",
+      "payload": {
+        "item": "gold name tag"
+      },
+      "reason": "Cambio automatico all'outfit da spiaggia perché non esiste un override manuale."
+    },
+    {
+      "type": "outfit_remove",
+      "target": "stella",
+      "payload": {
+        "item": "high heels"
+      },
+      "reason": "Cambio automatico all'outfit da spiaggia perché non esiste un override manuale."
+    },
+    {
+      "type": "outfit_wear",
+      "target": "stella",
+      "payload": {
+        "item": "gold micro bikini"
+      },
+      "reason": "Outfit coerente con la location spiaggia."
+    },
+    {
+      "type": "outfit_wear",
+      "target": "stella",
+      "payload": {
+        "item": "light beach wrap"
+      },
+      "reason": "Outfit coerente con la location spiaggia."
+    },
+    {
+      "type": "outfit_wear",
+      "target": "stella",
+      "payload": {
+        "item": "barefoot"
+      },
+      "reason": "Outfit coerente con la location spiaggia."
+    }
+  ],
+  "memory_events": [],
+  "visual": {
+    "summary": "Stella raggiunge il cliente VIP nella Spiaggia privata.",
+    "focus_character": "stella",
+    "visible_characters": [
+      "stella"
+    ],
+    "shared_action": false,
+    "visual_en": "Stella arrives at an exclusive private Mediterranean beach, standing on soft sand near elegant sun loungers, open sky, blue sea, warm sunlight, looking toward the unseen VIP guest",
+    "tags_en": [
+      "NPC arrival",
+      "private Mediterranean beach",
+      "soft sand",
+      "elegant sun loungers",
+      "open sky",
+      "blue sea"
+    ],
+    "moment_type": "speech",
+    "speaker_character": "stella",
+    "actor_character": "stella",
+    "reactor_character": "stella",
+    "intimate_shared_moment": false,
+    "multi_character_reason": "",
+    "multi_character_participants": [
+      "stella"
+    ]
+  }
+}

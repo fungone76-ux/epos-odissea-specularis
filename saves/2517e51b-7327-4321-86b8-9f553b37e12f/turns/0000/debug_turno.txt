@@ -1,0 +1,26 @@
+================================================================
+DEBUG TURNO 0 — modalità: no_check
+sessione: 2517e51b-7327-4321-86b8-9f553b37e12f | location: loc_lobby
+================================================================
+
+[INPUT GIOCATORE]
+ciao
+
+[NARRAZIONE]
+Victoria Hale ti accoglie nella lobby dell'Azure Crown con la calma autorevole di chi dirige ogni dettaglio del resort. Si presenta come direttrice e ti informa che sarà lei ad accompagnarti nelle presentazioni di Luna, Maria e Stella.
+
+[DIALOGHI]
+- Victoria Hale: Benvenuto all'Azure Crown. Sono Victoria Hale, la direttrice del resort. Durante il soggiorno sarò il tuo riferimento personale. Prima di lasciarti esplorare liberamente, desidero presentarti Luna, Maria e Stella, una alla volta.
+
+[PROMPT POSITIVO]
+score_9,score_8_up,score_7_up,masterpiece , realistic, zatanna, mature woman, , black hair, long hair,  , cute, huge ass, bottom heavy, wide hips, huge breast,  grey eyes,  pink lips,  ,  <lora:Zatanna_-_DC_Animated_Universe:0.6> <lora:Expressive_H:0.4> <lora:FantasyWorldPonyV2:0.3>, deep neckline, black bodycon blazer mini dress, sheer black stockings, authoritative adult VIP director, medium, eye-level camera, front three quarter view, facing camera three quarter, standing, straight posture, chin raised, one hand at, welcoming gesture, looking at camera, grand luxury resort lobby interior, polished white marble floor, marble reception desk, floor-to-ceiling glass walls, Mediterranean sea view, warm natural daylight, elegant brass details, detailed interior background
+
+[PROMPT NEGATIVO]
+score_6, score_5, score_4, score_3, score_2, score_1, lowres, worst quality, low quality, blurry, bad anatomy, bad hands, extra fingers, missing fingers, extra limbs, deformed, text, watermark, signature, child, young-looking, underage, teenager, coercion, violence, duplicate person, plain background, white background, grey background, studio background, seamless backdrop, isolated figure, empty background, blank wall, multiple people, extra person, background people, duplicate character, cloned face, merged bodies, fused bodies, extra face
+
+[PROSA DI SCENA (visual_en)]
+standing, straight posture, chin raised, one hand at, welcoming gesture, looking at camera, grand luxury resort lobby interior, polished white marble floor, marble reception desk, floor-to-ceiling glass walls, Mediterranean sea view, warm natural daylight, elegant brass details, detailed interior background
+
+[RENDER]
+status: complete | backend: comfy
+immagine: saves\2517e51b-7327-4321-86b8-9f553b37e12f\turns\0000\image.png

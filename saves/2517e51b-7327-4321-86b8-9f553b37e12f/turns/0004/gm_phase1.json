@@ -1,0 +1,47 @@
+{
+  "mode": "no_check",
+  "scene": {
+    "narration": "Stella si avvicina con un sorriso seducente, i suoi occhi brillano di entusiasmo mentre ti saluta.",
+    "dialogue": [
+      {
+        "speaker": "Stella",
+        "text": "Ciao! È una splendida mattina, non trovi? C'è qualcosa di speciale che posso fare per te oggi?",
+        "to": "player"
+      }
+    ],
+    "npc_actions": [],
+    "intentions": [
+      {
+        "npc_id": "stella",
+        "intention": "Mostrare entusiasmo e disponibilità"
+      }
+    ],
+    "initiatives": [],
+    "disclosure_events": [],
+    "mutations": [],
+    "memory_events": [],
+    "visual": {
+      "summary": "Stella si avvicina con un sorriso.",
+      "focus_character": "stella",
+      "visible_characters": [
+        "stella"
+      ],
+      "shared_action": false,
+      "visual_en": "Stella approaches with a charming smile, her eyes glimmering with enthusiasm.",
+      "tags_en": [
+        "close-up",
+        "smiling",
+        "bright atmosphere"
+      ],
+      "moment_type": "speech",
+      "speaker_character": "stella",
+      "actor_character": "stella",
+      "reactor_character": "stella",
+      "intimate_shared_moment": false,
+      "multi_character_reason": "",
+      "multi_character_participants": [
+        "stella"
+      ]
+    }
+  }
+}

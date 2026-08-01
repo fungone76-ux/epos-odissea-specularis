@@ -1,0 +1,48 @@
+{
+  "narration": "Victoria Hale ti accoglie nella lobby dell'Azure Crown con la calma autorevole di chi dirige ogni dettaglio del resort. Si presenta come direttrice e ti informa che sarà lei ad accompagnarti nelle presentazioni di Luna, Maria e Stella.",
+  "dialogue": [
+    {
+      "speaker": "Victoria Hale",
+      "text": "Benvenuto all'Azure Crown. Sono Victoria Hale, la direttrice del resort. Durante il soggiorno sarò il tuo riferimento personale. Prima di lasciarti esplorare liberamente, desidero presentarti Luna, Maria e Stella, una alla volta.",
+      "to": "player"
+    }
+  ],
+  "npc_actions": [
+    {
+      "npc_id": "victoria",
+      "action": "si presenta personalmente al cliente VIP"
+    }
+  ],
+  "intentions": [],
+  "initiatives": [],
+  "disclosure_events": [],
+  "mutations": [],
+  "memory_events": [],
+  "visual": {
+    "summary": "Victoria Hale si presenta come direttrice e annuncia le altre collaboratrici.",
+    "focus_character": "victoria",
+    "visible_characters": [
+      "victoria"
+    ],
+    "shared_action": false,
+    "visual_en": "standing, straight posture, chin raised, one hand at waist, welcoming gesture, looking at camera, grand luxury resort lobby interior, polished white marble floor, marble reception desk, floor-to-ceiling glass walls, Mediterranean sea view, warm natural daylight, elegant brass details, detailed interior background",
+    "tags_en": [
+      "grand luxury resort lobby interior",
+      "polished marble floor",
+      "marble reception desk",
+      "floor-to-ceiling glass walls",
+      "Mediterranean sea view",
+      "warm natural daylight",
+      "detailed interior background"
+    ],
+    "moment_type": "speech",
+    "speaker_character": "victoria",
+    "actor_character": "victoria",
+    "reactor_character": "victoria",
+    "intimate_shared_moment": false,
+    "multi_character_reason": "",
+    "multi_character_participants": [
+      "victoria"
+    ]
+  }
+}

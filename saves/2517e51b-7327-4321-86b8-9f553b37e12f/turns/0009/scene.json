@@ -1,0 +1,56 @@
+{
+  "narration": "Stella, con uno sguardo intrigante, accetta la tua richiesta e solleva delicatamente il suo piede nudo, mostrando la sua cavigliera d'oro mentre si piega in avanti. La luce del sole filtra attraverso le palme, creando un gioco di ombre sul suo corpo abbronzato. Questo momento di intimità si carica di tensione e attrazione, mentre i suoni delle onde continuano a fare da sottofondo. La sua audacia è evidente, e ti accorgi di quanto desideri questo istante.",
+  "dialogue": [],
+  "npc_actions": [
+    {
+      "npc_id": "stella",
+      "action": "shows her foot, revealing the golden anklet"
+    }
+  ],
+  "intentions": [
+    {
+      "npc_id": "stella",
+      "intention": "to create a deeper connection with the player"
+    }
+  ],
+  "initiatives": [],
+  "disclosure_events": [],
+  "mutations": [],
+  "memory_events": [
+    {
+      "summary": "Stella shares a moment of intimacy with the player, showcasing her audacious personality.",
+      "witnesses": [
+        "stella"
+      ],
+      "source": "observed",
+      "credibility": 1.0,
+      "level": "immediate",
+      "emotional_impact": 2,
+      "public": true
+    }
+  ],
+  "visual": {
+    "summary": "Stella shows her foot with a golden anklet, creating an intimate moment.",
+    "focus_character": "stella",
+    "visible_characters": [
+      "stella"
+    ],
+    "shared_action": false,
+    "visual_en": "Stella bends slightly to show her foot adorned with a golden anklet, her body illuminated by the sunlight filtering through the palm trees.",
+    "tags_en": [
+      "intimate moment",
+      "sunlight",
+      "gold anklet",
+      "beach"
+    ],
+    "moment_type": "intimate",
+    "speaker_character": "",
+    "actor_character": "stella",
+    "reactor_character": "stella",
+    "intimate_shared_moment": false,
+    "multi_character_reason": "",
+    "multi_character_participants": [
+      "stella"
+    ]
+  }
+}

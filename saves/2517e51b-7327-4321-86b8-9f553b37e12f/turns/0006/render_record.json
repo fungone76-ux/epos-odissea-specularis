@@ -1,0 +1,83 @@
+{
+  "status": "complete",
+  "image_path": "saves\\2517e51b-7327-4321-86b8-9f553b37e12f\\turns\\0006\\image.png",
+  "error": null,
+  "backend": "comfy",
+  "warning": null,
+  "diagnostics": {
+    "renderer": "comfy",
+    "base_url": "http://127.0.0.1:18188",
+    "workflow_path": "D:\\gioco_k3_extract\\comfy_workflow_image.json",
+    "checkpoint": "luna_main_model.safetensors",
+    "endpoint": "/prompt",
+    "prompt_id": "2c0a0443-e9c9-447a-8ceb-5a71cb78ece9",
+    "status_http": null,
+    "requested_loras": [
+      {
+        "name": "Zatanna_-_DC_Animated_Universe",
+        "weight": 0.6
+      },
+      {
+        "name": "Expressive_H",
+        "weight": 0.4
+      },
+      {
+        "name": "FantasyWorldPonyV2",
+        "weight": 0.3
+      }
+    ],
+    "preflight": [
+      {
+        "endpoint": "/object_info",
+        "status_http": 200,
+        "duration_ms": 2078
+      }
+    ],
+    "checkpoint_available": true,
+    "missing_loras": [],
+    "duration_ms": 8063,
+    "image_path": "saves\\2517e51b-7327-4321-86b8-9f553b37e12f\\turns\\0006\\image.png",
+    "applied_loras": [
+      {
+        "node": "20",
+        "name": "alice_milf_catchers_lora.safetensors",
+        "strength_model": 0.7,
+        "strength_clip": 0.7
+      },
+      {
+        "node": "21",
+        "name": "Expressive_H-000001.safetensors",
+        "strength_model": 0.0,
+        "strength_clip": 0.0
+      },
+      {
+        "node": "22",
+        "name": "Expressive_H-000001.safetensors",
+        "strength_model": 0.0,
+        "strength_clip": 0.0
+      },
+      {
+        "node": "23",
+        "name": "Expressive_H-000001.safetensors",
+        "strength_model": 0.0,
+        "strength_clip": 0.0
+      },
+      {
+        "node": "24",
+        "name": "Expressive_H-000001.safetensors",
+        "strength_model": 0.0,
+        "strength_clip": 0.0
+      },
+      {
+        "node": "25",
+        "name": "Expressive_H-000001.safetensors",
+        "strength_model": 0.0,
+        "strength_clip": 0.0
+      }
+    ],
+    "seed": 30649548116240550,
+    "error": "",
+    "cause": ""
+  },
+  "retryable": false
+}

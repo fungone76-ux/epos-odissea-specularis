@@ -1,0 +1,48 @@
+{
+  "narration": "È quindi il turno di Maria, composta e professionale. Si presenta come la responsabile dell'assistenza nella suite presidenziale e dei servizi personali durante il soggiorno.",
+  "dialogue": [
+    {
+      "speaker": "Maria",
+      "text": "Sono Maria. Mi occuperò della suite presidenziale e di tutto ciò che riguarda il tuo comfort personale. Puoi rivolgerti direttamente a me per qualsiasi necessità.",
+      "to": "player"
+    }
+  ],
+  "npc_actions": [
+    {
+      "npc_id": "maria",
+      "action": "si presenta personalmente al cliente VIP"
+    }
+  ],
+  "intentions": [],
+  "initiatives": [],
+  "disclosure_events": [],
+  "mutations": [],
+  "memory_events": [],
+  "visual": {
+    "summary": "Maria si presenta come responsabile della suite e del servizio personale.",
+    "focus_character": "maria",
+    "visible_characters": [
+      "maria"
+    ],
+    "shared_action": false,
+    "visual_en": "standing, professional posture, hands folded in front, shoulders relaxed, looking at camera, grand luxury resort lobby interior, polished white marble floor, marble reception desk, floor-to-ceiling glass walls, Mediterranean sea view, warm natural daylight, elegant brass details, detailed interior background",
+    "tags_en": [
+      "grand luxury resort lobby interior",
+      "polished marble floor",
+      "marble reception desk",
+      "floor-to-ceiling glass walls",
+      "Mediterranean sea view",
+      "warm natural daylight",
+      "detailed interior background"
+    ],
+    "moment_type": "speech",
+    "speaker_character": "maria",
+    "actor_character": "maria",
+    "reactor_character": "maria",
+    "intimate_shared_moment": false,
+    "multi_character_reason": "",
+    "multi_character_participants": [
+      "maria"
+    ]
+  }
+}

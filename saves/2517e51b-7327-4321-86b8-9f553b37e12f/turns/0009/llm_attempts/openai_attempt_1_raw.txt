@@ -1,0 +1,25 @@
+{
+  "narration": "Stella, con un sorriso audace, si china verso di te, i suoi piedi nudi adagiati sulla sabbia. Con un gesto naturale, solleva un piede e lo mostra, la pelle abbronzata che luccica sotto il sole pomeridiano. La sua sicurezza e il suo fascino emanano un'energia palpabile, mentre il suono delle onde si mescola ai vostri respiri, creando un'atmosfera di intimità e complicità.",
+  "dialogue": [],
+  "npc_actions": [],
+  "intentions": [],
+  "mutations": [],
+  "initiatives": [],
+  "disclosure_events": [],
+  "memory_events": [],
+  "visual": {
+    "summary": "Stella mostra il suo piede nudo, creando un momento di intimità.",
+    "focus_character": "stella",
+    "visible_characters": ["stella"],
+    "shared_action": false,
+    "moment_type": "intimate",
+    "speaker_character": "",
+    "actor_character": "stella",
+    "reactor_character": "",
+    "intimate_shared_moment": false,
+    "multi_character_reason": "",
+    "multi_character_participants": ["stella"],
+    "visual_en": "Stella lifts her bare foot, showcasing her tanned skin glistening in the sunlight.",
+    "tags_en": ["intimate", "close-up", "barefoot"]
+  }
+}
