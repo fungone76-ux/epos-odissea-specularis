@@ -67,7 +67,7 @@ def test_autonomous_initiative_source_satisfies_resort_response_policy():
         }
     )
 
-    report = validate_resort_scene_policy(state, pack, scene)
+    report = validate_resort_scene_policy(state, pack.world, scene)
 
     assert not any(
         error.code == "resort_npc_response_required" for error in report.errors
@@ -98,7 +98,7 @@ def test_autonomous_initiative_source_overrides_wrong_present_npc_visual_focus()
         }
     )
 
-    corrected = enforce_resort_player_pov(state, pack, scene)
+    corrected = enforce_resort_player_pov(state, pack.world, scene)
 
     assert corrected.visual.focus_character == "stella"
     assert corrected.visual.visible_characters == ["stella"]
@@ -141,8 +141,8 @@ def test_npc_to_npc_dialogue_is_valid_and_first_speaker_gets_visual_focus():
         }
     )
 
-    corrected = enforce_resort_player_pov(state, pack, scene)
-    report = validate_resort_scene_policy(state, pack, corrected)
+    corrected = enforce_resort_player_pov(state, pack.world, scene)
+    report = validate_resort_scene_policy(state, pack.world, corrected)
 
     assert report.ok
     assert [line.to for line in corrected.dialogue] == ["maria", "stella"]
@@ -175,6 +175,6 @@ def test_absent_npc_initiative_does_not_satisfy_resort_policy():
         }
     )
 
-    report = validate_resort_scene_policy(state, pack, scene)
+    report = validate_resort_scene_policy(state, pack.world, scene)
 
     assert any(error.code == "resort_npc_response_required" for error in report.errors)
