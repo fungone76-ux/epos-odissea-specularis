@@ -1,0 +1,10 @@
+================================================================
+DEBUG TURNO 7 — modalità: no_check
+sessione: 45361b16-0c28-47e2-aaf4-a1a98234158b | location: loc_private_beach
+================================================================
+
+[INPUT GIOCATORE]
+vado in spiaggia
+
+[NARRAZIONE]
+Lasci la Lobby e raggiungi Spiaggia privata. Qui puoi finalmente prenderti un momento per ambientarti e rilassarti.

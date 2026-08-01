@@ -1,0 +1,375 @@
+{
+  "session_id": "45361b16-0c28-47e2-aaf4-a1a98234158b",
+  "turn": 11,
+  "time_phase": "mattina",
+  "location_id": "loc_private_beach",
+  "player": {
+    "name": null,
+    "location_id": "loc_private_beach",
+    "adult_age": true,
+    "skills": {
+      "carisma": 3,
+      "intuito": 3,
+      "autorita": 2,
+      "negoziazione": 2,
+      "prestanza": 1
+    },
+    "talent": null,
+    "trigger": null,
+    "identity": "",
+    "appearance": "",
+    "inventory": [],
+    "conditions": [],
+    "outfit": {
+      "worn": [
+        "luxury travel suit",
+        "tailored shirt",
+        "elegant shoes"
+      ],
+      "removed": [],
+      "revision": 0,
+      "torso_slot": [
+        "luxury travel suit",
+        "tailored shirt"
+      ],
+      "lower_body_slot": [
+        "luxury travel suit"
+      ],
+      "footwear": [
+        "elegant shoes"
+      ],
+      "nudity_mode": "clothed"
+    },
+    "wounds": [],
+    "resources": {
+      "wealth": 5
+    },
+    "knowledge": [],
+    "knowledge_log": []
+  },
+  "npcs": {
+    "victoria": {
+      "id": "victoria",
+      "name": "Victoria Hale",
+      "age": 39,
+      "location_id": "loc_lobby",
+      "present": false,
+      "knowledge": [
+        "Il debito bancario scade durante il settimo giorno.",
+        "Stella vuole una promozione internazionale.",
+        "Maria desidera un contratto stabile.",
+        "Luna conserva qualcosa che non ha ancora mostrato."
+      ],
+      "knowledge_log": [],
+      "memories": [],
+      "relationships": {
+        "player": {
+          "trust": 0,
+          "fear": 0,
+          "attraction": 0,
+          "resentment": 0,
+          "dependency": 0,
+          "respect": 0,
+          "suspicion": 0
+        }
+      },
+      "emotional_state": {},
+      "current_intention": "",
+      "conditions": [],
+      "outfit": {
+        "worn": [
+          "black bodycon blazer mini dress",
+          "deep neckline",
+          "sheer black stockings",
+          "black stilettos",
+          "elegant jewelry"
+        ],
+        "removed": [],
+        "revision": 0,
+        "torso_slot": [
+          "black bodycon blazer mini dress"
+        ],
+        "lower_body_slot": [
+          "black bodycon blazer mini dress"
+        ],
+        "footwear": [
+          "black stilettos"
+        ],
+        "nudity_mode": "clothed"
+      },
+      "wounds": [],
+      "disclosed_facts": []
+    },
+    "stella": {
+      "id": "stella",
+      "name": "Stella",
+      "age": 28,
+      "location_id": "loc_lobby",
+      "present": false,
+      "knowledge": [
+        "Il protagonista è un cliente VIP eccezionalmente importante.",
+        "Non conosce inizialmente il possibile acquisto del resort."
+      ],
+      "knowledge_log": [],
+      "memories": [],
+      "relationships": {
+        "player": {
+          "trust": 0,
+          "fear": 0,
+          "attraction": 0,
+          "resentment": 0,
+          "dependency": 0,
+          "respect": 0,
+          "suspicion": 0
+        }
+      },
+      "emotional_state": {},
+      "current_intention": "",
+      "conditions": [],
+      "outfit": {
+        "worn": [
+          "fitted resort hostess micro dress",
+          "plunging neckline",
+          "very short hem",
+          "sheer stockings",
+          "gold name tag",
+          "high heels"
+        ],
+        "removed": [],
+        "revision": 0,
+        "torso_slot": [
+          "fitted resort hostess micro dress"
+        ],
+        "lower_body_slot": [
+          "fitted resort hostess micro dress"
+        ],
+        "footwear": [
+          "high heels"
+        ],
+        "nudity_mode": "clothed"
+      },
+      "wounds": [],
+      "disclosed_facts": []
+    },
+    "maria": {
+      "id": "maria",
+      "name": "Maria",
+      "age": 31,
+      "location_id": "loc_lobby",
+      "present": false,
+      "knowledge": [
+        "Il protagonista è un cliente VIP eccezionalmente importante.",
+        "La suite contiene una richiesta privata preparata in modo errato.",
+        "Non conosce inizialmente il possibile acquisto del resort."
+      ],
+      "knowledge_log": [],
+      "memories": [],
+      "relationships": {
+        "player": {
+          "trust": 0,
+          "fear": 0,
+          "attraction": 0,
+          "resentment": 0,
+          "dependency": 0,
+          "respect": 0,
+          "suspicion": 0
+        }
+      },
+      "emotional_state": {},
+      "current_intention": "",
+      "conditions": [],
+      "outfit": {
+        "worn": [
+          "fitted luxury maid mini dress",
+          "deep neckline",
+          "white lace trim",
+          "sheer stockings",
+          "high heels"
+        ],
+        "removed": [],
+        "revision": 0,
+        "torso_slot": [
+          "fitted luxury maid mini dress"
+        ],
+        "lower_body_slot": [
+          "fitted luxury maid mini dress"
+        ],
+        "footwear": [
+          "high heels"
+        ],
+        "nudity_mode": "clothed"
+      },
+      "wounds": [],
+      "disclosed_facts": []
+    },
+    "luna": {
+      "id": "luna",
+      "name": "Luna",
+      "age": 27,
+      "location_id": "loc_private_beach",
+      "present": true,
+      "knowledge": [
+        "Sua madre aiutò il padre del protagonista durante una grave crisi.",
+        "Il padre del protagonista morì prima di mantenere la promessa.",
+        "Non esiste un complotto dietro il mancato aiuto.",
+        "Non conosce inizialmente il possibile acquisto del resort."
+      ],
+      "knowledge_log": [],
+      "memories": [
+        {
+          "summary": "Luna ricorda la proposta del protagonista, sentendosi colpita dalla sua audacia.",
+          "witnesses": [
+            "luna"
+          ],
+          "source": "observed",
+          "turn": 10,
+          "level": "immediate",
+          "credibility": 1.0,
+          "emotional_impact": 2,
+          "public": true
+        }
+      ],
+      "relationships": {
+        "player": {
+          "trust": 0,
+          "fear": 0,
+          "attraction": 0,
+          "resentment": 0,
+          "dependency": 0,
+          "respect": 0,
+          "suspicion": 0
+        }
+      },
+      "emotional_state": {},
+      "current_intention": "approfondire la connessione con il protagonista",
+      "conditions": [],
+      "outfit": {
+        "worn": [
+          "ivory bikini",
+          "sheer ivory beach sarong",
+          "barefoot"
+        ],
+        "removed": [
+          "fitted ivory VIP attendant mini dress",
+          "low neckline",
+          "open back",
+          "sheer stockings",
+          "delicate high heels"
+        ],
+        "revision": 8,
+        "torso_slot": [
+          "ivory bikini",
+          "sheer ivory beach sarong"
+        ],
+        "lower_body_slot": [
+          "ivory bikini",
+          "sheer ivory beach sarong"
+        ],
+        "footwear": [],
+        "nudity_mode": "clothed"
+      },
+      "wounds": [],
+      "disclosed_facts": []
+    }
+  },
+  "active_threads": [],
+  "discovered_evidence": [],
+  "story_markers": [],
+  "flags": {
+    "resort_day": 1,
+    "resort_phase_turns": 0,
+    "resort_completed_events": [],
+    "resort_active_missions": [
+      "mission_resort_future"
+    ],
+    "resort_revealed_missions": [
+      "mission_resort_future"
+    ],
+    "resort_completed_missions": [],
+    "resort_failed_missions": [],
+    "resort_mission_status": {
+      "mission_resort_future": "active"
+    },
+    "resort_rewarded_missions": [],
+    "resort_campaign_score": 0,
+    "resort_score_history": [],
+    "resort_debt_due_day": 7,
+    "resort_debt_due_phase": "sera",
+    "resort_final_decision": false,
+    "bank_debt_disclosed": false,
+    "luna_letter_mention_unlocked": false,
+    "luna_letter_reveal_unlocked": false,
+    "luna_letter_truth_unlocked": false,
+    "resort_jealousy_victoria": 0,
+    "resort_favour_victoria": 0,
+    "resort_jealousy_stella": 0,
+    "resort_favour_stella": 0,
+    "resort_jealousy_maria": 0,
+    "resort_favour_maria": 0,
+    "resort_jealousy_luna": 0,
+    "resort_favour_luna": 0,
+    "resort_last_preferred_npc": "",
+    "resort_intro_active": false,
+    "resort_intro_index": 4,
+    "resort_intro_completed": true,
+    "resort_intro_presented": [
+      "victoria",
+      "luna",
+      "maria",
+      "stella"
+    ],
+    "visual_camera_history": [
+      {
+        "camera_side": "front_three_quarter",
+        "shot_type": "full_body",
+        "camera_angle": "eye_level",
+        "focus_character": "stella",
+        "posture": ""
+      },
+      {
+        "camera_side": "side",
+        "shot_type": "full_body",
+        "camera_angle": "eye_level",
+        "focus_character": "luna",
+        "posture": ""
+      },
+      {
+        "camera_side": "front_three_quarter",
+        "shot_type": "full_body",
+        "camera_angle": "eye_level",
+        "focus_character": "luna",
+        "posture": ""
+      },
+      {
+        "camera_side": "side",
+        "shot_type": "full_body",
+        "camera_angle": "eye_level",
+        "focus_character": "luna",
+        "posture": ""
+      },
+      {
+        "camera_side": "front_three_quarter",
+        "shot_type": "full_body",
+        "camera_angle": "eye_level",
+        "focus_character": "luna",
+        "posture": ""
+      },
+      {
+        "camera_side": "side",
+        "shot_type": "full_body",
+        "camera_angle": "eye_level",
+        "focus_character": "luna",
+        "posture": ""
+      }
+    ],
+    "resort_score_tier": "soggiorno_fallimentare"
+  },
+  "initiative": {
+    "consecutive_reactive_turns": 11,
+    "last_autonomous_turn": -1,
+    "recent": []
+  },
+  "pressures": {},
+  "riserva": 0,
+  "last_scene": "Luna ascolta attentamente la tua proposta, un'espressione di sorpresa che si trasforma rapidamente in uno sguardo di interesse. Ti fa un passo avanti, accettando di fare qualcosa per te. La luce del mattino illumina la spiaggia, creando un'atmosfera di connessione e intimità. Entrambi vi sentite attratti da questa nuova opportunità di legame, mentre le onde si infrangono dolcemente sulla riva."
+}

@@ -1,0 +1,63 @@
+{
+  "narration": "Con un gesto audace e carico di tensione, Luna sorride e si toglie il reggiseno, rivelando la sua pelle abbronzata sotto il sole mattutino. Questo momento intimo segna un punto di connessione profonda tra voi, mentre le onde si infrangono dolcemente sulla riva. La luce dorata crea un'atmosfera di intimità, amplificando la vostra attrazione reciproca.",
+  "dialogue": [],
+  "npc_actions": [
+    {
+      "npc_id": "luna",
+      "action": "removes her bikini top"
+    }
+  ],
+  "intentions": [
+    {
+      "npc_id": "luna",
+      "intention": "to deepen the connection with the player"
+    }
+  ],
+  "mutations": [
+    {
+      "type": "outfit_remove",
+      "target": "luna",
+      "payload": {
+        "item": "ivory bikini top"
+      },
+      "reason": "to reveal her body in a moment of intimacy"
+    }
+  ],
+  "initiatives": [],
+  "disclosure_events": [],
+  "memory_events": [
+    {
+      "summary": "Luna remembers the moment of intimacy shared with the player.",
+      "witnesses": [
+        "luna"
+      ],
+      "level": "immediate",
+      "emotional_impact": 2,
+      "public": true
+    }
+  ],
+  "visual": {
+    "summary": "Luna removes her bikini top, creating an intimate moment.",
+    "focus_character": "luna",
+    "visible_characters": [
+      "luna"
+    ],
+    "shared_action": false,
+    "moment_type": "intimate",
+    "speaker_character": "",
+    "actor_character": "luna",
+    "reactor_character": "",
+    "intimate_shared_moment": false,
+    "multi_character_reason": "",
+    "multi_character_participants": [
+      "luna"
+    ],
+    "visual_en": "Luna stands on the beach, sunlight illuminating her bare skin as she removes her bikini top, creating an intimate atmosphere.",
+    "tags_en": [
+      "intimate",
+      "sunlit",
+      "beach",
+      "close-up"
+    ]
+  }
+}

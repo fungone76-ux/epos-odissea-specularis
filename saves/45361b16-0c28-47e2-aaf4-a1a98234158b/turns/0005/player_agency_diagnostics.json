@@ -1,0 +1,10 @@
+{
+  "player_input_action": "speaking",
+  "proposed_player_action": "other",
+  "player_agency_violation": false,
+  "invented_player_dialogue": false,
+  "invented_player_intention": false,
+  "action_semantic_drift": false,
+  "visual_moment_drift": false,
+  "problems": []
+}

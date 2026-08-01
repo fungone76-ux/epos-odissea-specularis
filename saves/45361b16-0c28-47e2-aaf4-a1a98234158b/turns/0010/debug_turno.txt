@@ -1,0 +1,35 @@
+================================================================
+DEBUG TURNO 10 — modalità: check
+sessione: 45361b16-0c28-47e2-aaf4-a1a98234158b | location: loc_private_beach
+================================================================
+
+[INPUT GIOCATORE]
+interessanti? cosa sei disposta a fare per me?
+
+[PROPOSTA DEL GM]
+azione: social | skill: carisma | difficoltà: 2
+motivo: perché l'esito è incerto
+
+[TIRO]
+pool: 4d6 | difficoltà: 2 | dadi: (nessun tiro — esito sicuro)
+esito: full_success
+posta: Luna è colpita dalla tua proposta e accetta di fare qualcosa per te, creando un legame più profondo.
+
+[NARRAZIONE]
+Luna ascolta attentamente la tua proposta, un'espressione di sorpresa che si trasforma rapidamente in uno sguardo di interesse. Ti fa un passo avanti, accettando di fare qualcosa per te. La luce del mattino illumina la spiaggia, creando un'atmosfera di connessione e intimità. Entrambi vi sentite attratti da questa nuova opportunità di legame, mentre le onde si infrangono dolcemente sulla riva.
+
+[DIALOGHI]
+- Luna: Cosa hai in mente? Sono pronta a fare qualcosa di speciale per te.
+
+[PROMPT POSITIVO]
+score_9, score_8_up, masterpiece, photorealistic, detailed, atmospheric, stsdebbie, dynamic pose, 1girl, mature woman, brown hair, athletic body, shiny skin, head tilt, massive breasts, cleavage, <lora:stsDebbie-10e:0.7>, ivory bikini, sheer ivory beach sarong, barefoot, observant adult private companion, full body, eye-level camera, side view, side orientation, curious pose, Luna steps closer, her expression shifting from surprise to curiosity, the warm morning light illuminating her figure against the serene beach backdrop.
+
+[PROMPT NEGATIVO]
+score_6, score_5, score_4, score_3, score_2, score_1, lowres, worst quality, low quality, blurry, bad anatomy, bad hands, extra fingers, missing fingers, extra limbs, deformed, text, watermark, signature, child, young-looking, underage, teenager, coercion, violence, duplicate person, plain background, white background, grey background, studio background, seamless backdrop, isolated figure, empty background, blank wall, multiple people, extra person, background people, duplicate character, cloned face, merged bodies, fused bodies, extra face
+
+[PROSA DI SCENA (visual_en)]
+Luna steps closer, her expression shifting from surprise to curiosity, the warm morning light illuminating her figure against the serene beach backdrop.
+
+[RENDER]
+status: complete | backend: comfy
+immagine: saves\45361b16-0c28-47e2-aaf4-a1a98234158b\turns\0010\image.png

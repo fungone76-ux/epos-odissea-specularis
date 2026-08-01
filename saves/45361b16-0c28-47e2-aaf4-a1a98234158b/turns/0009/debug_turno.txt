@@ -1,0 +1,26 @@
+================================================================
+DEBUG TURNO 9 — modalità: no_check
+sessione: 45361b16-0c28-47e2-aaf4-a1a98234158b | location: loc_private_beach
+================================================================
+
+[INPUT GIOCATORE]
+si... vorrei mi raccontassi un po di te
+
+[NARRAZIONE]
+Luna si ferma di fronte a te, il suo sguardo attento e curioso. La luce del mattino si riflette sul mare, creando un'atmosfera serena e intima. Ti ascolta mentre chiedi di conoscerla meglio, visibilmente interessata a condividere qualcosa di personale.
+
+[DIALOGHI]
+- luna: Certo, mi piacerebbe raccontarti di me. Sono qui al resort da un po' e ho avuto esperienze interessanti.
+
+[PROMPT POSITIVO]
+score_9, score_8_up, masterpiece, photorealistic, detailed, atmospheric, stsdebbie, dynamic pose, 1girl, mature woman, brown hair, athletic body, shiny skin, head tilt, massive breasts, cleavage, <lora:stsDebbie-10e:0.7>, ivory bikini, sheer ivory beach sarong, barefoot, observant adult private companion, full body, eye-level camera, front three quarter view, facing camera three quarter, NPC introduction, luxury resort, Luna addresses the unseen VIP guest in Spiaggia privata, adult woman, expressive body language, elegant cinematic composition
+
+[PROMPT NEGATIVO]
+score_6, score_5, score_4, score_3, score_2, score_1, lowres, worst quality, low quality, blurry, bad anatomy, bad hands, extra fingers, missing fingers, extra limbs, deformed, text, watermark, signature, child, young-looking, underage, teenager, coercion, violence, duplicate person, plain background, white background, grey background, studio background, seamless backdrop, isolated figure, empty background, blank wall, multiple people, extra person, background people, duplicate character, cloned face, merged bodies, fused bodies, extra face
+
+[PROSA DI SCENA (visual_en)]
+Luna addresses the unseen VIP guest in Spiaggia privata, adult woman, expressive body language, elegant cinematic composition
+
+[RENDER]
+status: complete | backend: comfy
+immagine: saves\45361b16-0c28-47e2-aaf4-a1a98234158b\turns\0009\image.png

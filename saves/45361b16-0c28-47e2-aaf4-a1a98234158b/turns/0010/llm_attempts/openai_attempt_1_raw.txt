@@ -1,0 +1,44 @@
+{
+  "narration": "Luna ascolta attentamente la tua proposta, un'espressione di sorpresa che si trasforma rapidamente in uno sguardo di interesse. Ti fa un passo avanti, accettando di fare qualcosa per te. La luce del mattino illumina la spiaggia, creando un'atmosfera di connessione e intimità. Entrambi vi sentite attratti da questa nuova opportunità di legame, mentre le onde si infrangono dolcemente sulla riva.",
+  "dialogue": [
+    {
+      "speaker": "Luna",
+      "text": "Cosa hai in mente? Sono pronta a fare qualcosa di speciale per te.",
+      "to": "luna"
+    }
+  ],
+  "npc_actions": [],
+  "intentions": [
+    {
+      "npc_id": "luna",
+      "intention": "approfondire la connessione con il protagonista"
+    }
+  ],
+  "mutations": [],
+  "initiatives": [],
+  "disclosure_events": [],
+  "memory_events": [
+    {
+      "summary": "Luna ricorda la proposta del protagonista, sentendosi colpita dalla sua audacia.",
+      "witnesses": ["luna"],
+      "level": "immediate",
+      "emotional_impact": 2,
+      "public": true
+    }
+  ],
+  "visual": {
+    "summary": "Luna avanza verso il protagonista con uno sguardo interessato.",
+    "focus_character": "luna",
+    "visible_characters": ["luna"],
+    "shared_action": false,
+    "moment_type": "speech",
+    "speaker_character": "luna",
+    "actor_character": "luna",
+    "reactor_character": "",
+    "intimate_shared_moment": false,
+    "multi_character_reason": "",
+    "multi_character_participants": ["luna"],
+    "visual_en": "Luna steps closer, her expression shifting from surprise to curiosity, the warm morning light illuminating her figure against the serene beach backdrop.",
+    "tags_en": ["close-up", "morning light", "beach", "curious pose"]
+  }
+}

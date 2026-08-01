@@ -1,0 +1,35 @@
+{
+  "mode": "no_check",
+  "scene": {
+    "narration": "Luna ti guarda con curiosità e un sorriso leggero si fa strada sul suo volto mentre ascolta la tua proposta. La luce del sole riflette sul mare, creando un'atmosfera serena e rilassante.",
+    "dialogue": [],
+    "npc_actions": [],
+    "intentions": [],
+    "mutations": [],
+    "initiatives": [],
+    "disclosure_events": [],
+    "memory_events": [],
+    "visual": {
+      "summary": "Luna ascolta con interesse",
+      "focus_character": "luna",
+      "visible_characters": [
+        "luna"
+      ],
+      "shared_action": false,
+      "moment_type": "reaction",
+      "speaker_character": "",
+      "actor_character": "",
+      "reactor_character": "luna",
+      "intimate_shared_moment": false,
+      "multi_character_reason": "",
+      "multi_character_participants": [],
+      "visual_en": "Luna stands quietly, her focus on the player, the sunlight glistening off the waves behind her.",
+      "tags_en": [
+        "sunlight",
+        "beach",
+        "calm atmosphere",
+        "Luna standing"
+      ]
+    }
+  }
+}

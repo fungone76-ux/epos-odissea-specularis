@@ -1,0 +1,36 @@
+{
+  "mode": "no_check",
+  "scene": {
+    "narration": "Luna ti guarda con curiosità e un sorriso leggero si fa strada sul suo volto mentre ascolta la tua proposta. La luce del sole riflette sul mare, creando un'atmosfera serena e rilassante.",
+    "dialogue": [],
+    "npc_actions": [],
+    "intentions": [],
+    "initiatives": [],
+    "disclosure_events": [],
+    "mutations": [],
+    "memory_events": [],
+    "visual": {
+      "summary": "Luna si presenta al miliardario fuori campo.",
+      "focus_character": "luna",
+      "visible_characters": [
+        "luna"
+      ],
+      "shared_action": false,
+      "visual_en": "Luna addresses the unseen VIP guest in Lobby, adult woman, expressive body language, elegant cinematic composition",
+      "tags_en": [
+        "NPC introduction",
+        "unseen guest POV",
+        "luxury resort"
+      ],
+      "moment_type": "reaction",
+      "speaker_character": "",
+      "actor_character": "",
+      "reactor_character": "luna",
+      "intimate_shared_moment": false,
+      "multi_character_reason": "",
+      "multi_character_participants": [
+        "luna"
+      ]
+    }
+  }
+}
