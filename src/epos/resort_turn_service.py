@@ -4,6 +4,10 @@ Il giocatore e il miliardario e agisce in prima persona, ma resta sempre
 fuori campo. Ogni turno con NPC presenti deve contenere una loro risposta,
 reazione o iniziativa; le immagini mostrano esclusivamente la NPC che parla,
 reagisce o agisce.
+
+L'intro del Resort e una sequenza canonica governata da Python:
+Victoria -> Luna -> Maria -> Stella. Ogni turno presenta una sola NPC e il
+passaggio successivo avviene soltanto dopo un nuovo input del giocatore.
 """
 
 from __future__ import annotations
@@ -12,6 +16,12 @@ import re
 from dataclasses import replace
 
 from .contract import FinalScene
+from .resort_intro import (
+    advance_resort_intro,
+    current_intro_step,
+    initialise_resort_intro,
+    intro_active,
+)
 from .turn_service import TurnService
 from .validators import ValidationErrorDetail, ValidationReport
 
@@ -46,12 +56,7 @@ def _speaker_id(state, speaker: str) -> str | None:
 
 
 def _canonicalize_resort_speakers(state, scene: FinalScene) -> FinalScene:
-    """Converte alias naturali come 'Victoria' nel nome canonico visualizzato.
-
-    Il contratto LLM usa spesso il solo nome proprio, mentre lo stato conserva
-    'Victoria Hale'. La normalizzazione avviene prima del validatore generico;
-    alias ambigui restano invariati e vengono correttamente rifiutati.
-    """
+    """Converte alias naturali come 'Victoria' nel nome canonico visualizzato."""
 
     changed = False
     dialogue = []
@@ -77,6 +82,10 @@ def _canonicalize_phase1_speakers(state, response):
 
 def _npc_from_scene(state, scene: FinalScene) -> str | None:
     """Sceglie la NPC protagonista con priorita speaker > reazione > azione."""
+
+    intro_step = current_intro_step(state)
+    if intro_step is not None and intro_step.npc_id in state.npcs:
+        return intro_step.npc_id
 
     present = [npc_id for npc_id in state.present_npc_ids() if npc_id in state.npcs]
     if not present:
@@ -130,19 +139,22 @@ def enforce_resort_player_pov(state, pack, scene: FinalScene) -> FinalScene:
 
     visual_text = str(visual.visual_en or "").strip()
     summary = str(visual.summary or "").strip()
+    wrong_intro_focus = current_intro_step(state) is not None and (
+        visual.focus_character != npc_id or visual.visible_characters != [npc_id]
+    )
     player_leaked = (
         "player" in visual.visible_characters
         or visual.focus_character == "player"
         or bool(_PLAYER_VISUAL_TERMS.search(visual_text))
         or bool(_PLAYER_VISUAL_TERMS.search(summary))
     )
-    if player_leaked:
+    if player_leaked or wrong_intro_focus:
         visual_text = (
-            f"{npc.name} reacts to the unseen VIP guest in {location_name}, "
+            f"{npc.name} addresses the unseen VIP guest in {location_name}, "
             "adult woman, expressive body language, elegant cinematic composition"
         )
-        summary = f"{npc.name} reagisce al miliardario fuori campo."
-        tags = ["NPC reaction", "unseen guest POV", "luxury resort"]
+        summary = f"{npc.name} si presenta al miliardario fuori campo."
+        tags = ["NPC introduction", "unseen guest POV", "luxury resort"]
     else:
         tags = list(visual.tags_en)
 
@@ -163,6 +175,16 @@ def enforce_resort_player_pov(state, pack, scene: FinalScene) -> FinalScene:
     return replace(scene, visual=corrected_visual)
 
 
+def _npc_participates(state, scene: FinalScene, npc_id: str) -> bool:
+    if any(_speaker_id(state, getattr(line, "speaker", "")) == npc_id for line in scene.dialogue):
+        return True
+    if any(str(getattr(action, "npc_id", "")) == npc_id for action in scene.npc_actions):
+        return True
+    if any(str(getattr(event, "npc_id", "")) == npc_id for event in scene.initiatives):
+        return True
+    return False
+
+
 def validate_resort_scene_policy(state, pack, scene: FinalScene) -> ValidationReport:
     if getattr(pack, "id", "") != RESORT_WORLD_ID:
         return ValidationReport()
@@ -170,6 +192,7 @@ def validate_resort_scene_policy(state, pack, scene: FinalScene) -> ValidationRe
     problems: list[str] = []
     errors: list[ValidationErrorDetail] = []
     present_npcs = set(state.present_npc_ids())
+    intro_step = current_intro_step(state)
 
     npc_dialogue = any(
         _speaker_id(state, getattr(line, "speaker", "")) in present_npcs
@@ -198,6 +221,21 @@ def validate_resort_scene_policy(state, pack, scene: FinalScene) -> ValidationRe
             )
         )
 
+    if intro_step is not None and not _npc_participates(state, scene, intro_step.npc_id):
+        message = (
+            f"Intro Resort: questo turno deve presentare {intro_step.npc_id}; "
+            "la NPC target deve parlare o reagire personalmente"
+        )
+        problems.append(message)
+        errors.append(
+            ValidationErrorDetail(
+                code="resort_intro_target_response_required",
+                path="dialogue|npc_actions|initiatives",
+                message=message,
+                details={"target_npc_id": intro_step.npc_id, "intro_step": intro_step.index + 1},
+            )
+        )
+
     if scene.visual is not None:
         if scene.visual.focus_character == "player" or "player" in scene.visual.visible_characters:
             message = "Resort: il giocatore non puo comparire ne essere il focus dell'immagine"
@@ -208,6 +246,26 @@ def validate_resort_scene_policy(state, pack, scene: FinalScene) -> ValidationRe
                     path="visual.focus_character|visual.visible_characters",
                     message=message,
                     details={
+                        "focus_character": scene.visual.focus_character,
+                        "visible_characters": list(scene.visual.visible_characters),
+                    },
+                )
+            )
+        if intro_step is not None and (
+            scene.visual.focus_character != intro_step.npc_id
+            or scene.visual.visible_characters != [intro_step.npc_id]
+        ):
+            message = (
+                f"Intro Resort: l'immagine deve mostrare soltanto {intro_step.npc_id}"
+            )
+            problems.append(message)
+            errors.append(
+                ValidationErrorDetail(
+                    code="resort_intro_visual_target_required",
+                    path="visual.focus_character|visual.visible_characters",
+                    message=message,
+                    details={
+                        "target_npc_id": intro_step.npc_id,
                         "focus_character": scene.visual.focus_character,
                         "visible_characters": list(scene.visual.visible_characters),
                     },
@@ -241,6 +299,25 @@ def _merge_reports(*reports: ValidationReport) -> ValidationReport:
 
 class ResortTurnService(TurnService):
     """TurnService con contratto narrativo e visivo specifico del Resort."""
+
+    def play(self, state, player_text: str):
+        initialise_resort_intro(state)
+        step = current_intro_step(state)
+        if step is not None:
+            # Lo snapshot canonico include last_scene. Durante l'intro lo usiamo
+            # come regia vincolante senza alterare l'input libero del giocatore.
+            state.last_scene = (
+                f"INTRO GUIDATA AZURE CROWN — STEP {step.index + 1}/4. "
+                f"NPC TARGET: {step.npc_id}. {step.instruction} "
+                "Produci una sola presentazione e attendi un nuovo input del giocatore "
+                "prima di procedere oltre."
+            )
+
+        result = super().play(state, player_text)
+        if step is not None and result.visual_contract is not None:
+            advance_resort_intro(state, result)
+            self.store.save_state(state)
+        return result
 
     def _normalize_phase1_pipeline(
         self,
