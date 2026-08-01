@@ -9,7 +9,7 @@ missions:
     terminal_failure_flags: [negotiations_refused]
   - id: mission_stella_promotion
     reveal: progressive
-    unlock_when: {relationship: stella, field: professional_respect, minimum: 1}
+    unlock_when: {relationship: stella, field: respect, minimum: 1}
     required_flags: [stella_vip_event_success, stella_positive_review, stella_victoria_test_passed]
     terminal_success_flags: [stella_promotion_approved]
     terminal_failure_flags: [stella_grave_misconduct]
