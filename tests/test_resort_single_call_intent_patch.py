@@ -99,3 +99,38 @@ def test_visual_intent_supports_outfit_and_full_body_composition():
     requirements = _requirements(hint)
     assert ("outfit", "outfit") in requirements
     assert ("camera", "full_body") in requirements
+
+
+def test_remove_bra_becomes_action_state_mutation_and_prompt_constraint():
+    hint = interpret_resort_intent(_Pack(), _State(), "Luna, togliti il reggiseno")
+    requirements = _requirements(hint)
+    assert hint.intent == "interact_with_npc"
+    assert hint.target_npc == "luna"
+    assert ("action", "remove_outfit_item:bra") in requirements
+    assert ("outfit_state", "removed:bra") in requirements
+    assert ("state_mutation", "move_item_from_worn_to_removed:bra") in requirements
+    assert ("prompt_constraint", "forbid_worn_item:bra") in requirements
+
+
+def test_remove_outfit_action_is_generic_for_other_items():
+    hint = interpret_resort_intent(_Pack(), _State(), "Luna, sfila le scarpe")
+    requirements = _requirements(hint)
+    assert ("action", "remove_outfit_item:shoes") in requirements
+    assert ("state_mutation", "move_item_from_worn_to_removed:shoes") in requirements
+    assert ("prompt_constraint", "forbid_worn_item:shoes") in requirements
+
+
+def test_wear_outfit_action_is_generic():
+    hint = interpret_resort_intent(_Pack(), _State(), "Luna, rimettiti il vestito")
+    requirements = _requirements(hint)
+    assert ("action", "wear_outfit_item:dress") in requirements
+    assert ("outfit_state", "worn:dress") in requirements
+    assert ("state_mutation", "move_item_to_worn:dress") in requirements
+    assert ("prompt_constraint", "require_worn_item:dress") in requirements
+
+
+def test_chest_request_is_preserved_as_visual_focus():
+    hint = interpret_resort_intent(_Pack(), _State(), "Luna, mostrami il seno")
+    requirements = _requirements(hint)
+    assert ("body_part", "chest") in requirements
+    assert ("visibility", "clear_and_unobstructed") in requirements
