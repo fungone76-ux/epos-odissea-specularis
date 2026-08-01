@@ -6,7 +6,7 @@ Uso:
     python tools/play_resort_gui.py --live --save salvataggio.json
 
 La GUI usa input libero e risposte reali dell'LLM. Python resta autorevole per
-missioni, punteggi, calendario, relazioni, segreti e rendering.
+missioni, punteggi, calendario, relazioni, segreti, POV e rendering.
 """
 
 from __future__ import annotations
@@ -31,7 +31,7 @@ from epos.resort_runtime import (
     load_resort_pack,
     process_resort_turn,
 )
-from epos.turn_service import TurnService
+from epos.resort_turn_service import ResortTurnService
 
 
 def main() -> None:
@@ -49,17 +49,14 @@ def main() -> None:
         pack_dir = root / pack_dir
     resort_pack = load_resort_pack(pack_dir)
 
-    if args.live:
-        gm = OpenAICompatibleGameMaster()
-    else:
-        gm = DemoGameMaster()
+    gm = OpenAICompatibleGameMaster() if args.live else DemoGameMaster()
 
     def process_campaign_turn(state, result):
         changes = process_resort_turn(state, resort_pack, result)
         advance_resort_time(state, force=False)
         return changes
 
-    service = TurnService(
+    service = ResortTurnService(
         gm=gm,
         pack=resort_pack.world,
         renderer=renderer_from_env(),
