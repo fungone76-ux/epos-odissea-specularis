@@ -1,0 +1,14 @@
+{
+  "source_of_truth": "WorldState character ids",
+  "normalizations": [
+    {
+      "field_path": "dialogue[0].speaker",
+      "original_value": "Stella",
+      "normalized_value": "stella",
+      "alias_rule": "npc_id_or_display_name",
+      "phase": "final_scene",
+      "attempt": 0,
+      "source_payload": "final_scene"
+    }
+  ]
+}

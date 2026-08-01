@@ -1,0 +1,17 @@
+{
+  "mode": "check_proposal",
+  "check": {
+    "action_kind": "social",
+    "skill": "carisma",
+    "difficulty": 2,
+    "target_ids": [],
+    "opposition": "none",
+    "reason": "perché l'esito è incerto",
+    "stakes": {
+      "full_success": "Stella si sentirà più a suo agio e sarà aperta a condividere ulteriori aspetti della sua vita.",
+      "partial_success": "Stella potrebbe rispondere ma in modo più riservato.",
+      "failure": "Stella si chiuderà e non vorrà continuare la conversazione.",
+      "critical_failure": "Stella si sentirà offesa e si allontanerà."
+    }
+  }
+}

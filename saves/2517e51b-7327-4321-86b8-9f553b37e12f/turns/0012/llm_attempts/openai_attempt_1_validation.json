@@ -1,0 +1,40 @@
+{
+  "valid": false,
+  "phase": "final_scene",
+  "validation_stage": "semantic",
+  "validation_reason": "unknown_npc_id",
+  "errors": [
+    {
+      "code": "unknown_npc_id",
+      "path": "dialogue.speaker",
+      "message": "dialogo di speaker non presente: 'stella'",
+      "details": {
+        "speaker": "stella"
+      }
+    },
+    {
+      "code": "invalid_memory_witness",
+      "path": "memory_events[0].witnesses[0]",
+      "message": "memory_event: testimone assente 'stella' â€” un NPC non puÃ² ricordare ciÃ² che non ha osservato",
+      "details": {
+        "witness": "stella",
+        "location_id": "loc_private_beach"
+      }
+    },
+    {
+      "code": "visible_character_not_present",
+      "path": "visual.visible_characters[0]",
+      "message": "visual: personaggio visibile ma assente 'stella'",
+      "details": {
+        "character_id": "stella",
+        "location_id": "loc_private_beach"
+      }
+    }
+  ],
+  "warnings": [],
+  "problems": [
+    "dialogo di speaker non presente: 'stella'",
+    "memory_event: testimone assente 'stella' â€” un NPC non puÃ² ricordare ciÃ² che non ha osservato",
+    "visual: personaggio visibile ma assente 'stella'"
+  ]
+}

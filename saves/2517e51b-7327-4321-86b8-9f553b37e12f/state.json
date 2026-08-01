@@ -1,7 +1,7 @@
 {
   "session_id": "2517e51b-7327-4321-86b8-9f553b37e12f",
-  "turn": 11,
-  "time_phase": "pomeriggio",
+  "turn": 12,
+  "time_phase": "sera",
   "location_id": "loc_private_beach",
   "player": {
     "name": null,
@@ -52,7 +52,7 @@
       "id": "victoria",
       "name": "Victoria Hale",
       "age": 39,
-      "location_id": "loc_victoria_office",
+      "location_id": "loc_restaurant",
       "present": false,
       "knowledge": [
         "Il debito bancario scade durante il settimo giorno.",
@@ -78,27 +78,27 @@
       "conditions": [],
       "outfit": {
         "worn": [
+          "emerald satin slit gown",
+          "low cut bodice",
+          "gold high heels",
+          "emerald earrings"
+        ],
+        "removed": [
+          "black bodycon blazer mini dress",
+          "deep neckline",
+          "elegant jewelry",
           "black ultra fitted blazer dress",
           "plunging neckline",
           "sheer black stockings",
           "black stilettos"
         ],
-        "removed": [
-          "black bodycon blazer mini dress",
-          "deep neckline",
-          "elegant jewelry"
-        ],
-        "revision": 1,
-        "torso_slot": [
-          "black ultra fitted blazer dress"
-        ],
-        "lower_body_slot": [
-          "black ultra fitted blazer dress"
-        ],
+        "revision": 2,
+        "torso_slot": [],
+        "lower_body_slot": [],
         "footwear": [
-          "black stilettos"
+          "gold high heels"
         ],
-        "nudity_mode": "clothed"
+        "nudity_mode": "fully_nude"
       },
       "wounds": [],
       "disclosed_facts": []
@@ -107,8 +107,8 @@
       "id": "stella",
       "name": "Stella",
       "age": 28,
-      "location_id": "loc_private_beach",
-      "present": true,
+      "location_id": "loc_lounge",
+      "present": false,
       "knowledge": [
         "Il protagonista è un cliente VIP eccezionalmente importante.",
         "Non conosce inizialmente il possibile acquisto del resort."
@@ -138,6 +138,18 @@
           "credibility": 1.0,
           "emotional_impact": 2,
           "public": true
+        },
+        {
+          "summary": "Stella ha condiviso dettagli intimi sulla sua vita con il giocatore.",
+          "witnesses": [
+            "stella"
+          ],
+          "source": "observed",
+          "turn": 11,
+          "level": "immediate",
+          "credibility": 1.0,
+          "emotional_impact": 2,
+          "public": true
         }
       ],
       "relationships": {
@@ -156,30 +168,34 @@
       "conditions": [],
       "outfit": {
         "worn": [
-          "coral string bikini",
-          "sheer coral sarong",
-          "gold anklet",
-          "barefoot"
+          "gold sequin bodycon mini dress",
+          "plunging neckline",
+          "gold stilettos",
+          "hoop earrings"
         ],
         "removed": [
           "fitted resort hostess micro dress",
-          "plunging neckline",
           "very short hem",
           "sheer stockings",
           "gold name tag",
           "high heels",
           "gold micro bikini",
-          "light beach wrap"
+          "light beach wrap",
+          "coral string bikini",
+          "sheer coral sarong",
+          "gold anklet",
+          "barefoot"
         ],
-        "revision": 10,
+        "revision": 11,
         "torso_slot": [
-          "coral string bikini"
+          "gold sequin bodycon mini dress"
         ],
         "lower_body_slot": [
-          "coral string bikini",
-          "sheer coral sarong"
+          "gold sequin bodycon mini dress"
         ],
-        "footwear": [],
+        "footwear": [
+          "gold stilettos"
+        ],
         "nudity_mode": "clothed"
       },
       "wounds": [],
@@ -214,24 +230,26 @@
       "conditions": [],
       "outfit": {
         "worn": [
-          "black fitted maid mini dress",
-          "white lace trim",
+          "black silk service mini dress",
+          "deep neckline",
           "sheer stockings",
-          "high heels"
+          "black pumps"
         ],
         "removed": [
           "fitted luxury maid mini dress",
-          "deep neckline"
+          "black fitted maid mini dress",
+          "white lace trim",
+          "high heels"
         ],
-        "revision": 1,
+        "revision": 2,
         "torso_slot": [
-          "black fitted maid mini dress"
+          "black silk service mini dress"
         ],
         "lower_body_slot": [
-          "black fitted maid mini dress"
+          "black silk service mini dress"
         ],
         "footwear": [
-          "high heels"
+          "black pumps"
         ],
         "nudity_mode": "clothed"
       },
@@ -242,7 +260,7 @@
       "id": "luna",
       "name": "Luna",
       "age": 27,
-      "location_id": "loc_wild_beach",
+      "location_id": "loc_lounge",
       "present": false,
       "knowledge": [
         "Sua madre aiutò il padre del protagonista durante una grave crisi.",
@@ -268,28 +286,31 @@
       "conditions": [],
       "outfit": {
         "worn": [
-          "sand colored micro bikini",
-          "sheer linen sarong",
-          "woven bracelet",
-          "barefoot"
+          "ivory backless bodycon mini dress",
+          "deep neckline",
+          "delicate stilettos"
         ],
         "removed": [
           "fitted ivory VIP attendant mini dress",
           "low neckline",
           "open back",
           "sheer stockings",
-          "delicate high heels"
-        ],
-        "revision": 1,
-        "torso_slot": [
+          "delicate high heels",
           "sand colored micro bikini",
-          "woven bracelet"
+          "sheer linen sarong",
+          "woven bracelet",
+          "barefoot"
+        ],
+        "revision": 2,
+        "torso_slot": [
+          "ivory backless bodycon mini dress"
         ],
         "lower_body_slot": [
-          "sand colored micro bikini",
-          "sheer linen sarong"
+          "ivory backless bodycon mini dress"
         ],
-        "footwear": [],
+        "footwear": [
+          "delicate stilettos"
+        ],
         "nudity_mode": "clothed"
       },
       "wounds": [],
@@ -301,7 +322,7 @@
   "story_markers": [],
   "flags": {
     "resort_day": 1,
-    "resort_phase_turns": 3,
+    "resort_phase_turns": 0,
     "resort_completed_events": [],
     "resort_active_missions": [
       "mission_resort_future"
@@ -344,13 +365,6 @@
     ],
     "visual_camera_history": [
       {
-        "camera_side": "front_three_quarter",
-        "shot_type": "full_body",
-        "camera_angle": "eye_level",
-        "focus_character": "stella",
-        "posture": ""
-      },
-      {
         "camera_side": "side",
         "shot_type": "full_body",
         "camera_angle": "eye_level",
@@ -380,6 +394,13 @@
       },
       {
         "camera_side": "side",
+        "shot_type": "full_body",
+        "camera_angle": "eye_level",
+        "focus_character": "stella",
+        "posture": ""
+      },
+      {
+        "camera_side": "front_three_quarter",
         "shot_type": "full_body",
         "camera_angle": "eye_level",
         "focus_character": "stella",
@@ -387,68 +408,67 @@
       }
     ],
     "resort_score_tier": "soggiorno_fallimentare",
-    "resort_schedule_applied": "1:pomeriggio",
+    "resort_schedule_applied": "1:sera",
     "resort_schedule_changes": [
       {
         "npc_id": "victoria",
         "day": 1,
-        "phase": "pomeriggio",
-        "from_location": "loc_lobby",
-        "to_location": "loc_victoria_office",
+        "phase": "sera",
+        "from_location": "loc_victoria_office",
+        "to_location": "loc_restaurant",
         "outfit": [
-          "black ultra fitted blazer dress",
-          "plunging neckline",
-          "sheer black stockings",
-          "black stilettos"
+          "emerald satin slit gown",
+          "low cut bodice",
+          "gold high heels",
+          "emerald earrings"
         ]
       },
       {
         "npc_id": "stella",
         "day": 1,
-        "phase": "pomeriggio",
+        "phase": "sera",
         "from_location": "loc_private_beach",
-        "to_location": "loc_private_beach",
+        "to_location": "loc_lounge",
         "outfit": [
-          "coral string bikini",
-          "sheer coral sarong",
-          "gold anklet",
-          "barefoot"
+          "gold sequin bodycon mini dress",
+          "plunging neckline",
+          "gold stilettos",
+          "hoop earrings"
         ]
       },
       {
         "npc_id": "maria",
         "day": 1,
-        "phase": "pomeriggio",
-        "from_location": "loc_lobby",
+        "phase": "sera",
+        "from_location": "loc_suite",
         "to_location": "loc_suite",
         "outfit": [
-          "black fitted maid mini dress",
-          "white lace trim",
+          "black silk service mini dress",
+          "deep neckline",
           "sheer stockings",
-          "high heels"
+          "black pumps"
         ]
       },
       {
         "npc_id": "luna",
         "day": 1,
-        "phase": "pomeriggio",
-        "from_location": "loc_lobby",
-        "to_location": "loc_wild_beach",
+        "phase": "sera",
+        "from_location": "loc_wild_beach",
+        "to_location": "loc_lounge",
         "outfit": [
-          "sand colored micro bikini",
-          "sheer linen sarong",
-          "woven bracelet",
-          "barefoot"
+          "ivory backless bodycon mini dress",
+          "deep neckline",
+          "delicate stilettos"
         ]
       }
     ]
   },
   "initiative": {
-    "consecutive_reactive_turns": 11,
+    "consecutive_reactive_turns": 12,
     "last_autonomous_turn": -1,
     "recent": []
   },
   "pressures": {},
   "riserva": 0,
-  "last_scene": "Stella, inclinandosi leggermente in avanti, osserva con curiosità il tuo interesse. La luce del sole continua a brillare sul suo corpo, e l'atmosfera intorno a voi è carica di una tensione avvolgente. \"Cosa vuoi sapere di me?\" chiede, il suo tono è diretto e affascinante."
+  "last_scene": "Stella, sentendosi a proprio agio, si avvicina e inizia a condividere dettagli intimi sulla sua vita. \"Beh, non ti sorprendere, ma tendo a farlo più di una volta a settimana. È un modo per rilassarmi e liberare la mente,\" confessa con un sorriso audace. La luce del sole che scompare all'orizzonte illumina il suo corpo, aumentando l'intensità del momento."
 }

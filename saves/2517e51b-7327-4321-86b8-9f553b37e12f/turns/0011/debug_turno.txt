@@ -1,0 +1,35 @@
+================================================================
+DEBUG TURNO 11 — modalità: check
+sessione: 2517e51b-7327-4321-86b8-9f553b37e12f | location: loc_private_beach
+================================================================
+
+[INPUT GIOCATORE]
+voglio sapere quante volte ti masturbi in una settimana
+
+[PROPOSTA DEL GM]
+azione: social | skill: carisma | difficoltà: 2
+motivo: perché l'esito è incerto
+
+[TIRO]
+pool: 4d6 | difficoltà: 2 | dadi: (nessun tiro — esito sicuro)
+esito: full_success
+posta: Stella si sente a suo agio e condivide dettagli intimi sulla sua vita.
+
+[NARRAZIONE]
+Stella, sentendosi a proprio agio, si avvicina e inizia a condividere dettagli intimi sulla sua vita. "Beh, non ti sorprendere, ma tendo a farlo più di una volta a settimana. È un modo per rilassarmi e liberare la mente," confessa con un sorriso audace. La luce del sole che scompare all'orizzonte illumina il suo corpo, aumentando l'intensità del momento.
+
+[DIALOGHI]
+- Stella: Beh, non ti sorprendere, ma tendo a farlo più di una volta a settimana. È un modo per rilassarmi e liberare la mente.
+
+[PROMPT POSITIVO]
+score_9, score_8_up, masterpiece, photorealistic, 1girl, alice_milf_catchers, massive breasts, cleavage, blonde hair, beautiful blue eyes, shapely legs, hourglass figure, skinny body, narrow waist, wide hips, <lora:alice_milf_catchers_lora.safetensors:0.7>, coral string bikini, sheer coral sarong, gold anklet, ambitious adult VIP entertainer, full body, eye-level camera, front three quarter view, facing camera three quarter, intimate moment, sunset lighting, Stella leans in closer, her body illuminated by the setting sun, as she shares personal details with an alluring expression.
+
+[PROMPT NEGATIVO]
+score_6, score_5, score_4, score_3, score_2, score_1, lowres, worst quality, low quality, blurry, bad anatomy, bad hands, extra fingers, missing fingers, extra limbs, deformed, text, watermark, signature, child, young-looking, underage, teenager, coercion, violence, duplicate person, plain background, white background, grey background, studio background, seamless backdrop, isolated figure, empty background, blank wall, multiple people, extra person, background people, duplicate character, cloned face, merged bodies, fused bodies, extra face
+
+[PROSA DI SCENA (visual_en)]
+Stella leans in closer, her body illuminated by the setting sun, as she shares personal details with an alluring expression.
+
+[RENDER]
+status: complete | backend: comfy
+immagine: saves\2517e51b-7327-4321-86b8-9f553b37e12f\turns\0011\image.png

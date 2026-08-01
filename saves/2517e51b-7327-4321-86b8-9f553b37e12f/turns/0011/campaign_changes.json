@@ -1,0 +1,59 @@
+{
+  "unlocked_missions": [],
+  "mission_changes": [],
+  "campaign_score": 0,
+  "score_tier": "soggiorno_fallimentare",
+  "schedule": [
+    {
+      "npc_id": "victoria",
+      "day": 1,
+      "phase": "sera",
+      "from_location": "loc_victoria_office",
+      "to_location": "loc_restaurant",
+      "outfit": [
+        "emerald satin slit gown",
+        "low cut bodice",
+        "gold high heels",
+        "emerald earrings"
+      ]
+    },
+    {
+      "npc_id": "stella",
+      "day": 1,
+      "phase": "sera",
+      "from_location": "loc_private_beach",
+      "to_location": "loc_lounge",
+      "outfit": [
+        "gold sequin bodycon mini dress",
+        "plunging neckline",
+        "gold stilettos",
+        "hoop earrings"
+      ]
+    },
+    {
+      "npc_id": "maria",
+      "day": 1,
+      "phase": "sera",
+      "from_location": "loc_suite",
+      "to_location": "loc_suite",
+      "outfit": [
+        "black silk service mini dress",
+        "deep neckline",
+        "sheer stockings",
+        "black pumps"
+      ]
+    },
+    {
+      "npc_id": "luna",
+      "day": 1,
+      "phase": "sera",
+      "from_location": "loc_wild_beach",
+      "to_location": "loc_lounge",
+      "outfit": [
+        "ivory backless bodycon mini dress",
+        "deep neckline",
+        "delicate stilettos"
+      ]
+    }
+  ]
+}
