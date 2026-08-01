@@ -1,6 +1,6 @@
 """Repairs derived from the complete Resort save audit.
 
-The patch is deliberately conservative.  It repairs only unambiguous state
+The patch is deliberately conservative. It repairs only unambiguous state
 and scene inconsistencies found in the recorded turns:
 
 * a single NPC located with the player but carrying a stale ``present`` flag;
@@ -48,12 +48,7 @@ def _mentioned_candidates(state, candidates: list[str], *texts: str) -> list[str
 
 
 def reconcile_resort_presence(state, player_text: str = "") -> str | None:
-    """Repair one stale presence flag without inventing a crowd.
-
-    Presence is changed only when no NPC is currently present and exactly one
-    same-location NPC is unambiguous, either because it is the sole candidate
-    or because it is the sole NPC named by the last scene/current input.
-    """
+    """Repair one stale presence flag without inventing a crowd."""
 
     if any(npc_id in state.npcs for npc_id in state.present_npc_ids()):
         return None
@@ -137,7 +132,10 @@ def _scene_participant_candidates(state, scene) -> list[str]:
 def _placeholder_target_with_stale_presence(state, scene) -> str | None:
     """Resolve ``npc_id`` even when the persisted present flag is stale."""
 
-    original = _ORIGINAL_PLACEHOLDER_TARGET(state, scene)
+    try:
+        original = _ORIGINAL_PLACEHOLDER_TARGET(state, scene)
+    except (AttributeError, TypeError):
+        original = None
     if original is not None:
         return original
 
@@ -178,10 +176,9 @@ def _scene_has_real_npc_participation(state, scene) -> bool:
         reconcile_resort_presence(state)
         present = set(state.present_npc_ids())
 
-    for npc_id in _scene_participant_candidates(state, scene):
-        if npc_id in present:
-            return True
-    return False
+    return any(
+        npc_id in present for npc_id in _scene_participant_candidates(state, scene)
+    )
 
 
 def install_resort_save_audit_patch() -> None:
@@ -189,7 +186,6 @@ def install_resort_save_audit_patch() -> None:
     if _INSTALLED:
         return
 
-    # Explicit compound/full-body garments found in the recorded saves.
     TORSO_CLOTHING_TERMS.update(
         {
             "travel suit",
@@ -222,9 +218,12 @@ def install_resort_save_audit_patch() -> None:
     original_has_action = playable._scene_has_present_npc_action
 
     def patched_has_action(state, scene) -> bool:
-        return original_has_action(state, scene) or _scene_has_real_npc_participation(
-            state, scene
-        )
+        try:
+            if original_has_action(state, scene):
+                return True
+        except (AttributeError, TypeError):
+            pass
+        return _scene_has_real_npc_participation(state, scene)
 
     playable._scene_has_present_npc_action = patched_has_action
 
