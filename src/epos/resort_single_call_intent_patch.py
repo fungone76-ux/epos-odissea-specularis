@@ -1,9 +1,10 @@
 """Single-call intent guidance for the Resort runtime.
 
-No provider call is added.  Python derives a conservative intent hint from the
-player text and injects it into the same canonical snapshot already sent to the
-Game Master.  The existing GM call must then both interpret and produce the
-scene while respecting explicit NPC-response and visual requirements.
+Python derives a conservative intent hint from the player's text and injects it
+into the same canonical snapshot already sent to the Game Master.  No extra LLM
+call is introduced.  Explicit visual requests are represented as generic,
+structured requirements so they survive narration, scene planning and prompt
+construction.
 """
 
 from __future__ import annotations
@@ -11,6 +12,14 @@ from __future__ import annotations
 import re
 import unicodedata
 from dataclasses import dataclass
+
+
+@dataclass(frozen=True)
+class VisualRequirement:
+    kind: str
+    value: str
+    priority: str = "high"
+    mandatory: bool = True
 
 
 @dataclass(frozen=True)
@@ -22,7 +31,7 @@ class ResortIntentHint:
     requires_location_change: bool = False
     requires_visual: bool = True
     visual_focus: str = ""
-    visual_requirements: tuple[str, ...] = ()
+    visual_requirements: tuple[VisualRequirement, ...] = ()
 
 
 _MOVE_WORDS = re.compile(
@@ -35,7 +44,13 @@ _ASK_SELF = re.compile(
 )
 _SOCIAL = re.compile(
     r"\b(?:dimmi|raccontami|parlami|rispondimi|guardami|avvicinati|vieni|resta|siediti|"
-    r"aiutami|mostrami|fammi vedere|cosa ne pensi|che ne pensi|come stai)\b",
+    r"aiutami|mostrami|fammi vedere|fai vedere|girarti|girati|voltati|posa|mettiti|"
+    r"cosa ne pensi|che ne pensi|come stai)\b",
+    re.IGNORECASE,
+)
+_VISUAL_REQUEST = re.compile(
+    r"\b(?:mostrami|fammi vedere|fai vedere|voglio vedere|vorrei vedere|inquadr|"
+    r"primo piano|da vicino|di schiena|profilo|girarti|girati|voltati|posa|mettiti)\w*\b",
     re.IGNORECASE,
 )
 _RELAX = re.compile(
@@ -54,6 +69,30 @@ _LOCATION_ALIASES = {
     "loc_lounge": ("lounge", "bar", "cocktail bar"),
     "loc_victoria_office": ("ufficio di victoria", "ufficio victoria"),
 }
+
+# Generic vocabulary.  The values are prompt-facing canonical concepts, not
+# special cases tied to a single body part or scene.
+_VISUAL_ALIASES: tuple[tuple[str, str, tuple[str, ...]], ...] = (
+    ("body_part", "feet", ("piede", "piedi", "piedini", "dita dei piedi")),
+    ("body_part", "hands", ("mano", "mani", "dita")),
+    ("body_part", "face", ("viso", "volto", "faccia", "occhi", "sguardo")),
+    ("body_part", "legs", ("gamba", "gambe", "cosce")),
+    ("body_part", "back", ("schiena", "dorso")),
+    ("body_part", "hair", ("capelli", "chioma")),
+    ("body_part", "tattoo", ("tatuaggio", "tatuaggi")),
+    ("outfit", "outfit", ("vestito", "abito", "outfit", "bikini", "scarpe", "gioiello", "collana")),
+    ("orientation", "back_view", ("di schiena", "da dietro", "voltati", "girati")),
+    ("orientation", "front_view", ("di fronte", "frontalmente", "frontale")),
+    ("orientation", "side_view", ("di profilo", "laterale", "di lato")),
+    ("camera", "close_up", ("primo piano", "da vicino", "ravvicinato")),
+    ("camera", "full_body", ("figura intera", "corpo intero", "dalla testa ai piedi")),
+    ("camera", "low_angle", ("dal basso", "inquadratura bassa", "angolazione bassa")),
+    ("camera", "high_angle", ("dall'alto", "inquadratura alta", "angolazione alta")),
+    ("pose", "sitting", ("seduta", "siediti", "sedersi")),
+    ("pose", "lying", ("sdraiata", "sdraiati", "stesa")),
+    ("pose", "standing", ("in piedi", "alzati")),
+    ("pose", "kneeling", ("in ginocchio", "inginocchiata")),
+)
 
 
 def _plain(text: str) -> str:
@@ -79,16 +118,9 @@ def _target_npc(state, text: str) -> str:
 
 def _location_target(pack, text: str) -> str:
     normalized = _plain(text)
-    # Specific aliases first so "spiaggia selvaggia" never collapses to generic beach.
     ordered = [
-        "loc_wild_beach",
-        "loc_private_beach",
-        "loc_suite",
-        "loc_lobby",
-        "loc_restaurant",
-        "loc_pool",
-        "loc_spa",
-        "loc_lounge",
+        "loc_wild_beach", "loc_private_beach", "loc_suite", "loc_lobby",
+        "loc_restaurant", "loc_pool", "loc_spa", "loc_lounge",
         "loc_victoria_office",
     ]
     for location_id in ordered:
@@ -99,15 +131,40 @@ def _location_target(pack, text: str) -> str:
     return ""
 
 
+def _extract_visual_requirements(player_text: str) -> tuple[VisualRequirement, ...]:
+    text = _plain(player_text)
+    requirements: list[VisualRequirement] = []
+    seen: set[tuple[str, str]] = set()
+
+    for kind, value, aliases in _VISUAL_ALIASES:
+        if any(_plain(alias) in text for alias in aliases):
+            key = (kind, value)
+            if key not in seen:
+                requirements.append(VisualRequirement(kind=kind, value=value))
+                seen.add(key)
+
+    # A direct visual request means the requested element must be clearly and
+    # completely visible, even when no special camera word was used.
+    if _VISUAL_REQUEST.search(text) and requirements:
+        requirements.append(VisualRequirement("visibility", "clear_and_unobstructed"))
+        requirements.append(VisualRequirement("framing", "must_include_all_requested_elements"))
+
+    return tuple(requirements)
+
+
 def interpret_resort_intent(pack, state, player_text: str) -> ResortIntentHint:
     text = _plain(player_text)
     target = _target_npc(state, text)
     destination = _location_target(pack, text) if _MOVE_WORDS.search(text) else ""
+    explicit_visual = _extract_visual_requirements(player_text)
 
     if destination:
         requirements = (
-            "canonical destination environment",
-            "outdoor setting" if "beach" in destination or destination == "loc_pool" else "location-accurate setting",
+            VisualRequirement("environment", "canonical_destination"),
+            VisualRequirement(
+                "environment",
+                "outdoor_setting" if "beach" in destination or destination == "loc_pool" else "location_accurate_setting",
+            ),
         )
         return ResortIntentHint(
             intent="move",
@@ -117,13 +174,20 @@ def interpret_resort_intent(pack, state, player_text: str) -> ResortIntentHint:
             visual_requirements=requirements,
         )
 
+    base: tuple[VisualRequirement, ...] = explicit_visual
+    if target:
+        base += (
+            VisualRequirement("subject", target),
+            VisualRequirement("composition", "player_off_camera"),
+        )
+
     if _ASK_SELF.search(text):
         return ResortIntentHint(
             intent="ask_npc_about_self",
             target_npc=target,
             requires_npc_response=bool(target),
             visual_focus=target,
-            visual_requirements=("target NPC only", "location-accurate background"),
+            visual_requirements=base + (VisualRequirement("environment", "location_accurate_background"),),
         )
 
     if _RELAX.search(text):
@@ -132,23 +196,30 @@ def interpret_resort_intent(pack, state, player_text: str) -> ResortIntentHint:
             target_npc=target,
             requires_npc_response=bool(target),
             visual_focus=target,
-            visual_requirements=("quiet relaxation", "location-accurate background"),
+            visual_requirements=base + (VisualRequirement("action", "quiet_relaxation"),),
         )
 
-    if _SOCIAL.search(text) or target:
+    if _SOCIAL.search(text) or target or explicit_visual:
         return ResortIntentHint(
             intent="interact_with_npc",
             target_npc=target,
             requires_npc_response=bool(target),
             visual_focus=target,
-            visual_requirements=("target NPC performs the visible action", "player remains off-camera"),
+            visual_requirements=base,
         )
 
     return ResortIntentHint(intent="free_action", requires_visual=True)
 
 
+def _serialize_requirement(requirement: VisualRequirement) -> str:
+    return (
+        f"kind={requirement.kind};value={requirement.value};"
+        f"priority={requirement.priority};mandatory={'true' if requirement.mandatory else 'false'}"
+    )
+
+
 def _directive(hint: ResortIntentHint) -> str:
-    requirements = ", ".join(hint.visual_requirements) or "none"
+    requirements = " || ".join(_serialize_requirement(item) for item in hint.visual_requirements) or "none"
     parts = [
         "RESORT SINGLE-CALL INTENT CONTRACT",
         f"intent={hint.intent}",
@@ -167,8 +238,15 @@ def _directive(hint: ResortIntentHint) -> str:
         )
     if hint.visual_focus:
         parts.append(
-            f"MANDATORY VISUAL: focus_character and visible_characters must use '{hint.visual_focus}', "
+            f"MANDATORY VISUAL SUBJECT: focus_character and visible_characters must use '{hint.visual_focus}', "
             "never player and never the placeholder npc_id."
+        )
+    if hint.visual_requirements:
+        parts.append(
+            "MANDATORY VISUAL FIDELITY: every mandatory visual requirement must be represented explicitly in "
+            "visual.summary, visual.visual_en and visual.tags_en. Outfit state alone is insufficient. "
+            "Camera, framing, orientation, pose, body-part, object and action requirements must remain visible "
+            "through the final renderer prompt; do not replace a requested focus with a generic full-body shot."
         )
     if hint.requires_location_change:
         parts.append(
@@ -187,8 +265,6 @@ def install_resort_single_call_intent_patch() -> None:
 
     def patched_play(self, state, player_text: str):
         hint = interpret_resort_intent(self.pack, state, player_text)
-        # last_scene is already included in the existing canonical snapshot.  Appending
-        # this directive changes only the content of that one provider request.
         previous = str(getattr(state, "last_scene", "") or "").strip()
         directive = _directive(hint)
         state.last_scene = f"{previous}\n\n{directive}" if previous else directive
