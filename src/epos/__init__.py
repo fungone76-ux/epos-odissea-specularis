@@ -5,11 +5,13 @@ from .resort_npc_action_patch import install_resort_npc_action_patch
 from .resort_beach_runtime_patch import install_resort_beach_runtime_patch
 from .resort_save_audit_patch import install_resort_save_audit_patch
 from .resort_single_call_intent_patch import install_resort_single_call_intent_patch
+from .resort_manual_time_gui_patch import install_resort_manual_time_gui_patch
 
 install_resort_runtime_patches()
 install_resort_npc_action_patch()
 install_resort_beach_runtime_patch()
 install_resort_save_audit_patch()
 install_resort_single_call_intent_patch()
+install_resort_manual_time_gui_patch()
 
 __version__ = "0.1.0"
