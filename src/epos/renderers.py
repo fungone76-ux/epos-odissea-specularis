@@ -136,8 +136,8 @@ class ComfyUIRenderer:
             or "luna_main_model.safetensors"
         )
         self.steps = steps or int(_env_first("COMFYUI_STEPS", "EPOS_A1111_STEPS") or "24")
-        self.width = width or int(_env_first("COMFYUI_WIDTH", "EPOS_A1111_WIDTH") or "832")
-        self.height = height or int(_env_first("COMFYUI_HEIGHT", "EPOS_A1111_HEIGHT") or "1216")
+        self.width = width or int(_env_first("COMFYUI_WIDTH", "EPOS_COMFY_WIDTH") or "832")
+        self.height = height or int(_env_first("COMFYUI_HEIGHT", "EPOS_COMFY_HEIGHT") or "1216")
         self.cfg_scale = cfg_scale or float(_env_first("COMFYUI_CFG", "EPOS_A1111_CFG") or "3.0")
         self.sampler = sampler or _env_first("COMFYUI_SAMPLER", "EPOS_A1111_SAMPLER") or "DPM++ 2M Karras"
         self.scheduler = scheduler or _env_first("COMFYUI_SCHEDULER", "EPOS_A1111_SCHEDULER") or (
@@ -818,4 +818,5 @@ def renderer_from_env() -> Renderer:
     if mode == "novelai":
         return NovelAIRenderer()
     return PendingRenderer()
+
 
