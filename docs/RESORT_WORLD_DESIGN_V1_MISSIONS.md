@@ -82,6 +82,15 @@ Oggetto canonico: una vecchia lettera conservata da Luna.
 
 Autore canonico della lettera: il padre del protagonista.
 
+Contenuto canonico:
+
+- la lettera chiede che Luna venga protetta;
+- la richiesta riguarda Luna quando era ancora bambina;
+- il padre del protagonista aveva un debito morale verso la madre di Luna;
+- la madre di Luna lo aveva aiutato durante una grave crisi personale o professionale;
+- in cambio egli aveva promesso di proteggere Luna;
+- la promessa non è stata mantenuta oppure si è interrotta senza spiegazione.
+
 La lettera contiene un riferimento, una firma o un dettaglio aziendale riconoscibile ma ambiguo. Non deve rivelare immediatamente tutta la verità.
 
 Principi runtime:
