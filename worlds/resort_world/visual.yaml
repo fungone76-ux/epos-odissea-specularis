@@ -1,7 +1,7 @@
 schema_version: 1
 world_id: resort_world
 visual_style_en: realistic luxury mediterranean resort, adult sensual atmosphere, elegant cinematic photography
-negative_extra_en: underage, child, teenager, coercion, violence, bad anatomy, extra limbs, duplicate person
+negative_extra_en: underage, child, teenager, coercion, violence, bad anatomy, extra limbs, duplicate person, plain background, white background, grey background, studio background, seamless backdrop, isolated figure, empty background, blank wall
 visual_policy:
   protected_base_prompts: true
   single_character_default: true
@@ -13,7 +13,7 @@ visual_policy:
   max_role_prompt_words: 12
   visual_en_primary: true
   dedupe_across_layers: true
-  max_scene_tags: 3
+  max_scene_tags: 8
   role_prompt_optional: true
   preserve_revealing_outfit_traits: true
   revealing_outfit_priority: true
