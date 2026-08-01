@@ -1,0 +1,59 @@
+# Demo pack — ambientazione neutra per test e sviluppo del motore.
+# NON è il mondo del gioco finale: verrà sostituito dal concept scelto.
+
+id: demo_pack
+title: "Il Crocevia"
+premise: >
+  Una stazione di posta isolata tra due territori in tensione. La protagonista
+  è una viaggiatrice adulta arrivata senza permesso. Neve in arrivo, pochi
+  presenti, troppe cose non dette.
+
+start_time_phase: "tramonto"
+start_location_id: common_hall
+
+opening_narration: >
+  La porta della stazione di posta si chiude alle tue spalle, tagliando fuori
+  il vento. La sala comune è calda e quasi vuota. Dietro il banco, la locandiera
+  alza lo sguardo dal suo registro e ti studia con la calma di chi ha visto
+  passare troppi forestieri per fidarsi in fretta.
+
+locations:
+  - id: common_hall
+    name: "Sala comune"
+    description: "Camino acceso, tavoli di legno scuro, il banco della locandiera."
+  - id: guest_room
+    name: "Stanza degli ospiti"
+    description: "Una stanza spoglia al piano di sopra, con un letto e una finestra."
+  - id: stables
+    name: "Stalle"
+    description: "Odore di fieno e cuoio, cavalli nervosi, uscita sul sentiero."
+
+story_markers:
+  - id: met_maera
+    summary: "La locandiera ha valutato la forestiera"
+  - id: courier_hint
+    summary: "Indizio sul corriere nascosto"
+  - id: courier_found
+    summary: "Il corriere ferito è stato trovato"
+    concludes_slice: true
+
+pressures:
+  - id: patrols
+    summary: "Le pattuglie del nord si avvicinano alla stazione"
+    escalation_hint: "Fai arrivare voci, rumori di stivali o un controllo imminente."
+
+player_start:
+  name: null
+  skills:
+    social: 2
+    investigate: 1
+    stealth: 1
+  inventory:
+    - "borsello di monete"
+    - "mappa consunta"
+  conditions: []
+  outfit:
+    - "mantello da viaggio pesante"
+    - "stivali infangati"
+  resources:
+    strain: 0

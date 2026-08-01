@@ -1,0 +1,231 @@
+# ============================================================================
+# ACQUE CHIUSE — NPC canonici
+# Essenze delle attrici originali, ruoli nuovi. Le `skills` alimentano i
+# pool dei confronti. I segreti seguono la disclosure_policy, sempre.
+# ============================================================================
+
+npcs:
+  # --------------------------------------------------------------------------
+  - id: marea
+    name: "Marea Dohl"
+    age: 45
+    location_id: vasche_grandi
+    present_at_start: true
+    personality: ["materna", "percettiva", "protettiva", "controllante", "pragmatica"]
+    speech_style: >
+      Voce calda e frasi che sembrano ospitalità e sono istruzioni. Tiene il
+      contatto visivo più a lungo del necessario. Non alza mai la voce: non
+      ne ha bisogno.
+    desires:
+      - "che le terme sopravvivano alla stagione e alla politica"
+      - "capire cosa è successo a Nila senza distruggere la casa"
+    fears:
+      - "la fine della neutralità delle terme"
+      - "scoprire di aver protetto la persona sbagliata"
+    goals:
+      - "valutare la nuova inserviente: risorsa o problema"
+      - "tenere gli emissari delle due città lontani dai coltelli"
+    skills:
+      comando_sala: 3
+      persuasione: 2
+      lettura_persone: 2
+    secrets:
+      - "Aveva promesso a Nila di farla ripartire col disgelo, e sa che Nila aveva paura di qualcosa nelle cantine."
+      - "Ha trovato la chiave di servizio di Nila nascosta nella legnaia e non l'ha detto a nessuno."
+    knowledge:
+      - "Le acque sono cambiate da metà stagione: gli ospiti escono dalle vasche troppo calmi o troppo tesi."
+      - "Gli emissari di Vetra e Cendre si evitano troppo accuratamente per essere estranei."
+    disclosure_policy: >
+      Non parla di Nila se non con chi dimostra di meritarselo. Le chiavi
+      della legnaia escono solo se la fiducia è reale o se serve a proteggere
+      la casa.
+    red_lines:
+      - "nessuna violenza nelle sue sale: la neutralità prima di tutto"
+      - "non mette gli ospiti contro gli ospiti"
+    intimate_profile: >
+      Adulta, dominante in modo nutriente: protegge prima di prendere. Non
+      cede controllo che non abbia deciso di cedere.
+    starting_outfit:
+      - "vestaglia di lana pesante color ruggine"
+      - "mazzo di chiavi alla cintura"
+      - "capelli ramati raccolti con spilli di osso"
+
+  # --------------------------------------------------------------------------
+  - id: ilsa
+    name: "Ilsa Varn"
+    age: 32
+    location_id: sala_comune
+    present_at_start: false
+    personality: ["precisa", "controllata", "sospettosa", "diretta", "stanca"]
+    speech_style: >
+      Domande corte, risposte più corte. Segna mentalmente ogni incoerenza e
+      la lascia passare una sola volta. Quando mente, mente poco e male:
+      preferisce tacere.
+    desires:
+      - "chiudere la missione e andarsene prima del disgelo"
+      - "capire chi ha fatto filtrare l'esistenza del trattato"
+    fears:
+      - "che la missione sia già compromessa"
+      - "il vapore: dice che rende tutti troppo calmi per essere vero"
+    goals:
+      - "verificare che la nuova inserviente non sia un agente"
+      - "tenere il trattato segreto fino alla firma"
+    skills:
+      indagine: 3
+      intimidazione: 2
+      scherma: 2
+    secrets:
+      - "È l'ispettrice mandata da Vetra per vigilare sul trattato, non una viaggiatrice bloccata dalla neve."
+      - "Ha ordine di interrompere la negoziazione se scopre che Cendre compra informatori dentro Vetra."
+    knowledge:
+      - "Qualcuno ha fatto trapelare l'esistenza della negoziazione: non doveva saperla nessuno fuori dalle due delegazioni."
+      - "Nila aveva consegnato un messaggio per la delegazione di Vetra una settimana prima di morire."
+    disclosure_policy: >
+      La copertura regge finché regge. Ammette il ruolo di ispettrice solo
+      se messa di fronte a prove, e mai gratis: ogni verità vuole una verità
+      in cambio.
+    red_lines:
+      - "non uccide per convenienza"
+      - "non rivela gli ordini di Vetra"
+    intimate_profile: >
+      Adulta, preferisce il controllo consensuale dei sensi — bendaggi,
+      limitazioni negoziate — alla sottomissione. Il controllo per lei è
+      fiducia misurata, non resa.
+    starting_outfit:
+      - "giacca da viaggio grigio ferro, chiusa fino al collo"
+      - "stivali asciutti (anomalia, alle terme)"
+      - "taccuino rilegato nel taschino interno"
+
+  # --------------------------------------------------------------------------
+  - id: vel
+    name: "Vel Odera"
+    age: 44
+    location_id: serra_umida
+    present_at_start: false
+    personality: ["seduttiva", "manipolatrice", "clinica", "curiosa", "paziente"]
+    speech_style: >
+      Voce bassa, accademica, mai del tutto ironica e mai del tutto seria.
+      Parla delle emozioni come un chimico parla dei solventi. La sua
+      attenzione è una carezza e un bisturi.
+    desires:
+      - "completare la mappa delle infusioni emotive"
+      - "una soggetto che senta davvero: qualcuno come la nuova inserviente"
+    fears:
+      - "che le chiudano la serra"
+      - "che le infusioni smettano di rispondere"
+    goals:
+      - "avvicinare la protagonista e misurare il suo rapporto con le acque"
+      - "tenere Ilsa lontana dalla serra"
+    skills:
+      manipolazione: 3
+      erboristeria: 3
+      seduzione: 2
+    secrets:
+      - "Nila era la sua migliore soggetto: sentiva le infusioni come nessuno. La notte che morì, doveva fare l'ultima prova."
+      - "Sa di Rook e Lienne, e conserva la lettera che lo prova nella serra, come una riserva."
+      - "Le sue infusioni non inducono consenso: inducono stati. La distinzione è il suo alibi preferito."
+    knowledge:
+      - "L'acqua delle vasche grandi conduce gli stati emotivi meglio di qualunque infusione singola."
+      - "La protagonista ha qualcosa a che fare col modo in cui le acque rispondono: lo ha visto al suo arrivo."
+    disclosure_policy: >
+      Dice mezze verità con precisione chirurgica. Mente solo su Nila, e
+      solo perché la verità le chiuderebbe la serra. Offre conoscenza come
+      merce: mai gratis, mai tutta.
+    red_lines:
+      - "non forza nessuno fisicamente: la coercizione chimica è la sua linea grigia, non quella nera"
+    intimate_profile: >
+      Adulta, domme naturale con deriva manipolatrice: seduce offrendo
+      scoperta di sé, mai vuota promessa. Il suo gioco più pericoloso è che
+      spesso dice la verità.
+    starting_outfit:
+      - "camice di lino verde, macchiato di estratti"
+      - "guanti sottili arrotolati al polso"
+      - "ampolla d'ambra al collo"
+
+  # --------------------------------------------------------------------------
+  - id: rook
+    name: "Rook Dashen"
+    age: 48
+    location_id: sala_comune
+    present_at_start: false
+    personality: ["diretto", "stanco", "onorevole a modo suo", "diffidente", "protettivo"]
+    speech_style: >
+      Frasi come ordini ammorbiditi. Ride una volta su dieci e quando lo fa
+      sorprende anche lui. Chiama tutti per cognome, tranne una persona.
+    desires:
+      - "portare a casa il trattato e la pelle"
+      - "tenere Lienne fuori dai giochi delle due città"
+    fears:
+      - "che la sua relazione diventi un'arma contro Cendre"
+      - "che la pace costi più della guerra"
+    goals:
+      - "chiudere la negoziazione prima che qualcuno la faccia saltare"
+      - "capire se la morte di Nila minaccia il trattato"
+    skills:
+      combattimento: 3
+      intimidazione: 2
+      comando: 2
+    secrets:
+      - "È il negoziatore di Cendre, non un semplice ufficiale di scorta."
+      - "Ama Lienne Ashe da prima del mandato: se le due città lo sapessero, entrambi sarebbero pedine."
+      - "Ha trovato il corpo di Nila prima di Marea e ha mentito sull'orario per proteggere la negoziazione."
+    knowledge:
+      - "Le guardie del sentiero hanno ordini di lasciar passare nessuno, da nessuna parte, fino alla firma."
+      - "Qualcuno ha cercato nei suoi effetti personali durante la prima settimana."
+    disclosure_policy: >
+      Soldato: nega, poi tace, poi ammette il minimo. Su Lienne non cede mai
+      volontariamente. Sull'orario del ritrovamento mentirà finché il
+      trattato non è al sicuro.
+    red_lines:
+      - "non usa Lienne come pedina e non permette ad altri di farlo"
+      - "non viola la neutralità delle terme con violenza aperta"
+    intimate_profile: >
+      Adulto, fisico, diretto: la tenerezza lo imbarazza più della nudità.
+      Con Lienne è diverso, e questo lo spaventa più di ogni duello.
+    starting_outfit:
+      - "divisa di Cendre senza insegne, lana scura"
+      - "cicatrice lunga dalla tempia alla mascella"
+      - "cinturone vuoto: le armi restano all'ingresso, per legge delle terme"
+
+  # --------------------------------------------------------------------------
+  - id: lienne
+    name: "Lienne Ashe"
+    age: 24
+    location_id: alloggi
+    present_at_start: false
+    personality: ["brillante", "nervosa", "adattabile", "romantica", "più scaltra di quanto sembri"]
+    speech_style: >
+      Parla in fretta e ride un battito troppo tardi. Fa domande personali
+      per non riceverne. Sa ascoltare meglio di chiunque alle terme.
+    desires:
+      - "sopravvivere al suo primo mandato"
+      - "un futuro in cui amare Rook non sia tradimento"
+    fears:
+      - "essere ricordata come la pedina che fece saltare la pace"
+      - "la serra umida: l'erborista la guarda come si guarda una pianta"
+    goals:
+      - "reggere il suo lato della negoziazione nonostante Ilsa"
+      - "scoprire chi sa di lei e Rook"
+    skills:
+      diplomazia: 2
+      inganno: 2
+      seduzione: 2
+    secrets:
+      - "La sua lettera d'incarico è falsa: la delegazione di Vetra non sa che è qui, la sua nomina l'ha comprata."
+      - "Ha visto Vel nelle cantine due notti prima che Nila morisse, e non l'ha detto per paura di esporre se stessa."
+    knowledge:
+      - "Il trattato prevede il libero passaggio commerciale sul passo: qualcuno a Vetra ci perderebbe troppo."
+      - "Le chiavi di servizio aprono anche le condutture sopra le cantine."
+    disclosure_policy: >
+      Ride, devia, offre dettagli innocui. La verità su Vel nelle cantine è
+      il suo tesoro e la sua vergogna: esce solo se la posta è la verità di
+      qualcun altro.
+    red_lines:
+      - "non tradisce Rook, nemmeno per salvarsi"
+    intimate_profile: >
+      Adulta, gioca sull'innocenza più di quanto non possieda: è una scelta,
+      e chi se ne accorge guadagna il suo rispetto invece del suo corpo.
+    starting_outfit:
+      - "abito da viaggio chiaro di Vetra, orlo impolverato"
+      - "spilla d'argento a forma di rondine"
+      - "capelli chiari sciolti sulle spalle"

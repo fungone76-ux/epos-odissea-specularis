@@ -1,0 +1,132 @@
+# ============================================================================
+# ACQUE CHIUSE — character sheet visive CANONICHE
+#
+# I base_prompt e i LoRA di identità sono copiati esattamente dalle sheet
+# canoniche del progetto originale (content/visual/*.yaml), mai alterati
+# a runtime. Rook e Lienne sono personaggi nuovi: nessun LoRA di identità
+# esiste per loro, il prompt resta descrittivo (stesso stile Pony).
+#
+# LoRA canonici (vecchio repo, verificati):
+#   Luna  (player) : stsDebbie-10e:0.7            trigger: stsdebbie
+#   Maria (marea)  : stsSmith-10e:0.65            trigger: stsSmith
+#   Stella (ilsa)  : alice_milf_catchers_lora:0.7 trigger: alice_milf_catchers
+#   Vaela (vel)    : vaela_orm_identity:0.7       trigger: vaela_orm
+#
+# LoRA GLOBALI canonici (renderer del vecchio repo, canonical_global,
+# obbligatori su OGNI render, qualunque sia il cast):
+#   Expressive_H-000001:0.35   (espressività, senza alterare il volto)
+#   FantasyWorldPonyV2:0.40    (atmosfera/materiali fantasy)
+# Sono nel prompt_suffix_en del pack: aggiunti UNA volta in coda, non per
+# personaggio. Per questo i base prompt di marea/vel NON ripetono
+# FantasyWorldPonyV2 in linea: nel vecchio renderer era sia inline sia
+# globale, qui vale una sola applicazione al peso canonico 0.40.
+#
+# Parametri di generazione canonici (riferimento per il workflow ComfyUI):
+#   steps 24 · 832x1216 · CFG 3.2 · sampler DPM++ 2M Karras · seed -1
+#   face restoration: CodeFormer
+# ============================================================================
+
+# Regola di stile del mondo (adult game): vale per ogni personaggio che non
+# dichiara una style_en propria. Viene copiata nel prompt positivo dopo il
+# base prompt e guida anche le scelte di outfit del Game Master.
+visual_style_en: >
+  sexy revealing outfit, skimpy and form-fitting clothing, showing cleavage,
+  bare shoulders, bare midriff or bare thighs, clingy wet fabric when wet,
+  seductive but elegant
+
+negative_extra_en: "modest clothing, baggy clothes, fully covered body"
+
+# LoRA globali canonici: una sola applicazione, in coda al prompt positivo.
+prompt_suffix_en: "<lora:Expressive_H-000001:0.35>, <lora:FantasyWorldPonyV2:0.40>"
+
+characters:
+  - id: player
+    # COPIA ESATTA del fixed_base_prompt canonico di Luna + LoRA identità
+    # canonico stsDebbie-10e:0.7 (nel vecchio yaml era in lora_refs separato;
+    # qui inline come già fanno maria/stella/vaela nelle loro sheet).
+    base_prompt: >
+      score_9, score_8_up, masterpiece, photorealistic, detailed,
+      atmospheric, stsdebbie, dynamic pose, 1girl, mature woman, brown hair,
+      shiny skin, head tilt, massive breasts, cleavage,
+      <lora:stsDebbie-10e:0.7>
+    style_en: >
+      very skimpy and revealing attendant outfit, thin clinging linen shirt
+      open at the chest, short wrapped skirt, bare midriff and bare thighs,
+      almost spilling out, wet see-through effect when soaked
+    # Outfit iniziale canonico di Luna (copia esatta dei worn_items della
+    # sheet originale): è l'outfit autorevole di partenza, in inglese perché
+    # finisce verbatim nel prompt del renderer. Barefoot di canon.
+    starting_outfit_en:
+      - "cropped fitted dark leather top with deep neckline"
+      - "open reinforced short jacket"
+      - "very short low-rise utility skirt with high side slits"
+      - "thigh straps"
+      - "narrow utility belt"
+      - "distressed seams and patched scavenger leather"
+      - "salvaged metal clasps"
+      - "dusty post-apocalyptic traveler styling"
+      - "barefoot"
+
+  - id: marea
+    # COPIA ESATTA del fixed_base_prompt canonico di Maria (FantasyWorld
+    # spostato nel suffisso globale, vedi nota in testa).
+    base_prompt: >
+      score_9, score_8_up, stsSmith, ultra-detailed, realistic lighting,
+      1girl, mature female, veiny breasts, black hair, short hair,
+      <lora:stsSmith-10e:0.65>
+    starting_outfit_en:
+      - "heavy rust-colored wool robe worn loose and open at the chest"
+      - "deep neckline showing generous cleavage"
+      - "bunch of keys at the waist belt"
+      - "auburn hair pinned up with bone hairpins"
+
+  - id: ilsa
+    # COPIA ESATTA del fixed_base_prompt canonico di Stella.
+    base_prompt: >
+      score_9, score_8_up, masterpiece, photorealistic, 1girl,
+      alice_milf_catchers, massive breasts, cleavage, blonde hair,
+      beautiful blue eyes, shapely legs, hourglass figure, skinny body,
+      narrow waist, wide hips,
+      <lora:alice_milf_catchers_lora.safetensors:0.7>
+    starting_outfit_en:
+      - "iron-grey travel jacket tight and buttoned up to the neck"
+      - "form-fitting bodice underneath straining at the chest"
+      - "dry boots, an anomaly at the baths"
+      - "bound notebook in the inner pocket"
+
+  - id: vel
+    # COPIA ESATTA del fixed_base_prompt canonico di Vaela. Il LoRA identità
+    # non era mai stato fornito nel vecchio progetto: resta dichiarato perché
+    # canonico; se il file manca sul pod, toglierlo da qui.
+    base_prompt: >
+      score_9, score_8_up, masterpiece, NSFW, photorealistic, 1girl,
+      vaela_orm, mature woman, very long raven black hair, pale olive skin,
+      amber eyes, massive breasts, deep cleavage, voluptuous hourglass
+      figure, narrow waist, wide hips, long shapely legs, seductive healer,
+      <lora:vaela_orm_identity.safetensors:0.7>
+    starting_outfit_en:
+      - "green linen healer robe stained with extracts, thin and clinging"
+      - "deep open collar showing shoulders and upper chest"
+      - "thin gloves rolled at the wrist"
+      - "amber vial pendant at the neck"
+
+  - id: rook
+    # Personaggio nuovo: nessun LoRA di identità esiste. Prompt descrittivo.
+    base_prompt: >
+      score_9, score_8_up, masterpiece, photorealistic, 1man, rugged mature
+      man in his late forties, short greying hair, long scar from temple to
+      jaw, broad shoulders, weathered skin
+    starting_outfit_en:
+      - "dark wool military tunic without insignia"
+      - "empty belt: weapons stay at the entrance by bathhouse law"
+
+  - id: lienne
+    # Personaggio nuovo: nessun LoRA di identità esiste. Prompt descrittivo.
+    base_prompt: >
+      score_9, score_8_up, masterpiece, photorealistic, 1girl, young adult
+      woman in her mid twenties, long light hair, quick hazel eyes, slender
+      figure
+    starting_outfit_en:
+      - "pale travel dress from Vetra with dusty hem, thin fabric"
+      - "silver swallow brooch"
+      - "light hair loose over the shoulders"

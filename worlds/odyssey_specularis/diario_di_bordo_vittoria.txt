@@ -1,0 +1,270 @@
+======================================================================
+  ODISSEA SPECULARIS — Diario di Bordo di Ulisse (II)
+======================================================================
+
+[PROLOGO]
+Il mare è sale e memoria. Dieci anni a Troia, dieci anni di ritorno. Ulisse, regina di Itaca, arciera, bugiarda, sopravvissuta, è sola. La sua nave è polvere, il suo equipaggio è ombre. Dietro di lei, la rabbia di Poseidone. Davanti, un'isola di giganti pastori. Il primo passo verso casa è sempre il più difficile.
+
+
+======================================================================
+  TURNO 1 — LA CIECA E IL PASTO
+  Location: La Cieca e il Pasto
+  Kleos: 0 | Skills: S3 D4 E2 T3 P3
+======================================================================
+Fuggire dalla caverna di Polifemo accecandola o ingannandola.
+
+[Scelta del giocatore]
+Ulisse: 'Mi chiamo Nessuno. Sono un naufraga. Offro vino.'
+Polifemo: 'Nessuno? Nome stupido. Ma il vino...'
+
+[TIRO] Pool: 5 dadi | Dadi: (1, 3, 1, 4, 3)
+[ESITO] FULL_SUCCESS
+[MESSAGGIO] Missione 'La Cieca e il Pasto' superata! +1 Kleos. Sblocca Isola di Eolo.
+[KLEOS] +1
+
+======================================================================
+  TURNO 2 — LA PELLE DI CINGHIALE
+  Location: La Pelle di Cinghiale
+  Kleos: 1 | Skills: S3 D4 E2 T3 P3
+======================================================================
+Resistere alla curiosità di aprire la pelle di cinghiale prima del tempo.
+
+[Scelta del giocatore]
+Ulisse: 'La terrò chiusa fino a Itaca, signore dei venti.'
+Eolo: 'Nessuno ha mai resistito. Vedremo.'
+
+[TIRO] Pool: 4 dadi | Dadi: (1, 1, 4, 5)
+[ESITO] FULL_SUCCESS
+[MESSAGGIO] Missione 'La Pelle di Cinghiale' superata! +1 Kleos. Sacchetto dei Venti: +1 Pontos per le prossime 2 location.
+[KLEOS] +1
+
+======================================================================
+  TURNO 3 — IL CANTO MASCHILE
+  Location: Il Canto Maschile
+  Kleos: 2 | Skills: S3 D4 E2 T3 P3
+======================================================================
+Sopravvivere al canto delle Sirene senza impazzire o annegare.
+
+[Scelta del giocatore]
+Sirena: 'Vieni, regina. Ti diremo chi tradisce a Itaca.'
+Ulisse: 'So già chi tradisce. Me lo dico ogni notte.'
+
+[TIRO] Pool: 4 dadi | Dadi: (5, 3, 3, 1)
+[ESITO] PARTIAL_SUCCESS
+[MESSAGGIO] Missione 'Il Canto Maschile' superata! +1 Kleos. Sblocca lo Stretto.
+[KLEOS] +1
+
+======================================================================
+  TURNO 4 — IL PASSAGGIO
+  Location: Il Passaggio
+  Kleos: 3 | Skills: S3 D4 E2 T3 P3
+======================================================================
+Attraversare lo stretto tra Scilla e Cariddi.
+
+[Scelta del giocatore]
+Ulisse: 'Più vicino a Scilla. Cariddi inghiotte tutto.'
+
+[TIRO] Pool: 4 dadi | Dadi: (2, 2, 3, 5)
+[ESITO] PARTIAL_SUCCESS
+[MESSAGGIO] Missione 'Il Passaggio' superata! +1 Kleos. Sblocca l'Isola di Circe.
+[KLEOS] +1
+
+======================================================================
+  TURNO 5 — LA RADURA NERA
+  Location: La Radura Nera
+  Kleos: 4 | Skills: S3 D4 E2 T3 P3
+======================================================================
+Ottenere il rituale per l'Ade da Circe senza trasformarsi in bestia.
+
+[Scelta del giocatore]
+Ermete: 'Moly. L'unica cosa che suo padre non può bruciare.'
+Ulisse entra nel palazzo nero. Circe le offre vino.
+Circe: 'Nessuno ha mai resistito. Tu... tu non sei nessuno.'
+Ulisse: 'Sono Ulisse di Itaca. Dammi il rituale per l'Ade.'
+
+[TIRO] Pool: 4 dadi | Dadi: (3, 6, 2, 2)
+[ESITO] FULL_SUCCESS
+[EVENTO SPECIALE] moly_used
+[MESSAGGIO] Missione 'La Radura Nera' superata! +1 Kleos. Rituale per l'Ade sbloccato.
+[KLEOS] +1
+
+======================================================================
+  TURNO 6 — IL SANGUE DELLE OMBRE
+  Location: Il Sangue delle Ombre
+  Kleos: 5 | Skills: S3 D4 E2 T3 P3
+======================================================================
+Versare il sangue e resistere alle ombre affamate per parlare con Tiresia.
+
+[Scelta del giocatore]
+Tiresia: 'Chiedi, figlia di Laerta. Ma ogni parola costa carne.'
+Ulisse: 'Come torno a casa?'
+Tiresia: 'Non con la forza. Con il riconoscimento. Con il letto.'
+
+[TIRO] Pool: 4 dadi | Dadi: (1, 4, 1, 5)
+[ESITO] FAILURE
+[PENALITÀ] -2 THUMOS permanente
+[MESSAGGIO] Missione 'Il Sangue delle Ombre' fallita. -2 Thumos permanenti. Possessione. Riprova con difficoltà -1.
+
+======================================================================
+  TURNO 7 — IL SANGUE DELLE OMBRE
+  Location: Il Sangue delle Ombre
+  Kleos: 5 | Skills: S3 D4 E2 T1 P3
+======================================================================
+Versare il sangue e resistere alle ombre affamate per parlare con Tiresia.
+
+[Scelta del giocatore]
+Tiresia: 'Chiedi, figlia di Laerta. Ma ogni parola costa carne.'
+Ulisse: 'Come torno a casa?'
+Tiresia: 'Non con la forza. Con il riconoscimento. Con il letto.'
+
+[TIRO] Pool: 2 dadi | Dadi: (4, 1)
+[ESITO] FAILURE
+[PENALITÀ] -2 THUMOS permanente
+[MESSAGGIO] Missione 'Il Sangue delle Ombre' fallita. -2 Thumos permanenti. Possessione. Riprova con difficoltà -1.
+
+======================================================================
+  TURNO 8 — IL SANGUE DELLE OMBRE
+  Location: Il Sangue delle Ombre
+  Kleos: 5 | Skills: S3 D4 E2 T0 P3
+======================================================================
+Versare il sangue e resistere alle ombre affamate per parlare con Tiresia.
+
+[Scelta del giocatore]
+Tiresia: 'Chiedi, figlia di Laerta. Ma ogni parola costa carne.'
+Ulisse: 'Come torno a casa?'
+Tiresia: 'Non con la forza. Con il riconoscimento. Con il letto.'
+
+[TIRO] Pool: 1 dadi | Dadi: (1,)
+[ESITO] CRITICAL_FAILURE
+[PENALITÀ] -2 THUMOS permanente
+[MESSAGGIO] Missione 'Il Sangue delle Ombre' fallita. -2 Thumos permanenti. Possessione. Riprova con difficoltà -1.
+
+======================================================================
+  TURNO 9 — IL SANGUE DELLE OMBRE
+  Location: Il Sangue delle Ombre
+  Kleos: 5 | Skills: S3 D4 E2 T0 P3
+======================================================================
+Versare il sangue e resistere alle ombre affamate per parlare con Tiresia.
+
+[Scelta del giocatore]
+Tiresia: 'Chiedi, figlia di Laerta. Ma ogni parola costa carne.'
+Ulisse: 'Come torno a casa?'
+Tiresia: 'Non con la forza. Con il riconoscimento. Con il letto.'
+
+  >>> Tiresia beve il tuo sangue e parla. Vedi il futuro.
+  >>> Prezzo: -1 Sarissa permanente
+      - Il Bestiame D'oro: difficoltà 4
+      - La Corte dei Feaci: difficoltà 3
+[TIRO] Pool: 1 dadi | Dadi: (3,)
+[ESITO] PARTIAL_SUCCESS
+[MESSAGGIO] Missione 'Il Sangue delle Ombre' superata! +1 Kleos. Tiresia rivela la difficoltà delle prossime 2 location.
+[KLEOS] +1
+
+======================================================================
+  TURNO 10 — LA GROTTA PROFUMATA
+  Location: La Grotta Profumata
+  Kleos: 6 | Skills: S2 D4 E2 T0 P3
+======================================================================
+Ricordare Itaca dopo sette anni di piacere e oblio.
+
+[Scelta del giocatore]
+Sette anni. Sette anni di cedro, seta e sesso infinito.
+Calipso piange ogni notte dopo l'amplesso.
+
+Calipso: 'Resta. Ti darò l'immortalità. Dimentica Itaca.'
+Ulisse: 'Itaca è questa cicatrice. Questo sale. Questo arco.'
+          'Non è un posto. È ciò che sono diventata.'
+
+[RICORDO DI PENELOPE — Auto-pass attivato con Kleos >= 4]
+Ulisse chiude gli occhi. Vede Penelope al telaio.
+Il filo nero e oro. Le mani che non tremano.
+Quell'immagine è più forte di ogni magia.
+
+[TIRO] Pool: 1 dadi | Dadi: ()
+[ESITO] FULL_SUCCESS
+[MESSAGGIO] Missione 'La Grotta Profumata' superata! +1 Kleos. Libertà da Ogygia.
+[KLEOS] +1
+
+======================================================================
+  TURNO 11 — IL BESTIAME D'ORO
+  Location: Il Bestiame D'oro
+  Kleos: 7 | Skills: S2 D4 E2 T0 P3
+======================================================================
+Resistere alla fame senza commettere sacrilegio sul bestiame sacro di Helios.
+
+[Scelta del giocatore]
+Ulisse: 'Mangerò alghe. Mangerò sassi. Ma non toccherò il sacro.'
+
+[TIRO] Pool: 1 dadi | Dadi: (6,)
+[ESITO] PARTIAL_SUCCESS
+[MESSAGGIO] Missione 'Il Bestiame D'oro' superata! +1 Kleos. Sblocca Scheria.
+[KLEOS] +1
+
+======================================================================
+  TURNO 12 — LA CORTE DEI FEACI
+  Location: La Corte dei Feaci
+  Kleos: 8 | Skills: S2 D4 E2 T0 P3
+======================================================================
+Commuovere la corte dei Feaci e ottenere il passaggio verso Itaca.
+
+[Scelta del giocatore]
+Ulisse: 'Sono una regina che ha perso tutto. Un arco. Un mare.'
+         'Un marito che tesse la notte per tenermi vivo.'
+Arete: 'Perché non dici il tuo nome?'
+Ulisse: 'Perché il nome è l'ultima cosa che ho. Non lo darò gratis.'
+
+[TIRO] Pool: 5 dadi | Dadi: (4, 1, 1, 1, 6)
+[ESITO] FULL_SUCCESS
+[MESSAGGIO] Missione 'La Corte dei Feaci' superata! +1 Kleos. Nave Feacia: auto-success al primo tiro di Itaca.
+[KLEOS] +1
+
+======================================================================
+  TURNO 13 — IL MASSACRO
+  Location: Il Massacro
+  Kleos: 9 | Skills: S2 D4 E2 T0 P3
+======================================================================
+Il ritorno finale: travestimento, arco, riconoscimento.
+
+[Scelta del giocatore]
+Ulisse si traveste da mendicante. Entra dal porto di Phorcys.
+Eumea la riconosce al tatto. Non agli occhi.
+
+Eumea: 'Sei tu. Sei tu. Oh, regina... le tue mani sono legno.'
+Ulisse: 'Dove è Penelope?'
+Eumea: 'Al telaio. Sempre al telaio. Aspetta.'
+
+La sala del trono. Cento Proche. Vino rancido.
+Antinoo: 'Mendicante, vuoi partecipare al gioco? Tendi l'arco.'
+Ulisse: 'L'arco è mio. Lo tesi prima che tu nascessi.'
+
+Tira la corda. La freccia vola attraverso le dodici asce.
+La seconda freccia va dritta alla gola di Antinoo.
+Eurimaco cerca di fuggire. Ulisse la inchioda alla porta.
+
+[Camera da letto — il letto d'ulivo]
+Penelope: 'Dimmi qualcosa che solo tu sai.'
+Ulisse: 'Il letto. Non si può spostare. L'ho costruito io
+          attorno al tronco d'ulivo. Nessuno lo sa.'
+
+Penelope crolla. Non piange. Non ride. Solo crolla.
+Le loro mani si trovano. Sono ruvide, entrambe. Sopravvissute.
+
+[TIRO] Pool: 5 dadi | Dadi: ()
+[ESITO] FULL_SUCCESS
+[EVENTO SPECIALE] phaeacian_ship_auto
+[MESSAGGIO] Missione 'Il Massacro' superata! VITTORIA. Il numero di Kleos determina l'epilogo.
+[KLEOS] +1
+
+======================================================================
+  EPILOGO
+======================================================================
+Vittoria: True
+Kleos finale: 10
+Skills finali: {'sarissa': 2, 'dolos': 4, 'eros': 2, 'thumos': 0, 'pontos': 3}
+
+Il palazzo brucia ancora. Ma il fuoco è loro.
+Ulisse e Penelope si ricostruiscono sui resti.
+Le Proche sono cenere. Il mare è calmo.
+Telemaca torna tre giorni dopo. Trova i genitori
+seduti sulle rovine, mano nella mano, in silenzio.
+Non serve parlare. Vent'anni si cancellano in un tocco.

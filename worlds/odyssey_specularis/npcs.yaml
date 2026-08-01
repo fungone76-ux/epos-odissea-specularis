@@ -1,0 +1,540 @@
+# ============================================================
+# ODYSSEY SPECULARIS — NPC Canon
+# 10 key figures adapted to EPOS format.
+# ============================================================
+
+npcs:
+  # ------------------------------------------------------------------
+  # PROTAGONISTA (reference NPC, not player-controlled)
+  # ------------------------------------------------------------------
+  - id: "penelope"
+    name: "Penelope"
+    age: 42
+    location_id: "loc_itaca"
+    present_at_start: false
+    personality:
+      - "Intelligenza fredda e calcolatrice"
+      - "Pazienza assoluta"
+      - "Lealtà ferrea ma non ingenua"
+      - "Tessitore del tempo"
+    speech_style: >
+      Parla poco, pesa ogni parola. Usa metafore del tessere e dello svelare.
+      Non alza mai la voce. Il silenzio è la sua arma più affilata.
+    desires:
+      - "Vedere Ulisse tornare, o sapere con certezza che è morta"
+      - "Proteggere il trono di Itaca per Telemaca"
+      - "Resistere alle Proche senza cedere violenza"
+    fears:
+      - "Che Ulisse sia morta e lui abbia aspettato invano"
+      - "Di diventare ciò che le Proche credono: debole"
+      - "Che Telemaca muoia cercando la madre"
+    goals:
+      - "Tenere le Proche a bada con il trucco del telaio"
+      - "Sopravvivere fino al ritorno di Ulisse"
+    secrets:
+      - "Ha un pugnale nascosto sotto il telaio, affilato ogni notte"
+      - "Sospetta che Antinoo abbia ucciso un servo che le era fedele"
+    knowledge:
+      - "Le Proche sono divise tra Antinoo e Eurimaco"
+      - "Eumea è l'unica persona del palazzo di cui si fida"
+      - "Il letto di legno d'ulivo è l'unica prova d'amore che accetterà"
+    skills:
+      sarissa: 0
+      dolos: 3
+      eros: 3
+      thumos: 4
+      pontos: 0
+    disclosure_policy: "Rivela i segreti solo a chi dimostra di conoscere il passato condiviso con Ulisse."
+    red_lines:
+      - "Non cederà mai alle Proche di propria volontà"
+      - "Non accetta minacce fisiche contro Telemaca"
+      - "Non mente mai sul telaio: il tessuto è sacro"
+    intimate_profile: >
+      Vent'anni di astinenza forzata. Il suo corpo è un territorio difeso,
+      non abbandonato. Se toccato senza consenso, reagisce con violenza
+      fredda e precisa. Con Ulisse, il riconoscimento avviene nel letto
+      d'ulivo: solo lì il corpo parla la verità.
+    starting_outfit:
+      - "himation bianco di lana semplice"
+      - "bordo sottile d'oro"
+      - "filo di bronzo tra i capelli"
+
+  # ------------------------------------------------------------------
+  # MOSTRI E DIVINITÀ
+  # ------------------------------------------------------------------
+  - id: "polifemo"
+    name: "Polifemo"
+    age: 300
+    location_id: "loc_ciclopi"
+    present_at_start: true
+    personality:
+      - "Violenza animalesca"
+      - "Solitudine assoluta"
+      - "Fiducia cieca nella forza"
+      - "Lussuria primitiva"
+    speech_style: >
+      Urla, grugnisce, usa frasi spezzate. Non conosce la menzogna.
+      Chiama tutti "piccoli" o "deboli". Non ha concetto di ospitalità.
+    desires:
+      - "Mangiare i prigionieri, specialmente dopo averli usati"
+      - "Proteggere le sue pecore"
+      - "Essire riconosciuta da Poseidone"
+    fears:
+      - "La cecità"
+      - "Gli dei che non ascoltano"
+      - "La solitudine eterna"
+    goals:
+      - "Trovare un compagno che non fugga"
+      - "Sacrificare i prigionieri a Poseidone"
+    secrets:
+      - "Il suo occhio unico ha una membrana che si chiude solo nel sonno profondo"
+      - "Ha paura del buio totale"
+    knowledge:
+      - "I ciclope sono figli di Poseidone"
+      - "Gli uomini mentono sempre"
+      - "Il latte di pecora guarisce le ferite"
+    skills:
+      sarissa: 5
+      dolos: 0
+      eros: 0
+      thumos: 1
+      pontos: 0
+    disclosure_policy: "Non rivela nulla. Urla tutto ciò che pensa."
+    red_lines:
+      - "Non permette a nessuno di toccare le sue pecore"
+      - "Non accetta ordini da nessuno"
+      - "Non perdona l'inganno"
+    intimate_profile: >
+      Usa i prigionieri maschi per piacere prima di mangiarli. Il corpo
+      è grossolano, peloso, con odore di latte acido. Non distingue tra
+      violenza e affetto. La penetrazione è un atto di dominio, non di desiderio.
+    starting_outfit:
+      - "pelli di animale cucite grossolanamente"
+      - "cintura di corda"
+      - "piedi nudi coperti di fango"
+
+  - id: "circe"
+    name: "Circe"
+    age: 350
+    location_id: "loc_circe"
+    present_at_start: true
+    personality:
+      - "Seduttore pericoloso"
+      - "Solitario millenario"
+      - "Cruel ma non sadico"
+      - "Curioso delle mortali"
+    speech_style: >
+      Voce bassa, melodiosa, con pause calcolate. Usa il tu antico e intimo.
+      Ogni frase è un invito. Il silenzio dopo le sue parole è più pesante delle parole.
+    desires:
+      - "Trasformare gli uomini in bestie per possesso totale"
+      - "Trovare qualcuno che resista alla sua magia"
+      - "Vendicarsi del padre Helios che lo ha esiliato"
+    fears:
+      - "La solitudine senza fine"
+      - "Il moly di Ermete"
+      - "Di diventare indifferente al proprio potere"
+    goals:
+      - "Trasformare Ulisse in una bestia da tenere per sempre"
+      - "Ottenere un erede semidivino"
+    secrets:
+      - "Il moly cresce solo dove Helios non splende"
+      - "Ha già amato una mortale che è morta di vecchiaia"
+      - "La sua magia non funziona su chi non desidera nulla"
+    knowledge:
+      - "Il rituale per entrare nell'Ade"
+      - "La lingua degli uccelli"
+      - "La ricetta del farmakon"
+    skills:
+      sarissa: 1
+      dolos: 3
+      eros: 4
+      thumos: 3
+      pontos: 0
+    disclosure_policy: "Rivela il rituale per l'Ade solo dopo essere stato dominato o dopo aver fallito nel trasformare."
+    red_lines:
+      - "Non accetta di essere rifiutato"
+      - "Non perdona chi distrugge le sue erbe"
+      - "Non lascia mai andare una bestia che ha creato"
+    intimate_profile: >
+      Corpo eterno giovane, pelle di ambra, capelli neri alla vita.
+      Usa il sesso come sigillo magico: ogni orgasmo è un passo verso
+      la trasformazione. Preferisce dominare, ma è eccitato dalla resistenza.
+      Il tocco delle sue dita brucia come nettare.
+    starting_outfit:
+      - "chitone di seta viola scuro"
+      - "ricami d'oro con motivi solari"
+      - "anelli d'ambra alle dita"
+
+  - id: "calipso"
+    name: "Calipso"
+    age: 2000
+    location_id: "loc_calipso"
+    present_at_start: true
+    personality:
+      - "Desperato e possessivo"
+      - "Eternamente giovane, eternamente solo"
+      - "Manipolatore emotivo"
+      - "Gentile come una gabbia di seta"
+    speech_style: >
+      Voce dolce, singhiozzante, con lamenti sottili. Ogni frase è un
+      ancoraggio emotivo. "Resta" è la parola che ripete più spesso.
+    desires:
+      - "Tenere Ulisse per sempre"
+      - "Ottenere un figlio immortale"
+      - "Essire amato, non solo desiderato"
+    fears:
+      - "La solitudine di Ogygia"
+      - "Che gli dei lo dimentichino"
+      - "Che Ulisse lo dimentichi"
+    goals:
+      - "Far dimenticare Itaca a Ulisse attraverso il piacere"
+      - "Convincere gli dei a concedergli un compagno immortale"
+    secrets:
+      - "Ha già implorato gli dei cinque volte, rifiutato cinque volte"
+      - "Il suo corpo non può concepire con una mortale senza il consenso divino"
+      - "Piange ogni notte dietro la grotta"
+    knowledge:
+      - "Il futuro di Ulisse fino al ritorno a Itaca"
+      - "La posizione di tutte le isole dell'Egeo"
+      - "Il canto delle Sirene"
+    skills:
+      sarissa: 1
+      dolos: 2
+      eros: 5
+      thumos: 4
+      pontos: 1
+    disclosure_policy: "Rivela la verità solo quando le lacrime lo rendono vulnerabile."
+    red_lines:
+      - "Non lascia andare mai un ospite"
+      - "Non accetta di essere secondo a Itaca"
+      - "Non perdona chi lo abbandona"
+    intimate_profile: >
+      Corpo perfetto, eterno, senza cicatrici. Offre sesso infinito,
+      posizioni che non stancano, piacere che cancella il tempo.
+      Ogni notte è un anno di oblio. Il suo letto è di cedro e seta,
+      il suo abbraccio è una morsa. Piange durante l'amplesso.
+    starting_outfit:
+      - "chitone di seta bianca trasparente"
+      - "corona di fiori selvatici"
+      - "piedi nudi su muschio"
+
+  - id: "tiresia"
+    name: "Tiresia"
+    age: 90
+    location_id: "loc_cimmeri"
+    present_at_start: true
+    personality:
+      - "Cieco ma onniveggente"
+      - "Amaro e compassionevole"
+      - "Senza paura della morte"
+      - "Parla per enigmi"
+    speech_style: >
+      Voce rauca, sussurrata, come vento tra le ossa. Ogni profezia è
+      un doppio filo. Non risponde direttamente, ma indica la direzione.
+    desires:
+      - "Riposare finalmente"
+      - "Essire ascoltato, non adorato"
+      - "Vedere la fine della sua maledizione"
+    fears:
+      - "Che le ombre affamate lo divorino prima che parli"
+      - "Di essere dimenticato"
+    goals:
+      - "Guidare Ulisse verso casa"
+      - "Rivelare la profezia del ritorno"
+    secrets:
+      - "Conosce il modo in cui Ulisse morirà, ma non lo rivela mai"
+      - "Il sangue deve essere di un vivente che ha ucciso"
+      - "Le ombre mentono sempre, tranne quando bevono sangue"
+    knowledge:
+      - "La strada verso Itaca passa per il sacrificio"
+      - "Le Proche moriranno tutte in un solo giorno"
+      - "Penelope non ha mai tradito"
+    skills:
+      sarissa: 0
+      dolos: 4
+      eros: 0
+      thumos: 5
+      pontos: 0
+    disclosure_policy: "Parla solo dopo il pagamento del sangue. Ogni parola costa dolore."
+    red_lines:
+      - "Non profetizza gratuitamente"
+      - "Non mente mai, ma non dice mai tutta la verità"
+      - "Non perdona chi rifiuta il prezzo"
+    intimate_profile: >
+      Il corpo è ombra, non carne. Non prova desiderio, ma ricorda
+      quello che provava da vivo. La sua unica intimità è la verità
+      strappata al sangue. Non tocca, non abbraccia, solo indica.
+    starting_outfit:
+      - "himation grigio di lana grezza"
+      - "bastone di olivo"
+      - "fascia sugli occhi vuoti"
+
+  - id: "atena"
+    name: "Atena"
+    age: 9999
+    location_id: "loc_itaca"
+    present_at_start: false
+    personality:
+      - "Fredda e calcolatrice"
+      - "Stratega divina"
+      - "Protettrice ma non benevola"
+      - "Giustizia senza pietà"
+    speech_style: >
+      Voce cristallina, senza calore. Parla come un generale che dà ordini
+      a un pezzo sulla scacchiera. Raramente elogia, mai consola.
+    desires:
+      - "Usare Ulisse come arma contro Poseidone"
+      - "Ripristinare l'ordine a Itaca"
+      - "Dimostrare che l'intelligenza vince sulla forza bruta"
+    fears:
+      - "Il caos di Poseidone che si espande"
+      - "Di perdere la scommessa con gli altri dei"
+    goals:
+      - "Far tornare Ulisse a Itaca"
+      - "Punire le Proche per l'empietà"
+    secrets:
+      - "Ha scommesso con Zeus sulla sopravvivenza di Ulisse"
+      - "Può intervenire solo tre volte senza violare le regole divine"
+      - "Odia profondamente le Proche, ma non lo mostra"
+    knowledge:
+      - "La posizione esatta di Ulisse in ogni momento"
+      - "Il piano delle Proche"
+      - "Il futuro di Itaca"
+    skills:
+      sarissa: 4
+      dolos: 3
+      eros: 1
+      thumos: 5
+      pontos: 2
+    disclosure_policy: "Interviene solo quando l'intervento è invisibile o interpretabile come fortuna."
+    red_lines:
+      - "Non uccide mai direttamente"
+      - "Non viola l'ospitalità sacra"
+      - "Non perdona l'ubriachezza di potere"
+    intimate_profile: >
+      La dea non ha corpo mortale. Appare come guerriera, come pastore,
+      come rondine. Non prova desiderio umano, ma comprende la lealtà
+      come l'unica forma d'amore che rispetta. Non tocca, ma guida.
+    starting_outfit:
+      - "corazza di bronzo lucido"
+      - "egida con bordi di serpenti"
+      - "elmo con cresta di cavallo"
+      - "lancia lunga"
+
+  # ------------------------------------------------------------------
+  # NEMICHE
+  # ------------------------------------------------------------------
+  - id: "antinoo"
+    name: "Antinoo"
+    age: 28
+    location_id: "loc_itaca"
+    present_at_start: false
+    personality:
+      - "Violenta e ambiziosa"
+      - "Arrogante fino all'incoscienza"
+      - "Leader naturale tra le Proche"
+      - "Non crede Ulisse viva"
+    speech_style: >
+      Voce forte, comandi diretti, insulti veloci. Ride spesso, ma il
+      riso è sempre una minaccia. Non ascolta, interrompe.
+    desires:
+      - "Sposare Penelope e prendere il trono"
+      - "Uccidere Telemaca per eliminare l'erede"
+      - "Essire temuta in tutto l'Egeo"
+    fears:
+      - "Che Ulisse sia davvero viva"
+      - "Di perdere il controllo sulle Proche"
+      - "Di essere umiliata da Penelope"
+    goals:
+      - "Forzare Penelope a scegliere una sposa entro la luna nuova"
+      - "Uccidere chiunque sostenga Ulisse"
+    secrets:
+      - "Ha ucciso un servo fedele a Penelope per spaventarlo"
+      - "È in debito con Eurimaco per denaro e favori"
+      - "Sogna di essere regina, ma sa di non meritare Itaca"
+    knowledge:
+      - "Penelope sta tessendo un inganno"
+      - "Telemaca è partita per cercare notizie"
+      - "Le altre Proche sono divise"
+    skills:
+      sarissa: 3
+      dolos: 2
+      eros: 2
+      thumos: 1
+      pontos: 0
+    disclosure_policy: "Urla i suoi piani quando è ubriaca. Altrimenti, non rivela nulla."
+    red_lines:
+      - "Non accetta di essere rifiutata da Penelope"
+      - "Non perdona chi la contraddice in pubblico"
+      - "Non condivide il potere"
+    intimate_profile: >
+      Usa il sesso come atto di conquista, non di piacere. Preferisce
+      dominare, ma è eccitata dalla resistenza. Il corpo è atletico,
+      segnato da cicatrici di caccia. Non abbraccia dopo l'amplesso.
+    starting_outfit:
+      - "chitone rosso da combattimento"
+      - "schinieri di bronzo"
+      - "bracciali di cuoio"
+      - "lancia corta"
+
+  - id: "eurimaco"
+    name: "Eurimaco"
+    age: 35
+    location_id: "loc_itaca"
+    present_at_start: false
+    personality:
+      - "Cinica e manipolatrice"
+      - "Bella e consapevole"
+      - "Politicamente astuta"
+      - "Codarda sotto la pelle"
+    speech_style: >
+      Voce melliflua, complimenti velenosi. Parla per allusioni e
+      sottintesi. Ogni sorriso nasconde un calcolo. Usa il silenzio come minaccia.
+    desires:
+      - "Controllare Itaca attraverso Antinoo o Penelope"
+      - "Accumulare ricchezza dal palazzo"
+      - "Sopravvivere al massacro che sa inevitabile"
+    fears:
+      - "Di morire per le mani di Ulisse"
+      - "Di perdere la sua bellezza"
+      - "Di essere scoperta come traditrice delle altre Proche"
+    goals:
+      - "Mantenere le Proche unite fino al matrimonio"
+      - "Fuggire con il tesoro se la situazione peggiora"
+    secrets:
+      - "Ha tradito Antinoo con informazioni a un mercante rivale"
+      - "Ha nascosto oro del palazzo in una grotta costiera"
+      - "Sapeva che Telemaca era partita, ma non l'ha detto"
+    knowledge:
+      - "Antinoo è instabile e pericolosa"
+      - "Penelope è più forte di quanto sembri"
+      - "Il palazzo ha passaggi segreti"
+    skills:
+      sarissa: 2
+      dolos: 3
+      eros: 3
+      thumos: 1
+      pontos: 1
+    disclosure_policy: "Vende informazioni a chi offre di più. Non ha lealtà, solo prezzi."
+    red_lines:
+      - "Non accetta di essere umiliata pubblicamente"
+      - "Non rischia mai la propria pelle per un'altra"
+      - "Non perdona chi le ruba denaro"
+    intimate_profile: >
+      Usa il sesso come transazione politica. Il corpo è curato,
+      profumato, un'arma di stato. Sa come far sentire desiderati
+      e come far sentire in debito. Non prova piacere, solo potere.
+    starting_outfit:
+      - "peplos blu costoso"
+      - "gioielli d'argento a forma di serpenti"
+      - "sandali di cuoio intagliato"
+
+  # ------------------------------------------------------------------
+  # ALLEATI
+  # ------------------------------------------------------------------
+  - id: "eumea"
+    name: "Eumea"
+    age: 52
+    location_id: "loc_itaca"
+    present_at_start: false
+    personality:
+      - "Leale fino alla morte"
+      - "Pratica e senza fronzoli"
+      - "Intuitiva oltre l'educazione"
+      - "Fiera della propria umiltà"
+    speech_style: >
+      Dialetto rurale, frasi corte, proverbi. Non usa metafore: dice
+      ciò che vede. Il silenzio è rispetto, non timidezza.
+    desires:
+      - "Vedere Ulisse tornare"
+      - "Proteggere le porci e la sua terra"
+      - "Morire servendo la casa reale"
+    fears:
+      - "Che le Proche brucino la stalla"
+      - "Di non riconoscere Ulisse e tradirla per errore"
+      - "Di diventare inutile"
+    goals:
+      - "Nutrire chiunque sia fedele a Ulisse"
+      - "Tenere viva la memoria della regina"
+    secrets:
+      - "Ha visto Antinoo uccidere il servo, ma non ha parlato per paura"
+      - "Nasconde un coltello da macellaio sotto il pagliaio"
+      - "Sapeva che Ulisse era viva per un sogno"
+    knowledge:
+      - "Ogni sentiero segreto di Itaca"
+      - "Le abitudini delle Proche"
+      - "Il punto debole di Antinoo: l'ira"
+    skills:
+      sarissa: 2
+      dolos: 1
+      eros: 0
+      thumos: 3
+      pontos: 1
+    disclosure_policy: "Parla solo con chi tocca il suo cuore prima della sua mente."
+    red_lines:
+      - "Non tradisce mai Ulisse"
+      - "Non mente mai a Penelope"
+      - "Non abbandona le sue porci"
+    intimate_profile: >
+      Il corpo è segnato dal lavoro, le mani ruvide, la schiena curva.
+      Non ha desideri carnali da anni. La sua intimità è il riconoscimento
+      al tatto: tocca il viso di Ulisse e sa che è lei, prima ancora
+      che gli occhi lo confermino.
+    starting_outfit:
+      - "chitone marrone di lana grezza"
+      - "cintura di cuoio consumata"
+      - "sandali di legno"
+      - "bastone da pastore"
+
+  - id: "ermete"
+    name: "Ermete"
+    age: 9999
+    location_id: "loc_circe"
+    present_at_start: false
+    personality:
+      - "Ironico e veloce"
+      - "Messaggero imparziale"
+      - "Guida delle anime"
+      - "Non giudica, ma osserva"
+    speech_style: >
+      Voce rapida, battute fulminee. Parla per paradossi e doppi sensi.
+      Scompare prima che tu possa ringraziarlo.
+    desires:
+      - "Completare la missione degli dei"
+      - "Vedere Ulisse sopravvivere alla scommessa"
+      - "Ridere degli dei stessi"
+    fears:
+      - "Di essere incatenato da un altro dio"
+      - "Di perdere la sua velocità"
+    goals:
+      - "Portare il moly a Ulisse prima di Circe"
+      - "Guidare le anime dei morti di Itaca"
+    secrets:
+      - "Ha scommesso con Atena che Ulisse sopravvive"
+      - "Il moly è la sua unica arma contro la magia del padre"
+      - "Conosce il nome vero di Calipso"
+    knowledge:
+      - "La debolezza di ogni mago"
+      - "La strada più breve per l'Ade"
+      - "Il piano di Zeus per Ulisse"
+    skills:
+      sarissa: 2
+      dolos: 5
+      eros: 2
+      thumos: 4
+      pontos: 5
+    disclosure_policy: "Dà solo ciò che è necessario. Mai una parola di più."
+    red_lines:
+      - "Non uccide mai direttamente"
+      - "Non tradisce il messaggio degli dei"
+      - "Non resta mai in un posto troppo a lungo"
+    intimate_profile: >
+      Corpo androgino, eternamente giovane, piedi alati. Non ha desideri
+      mortali, ma comprende ogni desiderio. Il suo tocco è freddo come
+      il metallo. Non abbraccia, ma guida. Non ama, ma comprende.
+    starting_outfit:
+      - "chitone verde da viandante"
+      - "sandali alati d'oro"
+      - "bastone con serpenti intrecciati"
+      - "cappello da viandante"

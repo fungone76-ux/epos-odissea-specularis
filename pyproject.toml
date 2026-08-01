@@ -1,0 +1,21 @@
+[build-system]
+requires = ["setuptools>=68"]
+build-backend = "setuptools.build_meta"
+
+[project]
+name = "epos"
+version = "0.1.0"
+description = "Motore per RPG narrativi single player con LLM Game Master — engine-agnostico rispetto all'ambientazione"
+requires-python = ">=3.12"
+dependencies = ["PyYAML>=6.0,<7", "Pillow>=10,<12"]
+
+[project.optional-dependencies]
+gui = ["PySide6>=6.6"]
+
+[tool.setuptools.packages.find]
+where = ["src"]
+
+[tool.pytest.ini_options]
+pythonpath = ["src"]
+testpaths = ["tests"]
+addopts = ["--basetemp=.pytest_tmp"]

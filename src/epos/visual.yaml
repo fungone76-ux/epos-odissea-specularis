@@ -1,0 +1,308 @@
+# ============================================================
+# ODYSSEY SPECULARIS — Visual Sheets
+# Character sheets for image generation.
+# Base prompts immutabili, copiati esatti dai LoRA canonici.
+# ============================================================
+
+# Regola di stile del mondo (Bronze Age greco, adulto)
+# Solo tag concreti e disegnabili: niente date ("circa 1200 BCE" = rumore),
+# niente "or", niente concetti gia' coperti dalle sheet dei personaggi.
+visual_style_en: >
+  ancient Greek Bronze Age, Mycenaean era, Mediterranean light,
+  wool and linen textiles, bronze jewelry and weapons,
+  volcanic stone and marble architecture, Aegean sea atmosphere,
+  mythological realism, cinematic composition, film grain, dramatic shadows
+
+negative_extra_en: >
+  modern clothes, futuristic elements, cartoon, anime, bright saturated colors,
+  clean cheerful faces, soft lighting, bokeh, portrait lens,
+  city background, elf ears, excessive jewelry, cyberpunk,
+  steampunk, neon, plastic, glass, asphalt, cars, electricity
+
+# LoRA globali canonici (copiati da Acque Chiuse)
+prompt_suffix_en: "<lora:Expressive_H-000001:0.35>, <lora:FantasyWorldPonyV2:0.40>"
+
+visual_policy:
+  protected_base_prompts: true
+  single_character_default: true
+  multi_character_mode: "intimate_only"
+  speaker_action_focus: true
+  include_sheet_negative: true
+  sanitize_identity_layers: true
+  concise_role_prompts: true
+  max_role_prompt_words: 12
+  avoid_facial_expressions: true
+  visual_en_primary: true
+  dedupe_across_layers: true
+  max_scene_tags: 6
+  role_prompt_optional: true
+  preserve_revealing_outfit_traits: true
+  revealing_outfit_priority: true
+  visual_director_enabled: true
+  structured_camera: true
+  camera_variety_enabled: true
+  camera_history_size: 6
+  crawling_preferred_views:
+    - rear_three_quarter
+    - rear
+    - side
+    - front_three_quarter
+  avoid_repeating_camera: true
+  # Tag di posa esplicita iniettati dal regista quando la scena dichiara
+  # una posa esibizionistica (hanno priorita' sulla varieta' di camera).
+  explicit_pose_tags_rear:
+    - ass focus
+    - bent over
+    - presenting
+    - spread legs
+    - hips raised
+    - from behind
+  explicit_pose_tags_front:
+    - presenting
+    - spread legs
+    - legs apart
+    - offering herself
+    - on display
+
+characters:
+  # ------------------------------------------------------------------
+  # PLAYER: Ulisse — usa il LoRA canonico di Luna (stsDebbie)
+  # ------------------------------------------------------------------
+  - id: "player"
+    base_prompt: "score_9, score_8_up, masterpiece, photorealistic, detailed, atmospheric, stsdebbie, dynamic pose, 1girl, mature woman, brown hair, athletic body, shiny skin, head tilt, massive breasts, cleavage"
+    character_lora_en: "<lora:stsDebbie-10e:0.7>"
+    role_prompt_en: ""
+    negative_prompt: >
+      modern clothes, futuristic, cartoon, anime, child, young girl, bright
+      colors, smiling, clean face, fantasy armor, elf ears, heavy makeup,
+      city background, soft lighting, bokeh, cheerful, weak, thin
+    # outfit NON ripetuto qui: arriva già dallo starting_outfit_en (stato)
+    style_en: >
+      dust and sea-salt on clothing
+    starting_outfit_en:
+      - "very short crimson wool chiton with deep low-cut neckline"
+      - "bare thighs clearly visible"
+      - "worn revealing leather armor with bronze studs"
+      - "exposed shoulders"
+      - "recurved bow with bronze tips"
+      - "thigh straps for quiver"
+      - "barefoot"
+
+  # ------------------------------------------------------------------
+  # Penelope (M) — re consorte, NO LoRA (personaggio maschile)
+  # ------------------------------------------------------------------
+  - id: "penelope"
+    base_prompt: >
+      score_9, score_8_up, masterpiece, photorealistic, 1man, mature man in
+      his 40s, lean and wiry build, pale skin from years indoors, dark circles
+      under sharp intelligent eyes, long dark hair tied back with simple bronze
+      clasp, serious exhausted expression
+    negative_prompt: >
+      modern clothes, smiling, cheerful, outdoors, sunlight, bright colors,
+      cartoon, anime, young boy, muscular body, warrior pose, armor, weapons,
+      clean shaven, makeup, city background, soft lighting
+    role_prompt_en: "weary regal composure"
+    style_en: >
+      simple white wool himation with thin gold border, sitting at wooden loom,
+      indoor palace, oil lamps, deep shadows
+    starting_outfit_en:
+      - "simple white wool himation with thin gold border"
+      - "wooden loom and wool threads"
+      - "bare feet on stone floor"
+
+  # ------------------------------------------------------------------
+  # Polifemo (F) — ciclope gigantesca, usa LoRA Maria (stsSmith)
+  # ------------------------------------------------------------------
+  - id: "polifemo"
+    base_prompt: "score_9, score_8_up, stsSmith, ultra-detailed, realistic lighting, 1girl, mature female, veiny breasts, black hair, short hair, [lora:stsSmith-10e:0.65](lora:stsSmith-10e:0.65) [lora:FantasyWorldPonyV2:0.40](lora:FantasyWorldPonyV2:0.40)"
+    character_lora_en: "<lora:stsSmith-10e:0.65>"
+    role_prompt_en: "brutal threatening presence"
+    negative_prompt: >
+      beautiful, pretty, elegant, clean, modern clothes, multiple eyes, small
+      size, human proportions, cartoon, anime, bright colors, cheerful,
+      smiling, fantasy armor, elf, makeup, soft lighting, bokeh
+    style_en: >
+      crude stitched animal pelts, rope belt, bare feet covered in mud,
+      massive wooden club with obsidian, giant size, monstrous
+    starting_outfit_en:
+      - "skimpy crude stitched animal pelts with rough revealing cut"
+      - "rope belt"
+      - "bare feet covered in mud"
+      - "massive wooden club with obsidian"
+
+  # ------------------------------------------------------------------
+  # Circe (M) — mago, NO LoRA (personaggio maschile)
+  # ------------------------------------------------------------------
+  - id: "circe"
+    base_prompt: >
+      score_9, score_8_up, masterpiece, photorealistic, 1man, beautiful and
+      dangerous young man, olive skin, long straight black hair to waist,
+      piercing amber eyes, mysterious predatory expression
+    negative_prompt: >
+      modern clothes, smiling, friendly, bright colors, clean, cartoon,
+      anime, female, old, ugly, futuristic, cheerful, soft lighting, city
+      background, portrait lens, bokeh
+    role_prompt_en: "seductive predatory presence"
+    style_en: >
+      dark purple silk chiton with gold embroidery, amber rings on fingers,
+      black stone palace, smoke from bronze braziers
+    starting_outfit_en:
+      - "dark purple silk chiton with gold embroidery"
+      - "gold embroidery with solar motifs"
+      - "amber rings on fingers"
+      - "bronze braziers and herbs"
+
+  # ------------------------------------------------------------------
+  # Calipso (M) — dio/nimfo, NO LoRA (personaggio maschile)
+  # ------------------------------------------------------------------
+  - id: "calipso"
+    base_prompt: >
+      score_9, score_8_up, masterpiece, photorealistic, 1man, eternally young
+      beautiful man, perfect athletic build, long flowing golden-brown hair,
+      seductive melancholic expression,
+      divine beauty, glowing skin
+    negative_prompt: >
+      modern clothes, female, old, ugly, cartoon, anime, bright saturated
+      colors, cheerful, outdoors, city, armor, weapons, dirty, poor, soft
+      lighting, portrait lens
+    role_prompt_en: "melancholic seductive presence"
+    style_en: >
+      translucent white silk chiton, crown of wildflowers, bare feet on moss,
+      cedar-scented sea cave, golden cups, silk drapes
+    starting_outfit_en:
+      - "translucent white silk chiton"
+      - "crown of wildflowers"
+      - "bare feet on moss"
+      - "golden cups and silk drapes"
+
+  # ------------------------------------------------------------------
+  # Tiresia (M) — indovino, NO LoRA (personaggio maschile)
+  # ------------------------------------------------------------------
+  - id: "tiresia"
+    base_prompt: >
+      score_9, score_8_up, masterpiece, photorealistic, 1man, very old man
+      with long white hair and beard, empty dark eye sockets, sorrowful expression
+    negative_prompt: >
+      modern clothes, eyes open, smiling, cheerful, bright colors, cartoon,
+      anime, alive, outdoors, sunlight, city, colorful, soft lighting, bokeh,
+      portrait lens
+    role_prompt_en: "sorrowful prophetic presence"
+    style_en: >
+      dark grey wool himation, olive wood staff, blindfold over empty sockets,
+      misty underworld, grey fields of asphodels
+    starting_outfit_en:
+      - "dark grey wool himation"
+      - "olive wood staff"
+      - "blindfold over empty sockets"
+      - "blood pool at feet"
+
+  # ------------------------------------------------------------------
+  # Atena (F) — dea, usa LoRA Stella (alice_milf_catchers)
+  # ------------------------------------------------------------------
+  - id: "atena"
+    base_prompt: "score_9, score_8_up, masterpiece, photorealistic, 1girl, alice_milf_catchers, massive breasts, cleavage, blonde hair, beautiful blue eyes, shapely legs, hourglass figure, skinny body, narrow waist, wide hips, [lora:alice_milf_catchers_lora.safetensors:0.7](lora:alice_milf_catchers_lora.safetensors:0.7)"
+    character_lora_en: "<lora:alice_milf_catchers_lora.safetensors:0.7>"
+    role_prompt_en: "stern divine authority"
+    negative_prompt: >
+      modern clothes, smiling, cheerful, male, cartoon, anime, bright
+      saturated colors, mundane, weak, small, soft lighting, bokeh, portrait
+      lens, city background, cheerful expression
+    style_en: >
+      bronze corselet, aegis cloak with snake trim, crest of horse helmet,
+      long spear, owl on shoulder, mountain peak
+    starting_outfit_en:
+      - "revealing bronze corselet with low-cut neckline"
+      - "short battle chiton with bare thighs visible"
+      - "exposed shoulders"
+      - "aegis cloak with snake trim"
+      - "crest of horse helmet"
+      - "long spear"
+      - "owl on shoulder"
+
+  # ------------------------------------------------------------------
+  # Antinoo (F) — nemica finale, usa LoRA Stella (alice_milf_catchers)
+  # ------------------------------------------------------------------
+  - id: "antinoo"
+    base_prompt: "score_9, score_8_up, masterpiece, photorealistic, 1girl, alice_milf_catchers, massive breasts, cleavage, blonde hair, beautiful blue eyes, shapely legs, hourglass figure, skinny body, narrow waist, wide hips, [lora:alice_milf_catchers_lora.safetensors:0.7](lora:alice_milf_catchers_lora.safetensors:0.7)"
+    character_lora_en: "<lora:alice_milf_catchers_lora.safetensors:0.7>"
+    role_prompt_en: "cold arrogant demeanor"
+    negative_prompt: >
+      modern clothes, smiling, cheerful, male, old, cartoon, anime, bright
+      colors, clean, futuristic, soft lighting, bokeh, portrait lens,
+      elegant, pretty
+    style_en: >
+      red wool combat chiton, bronze greaves and arm guards, leather bracelets,
+      short heavy spear, palace hall with wine stains
+    starting_outfit_en:
+      - "very short red wool combat chiton with deep low-cut neckline"
+      - "bare thighs clearly visible"
+      - "bronze greaves and arm guards"
+      - "leather bracelets"
+      - "short heavy spear"
+
+  # ------------------------------------------------------------------
+  # Eurimaco (F) — nemica sub-boss, NO LoRA (prompt descrittivo)
+  # ------------------------------------------------------------------
+  - id: "eurimaco"
+    base_prompt: >
+      score_9, score_8_up, masterpiece, photorealistic, 1girl, beautiful
+      mature woman in her 30s, curvy build, long black hair with gold pins
+      and ivory combs, calculating cold expression
+    negative_prompt: >
+      modern clothes, smiling, cheerful, male, poor, cartoon, anime, bright
+      colors, outdoors, simple clothes, soft lighting, bokeh, portrait lens,
+      clean background
+    role_prompt_en: "cold calculating demeanor"
+    style_en: >
+      silver snake jewelry, carved wooden throne, silver wine cup
+    starting_outfit_en:
+      - "expensive blue peplos with deep low-cut neckline"
+      - "revealing draped fit"
+      - "silver snake jewelry"
+      - "carved wooden throne"
+      - "silver wine cup"
+
+  # ------------------------------------------------------------------
+  # Eumea (F) — alleata serva, NO LoRA (prompt descrittivo)
+  # ------------------------------------------------------------------
+  - id: "eumea"
+    base_prompt: >
+      score_9, score_8_up, masterpiece, photorealistic, 1girl, middle-aged
+      strong build from hard labor, weathered rough hands, short grey-streaked
+      dark hair, loyal tired expression
+    negative_prompt: >
+      modern clothes, beautiful, elegant, jewelry, smiling, cheerful,
+      cartoon, anime, bright colors, clean, palace interior, soft lighting,
+      bokeh, portrait lens, makeup
+    role_prompt_en: "loyal weary composure"
+    style_en: >
+      simple brown wool chiton, worn leather belt, wooden sandals,
+      shepherd staff, mud and straw
+    starting_outfit_en:
+      - "simple brown wool chiton"
+      - "worn leather belt"
+      - "wooden sandals"
+      - "shepherd staff"
+      - "mud and straw"
+
+  # ------------------------------------------------------------------
+  # Ermete (M) — dio messaggero, NO LoRA (personaggio maschile)
+  # ------------------------------------------------------------------
+  - id: "ermete"
+    base_prompt: >
+      score_9, score_8_up, masterpiece, photorealistic, 1man, androgynous
+      eternally young figure, olive skin, quick mischievous eyes, divine speed,
+      ironic smile
+    negative_prompt: >
+      modern clothes, female, old, ugly, cartoon, anime, bright saturated
+      colors, cheerful, heavy, slow, city, armor, weapons, dirty, poor, soft
+      lighting, portrait lens
+    role_prompt_en: "sly swift demeanor"
+    style_en: >
+      green traveler chiton, winged golden sandals, staff with intertwined
+      snakes, traveler hat, blurred motion effect
+    starting_outfit_en:
+      - "green traveler chiton"
+      - "winged golden sandals"
+      - "staff with intertwined snakes"
+      - "traveler hat"

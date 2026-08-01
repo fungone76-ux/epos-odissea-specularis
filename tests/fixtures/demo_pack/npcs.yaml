@@ -1,0 +1,44 @@
+# NPC del demo pack — canone stabile. Lo stato mutevole vive nel salvataggio.
+
+npcs:
+  - id: maera
+    name: "Maera Dolk"
+    age: 44
+    location_id: common_hall
+    present_at_start: true
+    personality: ["calma", "osservatrice", "pragmatica", "protettiva del proprio territorio"]
+    speech_style: "frasi corte, domande dirette, silenzi pesati"
+    desires: ["tenere la stazione fuori dai guai", "capire chi mente"]
+    fears: ["rappresaglie dei territori vicini", "perdere la stazione"]
+    goals: ["valutare se la forestiera è un problema o un'opportunità"]
+    secrets:
+      - "Nasconde nella dispensa un corriere ferito arrivato tre giorni fa."
+    knowledge:
+      - "Nessuna carovana è passata da sei giorni."
+      - "Le pattuglie del nord hanno raddoppiato i controlli."
+    disclosure_policy: "Non rivela il corriere finché la fiducia non è reale."
+    red_lines: ["nessuna violenza nella sua sala"]
+    intimate_profile: ""
+    starting_outfit:
+      - "grembiule di lana grigia"
+      - "chiavi della dispensa alla cintura"
+
+  - id: corren
+    name: "Corren Vail"
+    age: 31
+    location_id: stables
+    present_at_start: false
+    personality: ["nervoso", "svelto", "leale a chi paga", "curioso"]
+    speech_style: "parla in fretta, cambia discorso quando è a disagio"
+    desires: ["ripartire appena la neve lo permette"]
+    fears: ["essere riconosciuto", "la dispensa"]
+    goals: ["tenere d'occhio chi entra", "non farsi domande"]
+    secrets:
+      - "Ha visto il corriere ferito e sospetta dove sia nascosto."
+    knowledge:
+      - "Il sentiero sud è ancora praticabile."
+    disclosure_policy: "Dice mezze verità finché non è sicuro."
+    red_lines: ["non tradisce i clienti paganti"]
+    intimate_profile: ""
+    starting_outfit:
+      - "giacca di cuoio rinforzato"

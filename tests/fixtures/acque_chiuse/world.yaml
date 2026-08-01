@@ -1,0 +1,231 @@
+# ============================================================================
+# ACQUE CHIUSE — world-pack definitivo
+#
+# Terme isolate su un passo di montagna, unico territorio neutrale tra le
+# città rivali di Vetra e Cendre. La stagione delle nevi le ha sigillate:
+# chi è dentro resta dentro. RPG narrativo per adulti.
+# ============================================================================
+
+id: acque_chiuse
+title: "Acque Chiuse"
+
+premise: >
+  Alle Terme del Passo — unico territorio neutrale tra Vetra e Cendre — la
+  neve ha chiuso ogni via d'uscita. La protagonista è la nuova inserviente:
+  attraverso l'acqua e il contatto della pelle legge le emozioni altrui e
+  può orientarle, ma tutto ciò che muove negli altri lo sente addosso,
+  amplificato. L'inserviente prima di lei, Nila, è annegata in una stanza
+  senz'acqua. E tra i vapori delle vasche qualcuno sta negoziando un
+  trattato che può cambiare il destino delle due città.
+
+start_time_phase: "sera"
+start_location_id: vasche_grandi
+
+opening_narration: >
+  Il vento ti ha seguita fino alla soglia, poi le porte di legno pesante si
+  sono chiuse e il rumore del passo è sparito. Le vasche grandi fumano nel
+  mezzo della sala di pietra, e l'aria è così calda che il mantello ti si
+  appiccica alle spalle. Una donna robusta, coi capelli ramati raccolti, ti
+  guarda da dietro il banco delle chiavi con la calma di chi ha visto
+  arrivare troppi forestieri per fidarsi in fretta. «Le terme chiudono col
+  passo», dice. «Chi entra stanotte, resta fino al disgelo. Sei sicura di
+  voler restare?»
+
+# Regole opzionali EVENT attive in questo pack
+open_end: true
+riserva_dice: 2
+interactive_creation: true
+
+# ----------------------------------------------------------------------------
+# LOCATIONS
+# ----------------------------------------------------------------------------
+locations:
+  - id: vasche_grandi
+    name: "Le Vasche Grandi"
+    description: >
+      Sala di pietra centrale: tre vasche fumanti a terrazze, colonne,
+      panche di legno, il banco delle chiavi. Luce calda, vapore costante.
+      È il cuore sociale delle terme.
+  - id: sala_comune
+    name: "Sala Comune"
+    description: >
+      Camino grande, tavoli, cucina a vista. Si mangia, si gioca a carte,
+      si parla lontano dal vapore. La stanza delle trattative discrete.
+  - id: serra_umida
+    name: "Serra Umida"
+    description: >
+      Il regno di Vel Odera: vetri appannati, erbe appese, alambicchi,
+      vaschette di infusione. Odore dolciastro e tagliente insieme.
+  - id: cantine_acqua
+    name: "Cantine d'Acqua"
+    description: >
+      Condutture, cisterne e stanze di servizio sotto le vasche. Qui Nila
+      è stata trovata annegata — in una stanza senz'acqua.
+  - id: alloggi
+    name: "Alloggi"
+    description: >
+      Corridoio di stanze per ospiti e personale. Porte di legno, chiavi
+      pesanti, poca privacy vera.
+  - id: sentiero
+    name: "Sentiero del Passo"
+    description: >
+      L'ingresso delle terme e il sentiero che scende verso valle:
+      impraticabile sotto la neve, presidiato da freddo e silenzio.
+
+# ----------------------------------------------------------------------------
+# STORY SPINE — tappe canoniche del vertical slice
+# ----------------------------------------------------------------------------
+story_markers:
+  - id: accepted
+    summary: "La nuova inserviente è accettata alle Terme del Passo"
+  - id: first_resonance
+    summary: "Primo contatto del potere con le acque: qualcosa risponde"
+  - id: nila_clue
+    summary: "Primo indizio concreto sulla morte di Nila"
+  - id: treaty_exposed
+    summary: "Il trattato segreto tra Vetra e Cendre viene alla luce"
+  - id: vel_confronted
+    summary: "Vel Odera affrontata sulle sue infusioni emotive"
+  - id: truth_of_nila
+    summary: "La verità su Nila ha un esito: giustizia, silenzio o patto"
+    concludes_slice: true
+
+# ----------------------------------------------------------------------------
+# PRESSIONI — minacce che avanzano nel tempo
+# ----------------------------------------------------------------------------
+pressures:
+  - id: disgelo
+    summary: "Il disgelo si avvicina: quando il passo si apre, tutto finisce"
+    escalation_hint: >
+      Rumori di valanghe, notizie dal sentiero, qualcuno che prepara i
+      bagagli. Il conto alla rovescia stringe.
+  - id: agenti
+    summary: "Gli agenti delle due città perdono pazienza e discrezione"
+    escalation_hint: >
+      Pedinamenti, domande dirette agli ospiti, un messaggero che non
+      dovrebbe essere qui.
+  - id: infusioni
+    summary: "Le infusioni emotive di Vel nelle acque si fanno più forti"
+    escalation_hint: >
+      Ospiti inspiegabilmente euforici o spaventati dopo il bagno, l'acqua
+      che sembra rispondere, la protagonista che sente troppo.
+
+# ----------------------------------------------------------------------------
+# FATTI DI MONDO — verità canoniche con inferenze vietate
+# ----------------------------------------------------------------------------
+world_facts:
+  - id: nila_morta
+    statement: >
+      Nila, l'inserviente precedente, è stata trovata annegata nelle Cantine
+      d'Acqua, in una stanza senza vasche né condutture aperte.
+    visibility: public
+    does_not_imply:
+      - "si è trattato di suicidio"
+      - "qualcuno è stato accusato o arrestato"
+      - "la stanza era davvero senz'acqua quando lei morì"
+      - "il corpo è stato esaminato da un medico"
+  - id: trattato_segreto
+    statement: >
+      Emissari di Vetra e Cendre stanno negoziando segretamente un trattato
+      alle terme, territorio neutrale per antico accordo.
+    visibility: secret
+    does_not_imply:
+      - "il trattato è firmato"
+      - "entrambe le città sono d'accordo sui termini"
+      - "Marea Dohl lo approva"
+      - "le rispettive corti sanno tutto dei propri emissari"
+  - id: infusioni_vel
+    statement: >
+      Vel Odera conduce esperimenti di infusione emotiva nelle acque:
+      estratti che inducono stati d'animo in chi si immerge.
+    visibility: highly_restricted
+    does_not_imply:
+      - "le infusioni sono legali o approvate"
+      - "Vel vuole uccidere qualcuno"
+      - "Nila era d'accordo a farne parte"
+  - id: potere_protagonista
+    statement: >
+      La protagonista legge e orienta le emozioni attraverso acqua e
+      contatto; ciò che muove negli altri lo sente addosso, amplificato.
+    visibility: secret
+    does_not_imply:
+      - "gli altri lo sanno"
+      - "il potere crea consenso o disponibilità"
+      - "il potere è infallibile o sempre attivo"
+      - "le acque rispondono allo stesso modo a chiunque"
+  - id: amanti_segreti
+    statement: >
+      Rook Dashen, capitano di Cendre, e Lienne Ashe, inviata di Vetra, sono
+      amanti in segreto.
+    visibility: secret
+    does_not_imply:
+      - "il loro legame è solo ricattabile: può essere sincero"
+      - "Vel li ha riferiti alle rispettive città"
+      - "si fidano completamente l'uno dell'altra"
+  - id: terme_neutrali
+    statement: >
+      Alle terme vige il divieto antico di violenza tra ospiti: la neutralità
+      è il motivo per cui esistono, e chi la viola è nemico di tutti.
+    visibility: public
+    does_not_imply:
+      - "la neutralità non è mai stata violata"
+      - "il divieto copre ciò che accade sott'acqua"
+
+# ----------------------------------------------------------------------------
+# RELAZIONI TRA NPC — chi conosce cosa, inferenze vietate
+# ----------------------------------------------------------------------------
+relationships:
+  - from: marea
+    to: vel
+    statement: >
+      Marea ospita Vel e la sua serra da anni: accordo di fornitura, non
+      amicizia. Sospetta che le acque siano cambiate ma non ha prove.
+    known_by: [marea, vel]
+    forbidden_inferences:
+      - "Marea sa degli esperimenti specifici di Vel"
+      - "Marea coprirebbe Vel se scoprisse tutto"
+  - from: ilsa
+    to: vel
+    statement: >
+      Ilsa considera Vel l'anello debole della sicurezza delle terme e la
+      osserva con sospetto professionale.
+    known_by: [ilsa]
+    forbidden_inferences:
+      - "Ilsa sa delle infusioni"
+      - "Vel sa di essere osservata da Ilsa in particolare"
+  - from: rook
+    to: lienne
+    statement: >
+      Amanti da prima della chiusura del passo. Si incontrano negli alloggi
+      quando possono. Vel lo sa; nessun altro.
+    known_by: [rook, lienne, vel]
+    forbidden_inferences:
+      - "Marea lo sa"
+      - "Ilsa lo sa"
+      - "è solo una storia di ricatto: il sentimento può essere reale"
+  - from: marea
+    to: nila
+    statement: >
+      Marea proteggeva Nila e le aveva promesso di farla ripartire col
+      disgelo. Si sente in colpa per non aver chiesto abbastanza.
+    known_by: [marea]
+    forbidden_inferences:
+      - "Marea sa chi ha ucciso Nila"
+      - "Nila le aveva detto cosa aveva scoperto"
+
+player_start:
+  name: null
+  skills:
+    potere_acqua: 2
+    social: 1
+  inventory:
+    - "borsello con poche monete"
+    - "grembiule da inserviente"
+    - "chiave di servizio delle cantine (regolare)"
+  conditions: []
+  outfit:
+    - "camicia di lino sottile aperta sul petto"
+    - "gonnellino avvolto in vita"
+    - "piedi nudi sul pavimento caldo"
+  resources:
+    strain: 0

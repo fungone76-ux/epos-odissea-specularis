@@ -1,0 +1,22 @@
+# Character sheet visive del demo pack.
+# base_prompt: asset immutabile, copiato esattamente nel prompt. Mai alterarlo
+# a runtime; si revisiona solo con decisione esplicita dell'autore del pack.
+
+characters:
+  - id: player
+    base_prompt: >
+      1woman, adult woman in her late twenties, long dark hair loosely tied,
+      sharp grey eyes, weathered traveller's cloak, tired but alert posture
+    negative_prompt: ""
+
+  - id: maera
+    base_prompt: >
+      1woman, middle-aged innkeeper woman, sturdy build, auburn hair in a
+      practical bun, measuring calm gaze, grey wool apron
+    negative_prompt: ""
+
+  - id: corren
+    base_prompt: >
+      1man, lean man in his early thirties, restless eyes, short brown hair,
+      reinforced leather jacket, stablehand gloves
+    negative_prompt: ""

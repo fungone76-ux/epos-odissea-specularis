@@ -1,0 +1,201 @@
+======================================================================
+  ODISSEA SPECULARIS — Diario di Bordo di Ulisse
+======================================================================
+
+[PROLOGO]
+Il mare è sale e memoria. Dieci anni a Troia, dieci anni di ritorno. Ulisse, regina di Itaca, arciera, bugiarda, sopravvissuta, è sola. La sua nave è polvere, il suo equipaggio è ombre. Dietro di lei, la rabbia di Poseidone. Davanti, un'isola di giganti pastori. Il primo passo verso casa è sempre il più difficile.
+
+
+======================================================================
+  TURNO 1 — LA CIECA E IL PASTO
+  Location: La Cieca e il Pasto
+  Kleos: 0 | Skills: S3 D4 E2 T3 P3
+======================================================================
+Fuggire dalla caverna di Polifemo accecandola o ingannandola.
+
+[Scelta del giocatore]
+Ulisse osserva la caverna. Polifemo è fuori con le pecore.
+Vede il palo di olivo nel fuoco. Ma la forza bruta non è mai
+stata la sua arma preferita. Sceglie l'inganno.
+
+Ulisse: 'Mi chiamo Nessuno. Sono un naufraga. Offro vino.'
+Polifemo: 'Nessuno? Nome stupido. Ma il vino...'
+
+[TIRO] Pool: 5 dadi | Dadi: (6, 1, 1, 6, 3)
+[ESITO] FULL_SUCCESS
+[MESSAGGIO] Missione 'La Cieca e il Pasto' superata! +1 Kleos. Sblocca Isola di Eolo.
+[KLEOS] +1
+
+======================================================================
+  TURNO 2 — LA PELLE DI CINGHIALE
+  Location: La Pelle di Cinghiale
+  Kleos: 1 | Skills: S3 D4 E2 T3 P3
+======================================================================
+Resistere alla curiosità di aprire la pelle di cinghiale prima del tempo.
+
+[Scelta del giocatore]
+Eolo le porge la pelle di cinghiale. I venti mugolano dentro.
+Ulisse sente la curiosità bruciare. Ma ha imparato a Troia
+che la pazienza è l'unica virtù che non tradisce.
+
+Ulisse: 'La terrò chiusa fino a Itaca, signore dei venti.'
+Eolo: 'Nessuno ha mai resistito. Vedremo.'
+
+[TIRO] Pool: 4 dadi | Dadi: (2, 2, 2, 6)
+[ESITO] FULL_SUCCESS
+[MESSAGGIO] Missione 'La Pelle di Cinghiale' superata! +1 Kleos. Sacchetto dei Venti: +1 Pontos per le prossime 2 location.
+[KLEOS] +1
+
+======================================================================
+  TURNO 3 — IL CANTO MASCHILE
+  Location: Il Canto Maschile
+  Kleos: 2 | Skills: S3 D4 E2 T3 P3
+======================================================================
+Sopravvivere al canto delle Sirene senza impazzire o annegare.
+
+[Scelta del giocatore]
+Il canto maschile arriva prima degli scogli. Voci di bellezza
+sovrannaturale che promettono la verità assoluta.
+Ulisse si lega all'albero maestro con cinghie di cuoio.
+
+Sirena: 'Vieni, regina. Ti diremo chi tradisce a Itaca.'
+Ulisse: 'So già chi tradisce. Me lo dico ogni notte.'
+
+[TIRO] Pool: 4 dadi | Dadi: (1, 6, 6, 5)
+[ESITO] FULL_SUCCESS
+[MESSAGGIO] Missione 'Il Canto Maschile' superata! +1 Kleos. Sblocca lo Stretto.
+[KLEOS] +1
+
+======================================================================
+  TURNO 4 — IL PASSAGGIO
+  Location: Il Passaggio
+  Kleos: 3 | Skills: S3 D4 E2 T3 P3
+======================================================================
+Attraversare lo stretto tra Scilla e Cariddi.
+
+[Scelta del giocatore]
+Lo stretto è una mascella. A sinistra il vortice di Cariddi.
+A destra, le sei teste di Scilla affacciano dall'alto.
+Ulisse prende il timone con mani salate.
+
+Ulisse: 'Più vicino a Scilla. Cariddi inghiotte tutto.'
+Scilla afferra, ma Ulisse taglia una testa con il pugnale.
+Il sangue nero schizza. La nave passa, ferita ma intera.
+
+[TIRO] Pool: 4 dadi | Dadi: (1, 5, 4, 1)
+[ESITO] PARTIAL_SUCCESS
+[MESSAGGIO] Missione 'Il Passaggio' superata! +1 Kleos. Sblocca l'Isola di Circe.
+[KLEOS] +1
+
+======================================================================
+  TURNO 5 — LA RADURA NERA
+  Location: La Radura Nera
+  Kleos: 4 | Skills: S3 D4 E2 T3 P3
+======================================================================
+Ottenere il rituale per l'Ade da Circe senza trasformarsi in bestia.
+
+[Scelta del giocatore]
+Ermete appare dal nulla. Sandali alati, sorriso ironico.
+Le porge una pianta bianca con radici nere.
+
+Ermete: 'Moly. L'unica cosa che suo padre non può bruciare.'
+Ulisse: 'Perché mi aiuti?'
+Ermete: 'Perché Atena ha scommesso su di te. E io odio perdere.'
+
+Ulisse entra nel palazzo nero. Circe le offre vino.
+Lei finge di bere. Lui la tocca. Il moly brucia la sua magia.
+
+Circe: 'Nessuno ha mai resistito. Tu... tu non sei nessuno.'
+Ulisse: 'Sono Ulisse di Itaca. Dammi il rituale per l'Ade.'
+
+[TIRO] Pool: 4 dadi | Dadi: (1, 1, 2, 2)
+[ESITO] FAILURE
+[EVENTO SPECIALE] moly_used
+[PENALITÀ] -1 DOLOS permanente
+[MESSAGGIO] Missione 'La Radura Nera' fallita. -1 Dolos permanente. Trasformazione parziale. Riprova con difficoltà -1.
+
+======================================================================
+  TURNO 6 — LA RADURA NERA
+  Location: La Radura Nera
+  Kleos: 4 | Skills: S3 D3 E2 T3 P3
+======================================================================
+Ottenere il rituale per l'Ade da Circe senza trasformarsi in bestia.
+
+[Scelta del giocatore]
+Ermete appare dal nulla. Sandali alati, sorriso ironico.
+Le porge una pianta bianca con radici nere.
+
+Ermete: 'Moly. L'unica cosa che suo padre non può bruciare.'
+Ulisse: 'Perché mi aiuti?'
+Ermete: 'Perché Atena ha scommesso su di te. E io odio perdere.'
+
+Ulisse entra nel palazzo nero. Circe le offre vino.
+Lei finge di bere. Lui la tocca. Il moly brucia la sua magia.
+
+Circe: 'Nessuno ha mai resistito. Tu... tu non sei nessuno.'
+Ulisse: 'Sono Ulisse di Itaca. Dammi il rituale per l'Ade.'
+
+[TIRO] Pool: 4 dadi | Dadi: (5, 5, 1, 5)
+[ESITO] FULL_SUCCESS
+[EVENTO SPECIALE] moly_used
+[MESSAGGIO] Missione 'La Radura Nera' superata! +1 Kleos. Rituale per l'Ade sbloccato.
+[KLEOS] +1
+
+======================================================================
+  TURNO 7 — IL SANGUE DELLE OMBRE
+  Location: Il Sangue delle Ombre
+  Kleos: 5 | Skills: S3 D3 E2 T3 P3
+======================================================================
+Versare il sangue e resistere alle ombre affamate per parlare con Tiresia.
+
+[Scelta del giocatore]
+La nebbia grigia non si alza mai. Campi di asfodeli.
+Ulisse taglia il polso e lascia che il sangue colmi una fossa.
+Le ombre affamate si radunano. Tiresia emerge.
+
+Tiresia: 'Chiedi, figlia di Laerta. Ma ogni parola costa carne.'
+Ulisse: 'Come torno a casa?'
+Tiresia: 'Non con la forza. Con il riconoscimento. Con il letto.'
+
+  >>> Tiresia beve il tuo sangue e parla. Vedi il futuro.
+  >>> Prezzo: -1 Sarissa permanente
+      - Il Bestiame D'oro: difficoltà 4
+      - La Corte dei Feaci: difficoltà 3
+[TIRO] Pool: 4 dadi | Dadi: (2, 6, 6, 6)
+[ESITO] FULL_SUCCESS
+[MESSAGGIO] Missione 'Il Sangue delle Ombre' superata! +1 Kleos. Tiresia rivela la difficoltà delle prossime 2 location.
+[KLEOS] +1
+
+======================================================================
+  TURNO 8 — LA GROTTA PROFUMATA
+  Location: La Grotta Profumata
+  Kleos: 6 | Skills: S2 D3 E2 T3 P3
+======================================================================
+Ricordare Itaca dopo sette anni di piacere e oblio.
+
+[Scelta del giocatore]
+Sette anni. Sette anni di cedro, seta e sesso infinito.
+Calipso piange ogni notte dopo l'amplesso.
+Ulisse ha contato ogni giorno sulle pareti della grotta.
+
+Calipso: 'Resta. Ti darò l'immortalità. Dimentica Itaca.'
+Ulisse: 'Itaca è questa cicatrice. Questo sale. Questo arco.
+          Non è un posto. È ciò che sono diventata.'
+
+Calipso: 'Allora vattene. Ma ricorda: nessuno ti amerà come me.'
+Ulisse: 'Lo so. È per questo che devo andare.'
+
+[TIRO] Pool: 4 dadi | Dadi: (5, 4, 2, 4)
+[ESITO] FAILURE
+[MESSAGGIO] GAME OVER. Hai dimenticato Itaca. Calipso ti tiene per sempre.
+
+======================================================================
+  EPILOGO
+======================================================================
+Vittoria: False
+Kleos finale: 6
+Skills finali: {'sarissa': 2, 'dolos': 3, 'eros': 2, 'thumos': 3, 'pontos': 3}
+
+GAME OVER
+Location finale: La Grotta Profumata
+L'Odissea non ha fine. Solo altri inizi.
