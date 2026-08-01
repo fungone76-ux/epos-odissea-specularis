@@ -4,9 +4,8 @@
 Uso:
     python tools/play_resort.py --live
 
-Il launcher carica e valida world.yaml, npcs.yaml, visual.yaml,
-missions.yaml ed events.yaml prima di creare la sessione. Il GM live produce
-risposte LLM reali; Python governa missioni, punteggi e ricompense.
+Il launcher carica e valida il world-pack Resort. Il GM live produce risposte
+LLM reali; Python governa missioni, punteggi, ricompense e POV visivo NPC-only.
 """
 
 from __future__ import annotations
@@ -29,7 +28,7 @@ from epos.resort_runtime import (
     new_resort_world,
     process_resort_turn,
 )
-from epos.turn_service import TurnService
+from epos.resort_turn_service import ResortTurnService
 
 
 def main() -> None:
@@ -58,7 +57,7 @@ def main() -> None:
     def process_campaign_turn(state, result):
         return process_resort_turn(state, resort_pack, result)
 
-    service = TurnService(
+    service = ResortTurnService(
         gm=gm,
         pack=resort_pack.world,
         renderer=renderer_from_env(),
@@ -107,6 +106,8 @@ def main() -> None:
         service.store.save_state(state)
 
         print(result.narration)
+        for line in result.dialogue:
+            print(f"{line.get('speaker', 'NPC')}: {line.get('text', '')}")
         changes = result.campaign_changes or {}
         unlocked = changes.get("unlocked_missions", [])
         if unlocked:
