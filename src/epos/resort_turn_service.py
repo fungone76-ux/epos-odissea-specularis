@@ -81,7 +81,7 @@ def _canonicalize_phase1_speakers(state, response):
 
 
 def _npc_from_scene(state, scene: FinalScene) -> str | None:
-    """Sceglie la NPC protagonista con priorita speaker > visual > azione > iniziativa."""
+    """Sceglie la NPC protagonista: speaker > azione > iniziativa > visual."""
 
     intro_step = current_intro_step(state)
     if intro_step is not None and intro_step.npc_id in state.npcs:
@@ -96,18 +96,6 @@ def _npc_from_scene(state, scene: FinalScene) -> str | None:
         if npc_id in present:
             return npc_id
 
-    visual = scene.visual
-    if visual is not None:
-        for candidate in (
-            visual.speaker_character,
-            visual.reactor_character,
-            visual.actor_character,
-            visual.focus_character,
-            *visual.visible_characters,
-        ):
-            if candidate in present:
-                return candidate
-
     for action in scene.npc_actions:
         npc_id = str(getattr(action, "npc_id", ""))
         if npc_id in present:
@@ -117,6 +105,18 @@ def _npc_from_scene(state, scene: FinalScene) -> str | None:
         npc_id = str(getattr(initiative, "source", ""))
         if npc_id in present:
             return npc_id
+
+    visual = scene.visual
+    if visual is not None:
+        for candidate in (
+            visual.speaker_character,
+            visual.actor_character,
+            visual.reactor_character,
+            visual.focus_character,
+            *visual.visible_characters,
+        ):
+            if candidate in present:
+                return candidate
 
     return present[0]
 
