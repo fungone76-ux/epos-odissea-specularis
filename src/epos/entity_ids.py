@@ -33,11 +33,10 @@ def player_aliases_for_state(state: WorldState) -> set[str]:
 
 
 def normalize_entity_id(value: Any, world_state: WorldState, context_field: str) -> str:
-    """Normalize one structured entity id.
+    """Normalize one structured entity id conservatively.
 
-    Only the protagonist aliases map to "player". NPC ids/display names are
-    mapped from the current world state. Unknown ids are left untouched so the
-    semantic validator can still reject genuinely invalid references.
+    Besides exact ids and display names, a unique NPC first name is accepted.
+    Ambiguous short names remain untouched and are rejected by validation.
     """
 
     text = str(value or "").strip()
@@ -46,13 +45,27 @@ def normalize_entity_id(value: Any, world_state: WorldState, context_field: str)
     folded = text.casefold()
     if folded in player_aliases_for_state(world_state):
         return "player"
-    if folded in {_key(npc_id) for npc_id in world_state.npcs}:
-        for npc_id in world_state.npcs:
-            if _key(npc_id) == folded:
-                return npc_id
-    for npc_id, npc in world_state.npcs.items():
-        if npc.name and _key(npc.name) == folded:
+
+    for npc_id in world_state.npcs:
+        if _key(npc_id) == folded:
             return npc_id
+
+    exact_names = [
+        npc_id
+        for npc_id, npc in world_state.npcs.items()
+        if npc.name and _key(npc.name) == folded
+    ]
+    if len(exact_names) == 1:
+        return exact_names[0]
+
+    first_names = [
+        npc_id
+        for npc_id, npc in world_state.npcs.items()
+        if npc.name and _key(str(npc.name).split()[0]) == folded
+    ]
+    if len(first_names) == 1:
+        return first_names[0]
+
     return text
 
 
@@ -95,6 +108,9 @@ def _alias_rule(original: str, normalized: str, state: WorldState) -> str:
     if normalized == "player" and _key(original) in player_aliases_for_state(state):
         return "player_alias"
     if normalized in state.npcs:
+        full_name = str(state.npcs[normalized].name or "").strip()
+        if full_name and _key(original) == _key(full_name.split()[0]) and _key(original) != _key(full_name):
+            return "unique_npc_first_name"
         return "npc_id_or_display_name"
     return "entity_id"
 
@@ -152,12 +168,7 @@ def normalize_check_proposal_entity_ids(
     source_payload: str = "check_proposal",
 ) -> EntityNormalizationResult:
     target_ids, entries = _normalize_list(
-        proposal.target_ids,
-        state,
-        "check.target_ids",
-        phase,
-        attempt,
-        source_payload,
+        proposal.target_ids, state, "check.target_ids", phase, attempt, source_payload
     )
     if not entries:
         return EntityNormalizationResult(proposal, [])
@@ -173,12 +184,7 @@ def normalize_confront_proposal_entity_ids(
     source_payload: str = "confront_proposal",
 ) -> EntityNormalizationResult:
     target_id, entries = _normalize_one(
-        proposal.target_id,
-        state,
-        "confront.target_id",
-        phase,
-        attempt,
-        source_payload,
+        proposal.target_id, state, "confront.target_id", phase, attempt, source_payload
     )
     if not entries:
         return EntityNormalizationResult(proposal, [])
@@ -198,33 +204,36 @@ def normalize_scene_entity_ids(
     mutations = []
     for index, mutation in enumerate(scene.mutations):
         target, target_entries = _normalize_one(
-            mutation.target,
-            state,
-            f"mutations[{index}].target",
-            phase,
-            attempt,
-            source_payload,
+            mutation.target, state, f"mutations[{index}].target", phase, attempt, source_payload
         )
         entries.extend(target_entries)
         mutations.append(replace(mutation, target=target) if target_entries else mutation)
 
     dialogue = []
     for index, line in enumerate(scene.dialogue):
-        # speaker is often display text in the contract. Keep display names
-        # intact; normalize the addressee, which is an entity id field.
+        speaker, speaker_entries = _normalize_one(
+            line.speaker,
+            state,
+            f"dialogue[{index}].speaker",
+            phase,
+            attempt,
+            source_payload,
+        )
+        entries.extend(speaker_entries)
+
         to = line.to
         to_entries: list[EntityNormalizationEntry] = []
         if to:
             to, to_entries = _normalize_one(
-                to,
-                state,
-                f"dialogue[{index}].to",
-                phase,
-                attempt,
-                source_payload,
+                to, state, f"dialogue[{index}].to", phase, attempt, source_payload
             )
             entries.extend(to_entries)
-        dialogue.append(replace(line, to=to) if to_entries else line)
+
+        dialogue.append(
+            replace(line, speaker=speaker, to=to)
+            if speaker_entries or to_entries
+            else line
+        )
 
     memory_events = []
     for index, memory in enumerate(scene.memory_events):
@@ -237,31 +246,19 @@ def normalize_scene_entity_ids(
             source_payload,
         )
         entries.extend(witness_entries)
-        memory_events.append(
-            replace(memory, witnesses=witnesses) if witness_entries else memory
-        )
+        memory_events.append(replace(memory, witnesses=witnesses) if witness_entries else memory)
 
     initiatives = []
     for index, event in enumerate(scene.initiatives):
         source, source_entries = _normalize_one(
-            event.source,
-            state,
-            f"initiatives[{index}].source",
-            phase,
-            attempt,
-            source_payload,
+            event.source, state, f"initiatives[{index}].source", phase, attempt, source_payload
         )
         entries.extend(source_entries)
         target = event.target
         target_entries: list[EntityNormalizationEntry] = []
         if target:
             target, target_entries = _normalize_one(
-                target,
-                state,
-                f"initiatives[{index}].target",
-                phase,
-                attempt,
-                source_payload,
+                target, state, f"initiatives[{index}].target", phase, attempt, source_payload
             )
             entries.extend(target_entries)
         initiatives.append(
@@ -283,9 +280,7 @@ def normalize_scene_entity_ids(
         entries.extend(npc_entries)
         disclosure_events.append(replace(event, npc_id=npc_id) if npc_entries else event)
 
-    def _normalize_npc_dicts(
-        items: list[dict[str, Any]], field: str
-    ) -> list[dict[str, Any]]:
+    def _normalize_npc_dicts(items: list[dict[str, Any]], field: str) -> list[dict[str, Any]]:
         mapped: list[dict[str, Any]] = []
         for index, item in enumerate(items):
             item = dict(item)
@@ -316,9 +311,8 @@ def normalize_scene_entity_ids(
             "actor_character",
             "reactor_character",
         ):
-            value = getattr(visual, field_name)
             normalized, field_entries = _normalize_one(
-                value,
+                getattr(visual, field_name),
                 state,
                 f"visual.{field_name}",
                 phase,
