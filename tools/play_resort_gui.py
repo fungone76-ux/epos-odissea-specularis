@@ -31,6 +31,7 @@ from epos.resort_intro import initialise_resort_intro, intro_active
 from epos.resort_production_turn_service import ResortProductionTurnService
 from epos.resort_runtime import (
     advance_resort_time,
+    current_day,
     initialise_resort_state,
     load_resort_pack,
     process_resort_turn,
@@ -64,18 +65,8 @@ def main() -> None:
     def process_campaign_turn(state, result):
         changes = process_resort_turn(state, resort_pack, result)
         record_outfit_overrides_from_turn(state, result)
-        if not intro_active(state):
-            previous_key = schedule_key(state)
-            advanced = advance_resort_time(state, force=False)
-            if advanced:
-                schedule_changes = apply_resort_schedule(
-                    state,
-                    schedule_config,
-                    previous_key=previous_key,
-                )
-                if schedule_changes:
-                    changes = dict(changes or {})
-                    changes["schedule"] = schedule_changes
+        # Il tempo non avanza più automaticamente a fine turno. La fase del
+        # giorno e lo schedule vengono modificati soltanto dal pulsante GUI.
         return changes
 
     service = ResortProductionTurnService(
@@ -94,8 +85,37 @@ def main() -> None:
     initialise_resort_intro(state)
     service.store.save_state(state)
 
+    def advance_time_manually():
+        if intro_active(state):
+            return {
+                "advanced": False,
+                "message": "Completa prima la sequenza introduttiva del Resort.",
+            }
+
+        previous_key = schedule_key(state)
+        advanced = advance_resort_time(state, force=True)
+        if not advanced:
+            return {
+                "advanced": False,
+                "message": "Il calendario non può avanzare oltre la fine del soggiorno.",
+            }
+
+        schedule_changes = apply_resort_schedule(
+            state,
+            schedule_config,
+            previous_key=previous_key,
+        )
+        service.store.save_state(state)
+        return {
+            "advanced": True,
+            "day": current_day(state),
+            "phase": state.time_phase,
+            "schedule": schedule_changes,
+        }
+
     app = QApplication(sys.argv)
     window = ResortGameWindow(service, state, resort_pack)
+    window.manual_time_callback = advance_time_manually
     window.app_service = ResortGameApplicationService(service)
     window.show()
     sys.exit(app.exec())
