@@ -1,0 +1,153 @@
+schema_version: 1
+world_id: resort_world
+wardrobes:
+  victoria:
+    1:
+      mattina: [ivory executive wrap dress, nude pumps, pearl earrings]
+      pomeriggio: [black tailored blazer dress, high heels, elegant jewelry]
+      sera: [emerald satin dinner dress, gold heels, emerald earrings]
+      notte: [midnight blue cocktail dress, silver heels, diamond bracelet]
+    2:
+      mattina: [cream silk blouse, white tailored trousers, beige pumps]
+      pomeriggio: [charcoal fitted business dress, black pumps, silver watch]
+      sera: [burgundy off shoulder evening dress, black heels, ruby earrings]
+      notte: [black silk lounge dress, strappy heels, gold necklace]
+    3:
+      mattina: [white linen blazer, champagne camisole, tailored shorts, loafers]
+      pomeriggio: [navy one piece swimsuit, sheer white cover up, barefoot]
+      sera: [plum fitted midi dress, pointed heels, pearl necklace]
+      notte: [deep red silk cocktail dress, gold sandals, delicate bracelet]
+    4:
+      mattina: [stone grey executive suit, ivory blouse, black pumps]
+      pomeriggio: [white spa robe, barefoot, minimal jewelry]
+      sera: [black velvet evening gown, crystal heels, diamond earrings]
+      notte: [dark green silk wrap dress, low heels, gold bracelet]
+    5:
+      mattina: [black luxury swimsuit, sheer black beach kaftan, barefoot]
+      pomeriggio: [sand tailored dress, brown pumps, gold watch]
+      sera: [white sculpted cocktail dress, metallic heels, pearl earrings]
+      notte: [champagne satin slip dress, barefoot, fine gold necklace]
+    6:
+      mattina: [powder blue fitted dress, nude pumps, silver earrings]
+      pomeriggio: [cream silk shirt, black pencil skirt, black heels]
+      sera: [sapphire evening gown, silver heels, sapphire earrings]
+      notte: [black asymmetric cocktail dress, red heels, diamond bracelet]
+    7:
+      mattina: [white power suit, silk camisole, white pumps]
+      pomeriggio: [black executive midi dress, gold belt, black heels]
+      sera: [crimson formal gown, black heels, diamond necklace]
+      notte: [ivory silk private dress, barefoot, pearl bracelet]
+  stella:
+    1:
+      mattina: [red cutout swimsuit, oversized sunglasses, barefoot]
+      pomeriggio: [coral bikini, sheer coral sarong, barefoot]
+      sera: [gold sequin mini dress, gold high heels, hoop earrings]
+      notte: [black lace cocktail dress, thigh high stockings, high heels]
+    2:
+      mattina: [white halter sundress, wedge sandals, gold bangles]
+      pomeriggio: [electric blue bikini, white mesh cover up, barefoot]
+      sera: [scarlet satin mini dress, black heels, crystal earrings]
+      notte: [silver metallic party dress, silver heels, choker]
+    3:
+      mattina: [yellow bandeau bikini, loose white shirt, barefoot]
+      pomeriggio: [short white spa robe, barefoot, delicate anklet]
+      sera: [violet fitted dinner dress, nude heels, statement earrings]
+      notte: [midnight blue backless mini dress, black heels, silver bracelet]
+    4:
+      mattina: [luxury resort hostess dress, plunging neckline, high heels]
+      pomeriggio: [black one piece swimsuit, sheer red cover up, barefoot]
+      sera: [emerald sequin cocktail dress, gold heels, emerald earrings]
+      notte: [red silk slip dress, thigh high stockings, barefoot]
+    5:
+      mattina: [pink fitted sundress, white sandals, hoop earrings]
+      pomeriggio: [white bikini, turquoise sarong, barefoot]
+      sera: [black blazer mini dress, high heels, gold chain necklace]
+      notte: [purple satin club dress, silver heels, crystal bracelet]
+    6:
+      mattina: [turquoise cutout swimsuit, sheer white kaftan, barefoot]
+      pomeriggio: [champagne spa robe, barefoot, gold anklet]
+      sera: [red off shoulder dinner dress, black heels, ruby earrings]
+      notte: [gold satin mini dress, thigh high stockings, strappy heels]
+    7:
+      mattina: [white tailored romper, gold sandals, sunglasses]
+      pomeriggio: [black fitted cocktail dress, red heels, hoop earrings]
+      sera: [gold gala gown, metallic heels, diamond choker]
+      notte: [crimson silk private dress, barefoot, gold bracelet]
+  maria:
+    1:
+      mattina: [cream fitted service dress, sheer stockings, low heels]
+      pomeriggio: [elegant fitted maid dress, sheer stockings, high heels]
+      sera: [black silk service dress, sheer stockings, black pumps]
+      notte: [white spa robe, barefoot, hair pinned up]
+    2:
+      mattina: [ivory blouse, beige pencil skirt, nude pumps]
+      pomeriggio: [white spa tunic, fitted trousers, barefoot]
+      sera: [navy fitted dinner service dress, sheer stockings, low heels]
+      notte: [champagne satin service dress, barefoot, pearl earrings]
+    3:
+      mattina: [white tailored maid dress, nude stockings, low heels]
+      pomeriggio: [sage service blouse, black fitted skirt, black pumps]
+      sera: [burgundy spa wrap dress, barefoot, delicate bracelet]
+      notte: [ivory silk night service dress, barefoot, pearl necklace]
+    4:
+      mattina: [light blue service dress, sheer stockings, white pumps]
+      pomeriggio: [modest navy swimsuit, white linen cover up, barefoot]
+      sera: [black fitted suite dress, sheer stockings, black heels]
+      notte: [deep green cocktail service dress, low heels, gold earrings]
+    5:
+      mattina: [white spa robe, barefoot, minimal jewelry]
+      pomeriggio: [cream tailored suite uniform, nude stockings, pumps]
+      sera: [wine red fitted dinner dress, black heels, pearl earrings]
+      notte: [soft pink satin private service dress, barefoot, delicate necklace]
+    6:
+      mattina: [grey fitted service dress, sheer stockings, black pumps]
+      pomeriggio: [ivory silk blouse, black tailored trousers, low heels]
+      sera: [white spa wrap dress, barefoot, hair loose]
+      notte: [midnight blue suite dress, sheer stockings, barefoot]
+    7:
+      mattina: [champagne fitted maid dress, nude stockings, low heels]
+      pomeriggio: [black formal service dress, sheer stockings, pumps]
+      sera: [ivory elegant dinner dress, gold heels, pearl necklace]
+      notte: [white silk private service dress, barefoot, delicate bracelet]
+  luna:
+    1:
+      mattina: [ivory bikini, sheer white beach cover up, barefoot]
+      pomeriggio: [sand linen sundress, delicate sandals, woven bracelet]
+      sera: [elegant ivory resort dress, open back, delicate sandals]
+      notte: [moonlight blue silk dress, barefoot, silver pendant]
+    2:
+      mattina: [white one piece swimsuit, sheer ivory shirt, barefoot]
+      pomeriggio: [pale blue beach dress, flat sandals, shell necklace]
+      sera: [sage green dinner dress, low heels, silver earrings]
+      notte: [black soft knit dress, barefoot, moon pendant]
+    3:
+      mattina: [cream linen dress, leather sandals, simple bracelet]
+      pomeriggio: [white spa robe, barefoot, hair loose]
+      sera: [dark blue flowing dress, barefoot, silver pendant]
+      notte: [ivory silk slip dress, barefoot, delicate anklet]
+    4:
+      mattina: [white bikini, light blue sarong, barefoot]
+      pomeriggio: [ivory fitted resort dress, delicate sandals, pearl earrings]
+      sera: [burgundy soft evening dress, low heels, silver necklace]
+      notte: [deep violet beach dress, barefoot, moon pendant]
+    5:
+      mattina: [pale green one piece swimsuit, sheer cream cover up, barefoot]
+      pomeriggio: [white linen shirt dress, flat sandals, woven bracelet]
+      sera: [black backless cocktail dress, silver heels, moon earrings]
+      notte: [soft ivory night dress, barefoot, silver pendant]
+    6:
+      mattina: [white spa wrap dress, barefoot, simple anklet]
+      pomeriggio: [sky blue sundress, leather sandals, shell necklace]
+      sera: [emerald flowing dinner dress, low heels, silver earrings]
+      notte: [midnight blue sheer layered dress, barefoot, moon pendant]
+    7:
+      mattina: [cream wild beach dress, barefoot, woven bracelet]
+      pomeriggio: [ivory tailored resort dress, delicate sandals, pearl earrings]
+      sera: [silver grey formal dress, low heels, moon necklace]
+      notte: [white silk private dress, barefoot, delicate silver bracelet]
+location_overrides:
+  loc_pool: pool_or_swimwear_preferred
+  loc_private_beach: beachwear_preferred
+  loc_wild_beach: natural_beachwear_preferred
+  loc_spa: spa_attire_preferred
+  loc_victoria_office: professional_attire_preferred
