@@ -1,6 +1,7 @@
 from pathlib import Path
 
 from epos.contract import FinalScene
+from epos.entity_ids import normalize_scene_entity_ids
 from epos.resort_runtime import load_resort_pack, new_resort_world
 from epos.resort_turn_service import (
     _canonicalize_resort_speakers,
@@ -8,6 +9,7 @@ from epos.resort_turn_service import (
     enforce_resort_player_pov,
     validate_resort_scene_policy,
 )
+from epos.validators import validate_scene
 
 PACK_DIR = Path(__file__).resolve().parents[1] / "worlds" / "resort_world"
 
@@ -167,3 +169,21 @@ def test_short_victoria_speaker_is_canonicalized_before_generic_validation():
     scene = _canonicalize_resort_speakers(state, _victoria_short_name_scene())
     assert scene.dialogue[0].speaker == "Victoria Hale"
     assert validate_resort_scene_policy(state, pack.world, scene).ok
+
+
+def test_central_entity_normalizer_accepts_short_victoria_before_validation():
+    pack = load_resort_pack(PACK_DIR)
+    state = new_resort_world(pack, "victoria-central-normalizer")
+    result = normalize_scene_entity_ids(
+        state,
+        _victoria_short_name_scene(),
+        phase="semantic_validation",
+        source_payload="provider_parsed_phase1",
+    )
+    assert result.value.dialogue[0].speaker == "victoria"
+    assert any(
+        entry.field_path == "dialogue[0].speaker"
+        and entry.alias_rule == "unique_npc_first_name"
+        for entry in result.entries
+    )
+    assert validate_scene(state, pack.world, result.value).ok
