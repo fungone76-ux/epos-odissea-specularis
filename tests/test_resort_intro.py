@@ -1,6 +1,7 @@
 from pathlib import Path
 
 from epos.contract import FinalScene
+from epos.gm import DemoGameMaster
 from epos.resort_intro import (
     INTRO_ORDER,
     advance_resort_intro,
@@ -9,6 +10,7 @@ from epos.resort_intro import (
     intro_active,
     intro_context,
 )
+from epos.resort_intro_turn_service import ResortIntroTurnService
 from epos.resort_runtime import load_resort_pack, new_resort_world
 from epos.resort_turn_service import (
     enforce_resort_player_pov,
@@ -158,3 +160,47 @@ def test_after_stella_intro_next_turn_is_normal_gameplay():
 
     assert current_intro_step(state) is None
     assert intro_context(state) == {"active": False, "completed": True}
+
+
+def test_strict_intro_rejects_stella_during_victoria_step():
+    pack = load_resort_pack(PACK_DIR)
+    state = new_resort_world(pack, "intro-strict-victoria")
+    initialise_resort_intro(state)
+    service = ResortIntroTurnService(gm=DemoGameMaster(), pack=pack.world)
+
+    scene = FinalScene.from_dict(
+        {
+            "narration": "Victoria accoglie il cliente mentre Stella interviene.",
+            "dialogue": [
+                {"speaker": "Victoria", "to": "player", "text": "Benvenuto."},
+                {"speaker": "Stella", "to": "player", "text": "Sarà indimenticabile."},
+            ],
+            "npc_actions": [
+                {"npc_id": "victoria", "action": "si presenta"},
+                {"npc_id": "stella", "action": "si avvicina"},
+            ],
+            "intentions": [],
+            "initiatives": [],
+            "disclosure_events": [],
+            "mutations": [],
+            "memory_events": [],
+            "visual": {
+                "summary": "Victoria presenta il resort.",
+                "focus_character": "victoria",
+                "visible_characters": ["victoria"],
+                "shared_action": False,
+                "visual_en": "Victoria addresses the unseen VIP guest in the lobby.",
+                "tags_en": ["NPC introduction", "luxury resort"],
+                "moment_type": "speech",
+                "speaker_character": "victoria",
+                "actor_character": "victoria",
+                "reactor_character": "victoria",
+                "intimate_shared_moment": False,
+                "multi_character_reason": "",
+                "multi_character_participants": ["victoria"],
+            },
+        }
+    )
+
+    report = service._strict_intro_report(state, scene)
+    assert any(error.code == "resort_intro_other_npc_forbidden" for error in report.errors)
