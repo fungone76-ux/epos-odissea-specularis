@@ -13,6 +13,10 @@ class FakeState:
         self.location_id = location_id
         self.npcs = npcs
         self.last_scene = last_scene
+        # entity_ids.normalize_entity_id() opera su un vero WorldState e si
+        # aspetta sempre state.player. Il fixture deve quindi rispettare il
+        # contratto minimo del runtime invece di omettere l'attributo.
+        self.player = SimpleNamespace(name=None)
 
     def present_npc_ids(self):
         return [npc_id for npc_id, npc in self.npcs.items() if npc.present]
