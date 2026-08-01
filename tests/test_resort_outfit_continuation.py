@@ -101,4 +101,4 @@ def test_agreed_complete_undress_continuation_removes_every_worn_item():
     assert luna_state["torso_slot"] == []
     assert luna_state["lower_body_slot"] == []
     assert luna_state["footwear"] == []
-    assert luna_state["nudity_mode"] == "nude"
+    assert luna_state["nudity_mode"] == "fully_nude"
