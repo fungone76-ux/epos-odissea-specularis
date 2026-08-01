@@ -7,6 +7,7 @@ from epos.resort_final_turn_service import (
     _agreed_hosiery_request,
     _complete_undress_scene,
     _outfit_scene,
+    _resort_footwear_items,
 )
 from epos.resort_runtime import load_resort_pack, new_resort_world
 
@@ -35,9 +36,8 @@ def test_agreed_hosiery_continuation_removes_footwear_and_adds_prompt_tags():
     _put_luna_in_suite(state)
     state.last_scene = "Luna accetta di indossare pantyhose nere senza scarpe."
 
-    initial_state = outfit_state(state.npcs["luna"].outfit)
-    initial_footwear = list(initial_state["footwear"])
-    assert initial_footwear
+    initial_footwear = _resort_footwear_items(state.npcs["luna"].outfit)
+    assert initial_footwear == ["delicate high heels"]
 
     request = _agreed_hosiery_request(state, "fallo ora per favore")
     assert request == ("luna", "black pantyhose")
@@ -59,7 +59,7 @@ def test_agreed_hosiery_continuation_removes_footwear_and_adds_prompt_tags():
     for footwear_item in initial_footwear:
         assert footwear_item not in luna_state["worn_items"]
         assert footwear_item in luna_state["removed_items"]
-    assert luna_state["footwear"] == []
+    assert _resort_footwear_items(state.npcs["luna"].outfit) == []
 
 
 def test_fresh_complete_undress_request_is_not_automatic_consent():
