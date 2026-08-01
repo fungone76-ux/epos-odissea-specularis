@@ -17,6 +17,23 @@ from .resort_turn_service import ResortTurnService, _merge_reports, _speaker_id
 from .validators import ValidationErrorDetail, ValidationReport
 
 
+_LOBBY_VISUAL = (
+    "inside the grand Azure Crown luxury resort lobby, polished white marble floor, "
+    "marble reception desk, floor-to-ceiling glass walls, visible Mediterranean sea, "
+    "warm natural daylight, elegant brass details, luxury interior clearly visible, "
+    "detailed environmental background, no studio backdrop"
+)
+
+_LOBBY_TAGS = [
+    "NPC introduction",
+    "grand luxury resort lobby interior",
+    "polished marble floor",
+    "marble reception desk",
+    "floor-to-ceiling glass walls",
+    "Mediterranean sea view",
+    "detailed environmental background",
+]
+
 _INTRO_COPY = {
     "victoria": {
         "narration": (
@@ -30,7 +47,10 @@ _INTRO_COPY = {
             "Durante il soggiorno sarò il tuo riferimento personale. Prima di lasciarti "
             "esplorare liberamente, desidero presentarti Luna, Maria e Stella, una alla volta."
         ),
-        "visual": "Victoria Hale formally welcomes the unseen VIP guest in the Azure Crown lobby, poised authoritative posture, elegant cinematic composition",
+        "visual": (
+            "Victoria Hale formally welcomes the unseen VIP guest, poised authoritative "
+            "posture, elegant cinematic composition, " + _LOBBY_VISUAL
+        ),
         "summary": "Victoria Hale si presenta come direttrice e annuncia le altre collaboratrici.",
     },
     "luna": {
@@ -43,7 +63,10 @@ _INTRO_COPY = {
             "Piacere, sono Luna. Mi occupo dell'assistenza privata e discreta degli ospiti. "
             "Preferisco osservare e capire ciò che serve davvero, prima di intervenire."
         ),
-        "visual": "Luna introduces herself to the unseen VIP guest in the Azure Crown lobby, reserved attentive posture, elegant cinematic composition",
+        "visual": (
+            "Luna introduces herself to the unseen VIP guest, reserved attentive posture, "
+            "elegant cinematic composition, " + _LOBBY_VISUAL
+        ),
         "summary": "Luna si presenta e descrive il proprio ruolo di assistente privata.",
     },
     "maria": {
@@ -56,7 +79,10 @@ _INTRO_COPY = {
             "Sono Maria. Mi occuperò della suite presidenziale e di tutto ciò che riguarda "
             "il tuo comfort personale. Puoi rivolgerti direttamente a me per qualsiasi necessità."
         ),
-        "visual": "Maria introduces herself to the unseen VIP guest in the Azure Crown lobby, calm professional posture, elegant cinematic composition",
+        "visual": (
+            "Maria introduces herself to the unseen VIP guest, calm professional posture, "
+            "elegant cinematic composition, " + _LOBBY_VISUAL
+        ),
         "summary": "Maria si presenta come responsabile della suite e del servizio personale.",
     },
     "stella": {
@@ -69,7 +95,10 @@ _INTRO_COPY = {
             "Io sono Stella. Organizzo gli eventi VIP, l'intrattenimento e le esperienze "
             "speciali dell'Azure Crown. Farò in modo che qui non ci sia spazio per la noia."
         ),
-        "visual": "Stella introduces herself to the unseen VIP guest in the Azure Crown lobby, confident lively posture, elegant cinematic composition",
+        "visual": (
+            "Stella introduces herself to the unseen VIP guest, confident lively posture, "
+            "elegant cinematic composition, " + _LOBBY_VISUAL
+        ),
         "summary": "Stella si presenta come responsabile dell'intrattenimento VIP.",
     },
 }
@@ -101,7 +130,7 @@ def _canonical_intro_scene(npc_id: str, name: str) -> FinalScene:
                 "visible_characters": [npc_id],
                 "shared_action": False,
                 "visual_en": copy["visual"],
-                "tags_en": ["NPC introduction", "luxury resort lobby"],
+                "tags_en": list(_LOBBY_TAGS),
                 "moment_type": "speech",
                 "speaker_character": npc_id,
                 "actor_character": npc_id,
