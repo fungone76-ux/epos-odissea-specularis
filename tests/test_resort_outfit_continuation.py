@@ -35,23 +35,30 @@ def test_agreed_hosiery_continuation_removes_footwear_and_adds_prompt_tags():
     _put_luna_in_suite(state)
     state.last_scene = "Luna accetta di indossare pantyhose nere senza scarpe."
 
+    initial_state = outfit_state(state.npcs["luna"].outfit)
+    initial_footwear = list(initial_state["footwear"])
+    assert initial_footwear
+
     request = _agreed_hosiery_request(state, "fallo ora per favore")
     assert request == ("luna", "black pantyhose")
 
     scene = _outfit_scene(pack.world, state, *request)
     mutation_pairs = {(m.type, m.payload.get("item")) for m in scene.mutations}
-    assert ("outfit_remove", "delicate sandals") in mutation_pairs
+    for footwear_item in initial_footwear:
+        assert ("outfit_remove", footwear_item) in mutation_pairs
     assert ("outfit_wear", "black pantyhose") in mutation_pairs
     assert "black pantyhose" in scene.visual.tags_en
     assert "barefoot" in scene.visual.tags_en
     assert "no shoes" in scene.visual.tags_en
-    assert "delicate sandals" not in scene.visual.visual_en
+    for footwear_item in initial_footwear:
+        assert footwear_item not in scene.visual.visual_en
 
     apply_scene(state, scene, pack.world)
     luna_state = outfit_state(state.npcs["luna"].outfit)
     assert "black pantyhose" in luna_state["worn_items"]
-    assert "delicate sandals" not in luna_state["worn_items"]
-    assert "delicate sandals" in luna_state["removed_items"]
+    for footwear_item in initial_footwear:
+        assert footwear_item not in luna_state["worn_items"]
+        assert footwear_item in luna_state["removed_items"]
     assert luna_state["footwear"] == []
 
 
