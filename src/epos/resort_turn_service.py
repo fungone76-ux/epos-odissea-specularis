@@ -10,7 +10,6 @@ from __future__ import annotations
 
 import re
 from dataclasses import replace
-from typing import Any
 
 from .contract import FinalScene
 from .turn_service import TurnService
@@ -24,13 +23,56 @@ _PLAYER_VISUAL_TERMS = re.compile(
 
 
 def _speaker_id(state, speaker: str) -> str | None:
+    """Risolve id, nome completo o nome breve univoco di una NPC."""
+
     value = str(speaker or "").strip().casefold()
     if not value:
         return None
+
+    exact: list[str] = []
+    first_name: list[str] = []
     for npc_id, npc in state.npcs.items():
-        if value in {npc_id.casefold(), str(npc.name).casefold()}:
-            return npc_id
+        full_name = str(npc.name or "").strip().casefold()
+        if value in {npc_id.casefold(), full_name}:
+            exact.append(npc_id)
+        if full_name and value == full_name.split()[0]:
+            first_name.append(npc_id)
+
+    if len(exact) == 1:
+        return exact[0]
+    if len(first_name) == 1:
+        return first_name[0]
     return None
+
+
+def _canonicalize_resort_speakers(state, scene: FinalScene) -> FinalScene:
+    """Converte alias naturali come 'Victoria' nel nome canonico visualizzato.
+
+    Il contratto LLM usa spesso il solo nome proprio, mentre lo stato conserva
+    'Victoria Hale'. La normalizzazione avviene prima del validatore generico;
+    alias ambigui restano invariati e vengono correttamente rifiutati.
+    """
+
+    changed = False
+    dialogue = []
+    for line in scene.dialogue:
+        npc_id = _speaker_id(state, getattr(line, "speaker", ""))
+        if npc_id is None:
+            dialogue.append(line)
+            continue
+        canonical_name = str(state.npcs[npc_id].name or npc_id)
+        if line.speaker != canonical_name:
+            line = replace(line, speaker=canonical_name)
+            changed = True
+        dialogue.append(line)
+    return replace(scene, dialogue=dialogue) if changed else scene
+
+
+def _canonicalize_phase1_speakers(state, response):
+    if response.mode != "no_check" or response.scene is None:
+        return response
+    scene = _canonicalize_resort_speakers(state, response.scene)
+    return replace(response, scene=scene) if scene is not response.scene else response
 
 
 def _npc_from_scene(state, scene: FinalScene) -> str | None:
@@ -76,6 +118,7 @@ def enforce_resort_player_pov(state, pack, scene: FinalScene) -> FinalScene:
     if getattr(pack, "id", "") != RESORT_WORLD_ID or scene.visual is None:
         return scene
 
+    scene = _canonicalize_resort_speakers(state, scene)
     npc_id = _npc_from_scene(state, scene)
     if npc_id is None:
         return scene
@@ -208,6 +251,7 @@ class ResortTurnService(TurnService):
         *,
         phase: str,
     ):
+        response = _canonicalize_phase1_speakers(state, response)
         response = super()._normalize_phase1_pipeline(
             state, turn, player_text, response, phase=phase
         )
@@ -227,6 +271,7 @@ class ResortTurnService(TurnService):
         *,
         phase: str,
     ) -> FinalScene:
+        scene = _canonicalize_resort_speakers(state, scene)
         scene = super()._normalize_scene_pipeline(
             state, turn, player_text, scene, phase=phase
         )
@@ -238,14 +283,16 @@ class ResortTurnService(TurnService):
         state,
         player_text: str,
     ):
+        response = _canonicalize_phase1_speakers(state, response)
         base = super()._validate_phase1_response_after_outfit_normalization(
             response, state, player_text
         )
         if response.mode != "no_check" or response.scene is None:
             return base
+        normalized_scene = enforce_resort_player_pov(state, self.pack, response.scene)
         return _merge_reports(
             base,
-            validate_resort_scene_policy(state, self.pack, response.scene),
+            validate_resort_scene_policy(state, self.pack, normalized_scene),
         )
 
     def _validate_scene_after_outfit_normalization(
@@ -254,6 +301,8 @@ class ResortTurnService(TurnService):
         state,
         player_text: str,
     ):
+        scene = _canonicalize_resort_speakers(state, scene)
+        scene = enforce_resort_player_pov(state, self.pack, scene)
         base = super()._validate_scene_after_outfit_normalization(
             scene, state, player_text
         )
