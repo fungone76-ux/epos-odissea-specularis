@@ -6,7 +6,7 @@ Uso:
     python tools/play_resort_gui.py --live --save salvataggio.json
 
 La GUI usa input libero e risposte reali dell'LLM. Python resta autorevole per
-missioni, punteggi, calendario, relazioni, segreti, POV e rendering.
+missioni, punteggi, calendario, relazioni, segreti, intro, POV e rendering.
 """
 
 from __future__ import annotations
@@ -25,6 +25,7 @@ from epos.gm import DemoGameMaster, OpenAICompatibleGameMaster
 from epos.models import WorldState
 from epos.renderers import renderer_from_env
 from epos.resort_gui import ResortGameWindow
+from epos.resort_intro import initialise_resort_intro, intro_active
 from epos.resort_runtime import (
     advance_resort_time,
     initialise_resort_state,
@@ -53,7 +54,8 @@ def main() -> None:
 
     def process_campaign_turn(state, result):
         changes = process_resort_turn(state, resort_pack, result)
-        advance_resort_time(state, force=False)
+        if not intro_active(state):
+            advance_resort_time(state, force=False)
         return changes
 
     service = ResortTurnService(
@@ -66,11 +68,11 @@ def main() -> None:
     if args.save:
         data = json.loads(Path(args.save).read_text(encoding="utf-8"))
         state = initialise_resort_state(WorldState.from_dict(data))
-        service.store.save_state(state)
     else:
         state = service.new_session()
         initialise_resort_state(state)
-        service.store.save_state(state)
+    initialise_resort_intro(state)
+    service.store.save_state(state)
 
     app = QApplication(sys.argv)
     window = ResortGameWindow(service, state, resort_pack)
