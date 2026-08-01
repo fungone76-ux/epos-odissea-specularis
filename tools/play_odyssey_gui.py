@@ -37,7 +37,7 @@ from epos.worldpack import load_pack
 
 from epos.odyssey_gm import OdysseyDemoGameMaster
 from epos.odyssey_gui import OdysseyGameWindow
-from epos.odyssey_mission_tracker import OdysseyMissionTracker
+from epos.odyssey_runtime import OdysseyRuleAwareGameMaster, process_odyssey_turn
 
 
 def main() -> None:
@@ -59,23 +59,27 @@ def main() -> None:
     # GM
     if args.live:
         try:
-            gm = OpenAICompatibleGameMaster()
+            base_gm = OpenAICompatibleGameMaster()
         except Exception as exc:
             print(f"Errore configurazione live: {exc}", file=sys.stderr)
             print("Uso il GM demo offline.", file=sys.stderr)
-            gm = OdysseyDemoGameMaster()
+            base_gm = OdysseyDemoGameMaster()
     else:
-        gm = OdysseyDemoGameMaster()
+        base_gm = OdysseyDemoGameMaster()
+
+    # L'adattatore applica le regole matematiche dell'Odissea prima che
+    # TurnService validi e risolva la prova. La LLM non decide la difficolta.
+    gm = OdysseyRuleAwareGameMaster(base_gm)
 
     # Service con renderer da EPOS_RENDER_MODE (pending | comfy | novelai)
-    def process_odyssey_turn(state, result):
-        return OdysseyMissionTracker(state, pack=pack).process_turn(result)
+    def process_campaign_turn(state, result):
+        return process_odyssey_turn(state, pack, result, gm=gm)
 
     service = TurnService(
         gm=gm,
         pack=pack,
         renderer=renderer_from_env(),
-        post_turn_processor=process_odyssey_turn,
+        post_turn_processor=process_campaign_turn,
     )
 
     # Stato: salvataggio esistente oppure nuova sessione
@@ -86,7 +90,6 @@ def main() -> None:
     else:
         state = service.new_session()
 
-    # GUI — il tracker viene creato dentro OdysseyGameWindow su questo stato
     app = QApplication(sys.argv)
     window = OdysseyGameWindow(service, state)
     window.show()
