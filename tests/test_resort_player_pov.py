@@ -3,6 +3,8 @@ from pathlib import Path
 from epos.contract import FinalScene
 from epos.resort_runtime import load_resort_pack, new_resort_world
 from epos.resort_turn_service import (
+    _canonicalize_resort_speakers,
+    _speaker_id,
     enforce_resort_player_pov,
     validate_resort_scene_policy,
 )
@@ -41,6 +43,42 @@ def _scene(**visual_overrides):
             "mutations": [],
             "memory_events": [],
             "visual": visual,
+        }
+    )
+
+
+def _victoria_short_name_scene():
+    return FinalScene.from_dict(
+        {
+            "narration": "Victoria accetta i documenti per la registrazione.",
+            "dialogue": [
+                {
+                    "speaker": "Victoria",
+                    "to": "player",
+                    "text": "Sì, sarebbero molto utili. Grazie.",
+                }
+            ],
+            "npc_actions": [],
+            "intentions": [],
+            "initiatives": [],
+            "disclosure_events": [],
+            "mutations": [],
+            "memory_events": [],
+            "visual": {
+                "summary": "Victoria accetta i documenti dal cliente fuori campo.",
+                "focus_character": "victoria",
+                "visible_characters": ["victoria"],
+                "shared_action": False,
+                "visual_en": "Victoria stands confidently in the lobby, addressing the unseen VIP guest.",
+                "tags_en": ["full body", "confident stance", "lobby"],
+                "moment_type": "speech",
+                "speaker_character": "victoria",
+                "actor_character": "victoria",
+                "reactor_character": "",
+                "intimate_shared_moment": False,
+                "multi_character_reason": "",
+                "multi_character_participants": ["victoria"],
+            },
         }
     )
 
@@ -113,3 +151,19 @@ def test_valid_victoria_reply_passes_resort_policy():
     )
     report = validate_resort_scene_policy(state, pack.world, scene)
     assert report.ok
+
+
+def test_unique_short_first_name_resolves_to_victoria():
+    pack = load_resort_pack(PACK_DIR)
+    state = new_resort_world(pack, "victoria-alias")
+    assert _speaker_id(state, "Victoria") == "victoria"
+    assert _speaker_id(state, "Victoria Hale") == "victoria"
+    assert _speaker_id(state, "victoria") == "victoria"
+
+
+def test_short_victoria_speaker_is_canonicalized_before_generic_validation():
+    pack = load_resort_pack(PACK_DIR)
+    state = new_resort_world(pack, "victoria-canonical")
+    scene = _canonicalize_resort_speakers(state, _victoria_short_name_scene())
+    assert scene.dialogue[0].speaker == "Victoria Hale"
+    assert validate_resort_scene_policy(state, pack.world, scene).ok
