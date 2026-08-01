@@ -13,7 +13,6 @@ import re
 import unicodedata
 
 from .contract import FinalScene
-from .models import outfit_state
 from .resort_intro import current_intro_step, initialise_resort_intro
 from .resort_playable_turn_service import ResortPlayableTurnService
 from .resort_turn_service import _speaker_id
@@ -35,11 +34,27 @@ _ACCEPTANCE_RE = re.compile(
     r"decide di|promette di|says yes|agrees|agreed|accepts|nods|ready to)\b",
     re.IGNORECASE,
 )
+_FOOTWEAR_RE = re.compile(
+    r"\b(?:boots?|shoes?|sandals?|heels?|high heels?|stilettos?|pumps?|loafers?|"
+    r"wedges?|slippers?|sneakers?|flats?|greaves?|scarpe|sandali|stivali|tacchi|"
+    r"décolleté|decollete)\b",
+    re.IGNORECASE,
+)
 
 
 def _plain(text: str) -> str:
     normalized = unicodedata.normalize("NFKD", str(text or ""))
     return "".join(ch for ch in normalized if not unicodedata.combining(ch)).casefold()
+
+
+def _resort_footwear_items(outfit) -> list[str]:
+    """Return every worn Resort item that semantically represents footwear."""
+
+    return [
+        str(item)
+        for item in getattr(outfit, "worn", [])
+        if _FOOTWEAR_RE.search(_plain(item))
+    ]
 
 
 def _present_target(state, player_text: str) -> str | None:
@@ -107,8 +122,7 @@ def _agreed_complete_undress_request(state, player_text: str) -> str | None:
 def _outfit_scene(pack, state, npc_id: str, hosiery: str) -> FinalScene:
     npc = state.npcs[npc_id]
     location = pack.locations[state.location_id]
-    current = outfit_state(npc.outfit)
-    footwear = list(current.get("footwear", []))
+    footwear = _resort_footwear_items(npc.outfit)
 
     mutations = [
         {
