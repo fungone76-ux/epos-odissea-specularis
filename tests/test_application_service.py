@@ -1,6 +1,6 @@
 ﻿from pathlib import Path
 
-from epos.application import GameApplicationService, find_turn_image
+from epos.application import GameApplicationService, GuiServiceProviders, find_turn_image
 from epos.gm import DemoGameMaster
 from epos.models import Thread
 from epos.state_store import StateStore
@@ -67,3 +67,23 @@ def test_visual_prompt_view_and_image_lookup_are_read_only(tmp_path):
     assert prompt.turn == 0
     assert "sunlit room" in prompt.text
     assert "bad anatomy" in prompt.text
+
+
+def test_gui_service_preserves_post_turn_processor(tmp_path):
+    pack = load_pack(ODYSSEY_PACK)
+
+    def campaign_processor(state, result):
+        state.flags["campaign_processor_called"] = True
+        return {"campaign_processor_called": True}
+
+    service = TurnService(
+        gm=DemoGameMaster(),
+        pack=pack,
+        store=StateStore(tmp_path / "saves"),
+        post_turn_processor=campaign_processor,
+    )
+    app = GameApplicationService(service)
+
+    gui_service = app.service_with_providers(GuiServiceProviders())
+
+    assert gui_service.post_turn_processor is campaign_processor
