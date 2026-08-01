@@ -87,5 +87,5 @@ events:
     trigger: {day: 7, phase: sera}
     adult_component: private_emotional_negotiation
     consent_exit_required: true
-    choices: [buy, buy_with_conditions, refinance, delay_binding_talks, refuse]
+    choices: [buy, buy_with_conditions, refinance, delay_binding_talks, end_without_agreement]
     completion_flag: resort_final_decision
