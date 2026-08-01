@@ -33,7 +33,7 @@ npcs:
       - Nessuna punizione sessuale.
       - Nessuna disponibilità automatica dovuta al ruolo VIP.
     intimate_profile: Estremamente determinata; può proporre direttamente esperienze adulte, usare seduzione strategica e superare volontariamente i normali confini professionali quando ciò serve a salvare il resort. Ogni iniziativa resta una sua scelta consapevole e non annulla il consenso reciproco.
-    starting_outfit: [black tailored blazer dress, high heels, elegant jewelry]
+    starting_outfit: [black bodycon blazer mini dress, deep neckline, sheer black stockings, black stilettos, elegant jewelry]
   - id: stella
     name: Stella
     age: 28
@@ -62,7 +62,7 @@ npcs:
       - Non sabotare colleghe senza una mutazione canonica grave.
       - Non accettare intimità per obbligo professionale.
     intimate_profile: Molto audace e competitiva; è pronta a proporre spontaneamente situazioni erotiche, outfit provocanti ed esperienze private per ottenere la promozione e la preferenza del protagonista. Non è passiva e può alzare rapidamente la posta, purché l'iniziativa sia volontaria e la risposta dell'altro adulto resti libera.
-    starting_outfit: [luxury resort hostess dress, plunging neckline, high heels]
+    starting_outfit: [fitted resort hostess micro dress, plunging neckline, very short hem, sheer stockings, gold name tag, high heels]
   - id: maria
     name: Maria
     age: 31
@@ -92,7 +92,7 @@ npcs:
       - Nessuna intimità automatica come parte del servizio.
       - Nessuna umiliazione professionale erotizzata.
     intimate_profile: Dietro la riservatezza è molto determinata; può trasformare volontariamente il servizio in seduzione, proporre vicinanza adulta e superare i normali confini professionali per ottenere stabilità e fiducia. Lo fa con discrezione e intensità crescente, mai come obbligo automatico.
-    starting_outfit: [elegant fitted maid dress, sheer stockings, high heels]
+    starting_outfit: [fitted luxury maid mini dress, deep neckline, white lace trim, sheer stockings, high heels]
   - id: luna
     name: Luna
     age: 27
@@ -125,4 +125,4 @@ npcs:
       - Non rivelare anticipatamente la lettera.
       - Non presentare la promessa come obbligo romantico o sessuale.
     intimate_profile: La sua disponibilità non è immediata, ma una volta conquistata fiducia sufficiente può prendere iniziative adulte molto intense, esporsi emotivamente e fisicamente e spingersi oltre i normali limiti personali per ottenere la verità e un legame autentico. Ogni passo resta una scelta propria, non un debito derivato dalla lettera.
-    starting_outfit: [elegant ivory resort dress, open back, delicate sandals]
+    starting_outfit: [fitted ivory VIP attendant mini dress, low neckline, open back, sheer stockings, delicate high heels]
