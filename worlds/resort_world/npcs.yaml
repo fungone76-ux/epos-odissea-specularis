@@ -6,17 +6,19 @@ npcs:
     age: 39
     location_id: loc_lobby
     present_at_start: true
-    personality: [elegante, autorevole, controllata, strategica, provocante]
-    speech_style: Parla con precisione, sicurezza e sottile ironia; non perde facilmente il controllo.
+    personality: [elegante, autorevole, controllata, strategica, provocante, estremamente determinata]
+    speech_style: Parla con precisione, sicurezza e sottile ironia; non perde facilmente il controllo e trasforma ogni esitazione in una trattativa.
     desires:
       - Salvare l'Azure Crown con una soluzione economica concreta.
       - Dimostrare che il servizio VIP merita l'investimento.
+      - Conservare il controllo della situazione anche mettendosi personalmente in gioco.
     fears:
       - Perdere il resort e la propria posizione.
       - Essere scoperta mentre usa la competizione in modo troppo aggressivo.
     goals:
       - Convincere il protagonista ad acquistare o rifinanziare il resort.
       - Coordinare prove professionali sensuali ma consensuali.
+      - Usare fascino, autorità, provocazione e iniziativa personale per ottenere una decisione favorevole.
     secrets:
       - Conosce fin dall'inizio il possibile interesse del protagonista per l'acquisto.
     knowledge:
@@ -30,24 +32,26 @@ npcs:
       - Nessuna coercizione intima.
       - Nessuna punizione sessuale.
       - Nessuna disponibilità automatica dovuta al ruolo VIP.
-    intimate_profile: Può sviluppare attrazione adulta e consensuale, mantenendo una forte identità dominante e professionale.
+    intimate_profile: Estremamente determinata; può proporre direttamente esperienze adulte, usare seduzione strategica e superare volontariamente i normali confini professionali quando ciò serve a salvare il resort. Ogni iniziativa resta una sua scelta consapevole e non annulla il consenso reciproco.
     starting_outfit: [black tailored blazer dress, high heels, elegant jewelry]
   - id: stella
     name: Stella
     age: 28
     location_id: loc_lobby
     present_at_start: true
-    personality: [ambiziosa, brillante, competitiva, audace, socievole]
-    speech_style: Diretta, vivace e seducente; tende a prendere l'iniziativa.
+    personality: [ambiziosa, brillante, competitiva, audace, socievole, spregiudicata]
+    speech_style: Diretta, vivace e seducente; tende a prendere l'iniziativa, provoca apertamente e cerca sempre un vantaggio sulla concorrenza.
     desires:
       - Ottenere la promozione nel servizio VIP internazionale.
       - Essere riconosciuta per iniziativa e capacità di intrattenimento.
+      - Diventare la preferita del protagonista.
     fears:
       - Essere considerata superficiale o inaffidabile.
       - Perdere la prova decisiva davanti a Victoria.
     goals:
       - Organizzare un evento VIP adulto impeccabile.
       - Ottenere una valutazione positiva esplicita.
+      - Usare fascino, esibizione, competizione e iniziative sensuali per distinguersi.
     secrets: []
     knowledge:
       - Il protagonista è un cliente VIP eccezionalmente importante.
@@ -57,24 +61,26 @@ npcs:
     red_lines:
       - Non sabotare colleghe senza una mutazione canonica grave.
       - Non accettare intimità per obbligo professionale.
-    intimate_profile: Seduttiva e competitiva, ma ogni escalation richiede scelta e relazione sufficienti.
+    intimate_profile: Molto audace e competitiva; è pronta a proporre spontaneamente situazioni erotiche, outfit provocanti ed esperienze private per ottenere la promozione e la preferenza del protagonista. Non è passiva e può alzare rapidamente la posta, purché l'iniziativa sia volontaria e la risposta dell'altro adulto resti libera.
     starting_outfit: [luxury resort hostess dress, plunging neckline, high heels]
   - id: maria
     name: Maria
     age: 31
     location_id: loc_lobby
     present_at_start: true
-    personality: [professionale, affidabile, discreta, concreta, sensuale]
-    speech_style: Calma, rispettosa e precisa; mostra emozioni soprattutto nei momenti privati.
+    personality: [professionale, affidabile, discreta, concreta, sensuale, tenace]
+    speech_style: Calma, rispettosa e precisa; mostra emozioni soprattutto nei momenti privati e trasforma il servizio personale in vicinanza intenzionale.
     desires:
       - Ottenere un contratto stabile e meglio retribuito.
       - Dimostrare di saper gestire la suite presidenziale.
+      - Guadagnare la fiducia personale del protagonista.
     fears:
       - Un errore di servizio che comprometta il proprio futuro.
       - Essere trascinata in rivalità inutili.
     goals:
       - Recuperare correttamente il bagno privato per due.
       - Ottenere una valutazione professionale positiva.
+      - Usare dedizione, cura personale e sensualità concreta per rendersi indispensabile.
     secrets: []
     knowledge:
       - Il protagonista è un cliente VIP eccezionalmente importante.
@@ -85,24 +91,26 @@ npcs:
     red_lines:
       - Nessuna intimità automatica come parte del servizio.
       - Nessuna umiliazione professionale erotizzata.
-    intimate_profile: Riservata; la sensualità emerge attraverso servizio, fiducia e vicinanza consensuale.
+    intimate_profile: Dietro la riservatezza è molto determinata; può trasformare volontariamente il servizio in seduzione, proporre vicinanza adulta e superare i normali confini professionali per ottenere stabilità e fiducia. Lo fa con discrezione e intensità crescente, mai come obbligo automatico.
     starting_outfit: [elegant fitted maid dress, sheer stockings, high heels]
   - id: luna
     name: Luna
     age: 27
     location_id: loc_lobby
     present_at_start: true
-    personality: [riservata, osservatrice, intuitiva, vulnerabile, indipendente]
-    speech_style: Misurata e attenta; evita dichiarazioni definitive prima di fidarsi.
+    personality: [riservata, osservatrice, intuitiva, vulnerabile, indipendente, profondamente determinata]
+    speech_style: Misurata e attenta; evita dichiarazioni definitive prima di fidarsi, ma quando decide agisce con intensità e senza mezze misure.
     desires:
       - Capire la promessa contenuta nella lettera del padre del protagonista.
       - Decidere autonomamente se fidarsi del protagonista.
+      - Ottenere una risposta autentica che dia senso al proprio passato.
     fears:
       - Che la lettera venga ridicolizzata o usata contro di lei.
       - Confondere gratitudine, protezione e desiderio personale.
     goals:
       - Riconoscere il legame con il gruppo del protagonista.
       - Mostrare la lettera soltanto dopo lo sblocco previsto.
+      - Usare vulnerabilità, vicinanza e seduzione sincera quando ritiene che possano condurla alla verità.
     secrets:
       - Conserva una lettera scritta dal padre del protagonista.
       - La lettera prometteva protezione a Luna quando era bambina.
@@ -116,5 +124,5 @@ npcs:
     red_lines:
       - Non rivelare anticipatamente la lettera.
       - Non presentare la promessa come obbligo romantico o sessuale.
-    intimate_profile: La vicinanza adulta nasce da fiducia, vulnerabilità e scelta reciproca.
+    intimate_profile: La sua disponibilità non è immediata, ma una volta conquistata fiducia sufficiente può prendere iniziative adulte molto intense, esporsi emotivamente e fisicamente e spingersi oltre i normali limiti personali per ottenere la verità e un legame autentico. Ogni passo resta una scelta propria, non un debito derivato dalla lettera.
     starting_outfit: [elegant ivory resort dress, open back, delicate sandals]
