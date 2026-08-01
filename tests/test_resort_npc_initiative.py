@@ -74,7 +74,7 @@ def test_autonomous_initiative_source_satisfies_resort_response_policy():
     )
 
 
-def test_autonomous_initiative_source_becomes_single_visual_focus():
+def test_autonomous_initiative_source_overrides_wrong_present_npc_visual_focus():
     pack, state = _multi_npc_state()
     scene = FinalScene.from_dict(
         {
@@ -94,7 +94,7 @@ def test_autonomous_initiative_source_becomes_single_visual_focus():
             "disclosure_events": [],
             "mutations": [],
             "memory_events": [],
-            "visual": _visual(focus="player", visible=["player"], moment_type="action"),
+            "visual": _visual(focus="maria", visible=["maria"], moment_type="action"),
         }
     )
 
