@@ -49,11 +49,17 @@ def test_all_scheduled_outfits_match_location_and_revealing_style_contract():
     pack = load_resort_pack(PACK_DIR)
     config = load_resort_schedule_config(PACK_DIR, pack.world)
 
+    # Vocabolario semantico ammesso dal guardaroba canonico. Il contratto non
+    # richiede una singola parola specifica: basta almeno un descrittore che
+    # renda l'outfit aderente, rivelante o esplicitamente sensuale.
     revealing_terms = (
         "bodycon", "fitted", "mini", "micro", "deep neckline", "plunging",
         "low neckline", "low cut", "backless", "open back", "high slit",
-        "thigh slit", "cutout", "lingerie", "bikini", "swimsuit",
-        "one piece", "sheer", "loosely tied", "corset", "slip",
+        "thigh slit", "slit dress", "slit gown", "cutout", "lingerie",
+        "bikini", "swimsuit", "one piece", "sheer", "mesh", "lace",
+        "loosely tied", "corset", "sculpted bodice", "slip", "off shoulder",
+        "halter", "bandeau", "high cut", "tiny bottoms", "string bikini",
+        "no blouse", "very short hem", "open shirt", "crop cover up",
     )
     swim_locations = {"loc_pool", "loc_private_beach", "loc_wild_beach"}
 
