@@ -26,13 +26,13 @@ from epos.models import WorldState
 from epos.renderers import renderer_from_env
 from epos.resort_gui import ResortGameWindow
 from epos.resort_intro import initialise_resort_intro, intro_active
+from epos.resort_intro_turn_service import ResortIntroTurnService
 from epos.resort_runtime import (
     advance_resort_time,
     initialise_resort_state,
     load_resort_pack,
     process_resort_turn,
 )
-from epos.resort_turn_service import ResortTurnService
 
 
 def main() -> None:
@@ -58,7 +58,7 @@ def main() -> None:
             advance_resort_time(state, force=False)
         return changes
 
-    service = ResortTurnService(
+    service = ResortIntroTurnService(
         gm=gm,
         pack=resort_pack.world,
         renderer=renderer_from_env(),
