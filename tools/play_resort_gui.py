@@ -24,6 +24,7 @@ from epos.dotenv import load_dotenv
 from epos.gm import DemoGameMaster, OpenAICompatibleGameMaster
 from epos.models import WorldState
 from epos.renderers import renderer_from_env
+from epos.resort_application import ResortGameApplicationService
 from epos.resort_gui import ResortGameWindow
 from epos.resort_intro import initialise_resort_intro, intro_active
 from epos.resort_intro_turn_service import ResortIntroTurnService
@@ -76,6 +77,10 @@ def main() -> None:
 
     app = QApplication(sys.argv)
     window = ResortGameWindow(service, state, resort_pack)
+    # EposGameWindow creates the generic facade internally. Replace it with the
+    # Resort-aware facade so the worker keeps ResortIntroTurnService instead of
+    # silently rebuilding a plain TurnService.
+    window.app_service = ResortGameApplicationService(service)
     window.show()
     sys.exit(app.exec())
 
