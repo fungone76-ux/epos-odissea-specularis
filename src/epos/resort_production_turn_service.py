@@ -14,6 +14,8 @@ import re
 import unicodedata
 
 from .resort_final_turn_service import ResortFinalTurnService, _present_target
+from .resort_intro import current_intro_step, initialise_resort_intro
+from .resort_playable_turn_service import _movement_scene
 from .validators import ValidationErrorDetail, ValidationReport
 
 _GENERIC_SEXY_REQUEST_RE = re.compile(
@@ -34,6 +36,13 @@ _GENERIC_ITEM_RE = re.compile(
     r"^(?:outfit|abito|vestito|vestiti|abbigliamento|clothes?|clothing|attire)$",
     re.IGNORECASE,
 )
+_GENERIC_BEACH_MOVE_RE = re.compile(
+    r"\b(?:vado|andrei|andiamo|voglio\s+andare|vorrei\s+andare|mi\s+reco|"
+    r"raggiungo|torno|ritorno|spostiamoci|portami|accompagnami)\b[^.!?]{0,60}"
+    r"\bspiaggia\b",
+    re.IGNORECASE,
+)
+_SPECIFIC_BEACH_RE = re.compile(r"\b(?:spiaggia\s+privata|spiaggia\s+selvaggia|cala)\b", re.IGNORECASE)
 
 
 def _plain(text: str) -> str:
@@ -56,6 +65,22 @@ def _is_generic_sexy_request(player_text: str) -> bool:
 
 def _is_refusal_scene(scene) -> bool:
     return bool(_REFUSAL_RE.search(_plain(_scene_text(scene))))
+
+
+def _generic_beach_destination(pack, player_text: str) -> str | None:
+    """Resolve plain 'spiaggia' to the Resort private beach.
+
+    Specific requests remain handled by the canonical navigation layer. This
+    repair exists because the generic word previously fell through to the LLM,
+    which could turn a simple movement into an unrelated social check.
+    """
+
+    text = _plain(player_text)
+    if not _GENERIC_BEACH_MOVE_RE.search(text):
+        return None
+    if _SPECIFIC_BEACH_RE.search(text):
+        return None
+    return "loc_private_beach" if "loc_private_beach" in pack.locations else None
 
 
 def _concrete_wear_items(scene, npc_id: str) -> tuple[list[str], list[str]]:
@@ -128,7 +153,22 @@ def validate_concrete_sexy_outfit(
 
 
 class ResortProductionTurnService(ResortFinalTurnService):
-    """Final launcher service including creative outfit validation."""
+    """Final launcher service including deterministic movement repairs."""
+
+    def play(self, state, player_text: str):
+        initialise_resort_intro(state)
+        if current_intro_step(state) is None:
+            destination = _generic_beach_destination(self.pack, player_text)
+            if destination is not None and destination != state.location_id:
+                scene = _movement_scene(self.pack, state, destination)
+                return self._commit_turn(
+                    state,
+                    state.turn,
+                    "no_check",
+                    scene,
+                    player_text=player_text,
+                )
+        return super().play(state, player_text)
 
     def _validate_phase1_response_after_outfit_normalization(
         self, response, state, player_text: str
