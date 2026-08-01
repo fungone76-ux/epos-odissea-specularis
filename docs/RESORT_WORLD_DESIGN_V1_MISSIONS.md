@@ -20,6 +20,8 @@ Il protagonista arriva inizialmente per valutare il resort. Durante i sette gior
 
 Questi elementi devono restare secondari rispetto a vacanza, relazioni e competizione. Non deve esistere un complotto complesso.
 
+La difficoltà economica concreta è un debito bancario in scadenza. La scadenza cade durante il settimo giorno, così la decisione economica conclusiva coincide con la fine del soggiorno.
+
 Alla fine il protagonista può:
 
 - acquistare il resort;
@@ -89,7 +91,8 @@ Contenuto canonico:
 - il padre del protagonista aveva un debito morale verso la madre di Luna;
 - la madre di Luna lo aveva aiutato durante una grave crisi personale o professionale;
 - in cambio egli aveva promesso di proteggere Luna;
-- la promessa non è stata mantenuta oppure si è interrotta senza spiegazione.
+- la promessa non fu mantenuta perché il padre del protagonista morì prima di completarla;
+- non esistono complotti, sabotaggi o ulteriori livelli nascosti dietro il fallimento della promessa.
 
 La lettera contiene un riferimento, una firma o un dettaglio aziendale riconoscibile ma ambiguo. Non deve rivelare immediatamente tutta la verità.
 
@@ -103,6 +106,20 @@ Principi runtime:
 
 Regola architetturale: **Python governa la missione; la LLM interpreta Luna.**
 
-## Victoria
+## Victoria — Salvare l'Azure Crown
 
-La missione personale di Victoria resta da definire con obiettivo, passaggi, successo, esito alternativo e fallimento chiari.
+Obiettivo: convincere il protagonista ad acquistare il resort entro la fine del soggiorno.
+
+Passaggi principali:
+
+- mostrargli i punti di forza reali della struttura;
+- gestire senza scandali i problemi di servizio;
+- presentargli con trasparenza il debito bancario;
+- dimostrare che il personale e l'organizzazione possono funzionare bene;
+- ottenere una decisione finale favorevole entro il settimo giorno.
+
+Successo: il protagonista acquista il resort.
+
+Esito alternativo: non acquista immediatamente, ma apre una trattativa concreta o propone condizioni precise.
+
+Fallimento definitivo: il protagonista rifiuta ogni trattativa per gravi inganni, errori o perdita totale di fiducia.
