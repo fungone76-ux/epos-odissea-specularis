@@ -81,7 +81,7 @@ def _canonicalize_phase1_speakers(state, response):
 
 
 def _npc_from_scene(state, scene: FinalScene) -> str | None:
-    """Sceglie la NPC protagonista con priorita speaker > reazione > azione."""
+    """Sceglie la NPC protagonista con priorita speaker > visual > azione > iniziativa."""
 
     intro_step = current_intro_step(state)
     if intro_step is not None and intro_step.npc_id in state.npcs:
@@ -114,7 +114,7 @@ def _npc_from_scene(state, scene: FinalScene) -> str | None:
             return npc_id
 
     for initiative in scene.initiatives:
-        npc_id = str(getattr(initiative, "npc_id", ""))
+        npc_id = str(getattr(initiative, "source", ""))
         if npc_id in present:
             return npc_id
 
@@ -180,7 +180,7 @@ def _npc_participates(state, scene: FinalScene, npc_id: str) -> bool:
         return True
     if any(str(getattr(action, "npc_id", "")) == npc_id for action in scene.npc_actions):
         return True
-    if any(str(getattr(event, "npc_id", "")) == npc_id for event in scene.initiatives):
+    if any(str(getattr(event, "source", "")) == npc_id for event in scene.initiatives):
         return True
     return False
 
@@ -203,7 +203,7 @@ def validate_resort_scene_policy(state, pack, scene: FinalScene) -> ValidationRe
         for action in scene.npc_actions
     )
     npc_initiative = any(
-        str(getattr(event, "npc_id", "")) in present_npcs
+        str(getattr(event, "source", "")) in present_npcs
         for event in scene.initiatives
     )
     if present_npcs and not (npc_dialogue or npc_action or npc_initiative):
