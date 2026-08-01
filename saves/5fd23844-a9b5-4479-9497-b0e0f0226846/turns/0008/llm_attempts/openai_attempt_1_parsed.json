@@ -1,0 +1,32 @@
+{
+  "narration": "Dopo aver richiesto un caffè senza scarpe, un cameriere si avvicina con un sorriso e un vassoio lucido. Con una grazia impeccabile, serve il caffè caldo, presentandolo con attenzione. Il profumo del caffè si diffonde nell'aria, mescolandosi con la freschezza del Mediterraneo che permea la lobby. La tua richiesta è stata accolta senza alcun intoppo, e tutto sembra perfetto in questo momento di relax.",
+  "dialogue": [],
+  "npc_actions": [],
+  "intentions": [],
+  "mutations": [],
+  "initiatives": [],
+  "disclosure_events": [],
+  "memory_events": [],
+  "visual": {
+    "summary": "Il cameriere serve il caffè con eleganza.",
+    "focus_character": "player",
+    "visible_characters": [
+      "player"
+    ],
+    "shared_action": false,
+    "moment_type": "action",
+    "speaker_character": "",
+    "actor_character": "npc_id",
+    "reactor_character": "",
+    "intimate_shared_moment": false,
+    "multi_character_reason": "",
+    "multi_character_participants": [],
+    "visual_en": "The waiter serves the coffee elegantly on a shiny tray, presenting it with great care.",
+    "tags_en": [
+      "close-up",
+      "elegant",
+      "luxurious",
+      "coffee"
+    ]
+  }
+}

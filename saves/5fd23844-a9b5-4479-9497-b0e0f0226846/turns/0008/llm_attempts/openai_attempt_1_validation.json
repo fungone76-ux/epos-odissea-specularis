@@ -1,0 +1,23 @@
+{
+  "valid": false,
+  "phase": "final_scene",
+  "validation_stage": "semantic",
+  "validation_reason": "resort_player_visual_forbidden",
+  "errors": [
+    {
+      "code": "resort_player_visual_forbidden",
+      "path": "visual.focus_character|visual.visible_characters",
+      "message": "Resort: il giocatore non puo comparire ne essere il focus dell'immagine",
+      "details": {
+        "focus_character": "player",
+        "visible_characters": [
+          "player"
+        ]
+      }
+    }
+  ],
+  "warnings": [],
+  "problems": [
+    "Resort: il giocatore non puo comparire ne essere il focus dell'immagine"
+  ]
+}

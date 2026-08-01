@@ -1,0 +1,31 @@
+{
+  "narration": "Nel pomeriggio soleggiato, mentre ti dirigi verso la spiaggia privata, un cameriere impeccabilmente vestito si avvicina a te con un vassoio in mano. Con un sorriso professionale e un gesto elegante, ti porge una tazza di caffè, preparata esattamente come l'avevi richiesta, senza scarpe. La sua efficienza e cortesia ti fanno sentire accolto e coccolato dall'atmosfera del resort, il profumo del caffè si mescola con la brezza marina.",
+  "dialogue": [],
+  "npc_actions": [],
+  "intentions": [],
+  "mutations": [],
+  "initiatives": [],
+  "disclosure_events": [],
+  "memory_events": [],
+  "visual": {
+    "summary": "Un cameriere professionale ti porge un caffè in modo impeccabile.",
+    "focus_character": "npc_id",
+    "visible_characters": [
+      "npc_id"
+    ],
+    "shared_action": false,
+    "moment_type": "action",
+    "speaker_character": "",
+    "actor_character": "npc_id",
+    "reactor_character": "",
+    "intimate_shared_moment": false,
+    "multi_character_reason": "",
+    "multi_character_participants": [],
+    "visual_en": "A well-dressed waiter graciously presents a cup of coffee to a guest, showcasing elegance and professionalism in the sunny resort setting.",
+    "tags_en": [
+      "action",
+      "close-up",
+      "luxurious setting"
+    ]
+  }
+}

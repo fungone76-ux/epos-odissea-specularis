@@ -1,0 +1,259 @@
+{
+  "turn": 0,
+  "location_id": "loc_private_beach",
+  "moment": "Luna raggiunge il cliente VIP nella Spiaggia privata.",
+  "focus_character": "luna",
+  "visible_characters": [
+    "luna"
+  ],
+  "shared_action": false,
+  "characters": [
+    {
+      "id": "luna",
+      "name": "Luna",
+      "outfit_worn": [
+        "ivory bikini",
+        "sheer ivory beach sarong",
+        "barefoot"
+      ],
+      "outfit_removed": [
+        "fitted ivory VIP attendant mini dress",
+        "low neckline",
+        "open back",
+        "sheer stockings",
+        "delicate high heels"
+      ],
+      "outfit_revision": 8,
+      "outfit_state": {
+        "worn_items": [
+          "ivory bikini",
+          "sheer ivory beach sarong",
+          "barefoot"
+        ],
+        "removed_items": [
+          "fitted ivory VIP attendant mini dress",
+          "low neckline",
+          "open back",
+          "sheer stockings",
+          "delicate high heels"
+        ],
+        "torso_slot": [
+          "ivory bikini",
+          "sheer ivory beach sarong"
+        ],
+        "lower_body_slot": [
+          "ivory bikini",
+          "sheer ivory beach sarong"
+        ],
+        "footwear": [],
+        "nudity_mode": "clothed",
+        "revision": 8,
+        "source_of_truth": "character.outfit"
+      },
+      "wounds": [],
+      "conditions": []
+    }
+  ],
+  "time_phase": "mattina",
+  "visual_en": "Luna arrives at an exclusive private Mediterranean beach, standing on soft sand near elegant sun loungers, open sky, blue sea, warm sunlight, looking toward the unseen VIP guest",
+  "tags_en": [
+    "full body",
+    "eye-level camera",
+    "front three quarter view",
+    "facing camera three quarter",
+    "NPC arrival"
+  ],
+  "prompt_package": {
+    "positive": "score_9, score_8_up, masterpiece, photorealistic, detailed, atmospheric, stsdebbie, dynamic pose, 1girl, mature woman, brown hair, athletic body, shiny skin, head tilt, massive breasts, cleavage, <lora:stsDebbie-10e:0.7>, ivory bikini, sheer ivory beach sarong, barefoot, observant adult private companion, full body, eye-level camera, front three quarter view, facing camera three quarter, NPC arrival, Luna arrives at an exclusive private Mediterranean beach, standing on soft sand near elegant sun loungers, open sky, blue sea, warm sunlight, looking toward the unseen VIP guest",
+    "negative": "score_6, score_5, score_4, score_3, score_2, score_1, lowres, worst quality, low quality, blurry, bad anatomy, bad hands, extra fingers, missing fingers, extra limbs, deformed, text, watermark, signature, child, young-looking, underage, teenager, coercion, violence, duplicate person, plain background, white background, grey background, studio background, seamless backdrop, isolated figure, empty background, blank wall, multiple people, extra person, background people, duplicate character, cloned face, merged bodies, fused bodies, extra face",
+    "base_prompt_by_character": {
+      "luna": "score_9, score_8_up, masterpiece, photorealistic, detailed, atmospheric, stsdebbie, dynamic pose, 1girl, mature woman, brown hair, athletic body, shiny skin, head tilt, massive breasts, cleavage"
+    },
+    "character_lora_by_character": {
+      "luna": "<lora:stsDebbie-10e:0.7>"
+    },
+    "outfit_prompt_by_character": {
+      "luna": "ivory bikini, sheer ivory beach sarong, barefoot"
+    },
+    "role_prompt_by_character": {
+      "luna": "observant adult private companion"
+    },
+    "role_prompt_original_by_character": {
+      "luna": "observant adult private companion"
+    },
+    "role_prompt_sanitization": {
+      "removed_terms_by_character": {},
+      "max_words": 12
+    },
+    "scene_tags": [
+      "full body",
+      "eye-level camera",
+      "front three quarter view",
+      "facing camera three quarter",
+      "NPC arrival"
+    ],
+    "scene_visual": "Luna arrives at an exclusive private Mediterranean beach, standing on soft sand near elegant sun loungers, open sky, blue sea, warm sunlight, looking toward the unseen VIP guest",
+    "original_scene_tags": [
+      "full body",
+      "eye-level camera",
+      "front three quarter view",
+      "facing camera three quarter",
+      "NPC arrival",
+      "private Mediterranean beach",
+      "soft sand",
+      "elegant sun loungers",
+      "open sky",
+      "blue sea"
+    ],
+    "original_scene_visual": "Luna arrives at an exclusive private Mediterranean beach, standing on soft sand near elegant sun loungers, open sky, blue sea, warm sunlight, looking toward the unseen VIP guest",
+    "sanitized_scene_tags": [
+      "full body",
+      "eye-level camera",
+      "front three quarter view",
+      "facing camera three quarter",
+      "NPC arrival"
+    ],
+    "sanitized_scene_visual": "Luna arrives at an exclusive private Mediterranean beach, standing on soft sand near elegant sun loungers, open sky, blue sea, warm sunlight, looking toward the unseen VIP guest",
+    "identity_sanitization": {
+      "removed_terms": [],
+      "reason": ""
+    },
+    "facial_expression_sanitization": {
+      "removed_terms": [],
+      "reason": ""
+    },
+    "broken_chunk_sanitization": {
+      "removed_chunks": [],
+      "reason": ""
+    },
+    "camera_tag_conflicts": [],
+    "revealing_outfit_policy": {
+      "preserve_revealing_outfit_traits": true,
+      "revealing_outfit_priority": true
+    },
+    "multi_character_composition": {
+      "grouped_per_character": false
+    },
+    "cross_layer_deduplication": {
+      "removed": {
+        "tags": [
+          "private Mediterranean beach",
+          "soft sand",
+          "elegant sun loungers",
+          "open sky",
+          "blue sea"
+        ],
+        "visual": []
+      },
+      "max_scene_tags": 8
+    },
+    "nudity_diagnostics": {
+      "detected_clothing_state": "not_visible",
+      "nudity_mode": "none",
+      "nudity_tags_added": [],
+      "clothing_block_tags_added": []
+    },
+    "detected_clothing_state": "not_visible",
+    "nudity_mode": "none",
+    "nudity_tags_added": [],
+    "clothing_block_tags_added": [],
+    "outfit_tags_added": [
+      "ivory bikini, sheer ivory beach sarong, barefoot"
+    ],
+    "outfit_tags_suppressed": {},
+    "source_of_truth": "character.outfit",
+    "negative_prompt_by_character": {
+      "luna": ""
+    },
+    "visible_characters": [
+      "luna"
+    ],
+    "positive_prompt": "score_9, score_8_up, masterpiece, photorealistic, detailed, atmospheric, stsdebbie, dynamic pose, 1girl, mature woman, brown hair, athletic body, shiny skin, head tilt, massive breasts, cleavage, <lora:stsDebbie-10e:0.7>, ivory bikini, sheer ivory beach sarong, barefoot, observant adult private companion, full body, eye-level camera, front three quarter view, facing camera three quarter, NPC arrival, Luna arrives at an exclusive private Mediterranean beach, standing on soft sand near elegant sun loungers, open sky, blue sea, warm sunlight, looking toward the unseen VIP guest",
+    "negative_prompt": "score_6, score_5, score_4, score_3, score_2, score_1, lowres, worst quality, low quality, blurry, bad anatomy, bad hands, extra fingers, missing fingers, extra limbs, deformed, text, watermark, signature, child, young-looking, underage, teenager, coercion, violence, duplicate person, plain background, white background, grey background, studio background, seamless backdrop, isolated figure, empty background, blank wall, multiple people, extra person, background people, duplicate character, cloned face, merged bodies, fused bodies, extra face",
+    "focus_character": "luna",
+    "focus_reason": "speaker",
+    "multi_character_reason": "",
+    "proposed_camera": "",
+    "selected_camera": "front_three_quarter",
+    "camera_override_applied": false,
+    "camera_override_reason": "",
+    "shot_type": "full_body",
+    "camera_angle": "eye_level",
+    "camera_side": "front_three_quarter",
+    "subject_orientation": "facing_camera_three_quarter",
+    "camera_history": [],
+    "director_reason": "default_structured_camera",
+    "explicit_pose": "",
+    "pose_tags_added": []
+  },
+  "focus_reason": "speaker",
+  "multi_character_reason": "",
+  "camera_director": {
+    "proposed_camera": "",
+    "selected_camera": "front_three_quarter",
+    "camera_override_applied": false,
+    "camera_override_reason": "",
+    "shot_type": "full_body",
+    "camera_angle": "eye_level",
+    "camera_side": "front_three_quarter",
+    "subject_orientation": "facing_camera_three_quarter",
+    "camera_history": [],
+    "director_reason": "default_structured_camera",
+    "explicit_pose": "",
+    "pose_tags_added": []
+  },
+  "concrete_action": "Luna raggiunge il cliente VIP nella Spiaggia privata.",
+  "place": "Spiaggia privata",
+  "canonical_outfit": {
+    "luna": {
+      "worn": [
+        "ivory bikini",
+        "sheer ivory beach sarong",
+        "barefoot"
+      ],
+      "removed": [
+        "fitted ivory VIP attendant mini dress",
+        "low neckline",
+        "open back",
+        "sheer stockings",
+        "delicate high heels"
+      ],
+      "outfit_state": {
+        "worn_items": [
+          "ivory bikini",
+          "sheer ivory beach sarong",
+          "barefoot"
+        ],
+        "removed_items": [
+          "fitted ivory VIP attendant mini dress",
+          "low neckline",
+          "open back",
+          "sheer stockings",
+          "delicate high heels"
+        ],
+        "torso_slot": [
+          "ivory bikini",
+          "sheer ivory beach sarong"
+        ],
+        "lower_body_slot": [
+          "ivory bikini",
+          "sheer ivory beach sarong"
+        ],
+        "footwear": [],
+        "nudity_mode": "clothed",
+        "revision": 8,
+        "source_of_truth": "character.outfit"
+      },
+      "conditions": [],
+      "wounds": []
+    }
+  },
+  "pose": "Luna arrives at an exclusive private Mediterranean beach, standing on soft sand near elegant sun loungers, open sky, blue sea, warm sunlight, looking toward the unseen VIP guest NPC arrival private Mediterranean beach soft sand elegant sun loungers open sky blue sea",
+  "shot_type": "full_body",
+  "camera_side": "front_three_quarter",
+  "camera_angle": "eye_level",
+  "lighting": "sunlight",
+  "positive_prompt": "score_9, score_8_up, masterpiece, photorealistic, detailed, atmospheric, stsdebbie, dynamic pose, 1girl, mature woman, brown hair, athletic body, shiny skin, head tilt, massive breasts, cleavage, <lora:stsDebbie-10e:0.7>, ivory bikini, sheer ivory beach sarong, barefoot, observant adult private companion, full body, eye-level camera, front three quarter view, facing camera three quarter, NPC arrival, Luna arrives at an exclusive private Mediterranean beach, standing on soft sand near elegant sun loungers, open sky, blue sea, warm sunlight, looking toward the unseen VIP guest",
+  "negative_prompt": "score_6, score_5, score_4, score_3, score_2, score_1, lowres, worst quality, low quality, blurry, bad anatomy, bad hands, extra fingers, missing fingers, extra limbs, deformed, text, watermark, signature, child, young-looking, underage, teenager, coercion, violence, duplicate person, plain background, white background, grey background, studio background, seamless backdrop, isolated figure, empty background, blank wall, multiple people, extra person, background people, duplicate character, cloned face, merged bodies, fused bodies, extra face",
+  "visual_reason": "speaker; default_structured_camera"
+}

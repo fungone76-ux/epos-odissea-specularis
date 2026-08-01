@@ -1,0 +1,17 @@
+{
+  "mode": "check_proposal",
+  "check": {
+    "action_kind": "social",
+    "skill": "negoziazione",
+    "difficulty": 1,
+    "target_ids": [],
+    "opposition": "none",
+    "reason": "l'interpretazione della richiesta di portare il caffè senza scarpe potrebbe non essere accettata senza una negoziazione.",
+    "stakes": {
+      "full_success": "Il caffè ti viene portato in modo impeccabile da un cameriere.",
+      "partial_success": "Il caffè ti viene portato, ma non come richiesto.",
+      "failure": "Il cameriere si rifiuta di portare il caffè senza scarpe.",
+      "critical_failure": "Il cameriere reagisce in modo scontroso e si allontana."
+    }
+  }
+}

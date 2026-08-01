@@ -1,0 +1,39 @@
+{
+  "narration": "Victoria ti osserva con un sorriso intrigato, il suo sguardo attento a cogliere le tue reazioni. \"Posso aiutarti a decidere per la tua giornata?\"",
+  "dialogue": [
+    {
+      "speaker": "victoria",
+      "text": "Posso aiutarti a decidere per la tua giornata?",
+      "to": "player"
+    }
+  ],
+  "npc_actions": [],
+  "intentions": [],
+  "initiatives": [],
+  "disclosure_events": [],
+  "mutations": [],
+  "memory_events": [],
+  "visual": {
+    "summary": "Victoria observes you with intrigue.",
+    "focus_character": "victoria",
+    "visible_characters": [
+      "victoria"
+    ],
+    "shared_action": false,
+    "visual_en": "Victoria stands confidently, her black bodycon blazer mini dress accentuating her figure as she leans slightly forward, engaged in conversation.",
+    "tags_en": [
+      "close-up",
+      "engaged conversation",
+      "confident posture"
+    ],
+    "moment_type": "speech",
+    "speaker_character": "victoria",
+    "actor_character": "victoria",
+    "reactor_character": "victoria",
+    "intimate_shared_moment": false,
+    "multi_character_reason": "",
+    "multi_character_participants": [
+      "victoria"
+    ]
+  }
+}

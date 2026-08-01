@@ -1,0 +1,60 @@
+{
+  "unlocked_missions": [],
+  "mission_changes": [],
+  "campaign_score": 0,
+  "score_tier": "soggiorno_fallimentare",
+  "schedule": [
+    {
+      "npc_id": "victoria",
+      "day": 1,
+      "phase": "pomeriggio",
+      "from_location": "loc_lobby",
+      "to_location": "loc_victoria_office",
+      "outfit": [
+        "black ultra fitted blazer dress",
+        "plunging neckline",
+        "sheer black stockings",
+        "black stilettos"
+      ]
+    },
+    {
+      "npc_id": "stella",
+      "day": 1,
+      "phase": "pomeriggio",
+      "from_location": "loc_lobby",
+      "to_location": "loc_private_beach",
+      "outfit": [
+        "coral string bikini",
+        "sheer coral sarong",
+        "gold anklet",
+        "barefoot"
+      ]
+    },
+    {
+      "npc_id": "maria",
+      "day": 1,
+      "phase": "pomeriggio",
+      "from_location": "loc_lobby",
+      "to_location": "loc_suite",
+      "outfit": [
+        "black fitted maid mini dress",
+        "white lace trim",
+        "sheer stockings",
+        "high heels"
+      ]
+    },
+    {
+      "npc_id": "luna",
+      "day": 1,
+      "phase": "pomeriggio",
+      "from_location": "loc_lobby",
+      "to_location": "loc_wild_beach",
+      "outfit": [
+        "sand colored micro bikini",
+        "sheer linen sarong",
+        "woven bracelet",
+        "barefoot"
+      ]
+    }
+  ]
+}

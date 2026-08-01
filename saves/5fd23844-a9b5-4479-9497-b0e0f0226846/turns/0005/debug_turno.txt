@@ -1,0 +1,26 @@
+================================================================
+DEBUG TURNO 5 — modalità: no_check
+sessione: 5fd23844-a9b5-4479-9497-b0e0f0226846 | location: loc_lobby
+================================================================
+
+[INPUT GIOCATORE]
+aiutami tu a decidere...
+
+[NARRAZIONE]
+Victoria ti osserva con un sorriso intrigato, il suo sguardo attento a cogliere le tue reazioni. "Posso aiutarti a decidere per la tua giornata?"
+
+[DIALOGHI]
+- victoria: Posso aiutarti a decidere per la tua giornata?
+
+[PROMPT POSITIVO]
+score_9,score_8_up,score_7_up,masterpiece , realistic, zatanna, mature woman, , black hair, long hair,  , cute, huge ass, bottom heavy, wide hips, huge breast,  grey eyes,  pink lips,  ,  <lora:Zatanna_-_DC_Animated_Universe:0.6> <lora:Expressive_H:0.4> <lora:FantasyWorldPonyV2:0.3>, deep neckline, black bodycon blazer mini dress, sheer black stockings, authoritative adult VIP director, full body, eye-level camera, side view, side orientation, confident posture, Victoria stands confidently, her black bodycon blazer mini dress accentuating her figure as she leans slightly forward, engaged in conversation.
+
+[PROMPT NEGATIVO]
+score_6, score_5, score_4, score_3, score_2, score_1, lowres, worst quality, low quality, blurry, bad anatomy, bad hands, extra fingers, missing fingers, extra limbs, deformed, text, watermark, signature, child, young-looking, underage, teenager, coercion, violence, duplicate person, plain background, white background, grey background, studio background, seamless backdrop, isolated figure, empty background, blank wall, multiple people, extra person, background people, duplicate character, cloned face, merged bodies, fused bodies, extra face
+
+[PROSA DI SCENA (visual_en)]
+Victoria stands confidently, her black bodycon blazer mini dress accentuating her figure as she leans slightly forward, engaged in conversation.
+
+[RENDER]
+status: complete | backend: comfy
+immagine: saves\5fd23844-a9b5-4479-9497-b0e0f0226846\turns\0005\image.png

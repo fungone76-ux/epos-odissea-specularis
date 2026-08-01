@@ -1,0 +1,50 @@
+{
+  "source_of_truth": "WorldState character ids",
+  "normalizations": [
+    {
+      "field_path": "visual.focus_character",
+      "original_value": "npc_id",
+      "normalized_value": "victoria",
+      "alias_rule": "scene_placeholder_npc_id",
+      "phase": "proposal",
+      "attempt": 0,
+      "source_payload": "gm_phase1"
+    },
+    {
+      "field_path": "visual.speaker_character",
+      "original_value": "npc_id",
+      "normalized_value": "victoria",
+      "alias_rule": "scene_placeholder_npc_id",
+      "phase": "proposal",
+      "attempt": 0,
+      "source_payload": "gm_phase1"
+    },
+    {
+      "field_path": "visual.actor_character",
+      "original_value": "npc_id",
+      "normalized_value": "victoria",
+      "alias_rule": "scene_placeholder_npc_id",
+      "phase": "proposal",
+      "attempt": 0,
+      "source_payload": "gm_phase1"
+    },
+    {
+      "field_path": "visual.visible_characters[0]",
+      "original_value": "npc_id",
+      "normalized_value": "victoria",
+      "alias_rule": "scene_placeholder_npc_id",
+      "phase": "proposal",
+      "attempt": 0,
+      "source_payload": "gm_phase1"
+    },
+    {
+      "field_path": "dialogue[0].speaker",
+      "original_value": "Victoria Hale",
+      "normalized_value": "victoria",
+      "alias_rule": "npc_id_or_display_name",
+      "phase": "proposal",
+      "attempt": 0,
+      "source_payload": "gm_phase1"
+    }
+  ]
+}
