@@ -32,14 +32,17 @@ characters:
     role_prompt_en: authoritative adult VIP director
     starting_outfit_en: [black tailored blazer dress, deep neckline, high heels]
   - id: stella
-    base_prompt: adult woman, glamorous resort hostess, confident seductive presence
+    base_prompt: "score_9, score_8_up, masterpiece, photorealistic, 1girl, alice_milf_catchers, massive breasts, cleavage, blonde hair, beautiful blue eyes, shapely legs, hourglass figure, skinny body, narrow waist, wide hips"
+    character_lora_en: "<lora:alice_milf_catchers_lora.safetensors:0.7>"
     role_prompt_en: ambitious adult VIP entertainer
     starting_outfit_en: [luxury resort hostess dress, plunging neckline, high heels]
   - id: maria
-    base_prompt: adult woman, elegant personal attendant, mature sensual presence
+    base_prompt: "score_9, score_8_up, stsSmith, ultra-detailed, realistic lighting, 1girl, mature female, veiny breasts, black hair, short hair"
+    character_lora_en: "<lora:stsSmith-10e:0.65>"
     role_prompt_en: professional adult suite attendant
     starting_outfit_en: [elegant fitted maid dress, sheer stockings, high heels]
   - id: luna
-    base_prompt: adult woman, reserved elegant companion, mysterious sensual presence
+    base_prompt: "score_9, score_8_up, masterpiece, photorealistic, detailed, atmospheric, stsdebbie, dynamic pose, 1girl, mature woman, brown hair, athletic body, shiny skin, head tilt, massive breasts, cleavage"
+    character_lora_en: "<lora:stsDebbie-10e:0.7>"
     role_prompt_en: observant adult private companion
     starting_outfit_en: [elegant ivory resort dress, open back, delicate sandals]
