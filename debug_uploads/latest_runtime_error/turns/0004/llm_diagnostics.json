@@ -1,0 +1,125 @@
+{
+  "selected_provider": "",
+  "selected_model": "",
+  "fallback_triggered": true,
+  "fallback_reason": "primary_semantic_validation_failed",
+  "provider_attempts": [
+    {
+      "provider": "openai",
+      "model": "gpt-4o-mini",
+      "attempt": 1,
+      "status": "semantic_validation_failed",
+      "phase": "proposal",
+      "error_type": "semantic_validation_failed",
+      "duration_ms": 4558,
+      "validation_stage": "semantic",
+      "validation_reason": "visible_character_not_present",
+      "validation_errors": [
+        {
+          "code": "visible_character_not_present",
+          "path": "visual.visible_characters[0]",
+          "message": "visual: personaggio visibile ma assente 'npc_id'",
+          "details": {
+            "character_id": "npc_id",
+            "location_id": "loc_lobby"
+          }
+        },
+        {
+          "code": "visible_character_text_conflict",
+          "path": "visual.visual_en",
+          "message": "visual descrive un secondo personaggio non autorizzato da visible_characters",
+          "details": {
+            "visible_characters": [
+              "npc_id"
+            ],
+            "conflicts": [
+              "stella"
+            ]
+          }
+        }
+      ],
+      "token_usage": {
+        "prompt_tokens": 8348,
+        "completion_tokens": 341,
+        "total_tokens": 8689,
+        "prompt_tokens_details": {
+          "cached_tokens": 0,
+          "audio_tokens": 0
+        },
+        "completion_tokens_details": {
+          "reasoning_tokens": 0,
+          "audio_tokens": 0,
+          "accepted_prediction_tokens": 0,
+          "rejected_prediction_tokens": 0
+        }
+      },
+      "raw_response_path": "llm_attempts/openai_attempt_1_raw.txt",
+      "parsed_response_path": "llm_attempts/openai_attempt_1_parsed.json",
+      "validation_report_path": "llm_attempts/openai_attempt_1_validation.json"
+    },
+    {
+      "provider": "openai",
+      "model": "gpt-4o-mini",
+      "attempt": 2,
+      "status": "semantic_validation_failed",
+      "phase": "proposal",
+      "error_type": "semantic_validation_failed",
+      "duration_ms": 3987,
+      "validation_stage": "semantic",
+      "validation_reason": "visible_character_not_present",
+      "validation_errors": [
+        {
+          "code": "visible_character_not_present",
+          "path": "visual.visible_characters[0]",
+          "message": "visual: personaggio visibile ma assente 'npc_id'",
+          "details": {
+            "character_id": "npc_id",
+            "location_id": "loc_lobby"
+          }
+        },
+        {
+          "code": "visible_character_text_conflict",
+          "path": "visual.visual_en",
+          "message": "visual descrive un secondo personaggio non autorizzato da visible_characters",
+          "details": {
+            "visible_characters": [
+              "npc_id"
+            ],
+            "conflicts": [
+              "stella"
+            ]
+          }
+        }
+      ],
+      "token_usage": {
+        "prompt_tokens": 8536,
+        "completion_tokens": 334,
+        "total_tokens": 8870,
+        "prompt_tokens_details": {
+          "cached_tokens": 8320,
+          "audio_tokens": 0
+        },
+        "completion_tokens_details": {
+          "reasoning_tokens": 0,
+          "audio_tokens": 0,
+          "accepted_prediction_tokens": 0,
+          "rejected_prediction_tokens": 0
+        }
+      },
+      "raw_response_path": "llm_attempts/openai_attempt_2_raw.txt",
+      "parsed_response_path": "llm_attempts/openai_attempt_2_parsed.json",
+      "validation_report_path": "llm_attempts/openai_attempt_2_validation.json"
+    },
+    {
+      "provider": "gemini",
+      "model": "gemini-2.5-flash",
+      "attempt": 1,
+      "status": "rate_limited",
+      "phase": "proposal",
+      "error_type": "rate_limited",
+      "http_status": 429,
+      "duration_ms": 454
+    }
+  ],
+  "phase": "proposal"
+}

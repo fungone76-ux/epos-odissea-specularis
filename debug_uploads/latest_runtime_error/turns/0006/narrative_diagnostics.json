@@ -1,0 +1,28 @@
+{
+  "narrative_intensity": "suggestive",
+  "narrative_intensity_before": "erotic",
+  "narrative_intensity_after": "suggestive",
+  "intimacy_detected": true,
+  "consent_state": "unknown",
+  "adult_participants_verified": true,
+  "intensity_reasons": [
+    "intimate_contact_signal",
+    "visual_moment_type_intimate",
+    "intimate_shared_moment",
+    "full_success_may_intensify_within_limits"
+  ],
+  "intensity_blockers": [
+    "consent_unknown",
+    "fear_or_pain_context"
+  ],
+  "requested_tone": "erotic",
+  "applied_tone": "suggestive",
+  "tone_changed_during_retry": false,
+  "participant_ids": [
+    "player",
+    "luna"
+  ],
+  "base_prompt_athletic_body_present": false,
+  "base_prompt_athletic_body_count": 0,
+  "nudity_only_signal": false
+}

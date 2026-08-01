@@ -1,0 +1,35 @@
+================================================================
+DEBUG TURNO 7 — modalità: check
+sessione: 7a4956bc-9c83-46fb-b653-d30095280f71 | location: loc_suite
+================================================================
+
+[INPUT GIOCATORE]
+devo dire che hai un bel corpo... se posso permettermi di dirlo! le dico osservandole i piedi
+
+[PROPOSTA DEL GM]
+azione: social | skill: carisma | difficoltà: 2
+motivo: perché l'esito è incerto
+
+[TIRO]
+pool: 4d6 | difficoltà: 2 | dadi: (nessun tiro — esito sicuro)
+esito: full_success
+posta: Luna si sentirà lusingata e potrebbe aprirsi ulteriormente.
+
+[NARRAZIONE]
+Luna, colpita dal tuo complimento, abbassa lo sguardo per un breve istante, e un leggero rossore le colorisce le guance. La sua espressione si illumina mentre solleva lo sguardo verso di te, mostrando un mix di gratitudine e vulnerabilità. "Grazie, non mi aspettavo di ricevere un complimento così sincero. È bello sapere che qualcuno lo nota. Mi fa sentire...apprezzata," dice, la sua voce morbida e sincera. La connessione tra voi si fa più profonda, e senti che è pronta a condividere di più su di sé, grazie a questo momento di apertura reciproca.
+
+[DIALOGHI]
+- Luna: Grazie, non mi aspettavo di ricevere un complimento così sincero. È bello sapere che qualcuno lo nota. Mi fa sentire...apprezzata.
+
+[PROMPT POSITIVO]
+score_9, score_8_up, masterpiece, photorealistic, detailed, atmospheric, stsdebbie, dynamic pose, 1girl, mature woman, brown hair, athletic body, shiny skin, head tilt, massive breasts, cleavage, <lora:stsDebbie-10e:0.7>, elegant ivory resort dress, open back, delicate sandals, observant adult private companion, full body, eye-level camera, front three quarter view, facing camera three quarter, soft lighting, emotional connection, Luna looks up at you, a soft blush on her cheeks, her expression brightening with gratitude as she acknowledges your compliment.
+
+[PROMPT NEGATIVO]
+score_6, score_5, score_4, score_3, score_2, score_1, lowres, worst quality, low quality, blurry, bad anatomy, bad hands, extra fingers, missing fingers, extra limbs, deformed, text, watermark, signature, child, young-looking, underage, teenager, coercion, violence, duplicate person, plain background, white background, grey background, studio background, seamless backdrop, isolated figure, empty background, blank wall, multiple people, extra person, background people, duplicate character, cloned face, merged bodies, fused bodies, extra face
+
+[PROSA DI SCENA (visual_en)]
+Luna looks up at you, a soft blush on her cheeks, her expression brightening with gratitude as she acknowledges your compliment.
+
+[RENDER]
+status: complete | backend: a1111
+immagine: saves\7a4956bc-9c83-46fb-b653-d30095280f71\turns\0007\image.png

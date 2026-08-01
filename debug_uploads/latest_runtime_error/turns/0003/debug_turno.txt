@@ -1,0 +1,26 @@
+================================================================
+DEBUG TURNO 3 — modalità: no_check
+sessione: 7a4956bc-9c83-46fb-b653-d30095280f71 | location: loc_lobby
+================================================================
+
+[INPUT GIOCATORE]
+Molto bene Maria
+
+[NARRAZIONE]
+Per ultima si presenta Stella, vivace e sicura di sé. Spiega di occuparsi dell'intrattenimento VIP, degli eventi e delle esperienze speciali organizzate all'interno del resort.
+
+[DIALOGHI]
+- Stella: Io sono Stella. Organizzo gli eventi VIP, l'intrattenimento e le esperienze speciali dell'Azure Crown. Farò in modo che qui non ci sia spazio per la noia.
+
+[PROMPT POSITIVO]
+score_9, score_8_up, masterpiece, photorealistic, 1girl, alice_milf_catchers, massive breasts, cleavage, blonde hair, beautiful blue eyes, shapely legs, hourglass figure, skinny body, narrow waist, wide hips, <lora:alice_milf_catchers_lora.safetensors:0.7>, luxury resort hostess dress, plunging neckline, high heels, ambitious adult VIP entertainer, full body, eye-level camera, side view, side orientation, NPC introduction, Stella introduces herself to the unseen VIP guest, confident lively posture, elegant cinematic composition, inside the grand Azure Crown luxury resort lobby, polished white marble floor, marble reception desk, floor-to-ceiling glass walls, visible Mediterranean sea, warm natural daylight, elegant brass details, luxury interior clearly visible, detailed environmental background, no studio backdrop
+
+[PROMPT NEGATIVO]
+score_6, score_5, score_4, score_3, score_2, score_1, lowres, worst quality, low quality, blurry, bad anatomy, bad hands, extra fingers, missing fingers, extra limbs, deformed, text, watermark, signature, child, young-looking, underage, teenager, coercion, violence, duplicate person, plain background, white background, grey background, studio background, seamless backdrop, isolated figure, empty background, blank wall, multiple people, extra person, background people, duplicate character, cloned face, merged bodies, fused bodies, extra face
+
+[PROSA DI SCENA (visual_en)]
+Stella introduces herself to the unseen VIP guest, confident lively posture, elegant cinematic composition, inside the grand Azure Crown luxury resort lobby, polished white marble floor, marble reception desk, floor-to-ceiling glass walls, visible Mediterranean sea, warm natural daylight, elegant brass details, luxury interior clearly visible, detailed environmental background, no studio backdrop
+
+[RENDER]
+status: complete | backend: a1111
+immagine: saves\7a4956bc-9c83-46fb-b653-d30095280f71\turns\0003\image.png

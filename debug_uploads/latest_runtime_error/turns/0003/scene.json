@@ -1,0 +1,48 @@
+{
+  "narration": "Per ultima si presenta Stella, vivace e sicura di sé. Spiega di occuparsi dell'intrattenimento VIP, degli eventi e delle esperienze speciali organizzate all'interno del resort.",
+  "dialogue": [
+    {
+      "speaker": "Stella",
+      "text": "Io sono Stella. Organizzo gli eventi VIP, l'intrattenimento e le esperienze speciali dell'Azure Crown. Farò in modo che qui non ci sia spazio per la noia.",
+      "to": "player"
+    }
+  ],
+  "npc_actions": [
+    {
+      "npc_id": "stella",
+      "action": "si presenta personalmente al cliente VIP"
+    }
+  ],
+  "intentions": [],
+  "initiatives": [],
+  "disclosure_events": [],
+  "mutations": [],
+  "memory_events": [],
+  "visual": {
+    "summary": "Stella si presenta come responsabile dell'intrattenimento VIP.",
+    "focus_character": "stella",
+    "visible_characters": [
+      "stella"
+    ],
+    "shared_action": false,
+    "visual_en": "Stella introduces herself to the unseen VIP guest, confident lively posture, elegant cinematic composition, inside the grand Azure Crown luxury resort lobby, polished white marble floor, marble reception desk, floor-to-ceiling glass walls, visible Mediterranean sea, warm natural daylight, elegant brass details, luxury interior clearly visible, detailed environmental background, no studio backdrop",
+    "tags_en": [
+      "NPC introduction",
+      "grand luxury resort lobby interior",
+      "polished marble floor",
+      "marble reception desk",
+      "floor-to-ceiling glass walls",
+      "Mediterranean sea view",
+      "detailed environmental background"
+    ],
+    "moment_type": "speech",
+    "speaker_character": "stella",
+    "actor_character": "stella",
+    "reactor_character": "stella",
+    "intimate_shared_moment": false,
+    "multi_character_reason": "",
+    "multi_character_participants": [
+      "stella"
+    ]
+  }
+}

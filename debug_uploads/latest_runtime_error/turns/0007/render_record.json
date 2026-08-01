@@ -1,0 +1,43 @@
+{
+  "status": "complete",
+  "image_path": "saves\\7a4956bc-9c83-46fb-b653-d30095280f71\\turns\\0007\\image.png",
+  "error": null,
+  "backend": "a1111",
+  "warning": null,
+  "diagnostics": {
+    "renderer": "a1111",
+    "base_url": "http://127.0.0.1:7860",
+    "endpoint": "/sdapi/v1/txt2img",
+    "checkpoint": "cyberrealisticPony_v7.safetensors",
+    "status_http": 200,
+    "preflight": [
+      {
+        "endpoint": "/sdapi/v1/options",
+        "status_http": 200,
+        "duration_ms": 78
+      },
+      {
+        "endpoint": "/sdapi/v1/sd-models",
+        "status_http": 200,
+        "duration_ms": 79
+      },
+      {
+        "endpoint": "/sdapi/v1/loras",
+        "status_http": 200,
+        "duration_ms": 78
+      }
+    ],
+    "checkpoint_available": true,
+    "requested_loras": [
+      "Zatanna_-_DC_Animated_Universe",
+      "Expressive_H",
+      "FantasyWorldPonyV2"
+    ],
+    "missing_loras": [],
+    "duration_ms": 44782,
+    "image_path": "saves\\7a4956bc-9c83-46fb-b653-d30095280f71\\turns\\0007\\image.png",
+    "error": "",
+    "cause": ""
+  },
+  "retryable": false
+}

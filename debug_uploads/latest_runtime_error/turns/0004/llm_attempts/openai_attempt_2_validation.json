@@ -1,0 +1,35 @@
+{
+  "valid": false,
+  "phase": "proposal",
+  "validation_stage": "semantic",
+  "validation_reason": "visible_character_not_present",
+  "errors": [
+    {
+      "code": "visible_character_not_present",
+      "path": "visual.visible_characters[0]",
+      "message": "visual: personaggio visibile ma assente 'npc_id'",
+      "details": {
+        "character_id": "npc_id",
+        "location_id": "loc_lobby"
+      }
+    },
+    {
+      "code": "visible_character_text_conflict",
+      "path": "visual.visual_en",
+      "message": "visual descrive un secondo personaggio non autorizzato da visible_characters",
+      "details": {
+        "visible_characters": [
+          "npc_id"
+        ],
+        "conflicts": [
+          "stella"
+        ]
+      }
+    }
+  ],
+  "warnings": [],
+  "problems": [
+    "visual: personaggio visibile ma assente 'npc_id'",
+    "visual descrive un secondo personaggio non autorizzato da visible_characters"
+  ]
+}

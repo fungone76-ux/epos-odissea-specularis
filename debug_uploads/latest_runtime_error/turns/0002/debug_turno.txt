@@ -1,0 +1,26 @@
+================================================================
+DEBUG TURNO 2 — modalità: no_check
+sessione: 7a4956bc-9c83-46fb-b653-d30095280f71 | location: loc_lobby
+================================================================
+
+[INPUT GIOCATORE]
+Molto piacere Luna
+
+[NARRAZIONE]
+È quindi il turno di Maria, composta e professionale. Si presenta come la responsabile dell'assistenza nella suite presidenziale e dei servizi personali durante il soggiorno.
+
+[DIALOGHI]
+- Maria: Sono Maria. Mi occuperò della suite presidenziale e di tutto ciò che riguarda il tuo comfort personale. Puoi rivolgerti direttamente a me per qualsiasi necessità.
+
+[PROMPT POSITIVO]
+score_9, score_8_up, stsSmith, ultra-detailed, realistic lighting, 1girl, mature female, veiny breasts, black hair, short hair, <lora:stsSmith-10e:0.65>, elegant fitted maid dress, sheer stockings, high heels, professional adult suite attendant, full body, eye-level camera, front three quarter view, facing camera three quarter, NPC introduction, Maria introduces herself to the unseen VIP guest, calm professional posture, elegant cinematic composition, inside the grand Azure Crown luxury resort lobby, polished white marble floor, marble reception desk, floor-to-ceiling glass walls, visible Mediterranean sea, warm natural daylight, elegant brass details, luxury interior clearly visible, detailed environmental background, no studio backdrop
+
+[PROMPT NEGATIVO]
+score_6, score_5, score_4, score_3, score_2, score_1, lowres, worst quality, low quality, blurry, bad anatomy, bad hands, extra fingers, missing fingers, extra limbs, deformed, text, watermark, signature, child, young-looking, underage, teenager, coercion, violence, duplicate person, plain background, white background, grey background, studio background, seamless backdrop, isolated figure, empty background, blank wall, multiple people, extra person, background people, duplicate character, cloned face, merged bodies, fused bodies, extra face
+
+[PROSA DI SCENA (visual_en)]
+Maria introduces herself to the unseen VIP guest, calm professional posture, elegant cinematic composition, inside the grand Azure Crown luxury resort lobby, polished white marble floor, marble reception desk, floor-to-ceiling glass walls, visible Mediterranean sea, warm natural daylight, elegant brass details, luxury interior clearly visible, detailed environmental background, no studio backdrop
+
+[RENDER]
+status: complete | backend: a1111
+immagine: saves\7a4956bc-9c83-46fb-b653-d30095280f71\turns\0002\image.png

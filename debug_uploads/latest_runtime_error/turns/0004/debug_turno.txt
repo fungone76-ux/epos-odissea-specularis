@@ -1,0 +1,10 @@
+================================================================
+DEBUG TURNO 4 — modalità: no_check
+sessione: 7a4956bc-9c83-46fb-b653-d30095280f71 | location: loc_suite
+================================================================
+
+[INPUT GIOCATORE]
+Sono molto stanco ...andrei nella mia stanza per rilassarmi un po
+
+[NARRAZIONE]
+Lasci la Lobby e raggiungi Suite presidenziale. Qui puoi finalmente prenderti un momento per ambientarti e rilassarti.

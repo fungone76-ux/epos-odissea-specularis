@@ -1,0 +1,35 @@
+================================================================
+DEBUG TURNO 8 — modalità: check
+sessione: 7a4956bc-9c83-46fb-b653-d30095280f71 | location: loc_suite
+================================================================
+
+[INPUT GIOCATORE]
+cosa ne diresti di indossare pantyhose nere senze le scarpe? mi faresti molto felice
+
+[PROPOSTA DEL GM]
+azione: intimate | skill: carisma | difficoltà: 2
+motivo: perché l'esito è incerto
+
+[TIRO]
+pool: 4d6 | difficoltà: 2 | dadi: (nessun tiro — esito sicuro)
+esito: full_success
+posta: Luna accetta con entusiasmo la tua proposta e si mostra visibilmente felice.
+
+[NARRAZIONE]
+Luna, illuminata dalla luce dorata del pomeriggio che filtra attraverso le finestre della suite, sorride con entusiasmo alla tua proposta. "Mi piacerebbe indossare delle pantyhose nere," dice, visibilmente felice. La sua reazione è calorosa e aperta, e l'atmosfera intorno a voi si carica di un'intimità nuova e vibrante. Con un gesto delicato, inizia a togliere le sue scarpe, preparandosi a indossare ciò che hai suggerito. Questo momento di connessione profonda tra voi due segna un passo importante nel vostro rapporto, mentre l'aria è carica di promesse e nuove possibilità.
+
+[DIALOGHI]
+- Luna: Mi piacerebbe indossare delle pantyhose nere!
+
+[PROMPT POSITIVO]
+score_9, score_8_up, masterpiece, photorealistic, detailed, atmospheric, stsdebbie, dynamic pose, 1girl, mature woman, brown hair, athletic body, shiny skin, head tilt, massive breasts, cleavage, <lora:stsDebbie-10e:0.7>, elegant ivory resort dress, open back, delicate sandals, observant adult private companion, full body, eye-level camera, side view, side orientation, intimate, Luna is smiling, removing her shoes, preparing to put on black pantyhose, her excitement evident in her posture.
+
+[PROMPT NEGATIVO]
+score_6, score_5, score_4, score_3, score_2, score_1, lowres, worst quality, low quality, blurry, bad anatomy, bad hands, extra fingers, missing fingers, extra limbs, deformed, text, watermark, signature, child, young-looking, underage, teenager, coercion, violence, duplicate person, plain background, white background, grey background, studio background, seamless backdrop, isolated figure, empty background, blank wall, multiple people, extra person, background people, duplicate character, cloned face, merged bodies, fused bodies, extra face
+
+[PROSA DI SCENA (visual_en)]
+Luna is smiling, removing her shoes, preparing to put on black pantyhose, her excitement evident in her posture.
+
+[RENDER]
+status: complete | backend: a1111
+immagine: saves\7a4956bc-9c83-46fb-b653-d30095280f71\turns\0008\image.png

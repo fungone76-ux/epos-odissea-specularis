@@ -1,0 +1,287 @@
+{
+  "turn": 5,
+  "location_id": "loc_suite",
+  "moment": "Luna raggiunge il cliente VIP nella Suite presidenziale.",
+  "focus_character": "luna",
+  "visible_characters": [
+    "luna"
+  ],
+  "shared_action": false,
+  "characters": [
+    {
+      "id": "luna",
+      "name": "Luna",
+      "outfit_worn": [
+        "elegant ivory resort dress",
+        "open back",
+        "delicate sandals"
+      ],
+      "outfit_removed": [],
+      "outfit_revision": 0,
+      "outfit_state": {
+        "worn_items": [
+          "elegant ivory resort dress",
+          "open back",
+          "delicate sandals"
+        ],
+        "removed_items": [],
+        "torso_slot": [
+          "elegant ivory resort dress"
+        ],
+        "lower_body_slot": [
+          "elegant ivory resort dress"
+        ],
+        "footwear": [
+          "delicate sandals"
+        ],
+        "nudity_mode": "clothed",
+        "revision": 0,
+        "source_of_truth": "character.outfit"
+      },
+      "wounds": [],
+      "conditions": []
+    }
+  ],
+  "time_phase": "mattina",
+  "visual_en": "Luna arrives inside the Suite presidenziale and addresses the unseen VIP guest, detailed luxury resort interior, elegant cinematic composition",
+  "tags_en": [
+    "full body",
+    "eye-level camera",
+    "front three quarter view",
+    "facing camera three quarter",
+    "NPC arrival"
+  ],
+  "prompt_package": {
+    "positive": "score_9, score_8_up, masterpiece, photorealistic, detailed, atmospheric, stsdebbie, dynamic pose, 1girl, mature woman, brown hair, athletic body, shiny skin, head tilt, massive breasts, cleavage, <lora:stsDebbie-10e:0.7>, elegant ivory resort dress, open back, delicate sandals, observant adult private companion, full body, eye-level camera, front three quarter view, facing camera three quarter, NPC arrival, Luna arrives inside the Suite presidenziale and addresses the unseen VIP guest, detailed luxury resort interior, elegant cinematic composition",
+    "negative": "score_6, score_5, score_4, score_3, score_2, score_1, lowres, worst quality, low quality, blurry, bad anatomy, bad hands, extra fingers, missing fingers, extra limbs, deformed, text, watermark, signature, child, young-looking, underage, teenager, coercion, violence, duplicate person, plain background, white background, grey background, studio background, seamless backdrop, isolated figure, empty background, blank wall, multiple people, extra person, background people, duplicate character, cloned face, merged bodies, fused bodies, extra face",
+    "base_prompt_by_character": {
+      "luna": "score_9, score_8_up, masterpiece, photorealistic, detailed, atmospheric, stsdebbie, dynamic pose, 1girl, mature woman, brown hair, athletic body, shiny skin, head tilt, massive breasts, cleavage"
+    },
+    "character_lora_by_character": {
+      "luna": "<lora:stsDebbie-10e:0.7>"
+    },
+    "outfit_prompt_by_character": {
+      "luna": "elegant ivory resort dress, open back, delicate sandals"
+    },
+    "role_prompt_by_character": {
+      "luna": "observant adult private companion"
+    },
+    "role_prompt_original_by_character": {
+      "luna": "observant adult private companion"
+    },
+    "role_prompt_sanitization": {
+      "removed_terms_by_character": {},
+      "max_words": 12
+    },
+    "scene_tags": [
+      "full body",
+      "eye-level camera",
+      "front three quarter view",
+      "facing camera three quarter",
+      "NPC arrival"
+    ],
+    "scene_visual": "Luna arrives inside the Suite presidenziale and addresses the unseen VIP guest, detailed luxury resort interior, elegant cinematic composition",
+    "original_scene_tags": [
+      "full body",
+      "eye-level camera",
+      "front three quarter view",
+      "facing camera three quarter",
+      "NPC arrival",
+      "unseen guest POV",
+      "Suite presidenziale interior"
+    ],
+    "original_scene_visual": "Luna arrives inside the Suite presidenziale and addresses the unseen VIP guest, detailed luxury resort interior, elegant cinematic composition",
+    "sanitized_scene_tags": [
+      "full body",
+      "eye-level camera",
+      "front three quarter view",
+      "facing camera three quarter",
+      "NPC arrival"
+    ],
+    "sanitized_scene_visual": "Luna arrives inside the Suite presidenziale and addresses the unseen VIP guest, detailed luxury resort interior, elegant cinematic composition",
+    "identity_sanitization": {
+      "removed_terms": [],
+      "reason": ""
+    },
+    "facial_expression_sanitization": {
+      "removed_terms": [],
+      "reason": ""
+    },
+    "broken_chunk_sanitization": {
+      "removed_chunks": [],
+      "reason": ""
+    },
+    "camera_tag_conflicts": [],
+    "revealing_outfit_policy": {
+      "preserve_revealing_outfit_traits": true,
+      "revealing_outfit_priority": true
+    },
+    "multi_character_composition": {
+      "grouped_per_character": false
+    },
+    "cross_layer_deduplication": {
+      "removed": {
+        "tags": [
+          "unseen guest POV",
+          "Suite presidenziale interior"
+        ],
+        "visual": []
+      },
+      "max_scene_tags": 8
+    },
+    "nudity_diagnostics": {
+      "detected_clothing_state": "not_visible",
+      "nudity_mode": "none",
+      "nudity_tags_added": [],
+      "clothing_block_tags_added": []
+    },
+    "detected_clothing_state": "not_visible",
+    "nudity_mode": "none",
+    "nudity_tags_added": [],
+    "clothing_block_tags_added": [],
+    "outfit_tags_added": [
+      "elegant ivory resort dress, open back, delicate sandals"
+    ],
+    "outfit_tags_suppressed": {},
+    "source_of_truth": "character.outfit",
+    "negative_prompt_by_character": {
+      "luna": ""
+    },
+    "visible_characters": [
+      "luna"
+    ],
+    "positive_prompt": "score_9, score_8_up, masterpiece, photorealistic, detailed, atmospheric, stsdebbie, dynamic pose, 1girl, mature woman, brown hair, athletic body, shiny skin, head tilt, massive breasts, cleavage, <lora:stsDebbie-10e:0.7>, elegant ivory resort dress, open back, delicate sandals, observant adult private companion, full body, eye-level camera, front three quarter view, facing camera three quarter, NPC arrival, Luna arrives inside the Suite presidenziale and addresses the unseen VIP guest, detailed luxury resort interior, elegant cinematic composition",
+    "negative_prompt": "score_6, score_5, score_4, score_3, score_2, score_1, lowres, worst quality, low quality, blurry, bad anatomy, bad hands, extra fingers, missing fingers, extra limbs, deformed, text, watermark, signature, child, young-looking, underage, teenager, coercion, violence, duplicate person, plain background, white background, grey background, studio background, seamless backdrop, isolated figure, empty background, blank wall, multiple people, extra person, background people, duplicate character, cloned face, merged bodies, fused bodies, extra face",
+    "focus_character": "luna",
+    "focus_reason": "speaker",
+    "multi_character_reason": "",
+    "proposed_camera": "",
+    "selected_camera": "front_three_quarter",
+    "camera_override_applied": false,
+    "camera_override_reason": "",
+    "shot_type": "full_body",
+    "camera_angle": "eye_level",
+    "camera_side": "front_three_quarter",
+    "subject_orientation": "facing_camera_three_quarter",
+    "camera_history": [
+      {
+        "camera_side": "front_three_quarter",
+        "shot_type": "full_body",
+        "camera_angle": "eye_level",
+        "focus_character": "victoria",
+        "posture": ""
+      },
+      {
+        "camera_side": "side",
+        "shot_type": "full_body",
+        "camera_angle": "eye_level",
+        "focus_character": "luna",
+        "posture": ""
+      },
+      {
+        "camera_side": "front_three_quarter",
+        "shot_type": "full_body",
+        "camera_angle": "eye_level",
+        "focus_character": "maria",
+        "posture": ""
+      },
+      {
+        "camera_side": "side",
+        "shot_type": "full_body",
+        "camera_angle": "eye_level",
+        "focus_character": "stella",
+        "posture": ""
+      }
+    ],
+    "director_reason": "default_structured_camera",
+    "explicit_pose": "",
+    "pose_tags_added": []
+  },
+  "focus_reason": "speaker",
+  "multi_character_reason": "",
+  "camera_director": {
+    "proposed_camera": "",
+    "selected_camera": "front_three_quarter",
+    "camera_override_applied": false,
+    "camera_override_reason": "",
+    "shot_type": "full_body",
+    "camera_angle": "eye_level",
+    "camera_side": "front_three_quarter",
+    "subject_orientation": "facing_camera_three_quarter",
+    "camera_history": [
+      {
+        "camera_side": "front_three_quarter",
+        "shot_type": "full_body",
+        "camera_angle": "eye_level",
+        "focus_character": "victoria",
+        "posture": ""
+      },
+      {
+        "camera_side": "side",
+        "shot_type": "full_body",
+        "camera_angle": "eye_level",
+        "focus_character": "luna",
+        "posture": ""
+      },
+      {
+        "camera_side": "front_three_quarter",
+        "shot_type": "full_body",
+        "camera_angle": "eye_level",
+        "focus_character": "maria",
+        "posture": ""
+      },
+      {
+        "camera_side": "side",
+        "shot_type": "full_body",
+        "camera_angle": "eye_level",
+        "focus_character": "stella",
+        "posture": ""
+      }
+    ],
+    "director_reason": "default_structured_camera",
+    "explicit_pose": "",
+    "pose_tags_added": []
+  },
+  "concrete_action": "Luna raggiunge il cliente VIP nella Suite presidenziale.",
+  "place": "Suite presidenziale",
+  "canonical_outfit": {
+    "luna": {
+      "worn": [
+        "elegant ivory resort dress",
+        "open back",
+        "delicate sandals"
+      ],
+      "removed": [],
+      "outfit_state": {
+        "worn_items": [
+          "elegant ivory resort dress",
+          "open back",
+          "delicate sandals"
+        ],
+        "removed_items": [],
+        "torso_slot": [
+          "elegant ivory resort dress"
+        ],
+        "lower_body_slot": [
+          "elegant ivory resort dress"
+        ],
+        "footwear": [
+          "delicate sandals"
+        ],
+        "nudity_mode": "clothed",
+        "revision": 0,
+        "source_of_truth": "character.outfit"
+      },
+      "conditions": [],
+      "wounds": []
+    }
+  },
+  "pose": "Luna arrives inside the Suite presidenziale and addresses the unseen VIP guest, detailed luxury resort interior, elegant cinematic composition NPC arrival unseen guest POV Suite presidenziale interior",
+  "shot_type": "full_body",
+  "camera_side": "front_three_quarter",
+  "camera_angle": "eye_level",
+  "lighting": "worldpack_default",
+  "positive_prompt": "score_9, score_8_up, masterpiece, photorealistic, detailed, atmospheric, stsdebbie, dynamic pose, 1girl, mature woman, brown hair, athletic body, shiny skin, head tilt, massive breasts, cleavage, <lora:stsDebbie-10e:0.7>, elegant ivory resort dress, open back, delicate sandals, observant adult private companion, full body, eye-level camera, front three quarter view, facing camera three quarter, NPC arrival, Luna arrives inside the Suite presidenziale and addresses the unseen VIP guest, detailed luxury resort interior, elegant cinematic composition",
+  "negative_prompt": "score_6, score_5, score_4, score_3, score_2, score_1, lowres, worst quality, low quality, blurry, bad anatomy, bad hands, extra fingers, missing fingers, extra limbs, deformed, text, watermark, signature, child, young-looking, underage, teenager, coercion, violence, duplicate person, plain background, white background, grey background, studio background, seamless backdrop, isolated figure, empty background, blank wall, multiple people, extra person, background people, duplicate character, cloned face, merged bodies, fused bodies, extra face",
+  "visual_reason": "speaker; default_structured_camera"
+}

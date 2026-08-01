@@ -1,0 +1,71 @@
+{
+  "narration": "Luna, illuminata dalla luce dorata del pomeriggio che filtra attraverso le finestre della suite, sorride con entusiasmo alla tua proposta. \"Mi piacerebbe indossare delle pantyhose nere,\" dice, visibilmente felice. La sua reazione è calorosa e aperta, e l'atmosfera intorno a voi si carica di un'intimità nuova e vibrante. Con un gesto delicato, inizia a togliere le sue scarpe, preparandosi a indossare ciò che hai suggerito. Questo momento di connessione profonda tra voi due segna un passo importante nel vostro rapporto, mentre l'aria è carica di promesse e nuove possibilità.",
+  "dialogue": [
+    {
+      "speaker": "Luna",
+      "text": "Mi piacerebbe indossare delle pantyhose nere!",
+      "to": "luna"
+    }
+  ],
+  "npc_actions": [
+    {
+      "npc_id": "luna",
+      "action": "begins to remove her shoes"
+    }
+  ],
+  "intentions": [
+    {
+      "npc_id": "luna",
+      "intention": "to enjoy the moment and connect further"
+    }
+  ],
+  "initiatives": [],
+  "disclosure_events": [],
+  "mutations": [
+    {
+      "type": "outfit_wear",
+      "target": "luna",
+      "payload": {
+        "item": "black pantyhose"
+      },
+      "reason": "Luna is excited to wear the black pantyhose"
+    }
+  ],
+  "memory_events": [
+    {
+      "summary": "Luna will remember this moment of excitement and connection.",
+      "witnesses": [
+        "luna"
+      ],
+      "source": "observed",
+      "credibility": 1.0,
+      "level": "immediate",
+      "emotional_impact": 2,
+      "public": true
+    }
+  ],
+  "visual": {
+    "summary": "Luna smiles excitedly as she prepares to wear the pantyhose.",
+    "focus_character": "luna",
+    "visible_characters": [
+      "luna"
+    ],
+    "shared_action": false,
+    "visual_en": "Luna is smiling, removing her shoes, preparing to put on black pantyhose, her excitement evident in her posture.",
+    "tags_en": [
+      "intimate",
+      "smiling",
+      "preparing",
+      "close-up"
+    ],
+    "moment_type": "intimate",
+    "speaker_character": "luna",
+    "actor_character": "luna",
+    "reactor_character": "luna",
+    "intimate_shared_moment": false,
+    "multi_character_reason": "",
+    "multi_character_participants": [
+      "luna"
+    ]
+  }
+}

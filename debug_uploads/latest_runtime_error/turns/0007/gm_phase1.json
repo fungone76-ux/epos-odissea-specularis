@@ -1,0 +1,19 @@
+{
+  "mode": "check_proposal",
+  "check": {
+    "action_kind": "social",
+    "skill": "carisma",
+    "difficulty": 2,
+    "target_ids": [
+      "luna"
+    ],
+    "opposition": "none",
+    "reason": "perché l'esito è incerto",
+    "stakes": {
+      "full_success": "Luna si sentirà lusingata e potrebbe aprirsi ulteriormente.",
+      "partial_success": "Luna apprezza il complimento, ma rimane cauta.",
+      "failure": "Luna si sentirà a disagio e potrebbe chiudersi.",
+      "critical_failure": "Luna potrebbe reagire negativamente e allontanarsi."
+    }
+  }
+}

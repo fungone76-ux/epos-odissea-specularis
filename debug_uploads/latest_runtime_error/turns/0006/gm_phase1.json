@@ -1,0 +1,19 @@
+{
+  "mode": "check_proposal",
+  "check": {
+    "action_kind": "social",
+    "skill": "carisma",
+    "difficulty": 2,
+    "target_ids": [
+      "luna"
+    ],
+    "opposition": "none",
+    "reason": "perché l'esito è incerto",
+    "stakes": {
+      "full_success": "Luna si apre a te, condividendo dettagli intimi e creando un legame più profondo.",
+      "partial_success": "Luna appare incuriosita, ma rimane cauta e non si apre completamente.",
+      "failure": "Luna si ritrae, scettica e poco propensa a condividere, creando una distanza tra voi.",
+      "critical_failure": "Luna si sente inadeguata e decide di allontanarsi, interrompendo ogni possibilità di connessione."
+    }
+  }
+}

@@ -1,0 +1,56 @@
+{
+  "narration": "Luna, colpita dal tuo complimento, abbassa lo sguardo per un breve istante, e un leggero rossore le colorisce le guance. La sua espressione si illumina mentre solleva lo sguardo verso di te, mostrando un mix di gratitudine e vulnerabilità. \"Grazie, non mi aspettavo di ricevere un complimento così sincero. È bello sapere che qualcuno lo nota. Mi fa sentire...apprezzata,\" dice, la sua voce morbida e sincera. La connessione tra voi si fa più profonda, e senti che è pronta a condividere di più su di sé, grazie a questo momento di apertura reciproca.",
+  "dialogue": [
+    {
+      "speaker": "Luna",
+      "text": "Grazie, non mi aspettavo di ricevere un complimento così sincero. È bello sapere che qualcuno lo nota. Mi fa sentire...apprezzata.",
+      "to": "player"
+    }
+  ],
+  "npc_actions": [],
+  "intentions": [
+    {
+      "npc_id": "luna",
+      "intention": "to share more personal thoughts and feelings"
+    }
+  ],
+  "initiatives": [],
+  "disclosure_events": [],
+  "mutations": [],
+  "memory_events": [
+    {
+      "summary": "Luna ricorderà il tuo complimento e il momento in cui si è sentita apprezzata.",
+      "witnesses": [
+        "luna"
+      ],
+      "source": "observed",
+      "credibility": 1.0,
+      "level": "durable",
+      "emotional_impact": 2,
+      "public": true
+    }
+  ],
+  "visual": {
+    "summary": "Luna smiles softly after receiving the compliment.",
+    "focus_character": "luna",
+    "visible_characters": [
+      "luna"
+    ],
+    "shared_action": false,
+    "visual_en": "Luna looks up at you, a soft blush on her cheeks, her expression brightening with gratitude as she acknowledges your compliment.",
+    "tags_en": [
+      "close-up",
+      "soft lighting",
+      "emotional connection"
+    ],
+    "moment_type": "reaction",
+    "speaker_character": "player",
+    "actor_character": "luna",
+    "reactor_character": "luna",
+    "intimate_shared_moment": false,
+    "multi_character_reason": "",
+    "multi_character_participants": [
+      "luna"
+    ]
+  }
+}

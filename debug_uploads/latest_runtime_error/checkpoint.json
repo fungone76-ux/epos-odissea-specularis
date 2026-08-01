@@ -1,0 +1,27 @@
+{
+  "session_id": "7a4956bc-9c83-46fb-b653-d30095280f71",
+  "turn": 9,
+  "phase": "check_resolved",
+  "proposal": {
+    "action_kind": "intimate",
+    "skill": "carisma",
+    "difficulty": 2,
+    "target_ids": [
+      "luna"
+    ],
+    "opposition": "npc_resistance",
+    "reason": "perché l'esito è incerto",
+    "stakes": {
+      "full_success": "Luna indossa le pantyhose e la connessione tra voi due si approfondisce.",
+      "partial_success": "Luna indossa le pantyhose, ma si sente un po' incerta e l'atmosfera si raffredda.",
+      "failure": "Luna rifiuta di indossare le pantyhose, creando un momento di imbarazzo.",
+      "critical_failure": "Luna si allontana, delusa dalla proposta."
+    }
+  },
+  "roll": {
+    "pool_size": 4,
+    "difficulty": 2,
+    "dice": [],
+    "outcome": "full_success"
+  }
+}
