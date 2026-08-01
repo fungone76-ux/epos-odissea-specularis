@@ -1,0 +1,83 @@
+{
+  "status": "complete",
+  "image_path": "saves\\a3bd8faf-8a90-4622-9dc1-4d452f927ca9\\turns\\0002\\image.png",
+  "error": null,
+  "backend": "comfy",
+  "warning": null,
+  "diagnostics": {
+    "renderer": "comfy",
+    "base_url": "http://127.0.0.1:18188",
+    "workflow_path": "D:\\gioco_k3_extract\\comfy_workflow_image.json",
+    "checkpoint": "luna_main_model.safetensors",
+    "endpoint": "/prompt",
+    "prompt_id": "a56ecb3b-3770-4631-ae8f-46d280368216",
+    "status_http": null,
+    "requested_loras": [
+      {
+        "name": "Zatanna_-_DC_Animated_Universe",
+        "weight": 0.6
+      },
+      {
+        "name": "Expressive_H",
+        "weight": 0.4
+      },
+      {
+        "name": "FantasyWorldPonyV2",
+        "weight": 0.3
+      }
+    ],
+    "preflight": [
+      {
+        "endpoint": "/object_info",
+        "status_http": 200,
+        "duration_ms": 2078
+      }
+    ],
+    "checkpoint_available": true,
+    "missing_loras": [],
+    "duration_ms": 15203,
+    "image_path": "saves\\a3bd8faf-8a90-4622-9dc1-4d452f927ca9\\turns\\0002\\image.png",
+    "applied_loras": [
+      {
+        "node": "20",
+        "name": "stsSmith-10e.safetensors",
+        "strength_model": 0.65,
+        "strength_clip": 0.65
+      },
+      {
+        "node": "21",
+        "name": "Expressive_H-000001.safetensors",
+        "strength_model": 0.0,
+        "strength_clip": 0.0
+      },
+      {
+        "node": "22",
+        "name": "Expressive_H-000001.safetensors",
+        "strength_model": 0.0,
+        "strength_clip": 0.0
+      },
+      {
+        "node": "23",
+        "name": "Expressive_H-000001.safetensors",
+        "strength_model": 0.0,
+        "strength_clip": 0.0
+      },
+      {
+        "node": "24",
+        "name": "Expressive_H-000001.safetensors",
+        "strength_model": 0.0,
+        "strength_clip": 0.0
+      },
+      {
+        "node": "25",
+        "name": "Expressive_H-000001.safetensors",
+        "strength_model": 0.0,
+        "strength_clip": 0.0
+      }
+    ],
+    "seed": 5969631292497204529,
+    "error": "",
+    "cause": ""
+  },
+  "retryable": false
+}

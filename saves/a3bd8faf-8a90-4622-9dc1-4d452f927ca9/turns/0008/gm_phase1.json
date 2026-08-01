@@ -1,0 +1,19 @@
+{
+  "mode": "check_proposal",
+  "check": {
+    "action_kind": "intimate",
+    "skill": "carisma",
+    "difficulty": 2,
+    "target_ids": [
+      "victoria"
+    ],
+    "opposition": "none",
+    "reason": "perché l'esito è incerto",
+    "stakes": {
+      "full_success": "Victoria reagisce positivamente, mostrando interesse per un incontro più ravvicinato.",
+      "partial_success": "Victoria sembra sorpresa, ma mantiene un atteggiamento aperto.",
+      "failure": "Victoria si ritrae, trovando la tua azione inappropriata.",
+      "critical_failure": "Victoria si offende e decide di allontanarsi da te."
+    }
+  }
+}

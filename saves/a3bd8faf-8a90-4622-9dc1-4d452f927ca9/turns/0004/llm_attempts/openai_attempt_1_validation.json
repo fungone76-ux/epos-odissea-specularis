@@ -1,0 +1,18 @@
+{
+  "valid": false,
+  "phase": "proposal",
+  "validation_stage": "schema",
+  "validation_reason": "schema_validation_failed",
+  "errors": [
+    {
+      "code": "schema_validation_failed",
+      "path": "",
+      "message": "gm_phase_response.scene.visual.focus_character must be listed in visible_characters",
+      "details": {}
+    }
+  ],
+  "warnings": [],
+  "problems": [
+    "gm_phase_response.scene.visual.focus_character must be listed in visible_characters"
+  ]
+}

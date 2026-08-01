@@ -1,0 +1,19 @@
+{
+  "mode": "check_proposal",
+  "check": {
+    "action_kind": "social",
+    "skill": "carisma",
+    "difficulty": 2,
+    "target_ids": [
+      "victoria"
+    ],
+    "opposition": "none",
+    "reason": "perché l'esito è incerto",
+    "stakes": {
+      "full_success": "Victoria sarà colpita dalla tua richiesta e offrirà un'opportunità di avvicinamento.",
+      "partial_success": "Victoria risponderà positivamente, ma con riserve, richiedendo maggiore chiarezza.",
+      "failure": "Victoria non prenderà sul serio la tua richiesta, considerandola inopportuna.",
+      "critical_failure": "Victoria si sentirà offesa dalla tua richiesta, creando tensione tra voi."
+    }
+  }
+}

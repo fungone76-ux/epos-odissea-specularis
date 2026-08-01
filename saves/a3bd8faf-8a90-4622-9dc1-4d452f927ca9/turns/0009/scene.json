@@ -1,0 +1,61 @@
+{
+  "narration": "Victoria, con un sorriso provocante, si svela di fronte a te, il suo corpo sinuoso avvolto nel bikini di lusso. Con un gesto delicato, fa scivolare il sarong, rivelando completamente le sue curve affascinanti. La brezza marina gioca con i suoi capelli e l'atmosfera è densa di tensione e desiderio. \"Ecco, come richiesto,\" dice con voce calda, mentre si avvicina, creando un momento carico di intimità.",
+  "dialogue": [
+    {
+      "speaker": "Victoria Hale",
+      "text": "Ecco, come richiesto.",
+      "to": "player"
+    }
+  ],
+  "npc_actions": [
+    {
+      "npc_id": "victoria",
+      "action": "reveals her body, stepping closer"
+    }
+  ],
+  "intentions": [
+    {
+      "npc_id": "victoria",
+      "intention": "to create an intimate moment with the player"
+    }
+  ],
+  "initiatives": [],
+  "disclosure_events": [],
+  "mutations": [],
+  "memory_events": [
+    {
+      "summary": "Victoria reveals her body, creating a moment of intimacy with the player.",
+      "witnesses": [
+        "victoria"
+      ],
+      "source": "observed",
+      "credibility": 1.0,
+      "level": "immediate",
+      "emotional_impact": 3,
+      "public": false
+    }
+  ],
+  "visual": {
+    "summary": "Victoria Hale si presenta al miliardario fuori campo.",
+    "focus_character": "victoria",
+    "visible_characters": [
+      "victoria"
+    ],
+    "shared_action": false,
+    "visual_en": "Victoria Hale addresses the unseen VIP guest in Spiaggia privata, adult woman, expressive body language, elegant cinematic composition",
+    "tags_en": [
+      "NPC introduction",
+      "unseen guest POV",
+      "luxury resort"
+    ],
+    "moment_type": "intimate",
+    "speaker_character": "",
+    "actor_character": "victoria",
+    "reactor_character": "victoria",
+    "intimate_shared_moment": true,
+    "multi_character_reason": "",
+    "multi_character_participants": [
+      "victoria"
+    ]
+  }
+}

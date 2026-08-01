@@ -1,0 +1,26 @@
+================================================================
+DEBUG TURNO 2 — modalità: no_check
+sessione: a3bd8faf-8a90-4622-9dc1-4d452f927ca9 | location: loc_lobby
+================================================================
+
+[INPUT GIOCATORE]
+ciao
+
+[NARRAZIONE]
+È quindi il turno di Maria, composta e professionale. Si presenta come la responsabile dell'assistenza nella suite presidenziale e dei servizi personali durante il soggiorno.
+
+[DIALOGHI]
+- Maria: Sono Maria. Mi occuperò della suite presidenziale e di tutto ciò che riguarda il tuo comfort personale. Puoi rivolgerti direttamente a me per qualsiasi necessità.
+
+[PROMPT POSITIVO]
+score_9, score_8_up, stsSmith, ultra-detailed, realistic lighting, 1girl, mature female, veiny breasts, big breasts, saggy tits, black hair, short hair, <lora:stsSmith-10e:0.65>, deep neckline, fitted luxury maid mini dress, white lace trim, professional adult suite attendant, medium, eye-level camera, front three quarter view, facing camera three quarter, standing, professional posture, hands folded in front, shoulders relaxed, looking at camera, grand luxury resort lobby interior, polished white marble floor, marble reception desk, floor-to-ceiling glass walls, Mediterranean sea view, warm natural daylight, elegant brass details, detailed interior background
+
+[PROMPT NEGATIVO]
+score_6, score_5, score_4, score_3, score_2, score_1, lowres, worst quality, low quality, blurry, bad anatomy, bad hands, extra fingers, missing fingers, extra limbs, deformed, text, watermark, signature, child, young-looking, underage, teenager, coercion, violence, duplicate person, plain background, white background, grey background, studio background, seamless backdrop, isolated figure, empty background, blank wall, multiple people, extra person, background people, duplicate character, cloned face, merged bodies, fused bodies, extra face
+
+[PROSA DI SCENA (visual_en)]
+standing, professional posture, hands folded in front, shoulders relaxed, looking at camera, grand luxury resort lobby interior, polished white marble floor, marble reception desk, floor-to-ceiling glass walls, Mediterranean sea view, warm natural daylight, elegant brass details, detailed interior background
+
+[RENDER]
+status: complete | backend: comfy
+immagine: saves\a3bd8faf-8a90-4622-9dc1-4d452f927ca9\turns\0002\image.png

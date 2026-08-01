@@ -1,0 +1,230 @@
+{
+  "source_of_truth": "WorldState.player.outfit",
+  "outfit_state_before_turn": {
+    "worn_items": [
+      "luxury travel suit",
+      "tailored shirt",
+      "elegant shoes"
+    ],
+    "removed_items": [],
+    "torso_slot": [
+      "luxury travel suit",
+      "tailored shirt"
+    ],
+    "lower_body_slot": [
+      "luxury travel suit"
+    ],
+    "footwear": [
+      "elegant shoes"
+    ],
+    "nudity_mode": "clothed",
+    "revision": 0,
+    "source_of_truth": "character.outfit"
+  },
+  "outfit_intent_detected": "none",
+  "outfit_mutations_requested": [
+    {
+      "type": "outfit_remove",
+      "target": "victoria",
+      "payload": {
+        "item": "black bodycon blazer mini dress"
+      },
+      "reason": "Cambio automatico all'outfit da spiaggia perché non esiste un override manuale."
+    },
+    {
+      "type": "outfit_remove",
+      "target": "victoria",
+      "payload": {
+        "item": "deep neckline"
+      },
+      "reason": "Cambio automatico all'outfit da spiaggia perché non esiste un override manuale."
+    },
+    {
+      "type": "outfit_remove",
+      "target": "victoria",
+      "payload": {
+        "item": "sheer black stockings"
+      },
+      "reason": "Cambio automatico all'outfit da spiaggia perché non esiste un override manuale."
+    },
+    {
+      "type": "outfit_remove",
+      "target": "victoria",
+      "payload": {
+        "item": "black stilettos"
+      },
+      "reason": "Cambio automatico all'outfit da spiaggia perché non esiste un override manuale."
+    },
+    {
+      "type": "outfit_remove",
+      "target": "victoria",
+      "payload": {
+        "item": "elegant jewelry"
+      },
+      "reason": "Cambio automatico all'outfit da spiaggia perché non esiste un override manuale."
+    },
+    {
+      "type": "outfit_wear",
+      "target": "victoria",
+      "payload": {
+        "item": "black luxury bikini"
+      },
+      "reason": "Outfit coerente con la location spiaggia."
+    },
+    {
+      "type": "outfit_wear",
+      "target": "victoria",
+      "payload": {
+        "item": "sheer black beach sarong"
+      },
+      "reason": "Outfit coerente con la location spiaggia."
+    },
+    {
+      "type": "outfit_wear",
+      "target": "victoria",
+      "payload": {
+        "item": "barefoot"
+      },
+      "reason": "Outfit coerente con la location spiaggia."
+    }
+  ],
+  "outfit_mutations_normalized": [],
+  "outfit_mutations_applied": [
+    {
+      "type": "outfit_remove",
+      "target": "victoria",
+      "payload": {
+        "item": "black bodycon blazer mini dress"
+      },
+      "reason": "Cambio automatico all'outfit da spiaggia perché non esiste un override manuale."
+    },
+    {
+      "type": "outfit_remove",
+      "target": "victoria",
+      "payload": {
+        "item": "deep neckline"
+      },
+      "reason": "Cambio automatico all'outfit da spiaggia perché non esiste un override manuale."
+    },
+    {
+      "type": "outfit_remove",
+      "target": "victoria",
+      "payload": {
+        "item": "sheer black stockings"
+      },
+      "reason": "Cambio automatico all'outfit da spiaggia perché non esiste un override manuale."
+    },
+    {
+      "type": "outfit_remove",
+      "target": "victoria",
+      "payload": {
+        "item": "black stilettos"
+      },
+      "reason": "Cambio automatico all'outfit da spiaggia perché non esiste un override manuale."
+    },
+    {
+      "type": "outfit_remove",
+      "target": "victoria",
+      "payload": {
+        "item": "elegant jewelry"
+      },
+      "reason": "Cambio automatico all'outfit da spiaggia perché non esiste un override manuale."
+    },
+    {
+      "type": "outfit_wear",
+      "target": "victoria",
+      "payload": {
+        "item": "black luxury bikini"
+      },
+      "reason": "Outfit coerente con la location spiaggia."
+    },
+    {
+      "type": "outfit_wear",
+      "target": "victoria",
+      "payload": {
+        "item": "sheer black beach sarong"
+      },
+      "reason": "Outfit coerente con la location spiaggia."
+    },
+    {
+      "type": "outfit_wear",
+      "target": "victoria",
+      "payload": {
+        "item": "barefoot"
+      },
+      "reason": "Outfit coerente con la location spiaggia."
+    }
+  ],
+  "outfit_state_after_turn": {
+    "worn_items": [
+      "luxury travel suit",
+      "tailored shirt",
+      "elegant shoes"
+    ],
+    "removed_items": [],
+    "torso_slot": [
+      "luxury travel suit",
+      "tailored shirt"
+    ],
+    "lower_body_slot": [
+      "luxury travel suit"
+    ],
+    "footwear": [
+      "elegant shoes"
+    ],
+    "nudity_mode": "clothed",
+    "revision": 0,
+    "source_of_truth": "character.outfit"
+  },
+  "outfit_state_saved": {
+    "worn_items": [
+      "luxury travel suit",
+      "tailored shirt",
+      "elegant shoes"
+    ],
+    "removed_items": [],
+    "torso_slot": [
+      "luxury travel suit",
+      "tailored shirt"
+    ],
+    "lower_body_slot": [
+      "luxury travel suit"
+    ],
+    "footwear": [
+      "elegant shoes"
+    ],
+    "nudity_mode": "clothed",
+    "revision": 0,
+    "source_of_truth": "character.outfit"
+  },
+  "outfit_state_loaded_next_turn": {
+    "worn_items": [
+      "luxury travel suit",
+      "tailored shirt",
+      "elegant shoes"
+    ],
+    "removed_items": [],
+    "torso_slot": [
+      "luxury travel suit",
+      "tailored shirt"
+    ],
+    "lower_body_slot": [
+      "luxury travel suit"
+    ],
+    "footwear": [
+      "elegant shoes"
+    ],
+    "nudity_mode": "clothed",
+    "revision": 0,
+    "source_of_truth": "character.outfit"
+  },
+  "outfit_ui_value": "Indossa",
+  "outfit_ui_items": [
+    "luxury travel suit",
+    "tailored shirt",
+    "elegant shoes"
+  ],
+  "nudity_mode": "clothed",
+  "outfit_revision": 0,
+  "outfit_normalization_problems": []
+}

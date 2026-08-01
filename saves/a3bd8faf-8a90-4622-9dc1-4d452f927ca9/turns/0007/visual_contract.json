@@ -1,0 +1,347 @@
+{
+  "turn": 7,
+  "location_id": "loc_private_beach",
+  "moment": "Victoria si avvicina con un sorriso intrigante.",
+  "focus_character": "victoria",
+  "visible_characters": [
+    "victoria"
+  ],
+  "shared_action": false,
+  "characters": [
+    {
+      "id": "victoria",
+      "name": "Victoria Hale",
+      "outfit_worn": [
+        "black luxury bikini",
+        "sheer black beach sarong",
+        "barefoot"
+      ],
+      "outfit_removed": [
+        "black bodycon blazer mini dress",
+        "deep neckline",
+        "sheer black stockings",
+        "black stilettos",
+        "elegant jewelry"
+      ],
+      "outfit_revision": 8,
+      "outfit_state": {
+        "worn_items": [
+          "black luxury bikini",
+          "sheer black beach sarong",
+          "barefoot"
+        ],
+        "removed_items": [
+          "black bodycon blazer mini dress",
+          "deep neckline",
+          "sheer black stockings",
+          "black stilettos",
+          "elegant jewelry"
+        ],
+        "torso_slot": [
+          "black luxury bikini",
+          "sheer black beach sarong"
+        ],
+        "lower_body_slot": [
+          "black luxury bikini",
+          "sheer black beach sarong"
+        ],
+        "footwear": [],
+        "nudity_mode": "clothed",
+        "revision": 8,
+        "source_of_truth": "character.outfit"
+      },
+      "wounds": [],
+      "conditions": []
+    }
+  ],
+  "time_phase": "mattina",
+  "visual_en": "Victoria approaches with an intriguing smile, her sheer black beach sarong fluttering in the breeze.",
+  "tags_en": [
+    "full body",
+    "eye-level camera",
+    "front three quarter view",
+    "facing camera three quarter",
+    "action",
+    "seductive"
+  ],
+  "prompt_package": {
+    "positive": "score_9,score_8_up,score_7_up,masterpiece , realistic, zatanna, mature woman, , black hair, long hair,  , cute, huge ass, bottom heavy, wide hips, huge breast,  grey eyes,  pink lips,  ,  <lora:Zatanna_-_DC_Animated_Universe:0.6> <lora:Expressive_H:0.4> <lora:FantasyWorldPonyV2:0.3>, black luxury bikini, sheer black beach sarong, barefoot, authoritative adult VIP director, full body, eye-level camera, front three quarter view, facing camera three quarter, action, seductive, Victoria approaches with an intriguing smile, her sheer black beach sarong fluttering in the breeze.",
+    "negative": "score_6, score_5, score_4, score_3, score_2, score_1, lowres, worst quality, low quality, blurry, bad anatomy, bad hands, extra fingers, missing fingers, extra limbs, deformed, text, watermark, signature, child, young-looking, underage, teenager, coercion, violence, duplicate person, plain background, white background, grey background, studio background, seamless backdrop, isolated figure, empty background, blank wall, multiple people, extra person, background people, duplicate character, cloned face, merged bodies, fused bodies, extra face",
+    "base_prompt_by_character": {
+      "victoria": "score_9,score_8_up,score_7_up,masterpiece , realistic, zatanna, mature woman, , black hair, long hair,  , cute, huge ass, bottom heavy, wide hips, huge breast,  grey eyes,  pink lips,  ,  <lora:Zatanna_-_DC_Animated_Universe:0.6> <lora:Expressive_H:0.4> <lora:FantasyWorldPonyV2:0.3>"
+    },
+    "character_lora_by_character": {
+      "victoria": ""
+    },
+    "outfit_prompt_by_character": {
+      "victoria": "black luxury bikini, sheer black beach sarong, barefoot"
+    },
+    "role_prompt_by_character": {
+      "victoria": "authoritative adult VIP director"
+    },
+    "role_prompt_original_by_character": {
+      "victoria": "authoritative adult VIP director"
+    },
+    "role_prompt_sanitization": {
+      "removed_terms_by_character": {},
+      "max_words": 12
+    },
+    "scene_tags": [
+      "full body",
+      "eye-level camera",
+      "front three quarter view",
+      "facing camera three quarter",
+      "action",
+      "seductive"
+    ],
+    "scene_visual": "Victoria approaches with an intriguing smile, her sheer black beach sarong fluttering in the breeze.",
+    "original_scene_tags": [
+      "full body",
+      "eye-level camera",
+      "front three quarter view",
+      "facing camera three quarter",
+      "close-up",
+      "action",
+      "beach",
+      "seductive"
+    ],
+    "original_scene_visual": "Victoria approaches with an intriguing smile, her sheer black beach sarong fluttering in the breeze.",
+    "sanitized_scene_tags": [
+      "full body",
+      "eye-level camera",
+      "front three quarter view",
+      "facing camera three quarter",
+      "action",
+      "seductive"
+    ],
+    "sanitized_scene_visual": "Victoria approaches with an intriguing smile, her sheer black beach sarong fluttering in the breeze.",
+    "identity_sanitization": {
+      "removed_terms": [],
+      "reason": ""
+    },
+    "facial_expression_sanitization": {
+      "removed_terms": [],
+      "reason": ""
+    },
+    "broken_chunk_sanitization": {
+      "removed_chunks": [],
+      "reason": ""
+    },
+    "camera_tag_conflicts": [
+      {
+        "type": "full_body_close_up",
+        "resolved_by": "removed_close_up"
+      }
+    ],
+    "revealing_outfit_policy": {
+      "preserve_revealing_outfit_traits": true,
+      "revealing_outfit_priority": true
+    },
+    "multi_character_composition": {
+      "grouped_per_character": false
+    },
+    "cross_layer_deduplication": {
+      "removed": {
+        "tags": [
+          "beach"
+        ],
+        "visual": []
+      },
+      "max_scene_tags": 8
+    },
+    "nudity_diagnostics": {
+      "detected_clothing_state": "not_visible",
+      "nudity_mode": "none",
+      "nudity_tags_added": [],
+      "clothing_block_tags_added": []
+    },
+    "detected_clothing_state": "not_visible",
+    "nudity_mode": "none",
+    "nudity_tags_added": [],
+    "clothing_block_tags_added": [],
+    "outfit_tags_added": [
+      "black luxury bikini, sheer black beach sarong, barefoot"
+    ],
+    "outfit_tags_suppressed": {},
+    "source_of_truth": "character.outfit",
+    "negative_prompt_by_character": {
+      "victoria": ""
+    },
+    "visible_characters": [
+      "victoria"
+    ],
+    "positive_prompt": "score_9,score_8_up,score_7_up,masterpiece , realistic, zatanna, mature woman, , black hair, long hair,  , cute, huge ass, bottom heavy, wide hips, huge breast,  grey eyes,  pink lips,  ,  <lora:Zatanna_-_DC_Animated_Universe:0.6> <lora:Expressive_H:0.4> <lora:FantasyWorldPonyV2:0.3>, black luxury bikini, sheer black beach sarong, barefoot, authoritative adult VIP director, full body, eye-level camera, front three quarter view, facing camera three quarter, action, seductive, Victoria approaches with an intriguing smile, her sheer black beach sarong fluttering in the breeze.",
+    "negative_prompt": "score_6, score_5, score_4, score_3, score_2, score_1, lowres, worst quality, low quality, blurry, bad anatomy, bad hands, extra fingers, missing fingers, extra limbs, deformed, text, watermark, signature, child, young-looking, underage, teenager, coercion, violence, duplicate person, plain background, white background, grey background, studio background, seamless backdrop, isolated figure, empty background, blank wall, multiple people, extra person, background people, duplicate character, cloned face, merged bodies, fused bodies, extra face",
+    "focus_character": "victoria",
+    "focus_reason": "actor",
+    "multi_character_reason": "",
+    "proposed_camera": "",
+    "selected_camera": "front_three_quarter",
+    "camera_override_applied": false,
+    "camera_override_reason": "",
+    "shot_type": "full_body",
+    "camera_angle": "eye_level",
+    "camera_side": "front_three_quarter",
+    "subject_orientation": "facing_camera_three_quarter",
+    "camera_history": [
+      {
+        "camera_side": "front_three_quarter",
+        "shot_type": "medium",
+        "camera_angle": "eye_level",
+        "focus_character": "victoria",
+        "posture": ""
+      },
+      {
+        "camera_side": "side",
+        "shot_type": "medium",
+        "camera_angle": "eye_level",
+        "focus_character": "luna",
+        "posture": ""
+      },
+      {
+        "camera_side": "front_three_quarter",
+        "shot_type": "medium",
+        "camera_angle": "eye_level",
+        "focus_character": "maria",
+        "posture": ""
+      },
+      {
+        "camera_side": "side",
+        "shot_type": "medium",
+        "camera_angle": "eye_level",
+        "focus_character": "stella",
+        "posture": ""
+      },
+      {
+        "camera_side": "front_three_quarter",
+        "shot_type": "full_body",
+        "camera_angle": "eye_level",
+        "focus_character": "victoria",
+        "posture": ""
+      },
+      {
+        "camera_side": "side",
+        "shot_type": "full_body",
+        "camera_angle": "eye_level",
+        "focus_character": "victoria",
+        "posture": ""
+      }
+    ],
+    "director_reason": "default_structured_camera",
+    "explicit_pose": "",
+    "pose_tags_added": []
+  },
+  "focus_reason": "actor",
+  "multi_character_reason": "",
+  "camera_director": {
+    "proposed_camera": "",
+    "selected_camera": "front_three_quarter",
+    "camera_override_applied": false,
+    "camera_override_reason": "",
+    "shot_type": "full_body",
+    "camera_angle": "eye_level",
+    "camera_side": "front_three_quarter",
+    "subject_orientation": "facing_camera_three_quarter",
+    "camera_history": [
+      {
+        "camera_side": "front_three_quarter",
+        "shot_type": "medium",
+        "camera_angle": "eye_level",
+        "focus_character": "victoria",
+        "posture": ""
+      },
+      {
+        "camera_side": "side",
+        "shot_type": "medium",
+        "camera_angle": "eye_level",
+        "focus_character": "luna",
+        "posture": ""
+      },
+      {
+        "camera_side": "front_three_quarter",
+        "shot_type": "medium",
+        "camera_angle": "eye_level",
+        "focus_character": "maria",
+        "posture": ""
+      },
+      {
+        "camera_side": "side",
+        "shot_type": "medium",
+        "camera_angle": "eye_level",
+        "focus_character": "stella",
+        "posture": ""
+      },
+      {
+        "camera_side": "front_three_quarter",
+        "shot_type": "full_body",
+        "camera_angle": "eye_level",
+        "focus_character": "victoria",
+        "posture": ""
+      },
+      {
+        "camera_side": "side",
+        "shot_type": "full_body",
+        "camera_angle": "eye_level",
+        "focus_character": "victoria",
+        "posture": ""
+      }
+    ],
+    "director_reason": "default_structured_camera",
+    "explicit_pose": "",
+    "pose_tags_added": []
+  },
+  "concrete_action": "Victoria si avvicina con un sorriso intrigante.",
+  "place": "Spiaggia privata",
+  "canonical_outfit": {
+    "victoria": {
+      "worn": [
+        "black luxury bikini",
+        "sheer black beach sarong",
+        "barefoot"
+      ],
+      "removed": [
+        "black bodycon blazer mini dress",
+        "deep neckline",
+        "sheer black stockings",
+        "black stilettos",
+        "elegant jewelry"
+      ],
+      "outfit_state": {
+        "worn_items": [
+          "black luxury bikini",
+          "sheer black beach sarong",
+          "barefoot"
+        ],
+        "removed_items": [
+          "black bodycon blazer mini dress",
+          "deep neckline",
+          "sheer black stockings",
+          "black stilettos",
+          "elegant jewelry"
+        ],
+        "torso_slot": [
+          "black luxury bikini",
+          "sheer black beach sarong"
+        ],
+        "lower_body_slot": [
+          "black luxury bikini",
+          "sheer black beach sarong"
+        ],
+        "footwear": [],
+        "nudity_mode": "clothed",
+        "revision": 8,
+        "source_of_truth": "character.outfit"
+      },
+      "conditions": [],
+      "wounds": []
+    }
+  },
+  "pose": "Victoria approaches with an intriguing smile, her sheer black beach sarong fluttering in the breeze. close-up action beach seductive",
+  "shot_type": "full_body",
+  "camera_side": "front_three_quarter",
+  "camera_angle": "eye_level",
+  "lighting": "worldpack_default",
+  "positive_prompt": "score_9,score_8_up,score_7_up,masterpiece , realistic, zatanna, mature woman, , black hair, long hair,  , cute, huge ass, bottom heavy, wide hips, huge breast,  grey eyes,  pink lips,  ,  <lora:Zatanna_-_DC_Animated_Universe:0.6> <lora:Expressive_H:0.4> <lora:FantasyWorldPonyV2:0.3>, black luxury bikini, sheer black beach sarong, barefoot, authoritative adult VIP director, full body, eye-level camera, front three quarter view, facing camera three quarter, action, seductive, Victoria approaches with an intriguing smile, her sheer black beach sarong fluttering in the breeze.",
+  "negative_prompt": "score_6, score_5, score_4, score_3, score_2, score_1, lowres, worst quality, low quality, blurry, bad anatomy, bad hands, extra fingers, missing fingers, extra limbs, deformed, text, watermark, signature, child, young-looking, underage, teenager, coercion, violence, duplicate person, plain background, white background, grey background, studio background, seamless backdrop, isolated figure, empty background, blank wall, multiple people, extra person, background people, duplicate character, cloned face, merged bodies, fused bodies, extra face",
+  "visual_reason": "actor; default_structured_camera"
+}

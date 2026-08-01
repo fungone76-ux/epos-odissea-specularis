@@ -1,0 +1,28 @@
+{
+  "mode": "no_check",
+  "scene": {
+    "narration": "Victoria, con il suo elegante abito nero aderente e un sorriso sicuro, si avvicina a te. \"Ciao, come stai oggi? Hai alcune idee su come possiamo rendere la tua esperienza qui ancora più memorabile?\"",
+    "dialogue": [],
+    "npc_actions": [],
+    "intentions": [],
+    "mutations": [],
+    "initiatives": [],
+    "disclosure_events": [],
+    "memory_events": [],
+    "visual": {
+      "summary": "Victoria si avvicina con un sorriso sicuro.",
+      "focus_character": "victoria",
+      "visible_characters": ["victoria"],
+      "shared_action": false,
+      "moment_type": "speech",
+      "speaker_character": "victoria",
+      "actor_character": "victoria",
+      "reactor_character": "",
+      "intimate_shared_moment": false,
+      "multi_character_reason": "",
+      "multi_character_participants": [],
+      "visual_en": "Victoria approaches with a confident smile, wearing a black bodycon blazer mini dress.",
+      "tags_en": ["close-up", "confident", "elegant", "luxurious"]
+    }
+  }
+}
