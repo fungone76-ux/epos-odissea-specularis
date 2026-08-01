@@ -1,19 +1,121 @@
-"""Strict intro orchestration for Seven Nights at Azure Crown.
+"""Intro canonica e deterministica per Seven Nights at Azure Crown.
 
-During the guided introduction only the target NPC is exposed to the LLM.
-All other NPC presence is restored immediately after the turn. This makes the
-sequence authoritative instead of relying on prompt wording alone.
+Le quattro presentazioni iniziali non dipendono dalla LLM: Python governa
+contenuto, ordine, NPC visibile e avanzamento. Dopo Stella il servizio torna
+al normale gameplay LLM del Resort.
 """
 
 from __future__ import annotations
 
-from .resort_intro import current_intro_step, initialise_resort_intro
+from .contract import FinalScene
+from .resort_intro import (
+    advance_resort_intro,
+    current_intro_step,
+    initialise_resort_intro,
+)
 from .resort_turn_service import ResortTurnService, _merge_reports, _speaker_id
 from .validators import ValidationErrorDetail, ValidationReport
 
 
+_INTRO_COPY = {
+    "victoria": {
+        "narration": (
+            "Victoria Hale ti accoglie nella lobby dell'Azure Crown con la calma "
+            "autorevole di chi dirige ogni dettaglio del resort. Si presenta come "
+            "direttrice e ti informa che sarà lei ad accompagnarti nelle presentazioni "
+            "di Luna, Maria e Stella."
+        ),
+        "dialogue": (
+            "Benvenuto all'Azure Crown. Sono Victoria Hale, la direttrice del resort. "
+            "Durante il soggiorno sarò il tuo riferimento personale. Prima di lasciarti "
+            "esplorare liberamente, desidero presentarti Luna, Maria e Stella, una alla volta."
+        ),
+        "visual": "Victoria Hale formally welcomes the unseen VIP guest in the Azure Crown lobby, poised authoritative posture, elegant cinematic composition",
+        "summary": "Victoria Hale si presenta come direttrice e annuncia le altre collaboratrici.",
+    },
+    "luna": {
+        "narration": (
+            "Victoria lascia spazio a Luna. La giovane donna si presenta con modi misurati "
+            "e uno sguardo attento, spiegando che seguirà personalmente gli aspetti più "
+            "riservati e discreti del soggiorno."
+        ),
+        "dialogue": (
+            "Piacere, sono Luna. Mi occupo dell'assistenza privata e discreta degli ospiti. "
+            "Preferisco osservare e capire ciò che serve davvero, prima di intervenire."
+        ),
+        "visual": "Luna introduces herself to the unseen VIP guest in the Azure Crown lobby, reserved attentive posture, elegant cinematic composition",
+        "summary": "Luna si presenta e descrive il proprio ruolo di assistente privata.",
+    },
+    "maria": {
+        "narration": (
+            "È quindi il turno di Maria, composta e professionale. Si presenta come la "
+            "responsabile dell'assistenza nella suite presidenziale e dei servizi personali "
+            "durante il soggiorno."
+        ),
+        "dialogue": (
+            "Sono Maria. Mi occuperò della suite presidenziale e di tutto ciò che riguarda "
+            "il tuo comfort personale. Puoi rivolgerti direttamente a me per qualsiasi necessità."
+        ),
+        "visual": "Maria introduces herself to the unseen VIP guest in the Azure Crown lobby, calm professional posture, elegant cinematic composition",
+        "summary": "Maria si presenta come responsabile della suite e del servizio personale.",
+    },
+    "stella": {
+        "narration": (
+            "Per ultima si presenta Stella, vivace e sicura di sé. Spiega di occuparsi "
+            "dell'intrattenimento VIP, degli eventi e delle esperienze speciali organizzate "
+            "all'interno del resort."
+        ),
+        "dialogue": (
+            "Io sono Stella. Organizzo gli eventi VIP, l'intrattenimento e le esperienze "
+            "speciali dell'Azure Crown. Farò in modo che qui non ci sia spazio per la noia."
+        ),
+        "visual": "Stella introduces herself to the unseen VIP guest in the Azure Crown lobby, confident lively posture, elegant cinematic composition",
+        "summary": "Stella si presenta come responsabile dell'intrattenimento VIP.",
+    },
+}
+
+
+def _canonical_intro_scene(npc_id: str, name: str) -> FinalScene:
+    copy = _INTRO_COPY[npc_id]
+    return FinalScene.from_dict(
+        {
+            "narration": copy["narration"],
+            "dialogue": [
+                {
+                    "speaker": name,
+                    "text": copy["dialogue"],
+                    "to": "player",
+                }
+            ],
+            "npc_actions": [
+                {"npc_id": npc_id, "action": "si presenta personalmente al cliente VIP"}
+            ],
+            "intentions": [],
+            "initiatives": [],
+            "disclosure_events": [],
+            "mutations": [],
+            "memory_events": [],
+            "visual": {
+                "summary": copy["summary"],
+                "focus_character": npc_id,
+                "visible_characters": [npc_id],
+                "shared_action": False,
+                "visual_en": copy["visual"],
+                "tags_en": ["NPC introduction", "luxury resort lobby"],
+                "moment_type": "speech",
+                "speaker_character": npc_id,
+                "actor_character": npc_id,
+                "reactor_character": npc_id,
+                "intimate_shared_moment": False,
+                "multi_character_reason": "",
+                "multi_character_participants": [npc_id],
+            },
+        }
+    )
+
+
 class ResortIntroTurnService(ResortTurnService):
-    """Resort service with hard, single-NPC intro isolation."""
+    """Resort service con intro canonica, senza chiamate LLM."""
 
     def play(self, state, player_text: str):
         initialise_resort_intro(state)
@@ -30,7 +132,18 @@ class ResortIntroTurnService(ResortTurnService):
                 npc.present = npc_id == step.npc_id
                 if npc_id == step.npc_id:
                     npc.location_id = state.location_id
-            return super().play(state, player_text)
+
+            scene = _canonical_intro_scene(step.npc_id, state.npcs[step.npc_id].name)
+            result = self._commit_turn(
+                state,
+                state.turn,
+                "no_check",
+                scene,
+                player_text=player_text,
+            )
+            advance_resort_intro(state, result)
+            self.store.save_state(state)
+            return result
         finally:
             for npc_id, (present, location_id) in presence.items():
                 npc = state.npcs[npc_id]
