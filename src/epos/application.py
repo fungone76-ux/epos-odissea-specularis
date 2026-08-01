@@ -86,6 +86,7 @@ class GameApplicationService:
             narration_provider=providers.narration_provider,
             split_provider=providers.split_provider,
             temerario_provider=providers.temerario_provider,
+            post_turn_processor=self.service.post_turn_processor,
             progress=providers.progress,
         )
 
