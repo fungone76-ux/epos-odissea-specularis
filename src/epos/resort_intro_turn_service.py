@@ -18,20 +18,19 @@ from .validators import ValidationErrorDetail, ValidationReport
 
 
 _LOBBY_VISUAL = (
-    "inside the grand Azure Crown luxury resort lobby, polished white marble floor, "
-    "marble reception desk, floor-to-ceiling glass walls, visible Mediterranean sea, "
-    "warm natural daylight, elegant brass details, luxury interior clearly visible, "
-    "detailed environmental background, no studio backdrop"
+    "grand luxury resort lobby interior, polished white marble floor, "
+    "marble reception desk, floor-to-ceiling glass walls, Mediterranean sea view, "
+    "warm natural daylight, elegant brass details, detailed interior background"
 )
 
 _LOBBY_TAGS = [
-    "NPC introduction",
     "grand luxury resort lobby interior",
     "polished marble floor",
     "marble reception desk",
     "floor-to-ceiling glass walls",
     "Mediterranean sea view",
-    "detailed environmental background",
+    "warm natural daylight",
+    "detailed interior background",
 ]
 
 _INTRO_COPY = {
@@ -48,8 +47,8 @@ _INTRO_COPY = {
             "esplorare liberamente, desidero presentarti Luna, Maria e Stella, una alla volta."
         ),
         "visual": (
-            "Victoria Hale formally welcomes the unseen VIP guest, poised authoritative "
-            "posture, elegant cinematic composition, " + _LOBBY_VISUAL
+            "standing, straight posture, chin raised, one hand at waist, welcoming gesture, "
+            "looking at camera, " + _LOBBY_VISUAL
         ),
         "summary": "Victoria Hale si presenta come direttrice e annuncia le altre collaboratrici.",
     },
@@ -64,8 +63,8 @@ _INTRO_COPY = {
             "Preferisco osservare e capire ciò che serve davvero, prima di intervenire."
         ),
         "visual": (
-            "Luna introduces herself to the unseen VIP guest, reserved attentive posture, "
-            "elegant cinematic composition, " + _LOBBY_VISUAL
+            "standing, reserved posture, hands lightly clasped, slight head tilt, "
+            "looking at camera, " + _LOBBY_VISUAL
         ),
         "summary": "Luna si presenta e descrive il proprio ruolo di assistente privata.",
     },
@@ -80,8 +79,8 @@ _INTRO_COPY = {
             "il tuo comfort personale. Puoi rivolgerti direttamente a me per qualsiasi necessità."
         ),
         "visual": (
-            "Maria introduces herself to the unseen VIP guest, calm professional posture, "
-            "elegant cinematic composition, " + _LOBBY_VISUAL
+            "standing, professional posture, hands folded in front, shoulders relaxed, "
+            "looking at camera, " + _LOBBY_VISUAL
         ),
         "summary": "Maria si presenta come responsabile della suite e del servizio personale.",
     },
@@ -96,8 +95,8 @@ _INTRO_COPY = {
             "speciali dell'Azure Crown. Farò in modo che qui non ci sia spazio per la noia."
         ),
         "visual": (
-            "Stella introduces herself to the unseen VIP guest, confident lively posture, "
-            "elegant cinematic composition, " + _LOBBY_VISUAL
+            "standing, confident pose, one hand on hip, lively gesture, weight on one leg, "
+            "looking at camera, " + _LOBBY_VISUAL
         ),
         "summary": "Stella si presenta come responsabile dell'intrattenimento VIP.",
     },
