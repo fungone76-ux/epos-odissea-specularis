@@ -4,6 +4,24 @@
 
 Addendum canonico al design di **Seven Nights at Azure Crown**. Questo file consolida le decisioni approvate sulle missioni e corregge ogni scelta precedente incompatibile.
 
+## Regola adulta centrale
+
+**Seven Nights at Azure Crown è un gioco adult.**
+
+Imprevisti, ricompense, eventi, incarichi, prove e conseguenze devono avere sempre una componente erotica, sensuale o sexy coerente con la scena, il ruolo degli NPC e il livello di relazione raggiunto.
+
+Questa componente non deve essere aggiunta in modo casuale o scollegato. Deve emergere attraverso:
+
+- abiti provocanti e dress code del resort;
+- servizio personale e situazioni intime;
+- gelosia, seduzione e competizione;
+- massaggi, spa, piscina, spiaggia, suite ed eventi serali;
+- ricompense relazionali o accesso a esperienze private;
+- incidenti di servizio che producono scene sensuali o imbarazzanti;
+- iniziative volontarie dei personaggi adulti.
+
+Tutti i personaggi sono adulti. Le interazioni devono restare coerenti con consenso, autonomia e personalità degli NPC. Il denaro, il ruolo VIP o l'autorità non garantiscono automaticamente disponibilità sessuale.
+
 ## Struttura generale
 
 Il world usa un sistema misto composto da:
@@ -18,7 +36,7 @@ Le missioni devono essere chiare, specifiche, misurabili e governate dal runtime
 
 Il protagonista arriva inizialmente per valutare il resort. Durante i sette giorni incontra piccoli problemi di servizio, tensioni interne e una difficoltà economica concreta.
 
-Questi elementi devono restare secondari rispetto a vacanza, relazioni e competizione. Non deve esistere un complotto complesso.
+Questi elementi devono restare secondari rispetto a vacanza, relazioni, seduzione e competizione. Non deve esistere un complotto complesso.
 
 La difficoltà economica concreta è un debito bancario in scadenza. La scadenza cade durante il settimo giorno, così la decisione economica conclusiva coincide con la fine del soggiorno.
 
@@ -29,6 +47,20 @@ Alla fine il protagonista può:
 - imporre condizioni;
 - proporre una gestione diversa;
 - subordinare l'accordo a cambiamenti riguardanti personale e organizzazione.
+
+## Primo problema di servizio
+
+Il primo problema concreto riguarda la suite presidenziale.
+
+Una richiesta privata e sensuale del protagonista non viene preparata correttamente prima del suo arrivo. Maria deve intervenire personalmente per sistemare la suite, recuperare il servizio e proteggere la reputazione del resort.
+
+Il contenuto preciso della richiesta sarà definito separatamente, ma dovrà:
+
+- essere adulto e sexy;
+- coinvolgere concretamente Maria;
+- creare una scena giocabile nella suite;
+- permettere più soluzioni e reazioni;
+- non trasformarsi in un problema tecnico o amministrativo privo di tensione erotica.
 
 ## Rivelazione delle missioni personali
 
