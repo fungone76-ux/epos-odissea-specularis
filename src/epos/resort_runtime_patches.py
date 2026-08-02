@@ -1,10 +1,14 @@
 """Conservative runtime repairs shared by the Resort production path.
 
 The LLM occasionally copies the schema placeholder ``npc_id`` into structured
-visual fields.  This module resolves that placeholder only when the scene has
-one unambiguous present NPC, speaker, actor or initiative source.  It also
+visual fields. This module resolves that placeholder only when the scene has
+one unambiguous present NPC, speaker, actor or initiative source. It also
 extends the generic outfit vocabulary with modern Resort garments so canonical
 nudity state is not inferred from an incomplete ancient/fantasy vocabulary.
+
+Dialogue ``speaker`` is display-facing text and must remain readable. Only
+machine-facing fields such as ``to``, targets and visual entity references are
+canonicalized to internal ids.
 """
 
 from __future__ import annotations
@@ -146,6 +150,23 @@ def _repair_scene_placeholders(
     return replace(scene, intentions=intentions, npc_actions=npc_actions, visual=visual), entries
 
 
+def _restore_display_speakers(original_scene, normalized_scene):
+    """Keep dialogue speaker labels display-facing while retaining normalized ``to`` ids."""
+
+    if len(original_scene.dialogue) != len(normalized_scene.dialogue):
+        return normalized_scene
+
+    dialogue = [
+        replace(normalized_line, speaker=original_line.speaker)
+        for original_line, normalized_line in zip(
+            original_scene.dialogue,
+            normalized_scene.dialogue,
+            strict=True,
+        )
+    ]
+    return replace(normalized_scene, dialogue=dialogue)
+
+
 def normalize_scene_entity_ids_with_placeholders(
     state,
     scene,
@@ -168,9 +189,19 @@ def normalize_scene_entity_ids_with_placeholders(
         attempt=attempt,
         source_payload=source_payload,
     )
-    if not placeholder_entries:
-        return result
-    return EntityNormalizationResult(result.value, [*placeholder_entries, *result.entries])
+
+    restored_scene = _restore_display_speakers(repaired, result.value)
+    filtered_entries = [
+        entry
+        for entry in result.entries
+        if not entry.field_path.startswith("dialogue[")
+        or not entry.field_path.endswith("].speaker")
+    ]
+
+    return EntityNormalizationResult(
+        restored_scene,
+        [*placeholder_entries, *filtered_entries],
+    )
 
 
 def install_resort_runtime_patches() -> None:
