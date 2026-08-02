@@ -30,9 +30,9 @@ def _npc(name, location_id, present=False):
 
 def _visual(**overrides):
     values = {
-        "summary": "",
-        "visual_en": "",
-        "tags_en": [],
+        "summary": "Una NPC reagisce nella scena.",
+        "visual_en": "A resort NPC reacts clearly in the current location.",
+        "tags_en": ["NPC reaction"],
         "speaker_character": "",
         "actor_character": "",
         "reactor_character": "",
@@ -106,6 +106,9 @@ def test_visual_actor_counts_as_real_npc_reaction_for_turn_11_shape():
     scene = _scene(
         narration="Maria si avvicina lentamente.",
         visual=_visual(
+            summary="Maria si avvicina nella suite.",
+            visual_en="Maria approaches slowly inside the luxury suite.",
+            tags_en=["Maria", "approaching", "luxury suite"],
             focus_character="maria",
             actor_character="maria",
             visible_characters=["maria"],
