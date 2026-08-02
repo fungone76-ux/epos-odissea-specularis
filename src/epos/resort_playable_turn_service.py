@@ -12,6 +12,7 @@ import re
 import unicodedata
 
 from .contract import FinalScene
+from .models import outfit_state
 from .resort_intent import interpret_resort_intent, resort_intent_directive
 from .resort_presence import reconcile_resort_presence, scene_has_real_npc_participation
 from .resort_intro import current_intro_step, initialise_resort_intro
@@ -72,7 +73,6 @@ _BEACH_OUTFITS: dict[str, tuple[str, ...]] = {
     "maria": ("black bikini", "white lace beach sarong", "barefoot"),
     "luna": ("ivory bikini", "sheer ivory beach sarong", "barefoot"),
 }
-
 
 
 def _plain(text: str) -> str:
@@ -325,7 +325,8 @@ def _relax_scene(pack, state, npc_id: str) -> FinalScene:
 def _hosiery_scene(pack, state, npc_id: str, item: str) -> FinalScene:
     npc = state.npcs[npc_id]
     location = pack.locations[state.location_id]
-    footwear = list(getattr(npc.outfit, "footwear", []) or [])
+    current_outfit = outfit_state(npc.outfit)
+    footwear = list(current_outfit["footwear"])
     mutations = [
         {
             "type": "outfit_remove", "target": npc_id,
@@ -334,7 +335,7 @@ def _hosiery_scene(pack, state, npc_id: str, item: str) -> FinalScene:
         }
         for shoe in footwear
     ]
-    if item not in list(getattr(npc.outfit, "worn_items", []) or []):
+    if item not in current_outfit["worn_items"]:
         mutations.append({
             "type": "outfit_wear", "target": npc_id,
             "payload": {"item": item},
