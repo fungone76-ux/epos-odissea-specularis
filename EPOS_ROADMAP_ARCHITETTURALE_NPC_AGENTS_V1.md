@@ -1008,3 +1008,26 @@ turn_service.py
 ```
 
 Questo ordine riduce il rischio e rende possibile introdurre memoria, selezione contesto e agenti senza aumentare il debito tecnico.
+
+---
+
+# 13. Chiusura roadmap V1
+
+Data chiusura locale: 2026-08-02.
+
+Stato finale:
+
+- FASI 0-13 completate;
+- FASE 14 completata come misurazione finale e chiusura architetturale;
+- baseline finale attesa: `746 passed`;
+- report finale: `EPOS_ROADMAP_ARCHITETTURALE_NPC_AGENTS_FINAL_REPORT.md`;
+- commit finale previsto: non ancora creato.
+
+Deferred reali:
+
+- integrazione runtime attiva del Coordinator NPC;
+- uso delle memorie NPC nei prompt di turno;
+- attivazione runtime della chiamata NPC LLM opzionale;
+- qualsiasi evoluzione oltre la V1.
+
+Stato roadmap: chiusa localmente, subordinata alla validazione finale verde e al futuro commit manuale.
