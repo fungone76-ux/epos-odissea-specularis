@@ -171,7 +171,7 @@ def test_short_victoria_speaker_is_canonicalized_before_generic_validation():
     assert validate_resort_scene_policy(state, pack.world, scene).ok
 
 
-def test_central_entity_normalizer_accepts_short_victoria_before_validation():
+def test_central_entity_normalizer_preserves_short_victoria_display_name():
     pack = load_resort_pack(PACK_DIR)
     state = new_resort_world(pack, "victoria-central-normalizer")
     result = normalize_scene_entity_ids(
@@ -180,10 +180,12 @@ def test_central_entity_normalizer_accepts_short_victoria_before_validation():
         phase="semantic_validation",
         source_payload="provider_parsed_phase1",
     )
-    assert result.value.dialogue[0].speaker == "victoria"
-    assert any(
-        entry.field_path == "dialogue[0].speaker"
-        and entry.alias_rule == "unique_npc_first_name"
-        for entry in result.entries
-    )
-    assert validate_scene(state, pack.world, result.value).ok
+
+    # Dialogue speaker is display-facing text. Structural references such as
+    # visual.speaker_character remain canonical ids and are normalized elsewhere.
+    assert result.value.dialogue[0].speaker == "Victoria"
+    assert not any(entry.field_path == "dialogue[0].speaker" for entry in result.entries)
+
+    canonical = _canonicalize_resort_speakers(state, result.value)
+    assert canonical.dialogue[0].speaker == "Victoria Hale"
+    assert validate_scene(state, pack.world, canonical).ok
