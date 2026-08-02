@@ -135,7 +135,7 @@ def _quoted_player_texts(player_text: str) -> set[str]:
     return quoted
 
 
-_ALLOWED_NPC_ECHOES = {"si", "s?", "no", "grazie", "va bene", "ok", "okay"}
+_ALLOWED_NPC_ECHOES = {"si", "sì", "no", "grazie", "va bene", "ok", "okay"}
 _SPEECH_VERB_TAIL = re.compile(
     r"\s+(?:lo|la|le|gli|ti|vi)?\s*(?:dico|chiedo|domando|rispondo|sussurro|grido|urlo)\b.*$",
     re.IGNORECASE,
