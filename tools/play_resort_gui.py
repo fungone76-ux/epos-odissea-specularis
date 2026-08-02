@@ -19,6 +19,12 @@ from pathlib import Path
 
 sys.path.insert(0, str(Path(__file__).resolve().parents[1] / "src"))
 
+# Il bootstrap Resort è esplicito. Solo questo entry point GUI abilita anche
+# l'estensione Qt del pulsante per l'avanzamento manuale del tempo.
+from epos.resort_bootstrap import bootstrap_resort_gui
+
+bootstrap_resort_gui()
+
 from PySide6.QtWidgets import QApplication
 
 from epos.dotenv import load_dotenv
