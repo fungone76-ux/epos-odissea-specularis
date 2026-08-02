@@ -19,6 +19,7 @@ PLAYER_ALIASES = {
     "odysseus",
     "odisseo",
 }
+_PLACEHOLDER_NPC_ID = "npc_id"
 
 
 def _key(value: Any) -> str:
@@ -33,39 +34,21 @@ def player_aliases_for_state(state: WorldState) -> set[str]:
 
 
 def normalize_entity_id(value: Any, world_state: WorldState, context_field: str) -> str:
-    """Normalize one structured entity id conservatively.
-
-    Besides exact ids and display names, a unique NPC first name is accepted.
-    Ambiguous short names remain untouched and are rejected by validation.
-    """
-
     text = str(value or "").strip()
     if not text:
         return text
     folded = text.casefold()
     if folded in player_aliases_for_state(world_state):
         return "player"
-
     for npc_id in world_state.npcs:
         if _key(npc_id) == folded:
             return npc_id
-
-    exact_names = [
-        npc_id
-        for npc_id, npc in world_state.npcs.items()
-        if npc.name and _key(npc.name) == folded
-    ]
+    exact_names = [npc_id for npc_id, npc in world_state.npcs.items() if npc.name and _key(npc.name) == folded]
     if len(exact_names) == 1:
         return exact_names[0]
-
-    first_names = [
-        npc_id
-        for npc_id, npc in world_state.npcs.items()
-        if npc.name and _key(str(npc.name).split()[0]) == folded
-    ]
+    first_names = [npc_id for npc_id, npc in world_state.npcs.items() if npc.name and _key(str(npc.name).split()[0]) == folded]
     if len(first_names) == 1:
         return first_names[0]
-
     return text
 
 
@@ -115,285 +98,183 @@ def _alias_rule(original: str, normalized: str, state: WorldState) -> str:
     return "entity_id"
 
 
-def _normalize_one(
-    value: Any,
-    state: WorldState,
-    field_path: str,
-    phase: str,
-    attempt: int,
-    source_payload: str,
-) -> tuple[str, list[EntityNormalizationEntry]]:
+def _normalize_one(value: Any, state: WorldState, field_path: str, phase: str, attempt: int, source_payload: str) -> tuple[str, list[EntityNormalizationEntry]]:
     original = str(value or "").strip()
     normalized = normalize_entity_id(original, state, field_path)
     if normalized == original:
         return normalized, []
-    return normalized, [
-        EntityNormalizationEntry(
-            field_path=field_path,
-            original_value=original,
-            normalized_value=normalized,
-            alias_rule=_alias_rule(original, normalized, state),
-            phase=phase,
-            attempt=attempt,
-            source_payload=source_payload,
-        )
-    ]
+    return normalized, [EntityNormalizationEntry(field_path, original, normalized, _alias_rule(original, normalized, state), phase, attempt, source_payload)]
 
 
-def _normalize_list(
-    values: list[Any],
-    state: WorldState,
-    field_path: str,
-    phase: str,
-    attempt: int,
-    source_payload: str,
-) -> tuple[list[str], list[EntityNormalizationEntry]]:
+def _normalize_list(values: list[Any], state: WorldState, field_path: str, phase: str, attempt: int, source_payload: str) -> tuple[list[str], list[EntityNormalizationEntry]]:
     normalized_values: list[str] = []
     entries: list[EntityNormalizationEntry] = []
     for index, value in enumerate(values):
-        normalized, item_entries = _normalize_one(
-            value, state, f"{field_path}[{index}]", phase, attempt, source_payload
-        )
+        normalized, item_entries = _normalize_one(value, state, f"{field_path}[{index}]", phase, attempt, source_payload)
         normalized_values.append(normalized)
         entries.extend(item_entries)
     return normalized_values, entries
 
 
-def normalize_check_proposal_entity_ids(
-    state: WorldState,
-    proposal: CheckProposal,
-    *,
-    phase: str,
-    attempt: int = 0,
-    source_payload: str = "check_proposal",
-) -> EntityNormalizationResult:
-    target_ids, entries = _normalize_list(
-        proposal.target_ids, state, "check.target_ids", phase, attempt, source_payload
-    )
-    if not entries:
-        return EntityNormalizationResult(proposal, [])
-    return EntityNormalizationResult(replace(proposal, target_ids=target_ids), entries)
+def _present_npc(state: WorldState, value: Any) -> str | None:
+    normalized = normalize_entity_id(value, state, "placeholder_candidate")
+    npc = state.npcs.get(normalized)
+    return normalized if npc is not None and npc.present else None
 
 
-def normalize_confront_proposal_entity_ids(
-    state: WorldState,
-    proposal: ConfrontProposal,
-    *,
-    phase: str,
-    attempt: int = 0,
-    source_payload: str = "confront_proposal",
-) -> EntityNormalizationResult:
-    target_id, entries = _normalize_one(
-        proposal.target_id, state, "confront.target_id", phase, attempt, source_payload
-    )
-    if not entries:
-        return EntityNormalizationResult(proposal, [])
-    return EntityNormalizationResult(replace(proposal, target_id=target_id), entries)
+def _scene_placeholder_target(state: WorldState, scene: FinalScene) -> str | None:
+    for line in scene.dialogue:
+        candidate = _present_npc(state, getattr(line, "speaker", ""))
+        if candidate:
+            return candidate
+    for action in scene.npc_actions:
+        candidate = _present_npc(state, action.get("npc_id", ""))
+        if candidate:
+            return candidate
+    for event in scene.initiatives:
+        candidate = _present_npc(state, getattr(event, "source", ""))
+        if candidate:
+            return candidate
+    present = [npc_id for npc_id in state.present_npc_ids() if npc_id in state.npcs]
+    return present[0] if len(present) == 1 else None
 
 
-def normalize_scene_entity_ids(
-    state: WorldState,
-    scene: FinalScene,
-    *,
-    phase: str,
-    attempt: int = 0,
-    source_payload: str = "scene",
-) -> EntityNormalizationResult:
+def _repair_scene_placeholders(state: WorldState, scene: FinalScene, *, phase: str, attempt: int, source_payload: str) -> tuple[FinalScene, list[EntityNormalizationEntry]]:
+    target = _scene_placeholder_target(state, scene)
+    if target is None:
+        return scene, []
     entries: list[EntityNormalizationEntry] = []
 
+    def entry(path: str) -> EntityNormalizationEntry:
+        return EntityNormalizationEntry(path, _PLACEHOLDER_NPC_ID, target, "scene_placeholder_npc_id", phase, attempt, source_payload)
+
+    intentions = []
+    for index, item in enumerate(scene.intentions):
+        mapped = dict(item)
+        if _key(mapped.get("npc_id")) == _PLACEHOLDER_NPC_ID:
+            mapped["npc_id"] = target
+            entries.append(entry(f"intentions[{index}].npc_id"))
+        intentions.append(mapped)
+    npc_actions = []
+    for index, item in enumerate(scene.npc_actions):
+        mapped = dict(item)
+        if _key(mapped.get("npc_id")) == _PLACEHOLDER_NPC_ID:
+            mapped["npc_id"] = target
+            entries.append(entry(f"npc_actions[{index}].npc_id"))
+        npc_actions.append(mapped)
+    visual = scene.visual
+    if visual is not None:
+        updates: dict[str, Any] = {}
+        for field_name in ("focus_character", "speaker_character", "actor_character", "reactor_character"):
+            if _key(getattr(visual, field_name)) == _PLACEHOLDER_NPC_ID:
+                updates[field_name] = target
+                entries.append(entry(f"visual.{field_name}"))
+        for field_name in ("visible_characters", "multi_character_participants"):
+            values = list(getattr(visual, field_name))
+            changed = False
+            for index, value in enumerate(values):
+                if _key(value) == _PLACEHOLDER_NPC_ID:
+                    values[index] = target
+                    entries.append(entry(f"visual.{field_name}[{index}]"))
+                    changed = True
+            if changed:
+                updates[field_name] = values
+        if updates:
+            visual = replace(visual, **updates)
+    if not entries:
+        return scene, []
+    return replace(scene, intentions=intentions, npc_actions=npc_actions, visual=visual), entries
+
+
+def normalize_check_proposal_entity_ids(state: WorldState, proposal: CheckProposal, *, phase: str, attempt: int = 0, source_payload: str = "check_proposal") -> EntityNormalizationResult:
+    target_ids, entries = _normalize_list(proposal.target_ids, state, "check.target_ids", phase, attempt, source_payload)
+    return EntityNormalizationResult(replace(proposal, target_ids=target_ids), entries) if entries else EntityNormalizationResult(proposal, [])
+
+
+def normalize_confront_proposal_entity_ids(state: WorldState, proposal: ConfrontProposal, *, phase: str, attempt: int = 0, source_payload: str = "confront_proposal") -> EntityNormalizationResult:
+    target_id, entries = _normalize_one(proposal.target_id, state, "confront.target_id", phase, attempt, source_payload)
+    return EntityNormalizationResult(replace(proposal, target_id=target_id), entries) if entries else EntityNormalizationResult(proposal, [])
+
+
+def normalize_scene_entity_ids(state: WorldState, scene: FinalScene, *, phase: str, attempt: int = 0, source_payload: str = "scene") -> EntityNormalizationResult:
+    scene, placeholder_entries = _repair_scene_placeholders(state, scene, phase=phase, attempt=attempt, source_payload=source_payload)
+    entries: list[EntityNormalizationEntry] = list(placeholder_entries)
     mutations = []
     for index, mutation in enumerate(scene.mutations):
-        target, target_entries = _normalize_one(
-            mutation.target, state, f"mutations[{index}].target", phase, attempt, source_payload
-        )
-        entries.extend(target_entries)
-        mutations.append(replace(mutation, target=target) if target_entries else mutation)
-
+        target, item_entries = _normalize_one(mutation.target, state, f"mutations[{index}].target", phase, attempt, source_payload)
+        entries.extend(item_entries)
+        mutations.append(replace(mutation, target=target) if item_entries else mutation)
     dialogue = []
     for index, line in enumerate(scene.dialogue):
-        speaker, speaker_entries = _normalize_one(
-            line.speaker,
-            state,
-            f"dialogue[{index}].speaker",
-            phase,
-            attempt,
-            source_payload,
-        )
-        entries.extend(speaker_entries)
-
         to = line.to
-        to_entries: list[EntityNormalizationEntry] = []
+        item_entries: list[EntityNormalizationEntry] = []
         if to:
-            to, to_entries = _normalize_one(
-                to, state, f"dialogue[{index}].to", phase, attempt, source_payload
-            )
-            entries.extend(to_entries)
-
-        dialogue.append(
-            replace(line, speaker=speaker, to=to)
-            if speaker_entries or to_entries
-            else line
-        )
-
+            to, item_entries = _normalize_one(to, state, f"dialogue[{index}].to", phase, attempt, source_payload)
+            entries.extend(item_entries)
+        dialogue.append(replace(line, to=to) if item_entries else line)
     memory_events = []
     for index, memory in enumerate(scene.memory_events):
-        witnesses, witness_entries = _normalize_list(
-            memory.witnesses,
-            state,
-            f"memory_events[{index}].witnesses",
-            phase,
-            attempt,
-            source_payload,
-        )
-        entries.extend(witness_entries)
-        memory_events.append(replace(memory, witnesses=witnesses) if witness_entries else memory)
-
+        witnesses, item_entries = _normalize_list(memory.witnesses, state, f"memory_events[{index}].witnesses", phase, attempt, source_payload)
+        entries.extend(item_entries)
+        memory_events.append(replace(memory, witnesses=witnesses) if item_entries else memory)
     initiatives = []
     for index, event in enumerate(scene.initiatives):
-        source, source_entries = _normalize_one(
-            event.source, state, f"initiatives[{index}].source", phase, attempt, source_payload
-        )
+        source, source_entries = _normalize_one(event.source, state, f"initiatives[{index}].source", phase, attempt, source_payload)
         entries.extend(source_entries)
         target = event.target
         target_entries: list[EntityNormalizationEntry] = []
         if target:
-            target, target_entries = _normalize_one(
-                target, state, f"initiatives[{index}].target", phase, attempt, source_payload
-            )
+            target, target_entries = _normalize_one(target, state, f"initiatives[{index}].target", phase, attempt, source_payload)
             entries.extend(target_entries)
-        initiatives.append(
-            replace(event, source=source, target=target)
-            if source_entries or target_entries
-            else event
-        )
-
+        initiatives.append(replace(event, source=source, target=target) if source_entries or target_entries else event)
     disclosure_events = []
     for index, event in enumerate(scene.disclosure_events):
-        npc_id, npc_entries = _normalize_one(
-            event.npc_id,
-            state,
-            f"disclosure_events[{index}].npc_id",
-            phase,
-            attempt,
-            source_payload,
-        )
-        entries.extend(npc_entries)
-        disclosure_events.append(replace(event, npc_id=npc_id) if npc_entries else event)
+        npc_id, item_entries = _normalize_one(event.npc_id, state, f"disclosure_events[{index}].npc_id", phase, attempt, source_payload)
+        entries.extend(item_entries)
+        disclosure_events.append(replace(event, npc_id=npc_id) if item_entries else event)
 
-    def _normalize_npc_dicts(items: list[dict[str, Any]], field: str) -> list[dict[str, Any]]:
-        mapped: list[dict[str, Any]] = []
+    def normalize_npc_dicts(items: list[dict[str, Any]], field_name: str) -> list[dict[str, Any]]:
+        mapped = []
         for index, item in enumerate(items):
             item = dict(item)
             if "npc_id" in item:
-                npc_id, npc_entries = _normalize_one(
-                    item["npc_id"],
-                    state,
-                    f"{field}[{index}].npc_id",
-                    phase,
-                    attempt,
-                    source_payload,
-                )
-                if npc_entries:
+                npc_id, item_entries = _normalize_one(item["npc_id"], state, f"{field_name}[{index}].npc_id", phase, attempt, source_payload)
+                if item_entries:
                     item["npc_id"] = npc_id
-                    entries.extend(npc_entries)
+                    entries.extend(item_entries)
             mapped.append(item)
         return mapped
 
-    intentions = _normalize_npc_dicts(scene.intentions, "intentions")
-    npc_actions = _normalize_npc_dicts(scene.npc_actions, "npc_actions")
-
+    intentions = normalize_npc_dicts(scene.intentions, "intentions")
+    npc_actions = normalize_npc_dicts(scene.npc_actions, "npc_actions")
     visual = scene.visual
     if visual is not None:
-        visual_updates: dict[str, Any] = {}
-        for field_name in (
-            "focus_character",
-            "speaker_character",
-            "actor_character",
-            "reactor_character",
-        ):
-            normalized, field_entries = _normalize_one(
-                getattr(visual, field_name),
-                state,
-                f"visual.{field_name}",
-                phase,
-                attempt,
-                source_payload,
-            )
-            if field_entries:
-                visual_updates[field_name] = normalized
-                entries.extend(field_entries)
+        updates: dict[str, Any] = {}
+        for field_name in ("focus_character", "speaker_character", "actor_character", "reactor_character"):
+            normalized, item_entries = _normalize_one(getattr(visual, field_name), state, f"visual.{field_name}", phase, attempt, source_payload)
+            if item_entries:
+                updates[field_name] = normalized
+                entries.extend(item_entries)
         for field_name in ("visible_characters", "multi_character_participants"):
-            values, list_entries = _normalize_list(
-                getattr(visual, field_name),
-                state,
-                f"visual.{field_name}",
-                phase,
-                attempt,
-                source_payload,
-            )
-            if list_entries:
-                visual_updates[field_name] = values
-                entries.extend(list_entries)
-        if visual_updates:
-            visual = replace(visual, **visual_updates)
-
+            values, item_entries = _normalize_list(getattr(visual, field_name), state, f"visual.{field_name}", phase, attempt, source_payload)
+            if item_entries:
+                updates[field_name] = values
+                entries.extend(item_entries)
+        if updates:
+            visual = replace(visual, **updates)
     if not entries:
         return EntityNormalizationResult(scene, [])
-    return EntityNormalizationResult(
-        replace(
-            scene,
-            mutations=mutations,
-            dialogue=dialogue,
-            memory_events=memory_events,
-            initiatives=initiatives,
-            disclosure_events=disclosure_events,
-            intentions=intentions,
-            npc_actions=npc_actions,
-            visual=visual,
-        ),
-        entries,
-    )
+    return EntityNormalizationResult(replace(scene, mutations=mutations, dialogue=dialogue, memory_events=memory_events, initiatives=initiatives, disclosure_events=disclosure_events, intentions=intentions, npc_actions=npc_actions, visual=visual), entries)
 
 
-def normalize_phase_response_entity_ids(
-    state: WorldState,
-    response: GmPhaseResponse,
-    *,
-    phase: str,
-    attempt: int = 0,
-    source_payload: str = "phase_response",
-) -> EntityNormalizationResult:
+def normalize_phase_response_entity_ids(state: WorldState, response: GmPhaseResponse, *, phase: str, attempt: int = 0, source_payload: str = "phase_response") -> EntityNormalizationResult:
     if response.mode == "no_check" and response.scene is not None:
-        result = normalize_scene_entity_ids(
-            state,
-            response.scene,
-            phase=phase,
-            attempt=attempt,
-            source_payload=source_payload,
-        )
-        if not result.changed:
-            return EntityNormalizationResult(response, [])
-        return EntityNormalizationResult(replace(response, scene=result.value), result.entries)
+        result = normalize_scene_entity_ids(state, response.scene, phase=phase, attempt=attempt, source_payload=source_payload)
+        return EntityNormalizationResult(replace(response, scene=result.value), result.entries) if result.changed else EntityNormalizationResult(response, [])
     if response.mode == "check_proposal" and response.check is not None:
-        result = normalize_check_proposal_entity_ids(
-            state,
-            response.check,
-            phase=phase,
-            attempt=attempt,
-            source_payload=source_payload,
-        )
-        if not result.changed:
-            return EntityNormalizationResult(response, [])
-        return EntityNormalizationResult(replace(response, check=result.value), result.entries)
+        result = normalize_check_proposal_entity_ids(state, response.check, phase=phase, attempt=attempt, source_payload=source_payload)
+        return EntityNormalizationResult(replace(response, check=result.value), result.entries) if result.changed else EntityNormalizationResult(response, [])
     if response.mode == "confront_proposal" and response.confront is not None:
-        result = normalize_confront_proposal_entity_ids(
-            state,
-            response.confront,
-            phase=phase,
-            attempt=attempt,
-            source_payload=source_payload,
-        )
-        if not result.changed:
-            return EntityNormalizationResult(response, [])
-        return EntityNormalizationResult(replace(response, confront=result.value), result.entries)
+        result = normalize_confront_proposal_entity_ids(state, response.confront, phase=phase, attempt=attempt, source_payload=source_payload)
+        return EntityNormalizationResult(replace(response, confront=result.value), result.entries) if result.changed else EntityNormalizationResult(response, [])
     return EntityNormalizationResult(response, [])
