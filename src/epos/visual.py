@@ -31,6 +31,14 @@ from .visual_composition import (
     _position_tags,
 )
 from .visual_director import direct_visual
+from .visual_policy import (
+    DEFAULT_NEGATIVE,
+    _avoid_facial_policy_enabled,
+    _concise_role_policy_enabled,
+    _identity_layer_policy_enabled,
+    _multi_character_negative,
+    _single_character_negative,
+)
 from .visual_prompt_builder import (
     _CLOTHING_OUTFIT_WORDS,
     _LAYER_STOPWORDS,
@@ -65,18 +73,6 @@ from .visual_subjects import (
     _validated_intimate_participants,
 )
 from .worldpack import WorldPack
-
-# Negativo corto in stile Pony/SDXL: i negativi lunghi diluiscono
-# l'attenzione e peggiorano il risultato. Le esclusioni specifiche del
-# mondo restano in `negative_extra_en` del pack; quelle di scena al
-# visual del turno.
-DEFAULT_NEGATIVE = (
-    "score_6, score_5, score_4, score_3, score_2, score_1, lowres, "
-    "worst quality, low quality, blurry, bad anatomy, bad hands, "
-    "extra fingers, missing fingers, extra limbs, deformed, "
-    "text, watermark, signature, child, young-looking"
-)
-
 
 @dataclass(frozen=True)
 class VisualContract:
@@ -221,13 +217,6 @@ def _compact_sheet(base_prompt: str, max_chunks: int, identity_chunks: int = 8) 
     return ", ".join(kept)
 
 
-def _identity_layer_policy_enabled(pack: WorldPack) -> bool:
-    return bool(getattr(pack.visual_policy, "sanitize_identity_layers", False))
-
-
-def _avoid_facial_policy_enabled(pack: WorldPack) -> bool:
-    return bool(getattr(pack.visual_policy, "avoid_facial_expressions", False))
-
 _ROLE_PROMPT_FORBIDDEN_PATTERNS: tuple[re.Pattern[str], ...] = tuple(
     re.compile(pattern, re.IGNORECASE)
     for pattern in (
@@ -241,10 +230,6 @@ _ROLE_PROMPT_FORBIDDEN_PATTERNS: tuple[re.Pattern[str], ...] = tuple(
         r"\bnoble\s+lineage\b",
     )
 )
-
-
-def _concise_role_policy_enabled(pack: WorldPack) -> bool:
-    return bool(getattr(pack.visual_policy, "concise_role_prompts", False))
 
 
 def _normalize_role_prompt_for_pack(text: str, pack: WorldPack) -> tuple[str, list[str]]:
@@ -664,22 +649,6 @@ def _normalize_visual_outfits_for_pack(state: WorldState, pack: WorldPack) -> No
         npc.outfit.worn = [
             item for item in npc.outfit.worn if not _sanitize_outfit_item(item)
         ]
-
-
-def _single_character_negative() -> str:
-    return (
-        "multiple people, extra person, background people, duplicate character, "
-        "cloned face, merged bodies, fused bodies, extra face"
-    )
-
-
-def _multi_character_negative() -> str:
-    return (
-        "merged bodies, fused faces, same face, identical faces, twins, "
-        "cloned face, duplicate character, same hair, same hairstyle, "
-        "swapped outfits, costume leak, incorrect anatomy, extra person, "
-        "background people"
-    )
 
 
 # ---------------------------------------------------------------------------
