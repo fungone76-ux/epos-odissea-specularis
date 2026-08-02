@@ -58,6 +58,7 @@ class NpcAgentState:
     knowledge_refs: tuple[str, ...] = ()
     open_thread_ids: tuple[str, ...] = ()
     mission_refs: tuple[str, ...] = ()
+    short_memories: tuple[Any, ...] = ()
     initiative_priority: int = 0
     next_evaluation_turn: int = 0
     enabled: bool = True
@@ -72,6 +73,7 @@ class NpcAgentState:
         object.__setattr__(self, "knowledge_refs", _unique_refs(self.knowledge_refs))
         object.__setattr__(self, "open_thread_ids", _unique_refs(self.open_thread_ids))
         object.__setattr__(self, "mission_refs", _unique_refs(self.mission_refs))
+        object.__setattr__(self, "short_memories", _short_memories(self.short_memories))
         priority = int(self.initiative_priority)
         if priority < _MIN_PRIORITY or priority > _MAX_PRIORITY:
             raise ValueError("initiative_priority must be between 0 and 100")
@@ -93,6 +95,10 @@ class NpcAgentState:
             "knowledge_refs": list(self.knowledge_refs),
             "open_thread_ids": list(self.open_thread_ids),
             "mission_refs": list(self.mission_refs),
+            "short_memories": [
+                memory.to_dict() if hasattr(memory, "to_dict") else dict(memory)
+                for memory in self.short_memories
+            ],
             "initiative_priority": self.initiative_priority,
             "next_evaluation_turn": self.next_evaluation_turn,
             "enabled": self.enabled,
@@ -110,7 +116,24 @@ class NpcAgentState:
             knowledge_refs=tuple(data.get("knowledge_refs", ())),
             open_thread_ids=tuple(data.get("open_thread_ids", ())),
             mission_refs=tuple(data.get("mission_refs", ())),
+            short_memories=tuple(data.get("short_memories", ())),
             initiative_priority=int(data.get("initiative_priority", 0)),
             next_evaluation_turn=int(data.get("next_evaluation_turn", 0)),
             enabled=bool(data.get("enabled", True)),
         )
+
+
+def _short_memories(values: Any) -> tuple[Any, ...]:
+    if values is None:
+        return ()
+    result: list[Any] = []
+    for value in values:
+        if hasattr(value, "to_dict"):
+            result.append(value)
+        elif isinstance(value, dict):
+            from .npc_memory_short import NpcShortMemory
+
+            result.append(NpcShortMemory.from_dict(value))
+        else:
+            raise ValueError("short_memories must contain memory objects or dictionaries")
+    return tuple(result)

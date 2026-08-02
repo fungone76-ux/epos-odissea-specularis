@@ -2,7 +2,7 @@
 
 from __future__ import annotations
 
-from dataclasses import dataclass
+from dataclasses import dataclass, replace
 from typing import Any
 
 from .models import WorldState
@@ -59,6 +59,29 @@ class NpcAgentRegistry:
     def enabled(self) -> tuple[NpcAgentState, ...]:
         return tuple(state for state in self._agents if state.enabled)
 
+
+    def upsert_short_memory(self, memory, *, current_turn: int, policy=None) -> "NpcAgentRegistry":
+        agent = self.get(memory.npc_id)
+        if agent is None:
+            raise ValueError(f"unknown NPC agent id: {memory.npc_id}")
+        from .npc_memory_policy import NpcShortMemoryPolicy
+        from .npc_memory_short import prune_short_memories
+
+        effective_policy = policy or NpcShortMemoryPolicy()
+        memories = prune_short_memories(
+            tuple(agent.short_memories) + (memory,),
+            current_turn=int(current_turn),
+            policy=effective_policy,
+        )
+        return self.upsert(replace(agent, short_memories=memories))
+
+    def remove_short_memory(self, npc_id: str, memory_id: str) -> "NpcAgentRegistry":
+        agent = self.get(npc_id)
+        if agent is None:
+            raise ValueError(f"unknown NPC agent id: {npc_id}")
+        target = str(memory_id or "").strip()
+        memories = tuple(memory for memory in agent.short_memories if memory.memory_id != target)
+        return self.upsert(replace(agent, short_memories=memories))
     def to_dict(self) -> dict[str, Any]:
         return {"agents": [state.to_dict() for state in self._agents]}
 
