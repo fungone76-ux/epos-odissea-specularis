@@ -1,0 +1,10 @@
+================================================================
+DEBUG TURNO 21 — modalità: no_check
+sessione: 233f235e-7c61-4e36-9e58-d1d281b06afe | location: loc_spa
+================================================================
+
+[INPUT GIOCATORE]
+vado nella spa
+
+[NARRAZIONE]
+Lasci la Spiaggia privata e raggiungi Spa. Qui puoi finalmente prenderti un momento per ambientarti e rilassarti.

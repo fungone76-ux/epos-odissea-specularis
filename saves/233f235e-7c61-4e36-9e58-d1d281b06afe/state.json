@@ -1,11 +1,11 @@
 {
   "session_id": "233f235e-7c61-4e36-9e58-d1d281b06afe",
-  "turn": 16,
+  "turn": 26,
   "time_phase": "mattina",
-  "location_id": "loc_private_beach",
+  "location_id": "loc_spa",
   "player": {
     "name": null,
-    "location_id": "loc_private_beach",
+    "location_id": "loc_spa",
     "adult_age": true,
     "skills": {
       "carisma": 3,
@@ -104,14 +104,27 @@
       "id": "stella",
       "name": "Stella",
       "age": 28,
-      "location_id": "loc_lobby",
-      "present": false,
+      "location_id": "loc_spa",
+      "present": true,
       "knowledge": [
         "Il protagonista è un cliente VIP eccezionalmente importante.",
         "Non conosce inizialmente il possibile acquisto del resort."
       ],
       "knowledge_log": [],
-      "memories": [],
+      "memories": [
+        {
+          "summary": "Stella offers an intimate nude massage to the player.",
+          "witnesses": [
+            "stella"
+          ],
+          "source": "observed",
+          "turn": 25,
+          "level": "immediate",
+          "credibility": 1.0,
+          "emotional_impact": 2,
+          "public": true
+        }
+      ],
       "relationships": {
         "player": {
           "trust": 0,
@@ -124,29 +137,26 @@
         }
       },
       "emotional_state": {},
-      "current_intention": "",
+      "current_intention": "offer an intimate nude massage",
       "conditions": [],
       "outfit": {
         "worn": [
-          "fitted resort hostess micro dress",
           "plunging neckline",
           "very short hem",
           "sheer stockings",
           "gold name tag",
           "high heels"
         ],
-        "removed": [],
-        "revision": 0,
-        "torso_slot": [
+        "removed": [
           "fitted resort hostess micro dress"
         ],
-        "lower_body_slot": [
-          "fitted resort hostess micro dress"
-        ],
+        "revision": 1,
+        "torso_slot": [],
+        "lower_body_slot": [],
         "footwear": [
           "high heels"
         ],
-        "nudity_mode": "clothed"
+        "nudity_mode": "fully_nude"
       },
       "wounds": [],
       "disclosed_facts": []
@@ -207,7 +217,7 @@
       "name": "Luna",
       "age": 27,
       "location_id": "loc_private_beach",
-      "present": true,
+      "present": false,
       "knowledge": [
         "Sua madre aiutò il padre del protagonista durante una grave crisi.",
         "Il padre del protagonista morì prima di mantenere la promessa.",
@@ -251,6 +261,66 @@
           "credibility": 1.0,
           "emotional_impact": 2,
           "public": true
+        },
+        {
+          "summary": "Luna feels a deeper connection as she applies sunscreen, acknowledging the player's embarrassment.",
+          "witnesses": [
+            "luna"
+          ],
+          "source": "observed",
+          "turn": 16,
+          "level": "immediate",
+          "credibility": 1.0,
+          "emotional_impact": 2,
+          "public": true
+        },
+        {
+          "summary": "Luna feels a deeper connection as she applies sunscreen to the player.",
+          "witnesses": [
+            "luna"
+          ],
+          "source": "observed",
+          "turn": 17,
+          "level": "immediate",
+          "credibility": 1.0,
+          "emotional_impact": 2,
+          "public": true
+        },
+        {
+          "summary": "Luna ricorderà questo momento di connessione e affetto.",
+          "witnesses": [
+            "luna"
+          ],
+          "source": "observed",
+          "turn": 18,
+          "level": "immediate",
+          "credibility": 1.0,
+          "emotional_impact": 3,
+          "public": true
+        },
+        {
+          "summary": "Luna ricorderà questo momento di vulnerabilità e connessione.",
+          "witnesses": [
+            "luna"
+          ],
+          "source": "observed",
+          "turn": 19,
+          "level": "immediate",
+          "credibility": 1.0,
+          "emotional_impact": 2,
+          "public": true
+        },
+        {
+          "summary": "Luna ricorderà questo momento di connessione e affetto.",
+          "witnesses": [
+            "luna"
+          ],
+          "source": "observed",
+          "turn": 20,
+          "level": "immediate",
+          "credibility": 1.0,
+          "emotional_impact": 2,
+          "public": true
         }
       ],
       "relationships": {
@@ -265,7 +335,7 @@
         }
       },
       "emotional_state": {},
-      "current_intention": "continuare a godere del momento insieme",
+      "current_intention": "to deepen the physical connection and enjoy the moment",
       "conditions": [],
       "outfit": {
         "worn": [
@@ -343,13 +413,6 @@
     ],
     "visual_camera_history": [
       {
-        "camera_side": "side",
-        "shot_type": "full_body",
-        "camera_angle": "eye_level",
-        "focus_character": "luna",
-        "posture": ""
-      },
-      {
         "camera_side": "front_three_quarter",
         "shot_type": "full_body",
         "camera_angle": "eye_level",
@@ -367,32 +430,39 @@
         "camera_side": "front_three_quarter",
         "shot_type": "full_body",
         "camera_angle": "eye_level",
-        "focus_character": "luna",
+        "focus_character": "stella",
         "posture": ""
       },
       {
         "camera_side": "side",
         "shot_type": "full_body",
         "camera_angle": "eye_level",
-        "focus_character": "luna",
+        "focus_character": "stella",
         "posture": ""
       },
       {
         "camera_side": "front_three_quarter",
         "shot_type": "full_body",
         "camera_angle": "eye_level",
-        "focus_character": "luna",
+        "focus_character": "stella",
+        "posture": ""
+      },
+      {
+        "camera_side": "side",
+        "shot_type": "full_body",
+        "camera_angle": "eye_level",
+        "focus_character": "stella",
         "posture": ""
       }
     ],
     "resort_score_tier": "soggiorno_fallimentare"
   },
   "initiative": {
-    "consecutive_reactive_turns": 16,
+    "consecutive_reactive_turns": 26,
     "last_autonomous_turn": -1,
     "recent": []
   },
   "pressures": {},
   "riserva": 0,
-  "last_scene": "Luna sorride e inizia a spalmare la crema solare sulla tua pelle mentre il sole splende sopra di voi, creando un'atmosfera rilassata e intima. La sabbia fine scotta leggermente sotto i vostri piedi, mentre il suono delle onde che si infrangono sulla riva accompagna il momento."
+  "last_scene": "Stella sorride con malizia e, dopo un attimo di esitazione, si avvicina a te con un atteggiamento seducente. \"Se è questo che desideri, allora posso offrirti un massaggio nudo, per un'esperienza davvero unica e intima,\" dice, mentre l'atmosfera nella spa diventa ancora più avvolgente. Il vapore avvolge i vostri corpi, creando un senso di intimità e relax. Stella inizia a preparare l'area per il massaggio, rendendo chiaro che è pronta a soddisfare la tua richiesta."
 }

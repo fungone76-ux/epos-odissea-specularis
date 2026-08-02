@@ -1,0 +1,55 @@
+{
+  "narration": "Luna, con un sorriso timido, accetta di spalmare la crema solare anche su di te. I suoi movimenti sono delicati e attenti, creando un momento intimo e carico di tensione. La spiaggia privata, con il sole che splende alto nel cielo, diventa il palcoscenico di questa connessione speciale tra voi due. La sua mano si muove lentamente, tracciando un percorso sulla tua pelle, mentre il calore del sole si mescola al calore della vostra interazione.",
+  "dialogue": [],
+  "npc_actions": [
+    {
+      "npc_id": "luna",
+      "action": "spreads sunscreen on the player gently"
+    }
+  ],
+  "intentions": [
+    {
+      "npc_id": "luna",
+      "intention": "to deepen the physical connection and enjoy the moment"
+    }
+  ],
+  "initiatives": [],
+  "disclosure_events": [],
+  "mutations": [],
+  "memory_events": [
+    {
+      "summary": "Luna feels a deeper connection as she applies sunscreen to the player.",
+      "witnesses": [
+        "luna"
+      ],
+      "source": "observed",
+      "credibility": 1.0,
+      "level": "immediate",
+      "emotional_impact": 2,
+      "public": true
+    }
+  ],
+  "visual": {
+    "summary": "Luna si presenta al miliardario fuori campo.",
+    "focus_character": "luna",
+    "visible_characters": [
+      "luna"
+    ],
+    "shared_action": false,
+    "visual_en": "Luna addresses the unseen VIP guest in Spiaggia privata, adult woman, expressive body language, elegant cinematic composition",
+    "tags_en": [
+      "NPC introduction",
+      "unseen guest POV",
+      "luxury resort"
+    ],
+    "moment_type": "intimate",
+    "speaker_character": "",
+    "actor_character": "luna",
+    "reactor_character": "luna",
+    "intimate_shared_moment": true,
+    "multi_character_reason": "",
+    "multi_character_participants": [
+      "luna"
+    ]
+  }
+}

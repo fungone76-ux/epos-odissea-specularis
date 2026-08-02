@@ -1,0 +1,19 @@
+{
+  "mode": "check_proposal",
+  "check": {
+    "action_kind": "intimate",
+    "skill": "carisma",
+    "difficulty": 2,
+    "target_ids": [
+      "luna"
+    ],
+    "opposition": "none",
+    "reason": "perché l'esito è incerto",
+    "stakes": {
+      "full_success": "Luna risponde con entusiasmo, intensificando il momento e la vostra connessione.",
+      "partial_success": "Luna accelera un po' il movimento, ma mantiene l'atteggiamento affettuoso.",
+      "failure": "Luna sembra un po' titubante, rallentando i suoi movimenti.",
+      "critical_failure": "Luna si ritrae, interrompendo il momento e creando una tensione imbarazzante."
+    }
+  }
+}

@@ -1,0 +1,17 @@
+fuser -k 8188/tcp
+
+cd /workspace/ComfyUI
+conda activate comfy
+python main.py --listen 0.0.0.0 --port 8188
+
+
+ssh -i "$HOME\.ssh\id_ed25519" `
+  -N `
+  -o ExitOnForwardFailure=yes `
+  -o ServerAliveInterval=20 `
+  -o ServerAliveCountMax=3 `
+  -o TCPKeepAlive=yes `
+  -o ConnectTimeout=15 `
+  -L 18188:127.0.0.1:8188 `
+  -p 13032 `
+  root@91.209.228.82

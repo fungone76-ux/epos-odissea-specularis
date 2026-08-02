@@ -1,0 +1,51 @@
+{
+  "narration": "Luna sorride dolcemente mentre ascolta le tue parole. \"Non è niente, è un piacere aiutarti,\" risponde, la sua voce calda e accogliente. L'atmosfera rimane carica di tensione e intimità, mentre il sole splende sopra di voi, creando un gioco di luci sulla spiaggia privata.",
+  "dialogue": [
+    {
+      "speaker": "Luna",
+      "text": "Non è niente, è un piacere aiutarti.",
+      "to": "player"
+    }
+  ],
+  "npc_actions": [],
+  "intentions": [],
+  "initiatives": [],
+  "disclosure_events": [],
+  "mutations": [],
+  "memory_events": [
+    {
+      "summary": "Luna ricorderà questo momento di connessione e affetto.",
+      "witnesses": [
+        "luna"
+      ],
+      "source": "observed",
+      "credibility": 1.0,
+      "level": "immediate",
+      "emotional_impact": 2,
+      "public": true
+    }
+  ],
+  "visual": {
+    "summary": "Luna si presenta al miliardario fuori campo.",
+    "focus_character": "luna",
+    "visible_characters": [
+      "luna"
+    ],
+    "shared_action": false,
+    "visual_en": "Luna addresses the unseen VIP guest in Spiaggia privata, adult woman, expressive body language, elegant cinematic composition",
+    "tags_en": [
+      "NPC introduction",
+      "unseen guest POV",
+      "luxury resort"
+    ],
+    "moment_type": "intimate",
+    "speaker_character": "luna",
+    "actor_character": "luna",
+    "reactor_character": "luna",
+    "intimate_shared_moment": false,
+    "multi_character_reason": "",
+    "multi_character_participants": [
+      "luna"
+    ]
+  }
+}

@@ -1,0 +1,107 @@
+{
+  "source_of_truth": "WorldState.player.outfit",
+  "outfit_state_before_turn": {
+    "worn_items": [
+      "very short crimson wool chiton with deep low-cut neckline",
+      "bare thighs clearly visible",
+      "worn revealing leather armor with bronze studs",
+      "exposed shoulders",
+      "recurved bow with bronze tips",
+      "thigh straps for quiver",
+      "barefoot"
+    ],
+    "removed_items": [],
+    "torso_slot": [
+      "very short crimson wool chiton with deep low-cut neckline",
+      "worn revealing leather armor with bronze studs"
+    ],
+    "lower_body_slot": [
+      "very short crimson wool chiton with deep low-cut neckline"
+    ],
+    "footwear": [],
+    "nudity_mode": "clothed",
+    "revision": 0,
+    "source_of_truth": "character.outfit"
+  },
+  "outfit_intent_detected": "none",
+  "outfit_mutations_requested": [],
+  "outfit_mutations_normalized": [],
+  "outfit_mutations_applied": [],
+  "outfit_state_after_turn": {
+    "worn_items": [
+      "very short crimson wool chiton with deep low-cut neckline",
+      "bare thighs clearly visible",
+      "worn revealing leather armor with bronze studs",
+      "exposed shoulders",
+      "recurved bow with bronze tips",
+      "thigh straps for quiver",
+      "barefoot"
+    ],
+    "removed_items": [],
+    "torso_slot": [
+      "very short crimson wool chiton with deep low-cut neckline",
+      "worn revealing leather armor with bronze studs"
+    ],
+    "lower_body_slot": [
+      "very short crimson wool chiton with deep low-cut neckline"
+    ],
+    "footwear": [],
+    "nudity_mode": "clothed",
+    "revision": 0,
+    "source_of_truth": "character.outfit"
+  },
+  "outfit_state_saved": {
+    "worn_items": [
+      "very short crimson wool chiton with deep low-cut neckline",
+      "bare thighs clearly visible",
+      "worn revealing leather armor with bronze studs",
+      "exposed shoulders",
+      "recurved bow with bronze tips",
+      "thigh straps for quiver",
+      "barefoot"
+    ],
+    "removed_items": [],
+    "torso_slot": [
+      "very short crimson wool chiton with deep low-cut neckline",
+      "worn revealing leather armor with bronze studs"
+    ],
+    "lower_body_slot": [
+      "very short crimson wool chiton with deep low-cut neckline"
+    ],
+    "footwear": [],
+    "nudity_mode": "clothed",
+    "revision": 0,
+    "source_of_truth": "character.outfit"
+  },
+  "outfit_state_loaded_next_turn": {
+    "worn_items": [
+      "very short crimson wool chiton with deep low-cut neckline",
+      "bare thighs clearly visible",
+      "worn revealing leather armor with bronze studs",
+      "exposed shoulders",
+      "recurved bow with bronze tips",
+      "thigh straps for quiver",
+      "barefoot"
+    ],
+    "removed_items": [],
+    "torso_slot": [
+      "very short crimson wool chiton with deep low-cut neckline",
+      "worn revealing leather armor with bronze studs"
+    ],
+    "lower_body_slot": [
+      "very short crimson wool chiton with deep low-cut neckline"
+    ],
+    "footwear": [],
+    "nudity_mode": "clothed",
+    "revision": 0,
+    "source_of_truth": "character.outfit"
+  },
+  "outfit_ui_value": "Indossa",
+  "outfit_ui_items": [
+    "very short crimson wool chiton with deep low-cut neckline",
+    "worn revealing leather armor with bronze studs"
+  ],
+  "nudity_mode": "clothed",
+  "outfit_revision": 0,
+  "outfit_normalization_problems": []
+}

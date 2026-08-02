@@ -1,0 +1,19 @@
+{
+  "mode": "check_proposal",
+  "check": {
+    "action_kind": "intimate",
+    "skill": "charisma",
+    "difficulty": 2,
+    "target_ids": [
+      "luna"
+    ],
+    "opposition": "none",
+    "reason": "perché l'esito è incerto",
+    "stakes": {
+      "full_success": "Luna risponde positivamente, approfondendo la connessione fisica tra voi.",
+      "partial_success": "Luna sembra incerta ma non si ritira, mantenendo un momento di intimità.",
+      "failure": "Luna si ritira, creando un'atmosfera di imbarazzo tra voi.",
+      "critical_failure": "Luna si allontana, interrompendo bruscamente il momento."
+    }
+  }
+}

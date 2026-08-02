@@ -1,0 +1,52 @@
+{
+  "narration": "La richiesta viene recapitata a Luna. Poco dopo, Luna ti raggiunge nella Suite presidenziale.",
+  "dialogue": [
+    {
+      "speaker": "Luna",
+      "text": "Mi hai fatto chiamare. Eccomi qui: dimmi pure di cosa hai bisogno.",
+      "to": "player"
+    }
+  ],
+  "npc_actions": [
+    {
+      "npc_id": "luna",
+      "action": "raggiunge il cliente VIP nella Suite presidenziale"
+    }
+  ],
+  "intentions": [],
+  "initiatives": [],
+  "disclosure_events": [],
+  "mutations": [
+    {
+      "type": "location_change",
+      "target": "luna",
+      "payload": {
+        "location_id": "loc_suite"
+      },
+      "reason": "La NPC accetta la richiesta di raggiungere il giocatore."
+    }
+  ],
+  "memory_events": [],
+  "visual": {
+    "summary": "Luna raggiunge il cliente VIP nella Suite presidenziale.",
+    "focus_character": "luna",
+    "visible_characters": [
+      "luna"
+    ],
+    "shared_action": false,
+    "visual_en": "Luna, standing, looking at camera, inside the Suite presidenziale, detailed luxury resort interior",
+    "tags_en": [
+      "NPC arrival",
+      "Suite presidenziale interior"
+    ],
+    "moment_type": "speech",
+    "speaker_character": "luna",
+    "actor_character": "luna",
+    "reactor_character": "luna",
+    "intimate_shared_moment": false,
+    "multi_character_reason": "",
+    "multi_character_participants": [
+      "luna"
+    ]
+  }
+}

@@ -1,0 +1,32 @@
+================================================================
+DEBUG TURNO 16 — modalità: check
+sessione: 233f235e-7c61-4e36-9e58-d1d281b06afe | location: loc_private_beach
+================================================================
+
+[INPUT GIOCATORE]
+mentre Luna mi spalma la crema solare...il mio cazzo si indurisce ed è visibile sotto il costrume! Scusami le dico in imbarazzo
+
+[PROPOSTA DEL GM]
+azione: intimate | skill: carisma | difficoltà: 2
+motivo: perché l'esito è incerto
+
+[TIRO]
+pool: 4d6 | difficoltà: 2 | dadi: (nessun tiro — esito sicuro)
+esito: full_success
+posta: Luna reagisce positivamente, creando un momento di intimità più profondo.
+
+[NARRAZIONE]
+Luna, visibilmente colpita dalla tua confessione, si avvicina ulteriormente a te. La sua mano si ferma per un momento mentre ti guarda negli occhi, un sorriso timido si forma sulle sue labbra. Poi, senza dire una parola, continua a spalmare la crema solare sulla tua pelle, il suo tocco è delicato e attento. L'atmosfera intorno a voi sembra carica di energia, mentre il sole splende sopra di voi, illuminando la scenografia della spiaggia e creando un legame silenzioso e profondo tra di voi, un momento di intimità che non dimenticherete facilmente.
+
+[PROMPT POSITIVO]
+score_9, score_8_up, masterpiece, photorealistic, detailed, atmospheric, stsdebbie, dynamic pose, 1girl, mature woman, brown hair, athletic body, shiny skin, head tilt, massive breasts, cleavage, <lora:stsDebbie-10e:0.7>, ivory bikini, sheer ivory beach sarong, barefoot, observant adult private companion, full body, eye-level camera, side view, side orientation, NPC introduction, luxury resort, Luna addresses the unseen VIP guest in Spiaggia privata, adult woman, expressive body language, elegant cinematic composition
+
+[PROMPT NEGATIVO]
+score_6, score_5, score_4, score_3, score_2, score_1, lowres, worst quality, low quality, blurry, bad anatomy, bad hands, extra fingers, missing fingers, extra limbs, deformed, text, watermark, signature, child, young-looking, underage, teenager, coercion, violence, duplicate person, plain background, white background, grey background, studio background, seamless backdrop, isolated figure, empty background, blank wall, multiple people, extra person, background people, duplicate character, cloned face, merged bodies, fused bodies, extra face
+
+[PROSA DI SCENA (visual_en)]
+Luna addresses the unseen VIP guest in Spiaggia privata, adult woman, expressive body language, elegant cinematic composition
+
+[RENDER]
+status: complete | backend: comfy
+immagine: saves\233f235e-7c61-4e36-9e58-d1d281b06afe\turns\0016\image.png

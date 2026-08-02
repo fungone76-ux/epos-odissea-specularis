@@ -1,0 +1,576 @@
+{
+  "phase": "proposal",
+  "snapshot": {
+    "premise": "Dieci anni di guerra a Troia. Dieci anni di mare. Ulisse, regina di Itaca, arciera e bugiarda, deve tornare a casa attraversando un Egeo popolato da mostri, maghi e divinità. È sola. Non c'è equipaggio. Solo il suo arco, la sua mente, e il sangue sotto le unghie.\n",
+    "turn": 0,
+    "time_phase": "giorno",
+    "world_facts": [
+      {
+        "statement": "Le divinità mantengono il sesso canonico del mito omerico.",
+        "visibility": "public",
+        "does_not_imply": [
+          "Le divinità sono benevole",
+          "Le divinità intervengono sempre",
+          "Le divinità sono neutre"
+        ]
+      },
+      {
+        "statement": "I mortali, i mostri e i semidei hanno il genere invertito rispetto al mito canonico.",
+        "visibility": "public",
+        "does_not_imply": [
+          "Il mondo è matriarcale utopico",
+          "La violenza è scomparsa",
+          "Le dinamiche di potere sono semplici"
+        ]
+      },
+      {
+        "statement": "Ulisse viaggia completamente sola, senza equipaggio.",
+        "visibility": "public",
+        "does_not_imply": [
+          "Ulisse è indifesa",
+          "Non ci sono altri personaggi",
+          "Il viaggio è impossibile"
+        ]
+      },
+      {
+        "statement": "La guerra di Troia è finita da dieci anni. Ulisse ne porta le cicatrici fisiche e mentali.",
+        "visibility": "public",
+        "does_not_imply": [
+          "Ulisse è eroica",
+          "La guerra era giusta",
+          "I greci hanno vinto onestamente"
+        ]
+      },
+      {
+        "statement": "Centinaia di donne nobili (le Proche) occupano il palazzo di Itaca da anni, pretendendo Penelope e il trono.",
+        "visibility": "public",
+        "does_not_imply": [
+          "Penelope è debole",
+          "Le Proche sono solo violente",
+          "La situazione è senza speranza"
+        ]
+      },
+      {
+        "statement": "Ermete può donare la pianta di moly, unico antidoto alla magia di Circe.",
+        "visibility": "secret",
+        "does_not_imply": [
+          "Ermete interviene sempre",
+          "Il moly è facile da ottenere",
+          "Circe è debole"
+        ]
+      },
+      {
+        "statement": "Nel regno dei morti, solo il sangue vivo permette alle ombre di parlare.",
+        "visibility": "contextual",
+        "does_not_imply": [
+          "Tutte le ombre sono pericolose",
+          "Il sangue deve essere mortale",
+          "Tiresia parla gratuitamente"
+        ]
+      }
+    ],
+    "npc_relationships": [
+      {
+        "from": "player",
+        "to": "penelope",
+        "statement": "Ulisse e Penelope sono sposati da vent'anni, separati da dieci. Il loro legame è sopravvivenza, non solo amore.",
+        "known_by": [
+          "ulisse",
+          "penelope",
+          "eumea"
+        ],
+        "forbidden_inferences": [
+          "Penelope ha tradito Ulisse",
+          "Ulisse ha dimenticato Penelope"
+        ]
+      },
+      {
+        "from": "player",
+        "to": "polifemo",
+        "statement": "Ulisse ha accecato Polifemo. Polifemo è figlia di Poseidone. La vendetta divina incombe.",
+        "known_by": [
+          "ulisse",
+          "polifemo",
+          "atena"
+        ],
+        "forbidden_inferences": [
+          "Polifemo è morta",
+          "La vendetta è già scattata",
+          "Poseidone dimentica"
+        ]
+      },
+      {
+        "from": "player",
+        "to": "circe",
+        "statement": "Circe ha trasformato uomini in bestie. Ulisse deve ottenere da lui il passaggio per l'Ade.",
+        "known_by": [
+          "ulisse",
+          "circe",
+          "ermete"
+        ],
+        "forbidden_inferences": [
+          "Circe è irredeemable",
+          "Ulisse ucciderà Circe",
+          "La magia è invincibile"
+        ]
+      },
+      {
+        "from": "player",
+        "to": "calipso",
+        "statement": "Calipso ha tenuto Ulisse prigioniera per sette anni. Offre piacere e immortalità contro libertà.",
+        "known_by": [
+          "ulisse",
+          "calipso",
+          "atena"
+        ],
+        "forbidden_inferences": [
+          "Calipso ama davvero Ulisse",
+          "Ulisse ha ceduto",
+          "La prigionia è solo fisica"
+        ]
+      },
+      {
+        "from": "antinoo",
+        "to": "penelope",
+        "statement": "Antinoo vuole Penelope e il trono di Itaca. È violenta, ubriaca di potere, non crede Ulisse viva.",
+        "known_by": [
+          "antinoo",
+          "eurimaco",
+          "penelope"
+        ],
+        "forbidden_inferences": [
+          "Penelope cederà",
+          "Antinoo è stupida",
+          "Le Proche sono unite"
+        ]
+      },
+      {
+        "from": "atena",
+        "to": "ulisse",
+        "statement": "Atena protegge Ulisse non per amore, ma perché è utile contro il caos di Poseidone.",
+        "known_by": [
+          "atena"
+        ],
+        "forbidden_inferences": [
+          "Atena salverà sempre Ulisse",
+          "L'intervento divino è gratuito",
+          "Atena è benevola"
+        ]
+      }
+    ],
+    "location": {
+      "id": "loc_ciclopi",
+      "name": "Isola dei Ciclopi",
+      "description": "Costa selvaggia senza leggi né porti. Grotte vulcaniche dove i giganti pastori vivono isolati. La caverna di Polifemo è un ossario di ossa e formaggi giganti. Odore di pecora, latte acido e pietra bruciata.\n"
+    },
+    "visual_style": "ancient Greek Bronze Age, Mycenaean era, Mediterranean light, wool and linen textiles, bronze jewelry and weapons, volcanic stone and marble architecture, Aegean sea atmosphere, mythological realism, cinematic composition, film grain, dramatic shadows",
+    "visual_policy": {
+      "protected_base_prompts": true,
+      "single_character_default": true,
+      "multi_character_mode": "intimate_only",
+      "speaker_action_focus": true,
+      "include_sheet_negative": true,
+      "sanitize_identity_layers": true,
+      "concise_role_prompts": true,
+      "max_role_prompt_words": 12,
+      "avoid_facial_expressions": true,
+      "visual_en_primary": true,
+      "dedupe_across_layers": true,
+      "max_scene_tags": 6,
+      "role_prompt_optional": true,
+      "preserve_revealing_outfit_traits": true,
+      "revealing_outfit_priority": true,
+      "visual_director_enabled": true,
+      "structured_camera": true,
+      "camera_variety_enabled": true,
+      "camera_history_size": 6,
+      "crawling_preferred_views": [
+        "rear_three_quarter",
+        "rear",
+        "side",
+        "front_three_quarter"
+      ],
+      "avoid_repeating_camera": true,
+      "explicit_pose_tags_rear": [
+        "ass focus",
+        "bent over",
+        "presenting",
+        "spread legs",
+        "hips raised",
+        "from behind"
+      ],
+      "explicit_pose_tags_front": [
+        "presenting",
+        "spread legs",
+        "legs apart",
+        "offering herself",
+        "on display"
+      ]
+    },
+    "player": {
+      "name": "Ulisse",
+      "skills": {
+        "sarissa": 3,
+        "dolos": 4,
+        "eros": 2,
+        "thumos": 3,
+        "pontos": 3
+      },
+      "conditions": [],
+      "inventory": [
+        "arco ricurvo ancestrale di Itaca",
+        "pugnale di bronzo",
+        "mantello di lana impregnato di sale e sangue"
+      ],
+      "outfit_worn": [
+        "very short crimson wool chiton with deep low-cut neckline",
+        "bare thighs clearly visible",
+        "worn revealing leather armor with bronze studs",
+        "exposed shoulders",
+        "recurved bow with bronze tips",
+        "thigh straps for quiver",
+        "barefoot"
+      ],
+      "outfit_removed": [],
+      "outfit_state": {
+        "worn_items": [
+          "very short crimson wool chiton with deep low-cut neckline",
+          "bare thighs clearly visible",
+          "worn revealing leather armor with bronze studs",
+          "exposed shoulders",
+          "recurved bow with bronze tips",
+          "thigh straps for quiver",
+          "barefoot"
+        ],
+        "removed_items": [],
+        "torso_slot": [
+          "very short crimson wool chiton with deep low-cut neckline",
+          "worn revealing leather armor with bronze studs"
+        ],
+        "lower_body_slot": [
+          "very short crimson wool chiton with deep low-cut neckline"
+        ],
+        "footwear": [],
+        "nudity_mode": "clothed",
+        "revision": 0,
+        "source_of_truth": "character.outfit"
+      },
+      "wounds": [],
+      "resources": {
+        "kleos": 0,
+        "poseidon_curse": 0,
+        "moly": 0,
+        "underworld_passage": 0,
+        "phaeacian_ship": 0
+      }
+    },
+    "present_npcs": [
+      {
+        "id": "polifemo",
+        "name": "Polifemo",
+        "personality": [
+          "Violenza animalesca",
+          "Solitudine assoluta",
+          "Fiducia cieca nella forza",
+          "Lussuria primitiva"
+        ],
+        "speech_style": "Urla, grugnisce, usa frasi spezzate. Non conosce la menzogna. Chiama tutti \"piccoli\" o \"deboli\". Non ha concetto di ospitalità.\n",
+        "goals": [
+          "Trovare un compagno che non fugga",
+          "Sacrificare i prigionieri a Poseidone"
+        ],
+        "knowledge": [
+          "I ciclope sono figli di Poseidone",
+          "Gli uomini mentono sempre",
+          "Il latte di pecora guarisce le ferite"
+        ],
+        "knowledge_provenance": [],
+        "disclosure": {
+          "secrets": [
+            "Il suo occhio unico ha una membrana che si chiude solo nel sonno profondo",
+            "Ha paura del buio totale"
+          ],
+          "disclosure_policy": "Non rivela nulla. Urla tutto ciò che pensa.",
+          "red_lines": [
+            "Non permette a nessuno di toccare le sue pecore",
+            "Non accetta ordini da nessuno",
+            "Non perdona l'inganno"
+          ],
+          "already_disclosed": []
+        },
+        "current_intention": "",
+        "emotional_state": {},
+        "relationship_towards_player": null,
+        "conditions": [],
+        "outfit_worn": [
+          "skimpy crude stitched animal pelts with rough revealing cut",
+          "rope belt",
+          "bare feet covered in mud",
+          "massive wooden club with obsidian"
+        ],
+        "outfit_removed": [],
+        "outfit_state": {
+          "worn_items": [
+            "skimpy crude stitched animal pelts with rough revealing cut",
+            "rope belt",
+            "bare feet covered in mud",
+            "massive wooden club with obsidian"
+          ],
+          "removed_items": [],
+          "torso_slot": [
+            "skimpy crude stitched animal pelts with rough revealing cut"
+          ],
+          "lower_body_slot": [
+            "skimpy crude stitched animal pelts with rough revealing cut"
+          ],
+          "footwear": [],
+          "nudity_mode": "clothed",
+          "revision": 0,
+          "source_of_truth": "character.outfit"
+        },
+        "wounds": [],
+        "recent_memories": []
+      }
+    ],
+    "active_threads": [],
+    "story_spine": {
+      "confirmed": [],
+      "remaining": [
+        {
+          "id": "marker_ciclopi",
+          "summary": "Fuggire dalla caverna di Polifemo accecandola o ingannandola."
+        },
+        {
+          "id": "marker_eolo",
+          "summary": "Resistere alla curiosità di aprire la pelle di cinghiale."
+        },
+        {
+          "id": "marker_sirene",
+          "summary": "Sopravvivere al canto maschile senza impazzire o annegare."
+        },
+        {
+          "id": "marker_scilla_cariddi",
+          "summary": "Attraversare lo stretto sacrificando sangue ma non la vita."
+        },
+        {
+          "id": "marker_circe",
+          "summary": "Ottenere il rituale per l'Ade da Circe senza trasformarsi in bestia."
+        },
+        {
+          "id": "marker_cimmeri",
+          "summary": "Versare il sangue e resistere alle ombre affamate per parlare con Tiresia."
+        },
+        {
+          "id": "marker_calipso",
+          "summary": "Ricordare Itaca dopo sette anni di piacere e oblio."
+        },
+        {
+          "id": "marker_sole",
+          "summary": "Resistere alla fame senza commettere sacrilegio sul bestiame d'oro."
+        },
+        {
+          "id": "marker_scheria",
+          "summary": "Commuovere la corte dei Feaci e ottenere il passaggio verso Itaca."
+        },
+        {
+          "id": "marker_itaca",
+          "summary": "Il massacro finale: travestimento, arco, riconoscimento."
+        }
+      ],
+      "slice_concluded": false
+    },
+    "pressures": [
+      {
+        "id": "press_poseidone",
+        "summary": "La maledizione di Poseidone incombe su ogni viaggio per mare.",
+        "level": 0,
+        "escalation_hint": ""
+      },
+      {
+        "id": "press_proche",
+        "summary": "Le Proche occupano il palazzo di Itaca, divorandone le risorse.",
+        "level": 0,
+        "escalation_hint": ""
+      },
+      {
+        "id": "press_fame",
+        "summary": "La fame è compagna costante del viaggio solitario.",
+        "level": 0,
+        "escalation_hint": ""
+      },
+      {
+        "id": "press_tempo",
+        "summary": "Ogni anno lontano da Itaca erode la memoria e la speranza.",
+        "level": 0,
+        "escalation_hint": ""
+      }
+    ],
+    "missions": {
+      "current": [
+        {
+          "id": "mission_ciclopi",
+          "location_id": "loc_ciclopi",
+          "name": "La Cieca e il Pasto",
+          "description": "Fuggire dalla caverna di Polifemo accecandola o ingannandola.",
+          "prerequisites": [],
+          "state": "active",
+          "objectives": [
+            {
+              "id": "escape_polifemo",
+              "target": "polifemo",
+              "required_skills": [
+                "dolos",
+                "sarissa"
+              ],
+              "difficulty": 3
+            }
+          ],
+          "success_conditions": [
+            {
+              "type": "mission_complete",
+              "target": "loc_ciclopi"
+            },
+            {
+              "type": "stake_contains",
+              "text": "Sblocca Isola di Eolo."
+            }
+          ],
+          "failure_conditions": [
+            {
+              "type": "critical_failure"
+            },
+            {
+              "type": "second_failure"
+            }
+          ],
+          "rewards": [
+            {
+              "type": "resource_delta",
+              "resource": "kleos",
+              "delta": 1
+            },
+            {
+              "type": "story_marker_add",
+              "marker_id": "marker_ciclopi"
+            }
+          ],
+          "consequences": [
+            {
+              "type": "pressure_advance",
+              "pressure_id": "press_poseidone",
+              "when": "sarissa_success"
+            }
+          ],
+          "transitions": [
+            {
+              "location_id": "loc_eolo"
+            }
+          ],
+          "alternative_solutions": [
+            {
+              "skill": "dolos",
+              "description": "Ingannare Polifemo con nome falso, vino o stratagemma."
+            },
+            {
+              "skill": "sarissa",
+              "description": "Accecare o ferire Polifemo pagando la maledizione di Poseidone."
+            }
+          ]
+        }
+      ],
+      "upcoming": [
+        {
+          "id": "mission_eolo",
+          "location_id": "loc_eolo",
+          "name": "La Pelle di Cinghiale",
+          "description": "Resistere alla curiosita di aprire la pelle di cinghiale.",
+          "prerequisites": [
+            "mission_ciclopi"
+          ],
+          "state": "locked",
+          "objectives": [
+            {
+              "id": "keep_wind_bag_closed",
+              "required_skills": [
+                "thumos"
+              ],
+              "difficulty": 2
+            }
+          ],
+          "success_conditions": [
+            {
+              "type": "mission_complete",
+              "target": "loc_eolo"
+            },
+            {
+              "type": "stake_contains",
+              "text": "Sacchetto dei Venti: +1 Pontos per 2 location."
+            }
+          ],
+          "failure_conditions": [
+            {
+              "type": "failure"
+            }
+          ],
+          "rewards": [
+            {
+              "type": "resource_delta",
+              "resource": "kleos",
+              "delta": 1
+            },
+            {
+              "type": "effect",
+              "id": "wind_bag",
+              "duration_locations": 2
+            },
+            {
+              "type": "story_marker_add",
+              "marker_id": "marker_eolo"
+            }
+          ],
+          "consequences": [
+            {
+              "type": "skill_delta",
+              "skill": "thumos",
+              "delta": -1
+            }
+          ],
+          "transitions": [
+            {
+              "location_id": "loc_sirene"
+            }
+          ],
+          "alternative_solutions": []
+        }
+      ]
+    },
+    "initiative_rhythm": {
+      "consecutive_reactive_turns": 0,
+      "recent": [],
+      "hint": ""
+    },
+    "narrative_policy": {
+      "narrative_intensity": "neutral",
+      "narrative_intensity_before": "neutral",
+      "narrative_intensity_after": "neutral",
+      "intimacy_detected": false,
+      "consent_state": "not_applicable",
+      "adult_participants_verified": true,
+      "intensity_reasons": [],
+      "intensity_blockers": [],
+      "requested_tone": "neutral",
+      "applied_tone": "neutral",
+      "tone_changed_during_retry": false,
+      "participant_ids": [
+        "player"
+      ],
+      "base_prompt_athletic_body_present": true,
+      "base_prompt_athletic_body_count": 1,
+      "nudity_only_signal": false
+    },
+    "player_knowledge": [],
+    "player_knowledge_provenance": [],
+    "last_scene": "Il mare è sale e memoria. Dieci anni a Troia, dieci anni di ritorno. Ulisse, regina di Itaca, arciera, bugiarda, sopravvissuta, è sola. La sua nave è polvere, il suo equipaggio è ombre. Dietro di lei, la rabbia di Poseidone. Davanti, un'isola di giganti pastori. Il primo passo verso casa è sempre il più difficile.\n",
+    "player_input": "osservo"
+  }
+}

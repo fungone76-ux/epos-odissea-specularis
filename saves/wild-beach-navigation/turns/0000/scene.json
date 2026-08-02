@@ -1,0 +1,20 @@
+{
+  "narration": "Lasci la Lobby e raggiungi Spiaggia selvaggia. Qui puoi finalmente prenderti un momento per ambientarti e rilassarti.",
+  "dialogue": [],
+  "npc_actions": [],
+  "intentions": [],
+  "initiatives": [],
+  "disclosure_events": [],
+  "mutations": [
+    {
+      "type": "location_change",
+      "target": "player",
+      "payload": {
+        "location_id": "loc_wild_beach"
+      },
+      "reason": "Spostamento esplicitamente richiesto dal giocatore."
+    }
+  ],
+  "memory_events": [],
+  "visual": null
+}

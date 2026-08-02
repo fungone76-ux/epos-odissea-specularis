@@ -1,0 +1,26 @@
+================================================================
+DEBUG TURNO 23 — modalità: no_check
+sessione: 233f235e-7c61-4e36-9e58-d1d281b06afe | location: loc_spa
+================================================================
+
+[INPUT GIOCATORE]
+si Stella...sai fare massaggi?
+
+[NARRAZIONE]
+Stella si avvicina, un sorriso malizioso che gioca sulle sue labbra mentre ascolta la tua domanda. Gli ambienti della Spa emettono un'atmosfera di benessere, con il vapore che avvolge delicatamente la stanza.
+
+[DIALOGHI]
+- Stella: Certo, so fare massaggi! Ti piacerebbe provare uno dei miei trattamenti speciali?
+
+[PROMPT POSITIVO]
+score_9, score_8_up, masterpiece, photorealistic, 1girl, alice_milf_catchers, massive breasts, cleavage, blonde hair, beautiful blue eyes, shapely legs, hourglass figure, skinny body, narrow waist, wide hips, <lora:alice_milf_catchers_lora.safetensors:0.7>, very short hem, fitted resort hostess micro dress, plunging neckline, ambitious adult VIP entertainer, full body, eye-level camera, side view, side orientation, bright atmosphere, spa environment, Stella, with a mischievous smile, approaches as she discusses massage treatments.
+
+[PROMPT NEGATIVO]
+score_6, score_5, score_4, score_3, score_2, score_1, lowres, worst quality, low quality, blurry, bad anatomy, bad hands, extra fingers, missing fingers, extra limbs, deformed, text, watermark, signature, child, young-looking, underage, teenager, coercion, violence, duplicate person, plain background, white background, grey background, studio background, seamless backdrop, isolated figure, empty background, blank wall, multiple people, extra person, background people, duplicate character, cloned face, merged bodies, fused bodies, extra face
+
+[PROSA DI SCENA (visual_en)]
+Stella, with a mischievous smile, approaches as she discusses massage treatments.
+
+[RENDER]
+status: complete | backend: comfy
+immagine: saves\233f235e-7c61-4e36-9e58-d1d281b06afe\turns\0023\image.png

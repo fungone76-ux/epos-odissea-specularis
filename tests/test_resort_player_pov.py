@@ -10,6 +10,7 @@ from epos.resort_turn_service import (
     validate_resort_scene_policy,
 )
 from epos.validators import validate_scene
+from epos.visual import build_visual_contract
 
 PACK_DIR = Path(__file__).resolve().parents[1] / "worlds" / "resort_world"
 
@@ -189,3 +190,155 @@ def test_central_entity_normalizer_preserves_short_victoria_display_name():
     canonical = _canonicalize_resort_speakers(state, result.value)
     assert canonical.dialogue[0].speaker == "Victoria Hale"
     assert validate_scene(state, pack.world, canonical).ok
+
+
+
+def _disable_intro(state):
+    state.flags["resort_intro_active"] = False
+    state.flags["resort_intro_completed"] = True
+    state.flags["resort_intro_index"] = 4
+
+
+def _luna_present_on_private_beach(state):
+    state.location_id = "loc_private_beach"
+    for npc in state.npcs.values():
+        npc.present = False
+    state.npcs["luna"].present = True
+    state.npcs["luna"].location_id = "loc_private_beach"
+
+
+def _luna_sunscreen_scene():
+    return FinalScene.from_dict(
+        {
+            "narration": "Luna inizia a spalmare la crema solare sulla pelle del cliente fuori campo.",
+            "dialogue": [{"speaker": "Luna", "to": "player", "text": "Resta fermo, faccio piano."}],
+            "npc_actions": [{"npc_id": "luna", "action": "applica la crema solare"}],
+            "intentions": [],
+            "initiatives": [],
+            "disclosure_events": [],
+            "mutations": [],
+            "memory_events": [],
+            "visual": {
+                "summary": "Momento intimo sulla spiaggia mentre Luna applica la crema solare.",
+                "focus_character": "luna",
+                "visible_characters": ["luna"],
+                "shared_action": False,
+                "visual_en": "Luna is applying sunscreen on the player, kneeling beside them, her hands gently spreading the cream over their skin.",
+                "tags_en": ["intimate moment", "kneeling", "sunscreen application", "luxury beach"],
+                "moment_type": "intimate",
+                "speaker_character": "luna",
+                "actor_character": "luna",
+                "reactor_character": "",
+                "intimate_shared_moment": False,
+                "multi_character_reason": "",
+                "multi_character_participants": ["luna"],
+            },
+        }
+    )
+
+
+def test_valid_llm_sunscreen_visual_is_not_replaced_by_intro_fallback():
+    pack = load_resort_pack(PACK_DIR)
+    state = new_resort_world(pack, "luna-sunscreen-preserve")
+    _disable_intro(state)
+    _luna_present_on_private_beach(state)
+
+    corrected = enforce_resort_player_pov(state, pack.world, _luna_sunscreen_scene())
+
+    assert corrected.visual.focus_character == "luna"
+    assert corrected.visual.visible_characters == ["luna"]
+    assert corrected.visual.shared_action is False
+    assert "sunscreen" in corrected.visual.visual_en.lower()
+    assert "kneeling" in corrected.visual.visual_en.lower()
+    assert "sunscreen application" in corrected.visual.tags_en
+    assert "NPC introduction" not in corrected.visual.tags_en
+    assert "addresses the unseen VIP guest" not in corrected.visual.visual_en
+
+
+def test_sunscreen_visual_survives_until_visual_contract_prompt():
+    pack = load_resort_pack(PACK_DIR)
+    state = new_resort_world(pack, "luna-sunscreen-contract")
+    _disable_intro(state)
+    _luna_present_on_private_beach(state)
+
+    corrected = enforce_resort_player_pov(state, pack.world, _luna_sunscreen_scene())
+    before_outfit = state.npcs["luna"].outfit.to_dict()
+    contract = build_visual_contract(state, pack.world, corrected.visual, state.turn)
+    positive = contract.prompt_package["positive"]
+
+    assert contract.focus_character == "luna"
+    assert contract.visible_characters == ["luna"]
+    assert state.npcs["luna"].outfit.to_dict() == before_outfit
+    assert "fitted ivory VIP attendant mini dress" in positive
+    assert "sunscreen application" in positive or "applying sunscreen" in positive
+    assert "NPC introduction" not in positive
+    assert "addresses the unseen VIP guest" not in positive
+
+
+def test_already_present_luna_keeps_previous_action_visuals_like_turns_0012_0013():
+    pack = load_resort_pack(PACK_DIR)
+    state = new_resort_world(pack, "luna-previous-turns")
+    _disable_intro(state)
+    _luna_present_on_private_beach(state)
+
+    for scene in (
+        FinalScene.from_dict(
+            {
+                "narration": "Luna mostra i piedi con un gesto giocoso.",
+                "dialogue": [],
+                "npc_actions": [{"npc_id": "luna", "action": "mostra i piedi"}],
+                "intentions": [],
+                "initiatives": [],
+                "disclosure_events": [],
+                "mutations": [],
+                "memory_events": [],
+                "visual": {
+                    "summary": "Luna si piega mostrando i piedi con un gesto giocoso.",
+                    "focus_character": "luna",
+                    "visible_characters": ["luna"],
+                    "shared_action": False,
+                    "visual_en": "Luna playfully shows her feet, bending slightly to present them.",
+                    "tags_en": ["playful gesture", "beach setting", "intimate moment"],
+                    "moment_type": "intimate",
+                    "speaker_character": "",
+                    "actor_character": "luna",
+                    "reactor_character": "luna",
+                    "intimate_shared_moment": False,
+                    "multi_character_reason": "",
+                    "multi_character_participants": ["luna"],
+                },
+            }
+        ),
+        FinalScene.from_dict(
+            {
+                "narration": "Luna sorride mostrando di nuovo i suoi piedi.",
+                "dialogue": [{"speaker": "Luna", "to": "player", "text": "Grazie! Sono felice che ti piacciano."}],
+                "npc_actions": [],
+                "intentions": [],
+                "initiatives": [],
+                "disclosure_events": [],
+                "mutations": [],
+                "memory_events": [],
+                "visual": {
+                    "summary": "Luna is smiling while showing her feet slightly bent.",
+                    "focus_character": "luna",
+                    "visible_characters": ["luna"],
+                    "shared_action": False,
+                    "visual_en": "Luna is smiling brightly, slightly bending forward to show her feet, with the sun glistening on the water behind her.",
+                    "tags_en": ["smiling", "showing feet", "sunlit", "private beach"],
+                    "moment_type": "intimate",
+                    "speaker_character": "luna",
+                    "actor_character": "luna",
+                    "reactor_character": "luna",
+                    "intimate_shared_moment": False,
+                    "multi_character_reason": "",
+                    "multi_character_participants": ["luna"],
+                },
+            }
+        ),
+    ):
+        corrected = enforce_resort_player_pov(state, pack.world, scene)
+        assert corrected.visual.focus_character == "luna"
+        assert corrected.visual.visible_characters == ["luna"]
+        assert "NPC introduction" not in corrected.visual.tags_en
+        assert "shows her feet" in corrected.visual.visual_en.lower() or "show her feet" in corrected.visual.visual_en.lower()

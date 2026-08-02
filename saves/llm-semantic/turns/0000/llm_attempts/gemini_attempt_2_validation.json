@@ -1,0 +1,33 @@
+{
+  "valid": false,
+  "phase": "proposal",
+  "validation_stage": "semantic",
+  "validation_reason": "semantic_contract_rejected",
+  "errors": [
+    {
+      "code": "semantic_contract_rejected",
+      "path": "check.difficulty",
+      "message": "difficoltÃ  99 fuori range 1-6",
+      "details": {
+        "value": 99,
+        "min": 1,
+        "max": 6
+      }
+    },
+    {
+      "code": "player_action_semantic_drift",
+      "path": "check.action_kind",
+      "message": "autonomia player: proposta di prova altera l'azione dichiarata (observing -> attack)",
+      "details": {
+        "player_input_action": "observing",
+        "proposed_player_action": "attack",
+        "player_text": "osservo"
+      }
+    }
+  ],
+  "warnings": [],
+  "problems": [
+    "difficoltÃ  99 fuori range 1-6",
+    "autonomia player: proposta di prova altera l'azione dichiarata (observing -> attack)"
+  ]
+}

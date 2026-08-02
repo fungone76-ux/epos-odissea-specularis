@@ -1,0 +1,68 @@
+{
+  "narration": "Stella sorride e, avvicinandosi, dice con tono malizioso: \"Certo, possiamo renderlo ancora più speciale. Un massaggio nudo è un'esperienza davvero unica, e ti farà sentire completamente a tuo agio. Preparati per un momento indimenticabile.\" La sauna genera un'atmosfera calda e intima, mentre il vapore avvolge delicatamente i due. Con un gesto invitante, Stella ti guida verso un lettino da massaggio, promettendo un'esperienza di puro relax.",
+  "dialogue": [],
+  "npc_actions": [
+    {
+      "npc_id": "stella",
+      "action": "invites the player to lie down on the massage table, preparing oils and soft towels."
+    }
+  ],
+  "intentions": [
+    {
+      "npc_id": "stella",
+      "intention": "offer a nude massage to create an intimate atmosphere."
+    }
+  ],
+  "mutations": [
+    {
+      "type": "outfit_remove",
+      "target": "luxury travel suit",
+      "payload": {
+        "item": "luxury travel suit"
+      },
+      "reason": "Preparing for the nude massage."
+    },
+    {
+      "type": "outfit_remove",
+      "target": "tailored shirt",
+      "payload": {
+        "item": "tailored shirt"
+      },
+      "reason": "Preparing for the nude massage."
+    },
+    {
+      "type": "outfit_remove",
+      "target": "elegant shoes",
+      "payload": {
+        "item": "elegant shoes"
+      },
+      "reason": "Preparing for the nude massage."
+    }
+  ],
+  "initiatives": [],
+  "disclosure_events": [],
+  "memory_events": [
+    {
+      "summary": "Stella experiences a moment of shared intimacy and connection with the player.",
+      "witnesses": ["stella"],
+      "level": "immediate",
+      "emotional_impact": 2,
+      "public": false
+    }
+  ],
+  "visual": {
+    "summary": "Stella prepares for the massage while the player lies down, creating an intimate atmosphere.",
+    "focus_character": "stella",
+    "visible_characters": ["stella"],
+    "shared_action": false,
+    "moment_type": "intimate",
+    "speaker_character": "stella",
+    "actor_character": "stella",
+    "reactor_character": "",
+    "intimate_shared_moment": true,
+    "multi_character_reason": "Stella is directly involved in the intimate setting.",
+    "multi_character_participants": ["stella"],
+    "visual_en": "Stella stands beside the massage table, preparing oils with a confident smile, while the soft light illuminates the intimate spa environment.",
+    "tags_en": ["intimate", "spa", "soft lighting", "nude", "massage preparation"]
+  }
+}

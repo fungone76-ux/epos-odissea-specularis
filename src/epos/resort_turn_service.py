@@ -28,7 +28,12 @@ from .validators import ValidationErrorDetail, ValidationReport
 
 RESORT_WORLD_ID = "resort_world"
 _PLAYER_VISUAL_TERMS = re.compile(
-    r"\b(player|protagonist|the billionaire|billionaire man|male guest|adult man)\b",
+    r"\b(protagonist|the billionaire|billionaire man|male guest|adult man)\b",
+    re.IGNORECASE,
+)
+_PLAYER_IN_FRAME_TERMS = re.compile(
+    r"\b(?:the\s+)?player\s+"
+    r"(?:appears?|is\s+visible|stands?|sits?|lies|walks?|kneels?|faces?|looks?|glances?|descends?)\b",
     re.IGNORECASE,
 )
 
@@ -60,6 +65,14 @@ def _speaker_id(state, speaker: str) -> str | None:
     if len(first_name) == 1:
         return first_name[0]
     return None
+
+
+def _visual_text_frames_player(text: str) -> bool:
+    """Detects player-in-frame prose without rejecting off-camera contact."""
+
+    if _PLAYER_VISUAL_TERMS.search(text):
+        return True
+    return bool(_PLAYER_IN_FRAME_TERMS.search(text))
 
 
 def _canonicalize_resort_speakers(state, scene: FinalScene) -> FinalScene:
@@ -152,16 +165,24 @@ def enforce_resort_player_pov(state, pack, scene: FinalScene) -> FinalScene:
     player_leaked = (
         "player" in visual.visible_characters
         or visual.focus_character == "player"
-        or bool(_PLAYER_VISUAL_TERMS.search(visual_text))
-        or bool(_PLAYER_VISUAL_TERMS.search(summary))
+        or _visual_text_frames_player(visual_text)
+        or _visual_text_frames_player(summary)
     )
     if player_leaked or wrong_intro_focus:
-        visual_text = (
-            f"{npc.name} addresses the unseen VIP guest in {location_name}, "
-            "adult woman, expressive body language, elegant cinematic composition"
-        )
-        summary = f"{npc.name} si presenta al miliardario fuori campo."
-        tags = ["NPC introduction", "unseen guest POV", "luxury resort"]
+        if wrong_intro_focus:
+            visual_text = (
+                f"{npc.name} addresses the unseen VIP guest in {location_name}, "
+                "adult woman, expressive body language, elegant cinematic composition"
+            )
+            summary = f"{npc.name} si presenta al miliardario fuori campo."
+            tags = ["NPC introduction", "unseen guest POV", "luxury resort"]
+        else:
+            visual_text = (
+                f"{npc.name} reacts to the unseen VIP guest in {location_name}, "
+                "adult woman, expressive body language, elegant cinematic composition"
+            )
+            summary = f"{npc.name} reagisce al miliardario fuori campo."
+            tags = ["NPC reaction", "unseen guest POV", "luxury resort"]
     else:
         tags = list(visual.tags_en)
 
@@ -292,7 +313,7 @@ def validate_resort_scene_policy(state, pack, scene: FinalScene) -> ValidationRe
         visual_text = " ".join(
             [scene.visual.summary, scene.visual.visual_en, *scene.visual.tags_en]
         )
-        if _PLAYER_VISUAL_TERMS.search(visual_text):
+        if _visual_text_frames_player(visual_text):
             message = "Resort: la descrizione visuale deve inquadrare la NPC, non il miliardario"
             problems.append(message)
             errors.append(

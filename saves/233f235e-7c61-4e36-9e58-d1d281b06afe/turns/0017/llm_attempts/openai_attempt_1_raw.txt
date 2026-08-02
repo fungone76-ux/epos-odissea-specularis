@@ -1,0 +1,43 @@
+{
+  "narration": "Luna, con un sorriso timido, accetta di spalmare la crema solare anche su di te. I suoi movimenti sono delicati e attenti, creando un momento intimo e carico di tensione. La spiaggia privata, con il sole che splende alto nel cielo, diventa il palcoscenico di questa connessione speciale tra voi due. La sua mano si muove lentamente, tracciando un percorso sulla tua pelle, mentre il calore del sole si mescola al calore della vostra interazione.",
+  "dialogue": [],
+  "npc_actions": [
+    {
+      "npc_id": "luna",
+      "action": "spreads sunscreen on the player gently"
+    }
+  ],
+  "intentions": [
+    {
+      "npc_id": "luna",
+      "intention": "to deepen the physical connection and enjoy the moment"
+    }
+  ],
+  "mutations": [],
+  "initiatives": [],
+  "disclosure_events": [],
+  "memory_events": [
+    {
+      "summary": "Luna feels a deeper connection as she applies sunscreen to the player.",
+      "witnesses": ["luna"],
+      "level": "immediate",
+      "emotional_impact": 2,
+      "public": true
+    }
+  ],
+  "visual": {
+    "summary": "Luna applies sunscreen on the player's skin, enhancing their intimate moment.",
+    "focus_character": "luna",
+    "visible_characters": ["luna"],
+    "shared_action": true,
+    "moment_type": "intimate",
+    "speaker_character": "",
+    "actor_character": "luna",
+    "reactor_character": "",
+    "intimate_shared_moment": true,
+    "multi_character_reason": "",
+    "multi_character_participants": ["luna"],
+    "visual_en": "Luna is gently applying sunscreen on the player's skin, her hands gliding smoothly over the surface, creating an intimate atmosphere filled with sunlight.",
+    "tags_en": ["intimate", "sunscreen", "beach", "sunlight", "soft focus"]
+  }
+}

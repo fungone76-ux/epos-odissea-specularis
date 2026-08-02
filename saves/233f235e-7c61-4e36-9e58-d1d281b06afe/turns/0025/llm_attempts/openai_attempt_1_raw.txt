@@ -1,0 +1,58 @@
+{
+  "narration": "Stella sorride con malizia e, dopo un attimo di esitazione, si avvicina a te con un atteggiamento seducente. \"Se è questo che desideri, allora posso offrirti un massaggio nudo, per un'esperienza davvero unica e intima,\" dice, mentre l'atmosfera nella spa diventa ancora più avvolgente. Il vapore avvolge i vostri corpi, creando un senso di intimità e relax. Stella inizia a preparare l'area per il massaggio, rendendo chiaro che è pronta a soddisfare la tua richiesta.",
+  "dialogue": [
+    {
+      "speaker": "Stella",
+      "text": "Se è questo che desideri, allora posso offrirti un massaggio nudo, per un'esperienza davvero unica e intima.",
+      "to": "player"
+    }
+  ],
+  "npc_actions": [
+    {
+      "npc_id": "stella",
+      "action": "prepares the area for a nude massage"
+    }
+  ],
+  "intentions": [
+    {
+      "npc_id": "stella",
+      "intention": "offer an intimate nude massage"
+    }
+  ],
+  "mutations": [
+    {
+      "type": "outfit_remove",
+      "target": "stella",
+      "payload": {
+        "item": "fitted resort hostess micro dress"
+      },
+      "reason": "to provide a nude massage"
+    }
+  ],
+  "initiatives": [],
+  "disclosure_events": [],
+  "memory_events": [
+    {
+      "summary": "Stella offers an intimate nude massage to the player.",
+      "witnesses": ["stella"],
+      "level": "immediate",
+      "emotional_impact": 2,
+      "public": true
+    }
+  ],
+  "visual": {
+    "summary": "Stella prepares for the massage, her dress coming off.",
+    "focus_character": "stella",
+    "visible_characters": ["stella"],
+    "shared_action": false,
+    "moment_type": "intimate",
+    "speaker_character": "",
+    "actor_character": "stella",
+    "reactor_character": "",
+    "intimate_shared_moment": false,
+    "multi_character_reason": "",
+    "multi_character_participants": ["stella"],
+    "visual_en": "Stella is beginning to undress, her fitted resort hostess dress slipping off as she prepares for an intimate nude massage.",
+    "tags_en": ["intimate", "nude", "preparation", "luxury spa", "soft lighting"]
+  }
+}

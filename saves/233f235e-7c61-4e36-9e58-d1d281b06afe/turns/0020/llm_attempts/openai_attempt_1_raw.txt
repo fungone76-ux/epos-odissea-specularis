@@ -1,0 +1,42 @@
+{
+  "mode": "no_check",
+  "scene": {
+    "narration": "Luna sorride dolcemente mentre ascolta le tue parole. \"Non è niente, è un piacere aiutarti,\" risponde, la sua voce calda e accogliente. L'atmosfera rimane carica di tensione e intimità, mentre il sole splende sopra di voi, creando un gioco di luci sulla spiaggia privata.",
+    "dialogue": [
+      {
+        "speaker": "Luna",
+        "text": "Non è niente, è un piacere aiutarti.",
+        "to": "player"
+      }
+    ],
+    "npc_actions": [],
+    "intentions": [],
+    "mutations": [],
+    "initiatives": [],
+    "disclosure_events": [],
+    "memory_events": [
+      {
+        "summary": "Luna ricorderà questo momento di connessione e affetto.",
+        "witnesses": ["luna"],
+        "level": "immediate",
+        "emotional_impact": 2,
+        "public": true
+      }
+    ],
+    "visual": {
+      "summary": "Luna smiles warmly at the player, creating a moment of connection.",
+      "focus_character": "luna",
+      "visible_characters": ["luna"],
+      "shared_action": false,
+      "moment_type": "intimate",
+      "speaker_character": "luna",
+      "actor_character": "luna",
+      "reactor_character": "",
+      "intimate_shared_moment": false,
+      "multi_character_reason": "",
+      "multi_character_participants": [],
+      "visual_en": "Luna smiles warmly, her expression soft and inviting, as she stands barefoot on the beach, with sunlight glistening on her skin.",
+      "tags_en": ["smiling", "beach", "warmth", "sunlight", "intimacy"]
+    }
+  }
+}
