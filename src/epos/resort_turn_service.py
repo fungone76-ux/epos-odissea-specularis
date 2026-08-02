@@ -17,6 +17,13 @@ from dataclasses import replace
 
 from .contract import FinalScene
 from .resort_presence import scene_has_real_npc_participation
+from .resort_fidelity import (
+    resort_fidelity_diagnostics,
+    validate_dialogue_substance,
+    validate_initiative_obligation,
+    validate_resort_visual_requirements,
+    validate_scene_progression,
+)
 from .resort_intro import (
     advance_resort_intro,
     current_intro_step,
@@ -35,6 +42,23 @@ _PLAYER_IN_FRAME_TERMS = re.compile(
     r"\b(?:the\s+)?player\s+"
     r"(?:appears?|is\s+visible|stands?|sits?|lies|walks?|kneels?|faces?|looks?|glances?|descends?)\b",
     re.IGNORECASE,
+)
+_PLAYER_OFF_CAMERA_REFERENCES = (
+    (
+        re.compile(r"\bon\s+the\s+player(?:'s)?\s+back\b", re.IGNORECASE),
+        "toward the off-camera VIP guest just outside the frame",
+    ),
+    (
+        re.compile(r"\bon\s+their\s+back\b", re.IGNORECASE),
+        "toward the off-camera VIP guest just outside the frame",
+    ),
+    (
+        re.compile(r"\bover\s+their\s+skin\b", re.IGNORECASE),
+        "toward the off-camera VIP guest just outside the frame",
+    ),
+    (re.compile(r"\bthe\s+player(?:'s)?\b", re.IGNORECASE), "the off-camera VIP guest"),
+    (re.compile(r"\bthe\s+protagonist(?:'s)?\b", re.IGNORECASE), "the off-camera VIP guest"),
+    (re.compile(r"\bprotagonist(?:'s)?\b", re.IGNORECASE), "the off-camera VIP guest"),
 )
 
 
@@ -73,6 +97,21 @@ def _visual_text_frames_player(text: str) -> bool:
     if _PLAYER_VISUAL_TERMS.search(text):
         return True
     return bool(_PLAYER_IN_FRAME_TERMS.search(text))
+
+
+def _sanitize_resort_off_camera_visual_text(text: str) -> str:
+    """Keep the NPC action while making player references explicitly off-camera."""
+
+    cleaned = str(text or "").strip()
+    for pattern, replacement in _PLAYER_OFF_CAMERA_REFERENCES:
+        cleaned = pattern.sub(replacement, cleaned)
+    cleaned = re.sub(
+        r"\btheir\s+bodies\s+almost\s+touching\b",
+        "the NPC leaning close to the off-camera VIP guest",
+        cleaned,
+        flags=re.IGNORECASE,
+    )
+    return cleaned
 
 
 def _canonicalize_resort_speakers(state, scene: FinalScene) -> FinalScene:
@@ -141,6 +180,27 @@ def _npc_from_scene(state, scene: FinalScene) -> str | None:
     return present[0]
 
 
+def _resort_visual_enforcement_flags(state, scene: FinalScene) -> tuple[bool, bool]:
+    visual = scene.visual
+    if visual is None:
+        return False, False
+
+    visual_text = _sanitize_resort_off_camera_visual_text(visual.visual_en)
+    summary = _sanitize_resort_off_camera_visual_text(visual.summary)
+    intro_step = current_intro_step(state)
+    wrong_intro_focus = intro_step is not None and (
+        visual.focus_character != intro_step.npc_id
+        or visual.visible_characters != [intro_step.npc_id]
+    )
+    player_leaked = (
+        "player" in visual.visible_characters
+        or visual.focus_character == "player"
+        or _visual_text_frames_player(visual_text)
+        or _visual_text_frames_player(summary)
+    )
+    return player_leaked, wrong_intro_focus
+
+
 def enforce_resort_player_pov(state, pack, scene: FinalScene) -> FinalScene:
     """Rende autorevole il POV: il player non entra mai nel frame Resort."""
 
@@ -157,17 +217,9 @@ def enforce_resort_player_pov(state, pack, scene: FinalScene) -> FinalScene:
     location_name = location.name if location is not None else state.location_id
     visual = scene.visual
 
-    visual_text = str(visual.visual_en or "").strip()
-    summary = str(visual.summary or "").strip()
-    wrong_intro_focus = current_intro_step(state) is not None and (
-        visual.focus_character != npc_id or visual.visible_characters != [npc_id]
-    )
-    player_leaked = (
-        "player" in visual.visible_characters
-        or visual.focus_character == "player"
-        or _visual_text_frames_player(visual_text)
-        or _visual_text_frames_player(summary)
-    )
+    visual_text = _sanitize_resort_off_camera_visual_text(visual.visual_en)
+    summary = _sanitize_resort_off_camera_visual_text(visual.summary)
+    player_leaked, wrong_intro_focus = _resort_visual_enforcement_flags(state, scene)
     if player_leaked or wrong_intro_focus:
         if wrong_intro_focus:
             visual_text = (
@@ -223,7 +275,9 @@ def _npc_participates(state, scene: FinalScene, npc_id: str) -> bool:
     return False
 
 
-def validate_resort_scene_policy(state, pack, scene: FinalScene) -> ValidationReport:
+def validate_resort_scene_policy(
+    state, pack, scene: FinalScene, player_text: str = ""
+) -> ValidationReport:
     if getattr(pack, "id", "") != RESORT_WORLD_ID:
         return ValidationReport()
 
@@ -325,7 +379,13 @@ def validate_resort_scene_policy(state, pack, scene: FinalScene) -> ValidationRe
                 )
             )
 
-    return ValidationReport(problems=problems, errors=errors)
+    return _merge_reports(
+        ValidationReport(problems=problems, errors=errors),
+        validate_resort_visual_requirements(pack, state, scene, player_text),
+        validate_initiative_obligation(state, scene, player_text),
+        validate_dialogue_substance(state, scene, player_text),
+        validate_scene_progression(state, scene, player_text),
+    )
 
 
 def _merge_reports(*reports: ValidationReport) -> ValidationReport:
@@ -372,10 +432,12 @@ class ResortTurnService(TurnService):
             state, turn, player_text, response, phase=phase
         )
         if response.mode == "no_check" and response.scene is not None:
-            response = replace(
-                response,
-                scene=enforce_resort_player_pov(state, self.pack, response.scene),
+            original_scene = response.scene
+            normalized_scene = enforce_resort_player_pov(state, self.pack, original_scene)
+            self._remember_resort_fidelity_diagnostics(
+                state, turn, player_text, original_scene, normalized_scene
             )
+            response = replace(response, scene=normalized_scene)
         return response
 
     def _normalize_scene_pipeline(
@@ -391,7 +453,47 @@ class ResortTurnService(TurnService):
         scene = super()._normalize_scene_pipeline(
             state, turn, player_text, scene, phase=phase
         )
-        return enforce_resort_player_pov(state, self.pack, scene)
+        original_scene = scene
+        normalized_scene = enforce_resort_player_pov(state, self.pack, original_scene)
+        self._remember_resort_fidelity_diagnostics(
+            state, turn, player_text, original_scene, normalized_scene
+        )
+        return normalized_scene
+
+    def _remember_resort_fidelity_diagnostics(
+        self, state, turn: int, player_text: str, original_scene: FinalScene, normalized_scene: FinalScene
+    ) -> None:
+        player_leaked, wrong_intro_focus = _resort_visual_enforcement_flags(state, original_scene)
+        sanitized_visual = (
+            _sanitize_resort_off_camera_visual_text(original_scene.visual.visual_en)
+            if original_scene.visual is not None
+            else ""
+        )
+        fallback_applied = (
+            original_scene.visual is not None
+            and normalized_scene.visual is not None
+            and normalized_scene.visual.visual_en != sanitized_visual
+        )
+        fallback_reason = ""
+        if fallback_applied:
+            fallback_reason = "intro_focus" if wrong_intro_focus else "player_visible"
+        diagnostics = resort_fidelity_diagnostics(
+            pack=self.pack,
+            state=state,
+            turn=turn,
+            player_text=player_text,
+            original_scene=original_scene,
+            normalized_scene=normalized_scene,
+            player_leaked=player_leaked,
+            wrong_intro_focus=wrong_intro_focus,
+            fallback_applied=fallback_applied,
+            fallback_reason=fallback_reason,
+        ).to_dict()
+        current = getattr(self, "_resort_fidelity_diagnostics", None)
+        if current is None:
+            self._resort_fidelity_diagnostics = {}
+            current = self._resort_fidelity_diagnostics
+        current[(state.session_id, turn)] = diagnostics
 
     def _validate_phase1_response_after_outfit_normalization(
         self,
@@ -408,7 +510,7 @@ class ResortTurnService(TurnService):
         normalized_scene = enforce_resort_player_pov(state, self.pack, response.scene)
         return _merge_reports(
             base,
-            validate_resort_scene_policy(state, self.pack, normalized_scene),
+            validate_resort_scene_policy(state, self.pack, normalized_scene, player_text),
         )
 
     def _validate_scene_after_outfit_normalization(
@@ -424,5 +526,16 @@ class ResortTurnService(TurnService):
         )
         return _merge_reports(
             base,
-            validate_resort_scene_policy(state, self.pack, scene),
+            validate_resort_scene_policy(state, self.pack, scene, player_text),
         )
+
+    def _commit_turn(self, state, turn: int, mode: str, scene: FinalScene, *args, **kwargs):
+        result = super()._commit_turn(state, turn, mode, scene, *args, **kwargs)
+        diagnostics = getattr(self, "_resort_fidelity_diagnostics", {}).pop(
+            (state.session_id, turn), None
+        )
+        if diagnostics:
+            self.store.save_turn_artifact(
+                state.session_id, turn, "resort_fidelity_diagnostics", diagnostics
+            )
+        return result

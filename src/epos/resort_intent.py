@@ -228,6 +228,7 @@ def resort_intent_directive(hint: ResortIntentHint) -> str:
     ]
     if hint.requires_npc_response:
         parts.append("MANDATORY: the target NPC must personally respond in dialogue, npc_actions, or initiatives. Narration or visual description alone is invalid.")
+        parts.append("NPC VOICE: when the target NPC speaks or takes initiative, the wording must be recognizably theirs and coherent with at least one personality trait, goal, current intention, relationship, recent memory, or speech_style from the snapshot; do not list the character sheet.")
     if hint.visual_focus:
         parts.append(f"MANDATORY VISUAL SUBJECT: focus_character and visible_characters must use '{hint.visual_focus}', never player and never the placeholder npc_id.")
     if hint.visual_requirements:

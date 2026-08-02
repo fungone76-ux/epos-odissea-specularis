@@ -342,3 +342,105 @@ def test_already_present_luna_keeps_previous_action_visuals_like_turns_0012_0013
         assert corrected.visual.visible_characters == ["luna"]
         assert "NPC introduction" not in corrected.visual.tags_en
         assert "shows her feet" in corrected.visual.visual_en.lower() or "show her feet" in corrected.visual.visual_en.lower()
+
+
+def test_resort_pov_preserves_valid_npc_action_when_rewriting_player_alias():
+    pack = load_resort_pack(PACK_DIR)
+    state = new_resort_world(pack, "stella-turn-0004-action")
+    state.location_id = "loc_lobby"
+    state.flags["resort_intro_active"] = False
+    state.flags["resort_intro_completed"] = True
+    state.npcs["stella"].location_id = "loc_lobby"
+    for npc_id, npc in state.npcs.items():
+        if npc_id != "stella":
+            npc.location_id = "elsewhere"
+
+    scene = FinalScene.from_dict(
+        {
+            "narration": "Stella sorride con sicurezza mentre osserva il cliente.",
+            "dialogue": [],
+            "npc_actions": [{"npc_id": "stella", "action": "reagisce con sicurezza"}],
+            "intentions": [],
+            "initiatives": [],
+            "disclosure_events": [],
+            "mutations": [],
+            "memory_events": [],
+            "visual": {
+                "summary": "Stella engages with the protagonist in the lobby.",
+                "focus_character": "stella",
+                "visible_characters": ["stella"],
+                "shared_action": False,
+                "visual_en": "Stella stands confidently as she engages with the protagonist in the lobby.",
+                "tags_en": ["confident pose", "lobby"],
+                "moment_type": "action",
+                "speaker_character": "",
+                "actor_character": "stella",
+                "reactor_character": "stella",
+                "intimate_shared_moment": False,
+                "multi_character_reason": "",
+                "multi_character_participants": ["stella"],
+            },
+        }
+    )
+
+    corrected = enforce_resort_player_pov(state, pack.world, scene)
+
+    assert corrected.visual.focus_character == "stella"
+    assert corrected.visual.visible_characters == ["stella"]
+    assert "stands confidently" in corrected.visual.visual_en
+    assert "off-camera VIP guest" in corrected.visual.visual_en
+    assert "protagonist" not in corrected.visual.visual_en.lower()
+    assert "NPC introduction" not in corrected.visual.tags_en
+    assert "reacts to the unseen VIP guest" not in corrected.visual.visual_en
+
+
+def test_resort_sunscreen_prompt_uses_off_camera_player_reference():
+    pack = load_resort_pack(PACK_DIR)
+    state = new_resort_world(pack, "stella-sunscreen-off-camera")
+    state.location_id = "loc_private_beach"
+    state.flags["resort_intro_active"] = False
+    state.flags["resort_intro_completed"] = True
+    state.npcs["stella"].location_id = "loc_private_beach"
+    for npc_id, npc in state.npcs.items():
+        if npc_id != "stella":
+            npc.location_id = "elsewhere"
+
+    scene = FinalScene.from_dict(
+        {
+            "narration": "Stella spalma la crema solare sulla schiena del cliente fuori campo.",
+            "dialogue": [],
+            "npc_actions": [{"npc_id": "stella", "action": "applica la crema solare"}],
+            "intentions": [],
+            "initiatives": [],
+            "disclosure_events": [],
+            "mutations": [],
+            "memory_events": [],
+            "visual": {
+                "summary": "Stella applying sunscreen on the player's back.",
+                "focus_character": "stella",
+                "visible_characters": ["stella"],
+                "shared_action": False,
+                "visual_en": "Stella is leaning closer, applying sunscreen on the player's back with slow, deliberate movements.",
+                "tags_en": ["sunscreen application", "private beach"],
+                "moment_type": "intimate",
+                "speaker_character": "",
+                "actor_character": "stella",
+                "reactor_character": "stella",
+                "intimate_shared_moment": True,
+                "multi_character_reason": "",
+                "multi_character_participants": ["stella"],
+            },
+        }
+    )
+
+    corrected = enforce_resort_player_pov(state, pack.world, scene)
+    contract = build_visual_contract(state, pack.world, corrected.visual, state.turn)
+    positive = contract.prompt_package["positive"]
+
+    assert contract.focus_character == "stella"
+    assert contract.visible_characters == ["stella"]
+    assert "sunscreen application" in positive or "applying sunscreen" in positive
+    assert "off-camera VIP guest" in positive
+    assert "player's back" not in positive
+    assert "NPC introduction" not in positive
+    assert "addresses the unseen VIP guest" not in positive
