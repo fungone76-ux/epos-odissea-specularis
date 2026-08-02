@@ -1,8 +1,9 @@
 from types import SimpleNamespace
 
+from epos.contract import FinalScene
+from epos.entity_ids import normalize_scene_entity_ids
 from epos.models import Outfit, outfit_state
 from epos.resort_save_audit_patch import (
-    _placeholder_target_with_stale_presence,
     _scene_has_real_npc_participation,
     reconcile_resort_presence,
 )
@@ -13,9 +14,6 @@ class FakeState:
         self.location_id = location_id
         self.npcs = npcs
         self.last_scene = last_scene
-        # entity_ids.normalize_entity_id() opera su un vero WorldState e si
-        # aspetta sempre state.player. Il fixture deve quindi rispettare il
-        # contratto minimo del runtime invece di omettere l'attributo.
         self.player = SimpleNamespace(name=None)
 
     def present_npc_ids(self):
@@ -40,9 +38,14 @@ def _visual(**overrides):
         "reactor_character": "",
         "focus_character": "",
         "visible_characters": [],
+        "shared_action": False,
+        "moment_type": "action",
+        "intimate_shared_moment": False,
+        "multi_character_reason": "",
+        "multi_character_participants": [],
     }
     values.update(overrides)
-    return SimpleNamespace(**values)
+    return values
 
 
 def _scene(**overrides):
@@ -50,11 +53,15 @@ def _scene(**overrides):
         "narration": "",
         "dialogue": [],
         "npc_actions": [],
+        "intentions": [],
         "initiatives": [],
+        "disclosure_events": [],
+        "mutations": [],
+        "memory_events": [],
         "visual": None,
     }
     values.update(overrides)
-    return SimpleNamespace(**values)
+    return FinalScene.from_dict(values)
 
 
 def test_reconciles_single_same_location_npc_from_turn_12_state():
@@ -68,7 +75,7 @@ def test_reconciles_single_same_location_npc_from_turn_12_state():
     assert state.npcs["luna"].present is True
 
 
-def test_resolves_npc_id_placeholder_to_unambiguous_luna():
+def test_reconciliation_then_canonical_normalizer_resolves_npc_id_placeholder():
     state = FakeState(
         location_id="loc_wild_beach",
         npcs={"luna": _npc("Luna", "loc_wild_beach", present=False)},
@@ -83,8 +90,12 @@ def test_resolves_npc_id_placeholder_to_unambiguous_luna():
         ),
     )
 
-    assert _placeholder_target_with_stale_presence(state, scene) == "luna"
-    assert state.npcs["luna"].present is True
+    assert reconcile_resort_presence(state, "raccontami di te") == "luna"
+    result = normalize_scene_entity_ids(state, scene, phase="test")
+
+    assert result.value.visual.focus_character == "luna"
+    assert result.value.visual.visible_characters == ["luna"]
+    assert any(entry.alias_rule == "scene_placeholder_npc_id" for entry in result.entries)
 
 
 def test_visual_actor_counts_as_real_npc_reaction_for_turn_11_shape():
