@@ -1,0 +1,50 @@
+{
+  "narration": "Luna, incuriosita dalla tua richiesta, sorride e si piega leggermente, mostrando i suoi piedi con un gesto giocoso. La luce del sole illumina la spiaggia privata, creando un'atmosfera intima e rilassata.",
+  "dialogue": [],
+  "npc_actions": [
+    {
+      "npc_id": "luna",
+      "action": "mostra i piedi con un gesto giocoso"
+    }
+  ],
+  "intentions": [],
+  "initiatives": [],
+  "disclosure_events": [],
+  "mutations": [],
+  "memory_events": [
+    {
+      "summary": "Luna mostra i suoi piedi a seguito della richiesta del giocatore.",
+      "witnesses": [
+        "luna"
+      ],
+      "source": "observed",
+      "credibility": 1.0,
+      "level": "immediate",
+      "emotional_impact": 2,
+      "public": true
+    }
+  ],
+  "visual": {
+    "summary": "Luna si piega mostrando i piedi con un gesto giocoso.",
+    "focus_character": "luna",
+    "visible_characters": [
+      "luna"
+    ],
+    "shared_action": false,
+    "visual_en": "Luna playfully shows her feet, bending slightly to present them.",
+    "tags_en": [
+      "playful gesture",
+      "beach setting",
+      "intimate moment"
+    ],
+    "moment_type": "intimate",
+    "speaker_character": "",
+    "actor_character": "luna",
+    "reactor_character": "luna",
+    "intimate_shared_moment": false,
+    "multi_character_reason": "",
+    "multi_character_participants": [
+      "luna"
+    ]
+  }
+}

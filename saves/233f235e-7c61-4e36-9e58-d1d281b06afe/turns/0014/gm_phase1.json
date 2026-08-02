@@ -1,0 +1,19 @@
+{
+  "mode": "check_proposal",
+  "check": {
+    "action_kind": "intimate",
+    "skill": "carisma",
+    "difficulty": 2,
+    "target_ids": [
+      "luna"
+    ],
+    "opposition": "none",
+    "reason": "perché l'esito è incerto",
+    "stakes": {
+      "full_success": "Luna accetta di spalmare la crema solare su di te con entusiasmo.",
+      "partial_success": "Luna accetta, ma sembra un po' titubante.",
+      "failure": "Luna rifiuta, dicendo che preferisce non farlo.",
+      "critical_failure": "Luna si sente a disagio e si allontana."
+    }
+  }
+}

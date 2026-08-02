@@ -1,0 +1,50 @@
+{
+  "narration": "Luna ascolta con attenzione la tua richiesta e si sistema i capelli mentre si prepara a rispondere.",
+  "dialogue": [
+    {
+      "speaker": "Luna",
+      "text": "Certo, posso farlo. Ma prima, vorrei sapere cosa ti preoccupa di più.",
+      "to": "player"
+    }
+  ],
+  "npc_actions": [
+    {
+      "npc_id": "luna",
+      "action": "si avvicina, incrociando le braccia e mostrando interesse."
+    }
+  ],
+  "intentions": [
+    {
+      "npc_id": "luna",
+      "intention": "cercare di capire meglio il tuo stato d'animo."
+    }
+  ],
+  "initiatives": [],
+  "disclosure_events": [],
+  "mutations": [],
+  "memory_events": [],
+  "visual": {
+    "summary": "Luna si mostra attenta e interessata mentre si prepara a condividere.",
+    "focus_character": "luna",
+    "visible_characters": [
+      "luna"
+    ],
+    "shared_action": false,
+    "visual_en": "Luna stands close, her arms crossed, showing curiosity and attentiveness.",
+    "tags_en": [
+      "close-up",
+      "curious",
+      "attentive",
+      "natural light"
+    ],
+    "moment_type": "speech",
+    "speaker_character": "luna",
+    "actor_character": "luna",
+    "reactor_character": "luna",
+    "intimate_shared_moment": false,
+    "multi_character_reason": "",
+    "multi_character_participants": [
+      "luna"
+    ]
+  }
+}

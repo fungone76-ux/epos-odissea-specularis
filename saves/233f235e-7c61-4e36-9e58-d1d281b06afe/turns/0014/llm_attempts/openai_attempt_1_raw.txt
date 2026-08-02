@@ -1,0 +1,49 @@
+{
+  "narration": "Luna, sorridente e incantata, si avvicina con la crema solare in mano. Con delicatezza e entusiasmo, inizia a spalmarti la crema sulla pelle, assicurandosi di coprire ogni centimetro esposto al sole. L'atmosfera intima e rilassata della spiaggia privata rende il momento ancora più speciale, con il suono delle onde che si infrangono dolcemente sulla riva. La luce del sole danza sulla sua pelle e riflette nei tuoi occhi, creando un ambiente di serenità e affetto.",
+  "dialogue": [
+    {
+      "speaker": "Luna",
+      "text": "Certo! Non voglio che ti scottassi.",
+      "to": "player"
+    }
+  ],
+  "npc_actions": [
+    {
+      "npc_id": "luna",
+      "action": "applica la crema solare con entusiasmo"
+    }
+  ],
+  "intentions": [
+    {
+      "npc_id": "luna",
+      "intention": "continuare a godere del momento insieme"
+    }
+  ],
+  "mutations": [],
+  "initiatives": [],
+  "disclosure_events": [],
+  "memory_events": [
+    {
+      "summary": "Luna si ricorda di aver applicato la crema solare al giocatore.",
+      "witnesses": ["luna"],
+      "level": "immediate",
+      "emotional_impact": 2,
+      "public": true
+    }
+  ],
+  "visual": {
+    "summary": "Luna si china su di te mentre applica la crema solare.",
+    "focus_character": "luna",
+    "visible_characters": ["luna"],
+    "shared_action": false,
+    "moment_type": "intimate",
+    "speaker_character": "luna",
+    "actor_character": "luna",
+    "reactor_character": "player",
+    "intimate_shared_moment": false,
+    "multi_character_reason": "",
+    "multi_character_participants": ["luna"],
+    "visual_en": "Luna leans over to apply sunscreen on you, her focus on ensuring every part of your skin is protected from the sun.",
+    "tags_en": ["intimate", "close-up", "beach", "sunscreen application"]
+  }
+}

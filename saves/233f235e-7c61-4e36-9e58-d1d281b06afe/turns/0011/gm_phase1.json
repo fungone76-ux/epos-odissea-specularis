@@ -1,0 +1,48 @@
+{
+  "mode": "no_check",
+  "scene": {
+    "narration": "Luna ti guarda, il suo sorriso si allarga mentre considera la tua domanda. \"Grazie per il complimento. Cerco sempre di dare il massimo nel mio lavoro. È importante per me e per tutti qui al resort.\"",
+    "dialogue": [
+      {
+        "speaker": "Luna",
+        "text": "Grazie per il complimento. Cerco sempre di dare il massimo nel mio lavoro. È importante per me e per tutti qui al resort.",
+        "to": "player"
+      }
+    ],
+    "npc_actions": [],
+    "intentions": [
+      {
+        "npc_id": "luna",
+        "intention": "continuare a dialogare e approfondire la conoscenza reciproca"
+      }
+    ],
+    "initiatives": [],
+    "disclosure_events": [],
+    "mutations": [],
+    "memory_events": [],
+    "visual": {
+      "summary": "Luna sorride mentre parla con te, esprimendo il suo impegno per il lavoro.",
+      "focus_character": "luna",
+      "visible_characters": [
+        "luna"
+      ],
+      "shared_action": false,
+      "visual_en": "Luna smiling warmly as she engages in conversation.",
+      "tags_en": [
+        "smiling",
+        "close-up",
+        "warm lighting",
+        "outdoor"
+      ],
+      "moment_type": "speech",
+      "speaker_character": "luna",
+      "actor_character": "luna",
+      "reactor_character": "luna",
+      "intimate_shared_moment": false,
+      "multi_character_reason": "",
+      "multi_character_participants": [
+        "luna"
+      ]
+    }
+  }
+}

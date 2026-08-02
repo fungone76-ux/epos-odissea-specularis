@@ -1,0 +1,28 @@
+{
+  "mode": "no_check",
+  "scene": {
+    "narration": "Luna si stende accanto a te sulla spiaggia privata, il sole che si riflette sull'acqua cristallina. La sabbia calda sotto i vostri corpi crea un'atmosfera rilassata e intima.",
+    "dialogue": [],
+    "npc_actions": [],
+    "intentions": [],
+    "mutations": [],
+    "initiatives": [],
+    "disclosure_events": [],
+    "memory_events": [],
+    "visual": {
+      "summary": "Luna si stende accanto al protagonista, mentre il sole splende sulla spiaggia.",
+      "focus_character": "luna",
+      "visible_characters": ["luna"],
+      "shared_action": false,
+      "moment_type": "action",
+      "speaker_character": "",
+      "actor_character": "luna",
+      "reactor_character": "",
+      "intimate_shared_moment": false,
+      "multi_character_reason": "",
+      "multi_character_participants": ["luna"],
+      "visual_en": "Luna lies next to the player, basking in the sun on the warm sand, with the sea glistening in the background.",
+      "tags_en": ["lying down", "beach", "sunny", "relaxed"]
+    }
+  }
+}

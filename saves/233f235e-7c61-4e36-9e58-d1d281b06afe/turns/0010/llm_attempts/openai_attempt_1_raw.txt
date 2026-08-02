@@ -1,0 +1,39 @@
+{
+  "mode": "no_check",
+  "scene": {
+    "narration": "Luna ti guarda con un sorriso furtivo, visibilmente lusingata dal tuo complimento. La luce del sole illumina la sua pelle, creando una scena di intimità e connessione.",
+    "dialogue": [
+      {
+        "speaker": "Luna",
+        "text": "Grazie! Anche tu non sei affatto male.",
+        "to": "player"
+      }
+    ],
+    "npc_actions": [],
+    "intentions": [
+      {
+        "npc_id": "luna",
+        "intention": "cercare di approfondire la conversazione."
+      }
+    ],
+    "mutations": [],
+    "initiatives": [],
+    "disclosure_events": [],
+    "memory_events": [],
+    "visual": {
+      "summary": "Luna sorride, i suoi occhi brillano sotto il sole.",
+      "focus_character": "luna",
+      "visible_characters": ["luna"],
+      "shared_action": false,
+      "moment_type": "speech",
+      "speaker_character": "luna",
+      "actor_character": "luna",
+      "reactor_character": "",
+      "intimate_shared_moment": false,
+      "multi_character_reason": "",
+      "multi_character_participants": ["luna"],
+      "visual_en": "Luna smiling, her eyes sparkling in the sunlight, creating an intimate atmosphere.",
+      "tags_en": ["smiling", "sunlight", "intimate atmosphere"]
+    }
+  }
+}

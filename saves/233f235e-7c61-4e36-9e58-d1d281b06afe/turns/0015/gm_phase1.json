@@ -1,0 +1,42 @@
+{
+  "mode": "no_check",
+  "scene": {
+    "narration": "Luna sorride e inizia a spalmare la crema solare sulla tua pelle mentre il sole splende sopra di voi, creando un'atmosfera rilassata e intima. La sabbia fine scotta leggermente sotto i vostri piedi, mentre il suono delle onde che si infrangono sulla riva accompagna il momento.",
+    "dialogue": [
+      {
+        "speaker": "Luna",
+        "text": "Comincia pure!",
+        "to": "player"
+      }
+    ],
+    "npc_actions": [],
+    "intentions": [],
+    "initiatives": [],
+    "disclosure_events": [],
+    "mutations": [],
+    "memory_events": [],
+    "visual": {
+      "summary": "Luna si presenta al miliardario fuori campo.",
+      "focus_character": "luna",
+      "visible_characters": [
+        "luna"
+      ],
+      "shared_action": false,
+      "visual_en": "Luna addresses the unseen VIP guest in Spiaggia privata, adult woman, expressive body language, elegant cinematic composition",
+      "tags_en": [
+        "NPC introduction",
+        "unseen guest POV",
+        "luxury resort"
+      ],
+      "moment_type": "intimate",
+      "speaker_character": "luna",
+      "actor_character": "luna",
+      "reactor_character": "luna",
+      "intimate_shared_moment": false,
+      "multi_character_reason": "",
+      "multi_character_participants": [
+        "luna"
+      ]
+    }
+  }
+}

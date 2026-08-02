@@ -1,0 +1,36 @@
+{
+  "mode": "no_check",
+  "scene": {
+    "narration": "Luna si stende accanto a te sulla spiaggia privata, il sole che si riflette sull'acqua cristallina. La sabbia calda sotto i vostri corpi crea un'atmosfera rilassata e intima.",
+    "dialogue": [],
+    "npc_actions": [],
+    "intentions": [],
+    "initiatives": [],
+    "disclosure_events": [],
+    "mutations": [],
+    "memory_events": [],
+    "visual": {
+      "summary": "Luna si presenta al miliardario fuori campo.",
+      "focus_character": "luna",
+      "visible_characters": [
+        "luna"
+      ],
+      "shared_action": false,
+      "visual_en": "Luna addresses the unseen VIP guest in Spiaggia privata, adult woman, expressive body language, elegant cinematic composition",
+      "tags_en": [
+        "NPC introduction",
+        "unseen guest POV",
+        "luxury resort"
+      ],
+      "moment_type": "action",
+      "speaker_character": "",
+      "actor_character": "luna",
+      "reactor_character": "luna",
+      "intimate_shared_moment": false,
+      "multi_character_reason": "",
+      "multi_character_participants": [
+        "luna"
+      ]
+    }
+  }
+}
