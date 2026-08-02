@@ -16,6 +16,34 @@ def build_snapshot(
 ) -> dict[str, Any]:
     """Snapshot minimo e compatto dello stato per il turno corrente."""
 
+    snapshot = _build_full_snapshot(state, pack, player_text)
+    from .context_selector import (
+        ContextSelectionRequest,
+        context_selector_enabled,
+        select_context,
+    )
+
+    if not context_selector_enabled():
+        return snapshot
+    result = select_context(
+        ContextSelectionRequest(
+            world_state=state,
+            world_pack=pack,
+            player_input=player_text,
+            phase="snapshot",
+            full_snapshot=snapshot,
+        )
+    )
+    return result.selected_snapshot
+
+
+def _build_full_snapshot(
+    state: WorldState,
+    pack: WorldPack,
+    player_text: str,
+) -> dict[str, Any]:
+    """Build the legacy full snapshot before optional context selection."""
+
     location = pack.locations.get(state.location_id)
     from .disclosure import disclosure_context
     from .initiative import initiative_context
