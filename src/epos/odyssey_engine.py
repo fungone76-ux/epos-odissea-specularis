@@ -480,7 +480,7 @@ class OdysseyEngine:
                 game_over = True
                 self.state.flags["game_over"] = True
                 message = "GAME OVER. Le Proche ti hanno uccisa. Itaca è perduta."
-            elif loc_id == "loc_ciclopi" and attempts >= 2:
+            elif loc_id == "loc_ciclopi" and self.state.flags["location_attempts"] >= 2:
                 game_over = True
                 self.state.flags["game_over"] = True
                 message = "GAME OVER. Polifemo ti ha divorata."

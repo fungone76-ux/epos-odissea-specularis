@@ -1,0 +1,68 @@
+{
+  "narration": "Luna ti guarda con attenzione, il suo sguardo si fa più profondo mentre le parole fluiscono tra di voi. Con un tono sincero, inizia a raccontare alcuni dei suoi sogni e paure, rivelando un lato di sé che raramente mostra agli altri. La connessione che si crea è palpabile, un'intimità che si costruisce lentamente e con rispetto reciproco. Senti che la barriera tra di voi si sta abbattendo, permettendoti di entrare in un mondo di vulnerabilità e apertura che non avresti mai immaginato possibile con lei.",
+  "dialogue": [
+    {
+      "speaker": "Luna",
+      "text": "Ho sempre avuto paura di non essere all'altezza delle aspettative degli altri...",
+      "to": "luna"
+    }
+  ],
+  "npc_actions": [
+    {
+      "npc_id": "luna",
+      "action": "leans closer, sharing more personal thoughts"
+    }
+  ],
+  "intentions": [
+    {
+      "npc_id": "luna",
+      "intention": "to deepen the emotional connection with the player"
+    }
+  ],
+  "mutations": [
+    {
+      "type": "relationship_delta",
+      "target": "luna",
+      "payload": {
+        "trust": 2
+      },
+      "reason": "Luna si apre condividendo parti intime della sua vita."
+    }
+  ],
+  "initiatives": [],
+  "disclosure_events": [],
+  "memory_events": [
+    {
+      "summary": "Luna ricorderà questo momento di apertura e vulnerabilità.",
+      "witnesses": [
+        "luna"
+      ],
+      "level": "immediate",
+      "emotional_impact": 2,
+      "public": false
+    }
+  ],
+  "visual": {
+    "summary": "Luna si avvicina a te, condividendo pensieri intimi.",
+    "focus_character": "luna",
+    "visible_characters": [
+      "luna"
+    ],
+    "shared_action": false,
+    "moment_type": "intimate",
+    "speaker_character": "luna",
+    "actor_character": "luna",
+    "reactor_character": "",
+    "intimate_shared_moment": true,
+    "multi_character_reason": "",
+    "multi_character_participants": [
+      "luna"
+    ],
+    "visual_en": "Luna leans closer to you, her expression softening as she shares her personal fears, creating an intimate atmosphere.",
+    "tags_en": [
+      "intimate",
+      "close-up",
+      "soft lighting"
+    ]
+  }
+}

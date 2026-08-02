@@ -1,0 +1,120 @@
+{
+  "narration": "La richiesta viene recapitata a Luna. Poco dopo, Luna ti raggiunge nella Spiaggia privata.",
+  "dialogue": [
+    {
+      "speaker": "Luna",
+      "text": "Mi hai fatto chiamare. Eccomi qui: dimmi pure di cosa hai bisogno.",
+      "to": "player"
+    }
+  ],
+  "npc_actions": [
+    {
+      "npc_id": "luna",
+      "action": "raggiunge il cliente VIP nella Spiaggia privata"
+    }
+  ],
+  "intentions": [],
+  "initiatives": [],
+  "disclosure_events": [],
+  "mutations": [
+    {
+      "type": "location_change",
+      "target": "luna",
+      "payload": {
+        "location_id": "loc_private_beach"
+      },
+      "reason": "La NPC accetta la richiesta di raggiungere il giocatore."
+    },
+    {
+      "type": "outfit_remove",
+      "target": "luna",
+      "payload": {
+        "item": "fitted ivory VIP attendant mini dress"
+      },
+      "reason": "Cambio automatico all'outfit da spiaggia perche non esiste un override manuale."
+    },
+    {
+      "type": "outfit_remove",
+      "target": "luna",
+      "payload": {
+        "item": "low neckline"
+      },
+      "reason": "Cambio automatico all'outfit da spiaggia perche non esiste un override manuale."
+    },
+    {
+      "type": "outfit_remove",
+      "target": "luna",
+      "payload": {
+        "item": "open back"
+      },
+      "reason": "Cambio automatico all'outfit da spiaggia perche non esiste un override manuale."
+    },
+    {
+      "type": "outfit_remove",
+      "target": "luna",
+      "payload": {
+        "item": "sheer stockings"
+      },
+      "reason": "Cambio automatico all'outfit da spiaggia perche non esiste un override manuale."
+    },
+    {
+      "type": "outfit_remove",
+      "target": "luna",
+      "payload": {
+        "item": "delicate high heels"
+      },
+      "reason": "Cambio automatico all'outfit da spiaggia perche non esiste un override manuale."
+    },
+    {
+      "type": "outfit_wear",
+      "target": "luna",
+      "payload": {
+        "item": "ivory bikini"
+      },
+      "reason": "Outfit coerente con la location spiaggia."
+    },
+    {
+      "type": "outfit_wear",
+      "target": "luna",
+      "payload": {
+        "item": "sheer ivory beach sarong"
+      },
+      "reason": "Outfit coerente con la location spiaggia."
+    },
+    {
+      "type": "outfit_wear",
+      "target": "luna",
+      "payload": {
+        "item": "barefoot"
+      },
+      "reason": "Outfit coerente con la location spiaggia."
+    }
+  ],
+  "memory_events": [],
+  "visual": {
+    "summary": "Luna raggiunge il cliente VIP nella Spiaggia privata.",
+    "focus_character": "luna",
+    "visible_characters": [
+      "luna"
+    ],
+    "shared_action": false,
+    "visual_en": "Luna arrives at an exclusive private Mediterranean beach, standing on soft sand near elegant sun loungers, open sky, blue sea, warm sunlight, looking toward the unseen VIP guest",
+    "tags_en": [
+      "NPC arrival",
+      "private Mediterranean beach",
+      "soft sand",
+      "elegant sun loungers",
+      "open sky",
+      "blue sea"
+    ],
+    "moment_type": "speech",
+    "speaker_character": "luna",
+    "actor_character": "luna",
+    "reactor_character": "luna",
+    "intimate_shared_moment": false,
+    "multi_character_reason": "",
+    "multi_character_participants": [
+      "luna"
+    ]
+  }
+}

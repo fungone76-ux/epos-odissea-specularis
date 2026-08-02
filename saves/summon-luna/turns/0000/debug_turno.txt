@@ -1,0 +1,26 @@
+================================================================
+DEBUG TURNO 0 — modalità: no_check
+sessione: summon-luna | location: loc_suite
+================================================================
+
+[INPUT GIOCATORE]
+Fate venire Luna nella mia stanza, per favore.
+
+[NARRAZIONE]
+La richiesta viene recapitata a Luna. Poco dopo, Luna ti raggiunge nella Suite presidenziale.
+
+[DIALOGHI]
+- Luna: Mi hai fatto chiamare. Eccomi qui: dimmi pure di cosa hai bisogno.
+
+[PROMPT POSITIVO]
+score_9, score_8_up, masterpiece, photorealistic, detailed, atmospheric, stsdebbie, dynamic pose, 1girl, mature woman, brown hair, athletic body, shiny skin, head tilt, massive breasts, cleavage, <lora:stsDebbie-10e:0.7>, fitted ivory VIP attendant mini dress, low neckline, open back, sheer stockings, delicate high heels, observant adult private companion, full body, eye-level camera, front three quarter view, facing camera three quarter, NPC arrival, Luna, standing, looking at camera, inside the Suite presidenziale, detailed luxury resort interior
+
+[PROMPT NEGATIVO]
+score_6, score_5, score_4, score_3, score_2, score_1, lowres, worst quality, low quality, blurry, bad anatomy, bad hands, extra fingers, missing fingers, extra limbs, deformed, text, watermark, signature, child, young-looking, underage, teenager, coercion, violence, duplicate person, plain background, white background, grey background, studio background, seamless backdrop, isolated figure, empty background, blank wall, multiple people, extra person, background people, duplicate character, cloned face, merged bodies, fused bodies, extra face
+
+[PROSA DI SCENA (visual_en)]
+Luna, standing, looking at camera, inside the Suite presidenziale, detailed luxury resort interior
+
+[RENDER]
+status: pending | backend: pending
+immagine: -

@@ -1,0 +1,87 @@
+{
+  "source_of_truth": "WorldState.player.outfit",
+  "outfit_state_before_turn": {
+    "worn_items": [
+      "luxury travel suit",
+      "tailored shirt",
+      "elegant shoes"
+    ],
+    "removed_items": [],
+    "torso_slot": [
+      "tailored shirt"
+    ],
+    "lower_body_slot": [],
+    "footwear": [
+      "elegant shoes"
+    ],
+    "nudity_mode": "bottomless",
+    "revision": 0,
+    "source_of_truth": "character.outfit"
+  },
+  "outfit_intent_detected": "none",
+  "outfit_mutations_requested": [],
+  "outfit_mutations_normalized": [],
+  "outfit_mutations_applied": [],
+  "outfit_state_after_turn": {
+    "worn_items": [
+      "luxury travel suit",
+      "tailored shirt",
+      "elegant shoes"
+    ],
+    "removed_items": [],
+    "torso_slot": [
+      "tailored shirt"
+    ],
+    "lower_body_slot": [],
+    "footwear": [
+      "elegant shoes"
+    ],
+    "nudity_mode": "bottomless",
+    "revision": 0,
+    "source_of_truth": "character.outfit"
+  },
+  "outfit_state_saved": {
+    "worn_items": [
+      "luxury travel suit",
+      "tailored shirt",
+      "elegant shoes"
+    ],
+    "removed_items": [],
+    "torso_slot": [
+      "tailored shirt"
+    ],
+    "lower_body_slot": [],
+    "footwear": [
+      "elegant shoes"
+    ],
+    "nudity_mode": "bottomless",
+    "revision": 0,
+    "source_of_truth": "character.outfit"
+  },
+  "outfit_state_loaded_next_turn": {
+    "worn_items": [
+      "luxury travel suit",
+      "tailored shirt",
+      "elegant shoes"
+    ],
+    "removed_items": [],
+    "torso_slot": [
+      "tailored shirt"
+    ],
+    "lower_body_slot": [],
+    "footwear": [
+      "elegant shoes"
+    ],
+    "nudity_mode": "bottomless",
+    "revision": 0,
+    "source_of_truth": "character.outfit"
+  },
+  "outfit_ui_value": "Senza abiti nella parte inferiore",
+  "outfit_ui_items": [
+    "tailored shirt",
+    "elegant shoes"
+  ],
+  "nudity_mode": "bottomless",
+  "outfit_revision": 0,
+  "outfit_normalization_problems": []
+}

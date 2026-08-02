@@ -1,0 +1,60 @@
+{
+  "narration": "Luna, con un sorriso radioso sul volto, si avvicina e indossa le pantyhose nere che hai suggerito. Il suo gesto è sicuro e deciso, e l'atmosfera intorno a voi si riscalda ulteriormente, mentre la connessione tra di voi si approfondisce. Entrambi vi rendete conto che questo momento rappresenta un passo significativo nel vostro rapporto, carico di emozione e di nuove possibilità.",
+  "dialogue": [],
+  "npc_actions": [],
+  "intentions": [
+    {
+      "npc_id": "luna",
+      "intention": "to enjoy the moment and connect further"
+    }
+  ],
+  "mutations": [
+    {
+      "type": "outfit_wear",
+      "target": "luna",
+      "payload": {
+        "item": "black pantyhose"
+      },
+      "reason": "Luna ha indossato le pantyhose nere come suggerito."
+    }
+  ],
+  "initiatives": [],
+  "disclosure_events": [],
+  "memory_events": [
+    {
+      "summary": "Luna ricorderà questo momento di connessione profonda.",
+      "witnesses": [
+        "luna"
+      ],
+      "level": "immediate",
+      "emotional_impact": 2,
+      "public": true
+    }
+  ],
+  "visual": {
+    "summary": "Luna indossa le pantyhose nere, approfondendo la connessione tra di voi.",
+    "focus_character": "luna",
+    "visible_characters": [
+      "player",
+      "luna"
+    ],
+    "shared_action": true,
+    "moment_type": "intimate",
+    "speaker_character": "",
+    "actor_character": "luna",
+    "reactor_character": "",
+    "intimate_shared_moment": true,
+    "multi_character_reason": "entrambi state condividendo un momento intimo",
+    "multi_character_participants": [
+      "player",
+      "luna"
+    ],
+    "visual_en": "Luna, now wearing the black pantyhose, stands close to you, the atmosphere thick with newfound intimacy and connection.",
+    "tags_en": [
+      "intimate",
+      "close-up",
+      "soft lighting",
+      "luxurious atmosphere"
+    ]
+  }
+}

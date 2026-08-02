@@ -1,0 +1,48 @@
+{
+  "narration": "Luna indossa le pantyhose nere con grazia, mentre un sorriso di intesa illumina il suo volto. La connessione tra di voi si approfondisce, come se un filo invisibile vi unisse, portando con sé un senso di calore e complicità. La luce dorata del pomeriggio avvolge la suite, creando un'atmosfera intima e accogliente. Entrambi vi sentite più vicini, come se questo semplice gesto avesse rivelato un nuovo strato della vostra relazione.",
+  "dialogue": [],
+  "npc_actions": [
+    {
+      "npc_id": "luna",
+      "action": "puts on the black pantyhose, smiling warmly"
+    }
+  ],
+  "intentions": [],
+  "mutations": [],
+  "initiatives": [],
+  "disclosure_events": [],
+  "memory_events": [
+    {
+      "summary": "Luna will remember this moment of connection and the warmth it brought.",
+      "witnesses": [
+        "luna"
+      ],
+      "level": "durable",
+      "emotional_impact": 2,
+      "public": true
+    }
+  ],
+  "visual": {
+    "summary": "Luna wearing black pantyhose, the atmosphere charged with intimacy.",
+    "focus_character": "luna",
+    "visible_characters": [
+      "luna"
+    ],
+    "shared_action": false,
+    "moment_type": "intimate",
+    "speaker_character": "",
+    "actor_character": "luna",
+    "reactor_character": "",
+    "intimate_shared_moment": false,
+    "multi_character_reason": "",
+    "multi_character_participants": [],
+    "visual_en": "Luna puts on the black pantyhose, her figure elegantly poised as she smiles, creating an intimate atmosphere.",
+    "tags_en": [
+      "intimate",
+      "elegant",
+      "warm lighting",
+      "black pantyhose",
+      "luxury suite"
+    ]
+  }
+}

@@ -1,0 +1,95 @@
+{
+  "selected_provider": "zai",
+  "selected_model": "glm-4.7-flash",
+  "fallback_triggered": true,
+  "fallback_reason": "primary_semantic_validation_failed",
+  "token_usage": {},
+  "provider_attempts": [
+    {
+      "provider": "gemini",
+      "model": "gemini-3.6-flash",
+      "attempt": 1,
+      "status": "semantic_validation_failed",
+      "phase": "proposal",
+      "error_type": "semantic_validation_failed",
+      "duration_ms": 0,
+      "validation_stage": "semantic",
+      "validation_reason": "semantic_contract_rejected",
+      "validation_errors": [
+        {
+          "code": "semantic_contract_rejected",
+          "path": "check.difficulty",
+          "message": "difficoltÃ  99 fuori range 1-6",
+          "details": {
+            "value": 99,
+            "min": 1,
+            "max": 6
+          }
+        },
+        {
+          "code": "player_action_semantic_drift",
+          "path": "check.action_kind",
+          "message": "autonomia player: proposta di prova altera l'azione dichiarata (observing -> attack)",
+          "details": {
+            "player_input_action": "observing",
+            "proposed_player_action": "attack",
+            "player_text": "osservo"
+          }
+        }
+      ],
+      "raw_response_path": "llm_attempts/gemini_attempt_1_raw.txt",
+      "parsed_response_path": "llm_attempts/gemini_attempt_1_parsed.json",
+      "validation_report_path": "llm_attempts/gemini_attempt_1_validation.json"
+    },
+    {
+      "provider": "gemini",
+      "model": "gemini-3.6-flash",
+      "attempt": 2,
+      "status": "semantic_validation_failed",
+      "phase": "proposal",
+      "error_type": "semantic_validation_failed",
+      "duration_ms": 0,
+      "validation_stage": "semantic",
+      "validation_reason": "semantic_contract_rejected",
+      "validation_errors": [
+        {
+          "code": "semantic_contract_rejected",
+          "path": "check.difficulty",
+          "message": "difficoltÃ  99 fuori range 1-6",
+          "details": {
+            "value": 99,
+            "min": 1,
+            "max": 6
+          }
+        },
+        {
+          "code": "player_action_semantic_drift",
+          "path": "check.action_kind",
+          "message": "autonomia player: proposta di prova altera l'azione dichiarata (observing -> attack)",
+          "details": {
+            "player_input_action": "observing",
+            "proposed_player_action": "attack",
+            "player_text": "osservo"
+          }
+        }
+      ],
+      "raw_response_path": "llm_attempts/gemini_attempt_2_raw.txt",
+      "parsed_response_path": "llm_attempts/gemini_attempt_2_parsed.json",
+      "validation_report_path": "llm_attempts/gemini_attempt_2_validation.json"
+    },
+    {
+      "provider": "zai",
+      "model": "glm-4.7-flash",
+      "attempt": 1,
+      "status": "success",
+      "phase": "proposal",
+      "duration_ms": 0,
+      "validation_stage": "semantic",
+      "validation_reason": "",
+      "validation_errors": [],
+      "raw_response_path": "llm_attempts/zai_attempt_1_raw.txt",
+      "parsed_response_path": "llm_attempts/zai_attempt_1_parsed.json",
+      "validation_report_path": "llm_attempts/zai_attempt_1_validation.json"
+    }
+  ]
+}

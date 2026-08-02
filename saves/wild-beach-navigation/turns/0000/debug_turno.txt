@@ -1,0 +1,10 @@
+================================================================
+DEBUG TURNO 0 — modalità: no_check
+sessione: wild-beach-navigation | location: loc_wild_beach
+================================================================
+
+[INPUT GIOCATORE]
+vado alla spiaggia selvaggia
+
+[NARRAZIONE]
+Lasci la Lobby e raggiungi Spiaggia selvaggia. Qui puoi finalmente prenderti un momento per ambientarti e rilassarti.

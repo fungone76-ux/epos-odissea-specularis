@@ -26,7 +26,6 @@ def test_load_pack():
     assert status["player"]["skills"]["dolos"] == 4
     assert status["player"]["skills"]["sarissa"] == 3
     print("✓ Pack caricato correttamente")
-    return engine
 
 
 def test_ciclopi_dolos(engine):
@@ -34,9 +33,24 @@ def test_ciclopi_dolos(engine):
     result = engine.attempt_mission(skill_choice="dolos")
     print(f"  Ciclopi (Dolos): pool={result.pool_size}, diff={result.difficulty}, dice={result.dice}, outcome={result.outcome.value}")
     print(f"  Success: {result.success}, Message: {result.message}")
+    assert isinstance(result.success, bool)
     if result.success:
         print(f"  Kleos: {result.kleos_gained}, Next location: {engine.current_location_id()}")
-    return result.success
+
+
+def test_ciclopi_second_failure_uses_location_attempts(engine):
+    """Il secondo fallimento dei Ciclopi usa il contatore canonico della location."""
+    engine.state.player.skills["dolos"] = 0
+
+    first = engine.attempt_mission(skill_choice="dolos", use_safe=True)
+    second = engine.attempt_mission(skill_choice="dolos", use_safe=True)
+
+    assert first.success is False
+    assert first.game_over is False
+    assert second.success is False
+    assert second.game_over is True
+    assert engine.state.flags["game_over"] is True
+    assert engine.state.flags["location_attempts"] == 2
 
 
 def test_full_run_simulation():
@@ -63,28 +77,23 @@ def test_full_run_simulation():
         print(f"  Kleos: {status['player']['kleos']}")
         print(f"  Effetti attivi: {status['active_effects']}")
 
-        # Scegli skill
         skill = mission.primary_skill
         if mission.alternative_skill:
-            # Scegli quella con rating più alto
             p_rating = engine.state.player.skill_rating(mission.primary_skill)
             a_rating = engine.state.player.skill_rating(mission.alternative_skill)
             if a_rating > p_rating:
                 skill = mission.alternative_skill
 
-        # Special: Calipso auto-pass se possibile
         use_auto = False
         if loc_id == "loc_calipso" and engine.check_calipso_auto_pass():
             use_auto = True
             print("  >>> Auto-pass Calipso attivato (Kleos >= 4)")
 
-        # Special: Moly a Circe
         use_moly = False
         if loc_id == "loc_circe" and engine.state.flags.get("moly_possessed", False):
             use_moly = True
             print("  >>> Moly usato contro Circe")
 
-        # Tenta missione
         result = engine.attempt_mission(
             skill_choice=skill,
             use_moly=use_moly,
@@ -117,16 +126,13 @@ def test_save_load():
     pack_dir = Path(__file__).parent.parent / "worlds" / "odyssey_specularis"
     engine = OdysseyEngine(pack_dir)
 
-    # Fai un tiro
     engine.attempt_mission(skill_choice="dolos")
     engine.next_turn()
 
-    # Salva
     save_path = Path("/tmp/odyssey_test_save.json")
     engine.save(save_path)
     print(f"✓ Salvato in {save_path}")
 
-    # Carica
     engine2 = OdysseyEngine.load(save_path, pack_dir)
     assert engine2.state.turn == engine.state.turn
     assert engine2.current_location_id() == engine.current_location_id()
@@ -136,7 +142,9 @@ def test_save_load():
 if __name__ == "__main__":
     print("=== TEST ODYSSEY ENGINE ===\n")
 
-    engine = test_load_pack()
+    pack_dir = Path(__file__).parent.parent / "worlds" / "odyssey_specularis"
+    engine = OdysseyEngine(pack_dir)
+    test_load_pack()
 
     print("\n--- Test missione Ciclopi ---")
     test_ciclopi_dolos(engine)

@@ -1,0 +1,91 @@
+schema_version: 1
+world_id: resort_world
+events:
+  - id: event_bath_for_two
+    title: Il bagno per due
+    day_range: [1, 2]
+    phases: [sera, notte]
+    location_id: loc_suite
+    npc_ids: [maria]
+    trigger: {flag_missing: maria_bath_service_recovered}
+    adult_component: intimate_service
+    consent_exit_required: true
+    choices: [accept_maria_solution, request_second_companion, modify_service, decline]
+    completion_flag: maria_bath_service_recovered
+    visual_outfit: maria_suite_service
+  - id: event_stella_vip_evening
+    title: La serata VIP da recuperare
+    day_range: [2, 5]
+    phases: [sera, notte]
+    location_id: loc_lounge
+    npc_ids: [stella, victoria]
+    trigger: {mission_active: mission_stella_promotion}
+    adult_component: provocative_dress_code
+    consent_exit_required: true
+    choices: [support_stella, demand_changes, involve_colleague, leave_event]
+    completion_flag: stella_vip_event_success
+    visual_outfit: stella_vip_gala
+  - id: event_pool_outfit
+    title: Prova costume VIP
+    day_range: [1, 6]
+    phases: [mattina, pomeriggio]
+    location_id: loc_pool
+    npc_ids: [stella, maria, luna]
+    trigger: {random_weight: 2}
+    adult_component: revealing_outfit_choice
+    consent_exit_required: true
+    choices: [choose_style, let_npc_choose, ask_victoria, skip]
+  - id: event_contested_massage
+    title: Massaggio conteso
+    day_range: [2, 6]
+    phases: [pomeriggio, sera]
+    location_id: loc_spa
+    npc_ids: [maria, stella]
+    trigger: {relationship_field: jealousy, minimum: 1}
+    adult_component: sensual_spa_service
+    consent_exit_required: true
+    choices: [choose_maria, choose_stella, shared_professional_session, cancel]
+  - id: event_luna_wild_beach
+    title: La lettera sulla spiaggia selvaggia
+    day_range: [3, 7]
+    phases: [sera, notte]
+    location_id: loc_wild_beach
+    npc_ids: [luna]
+    trigger: {flag: luna_letter_reveal_unlocked, expected: true}
+    adult_component: vulnerable_romantic_intimacy
+    consent_exit_required: true
+    choices: [listen, read_letter, postpone, leave]
+    completion_flag: luna_letter_revealed
+    visual_outfit: luna_private_evening
+  - id: event_victoria_private_review
+    title: Valutazione privata del servizio VIP
+    day_range: [4, 6]
+    phases: [sera, notte]
+    location_id: loc_lounge
+    npc_ids: [victoria, stella, maria, luna]
+    trigger: {flag: bank_debt_disclosed, expected: true}
+    adult_component: elegant_provocative_evaluation
+    consent_exit_required: true
+    choices: [participate, change_assignments, private_talk, end_review]
+    completion_flag: victoria_team_proven
+  - id: event_night_service
+    title: Servizio notturno in suite
+    day_range: [1, 7]
+    phases: [notte]
+    location_id: loc_suite
+    npc_ids: [stella, maria, luna, victoria]
+    trigger: {player_request: true}
+    adult_component: intimate_companionship
+    consent_exit_required: true
+    choices: [invite_one, request_two, ask_victoria_to_choose, sleep_alone]
+  - id: event_final_decision
+    title: La decisione del settimo giorno
+    day_range: [7, 7]
+    phases: [sera]
+    location_id: loc_victoria_office
+    npc_ids: [victoria]
+    trigger: {day: 7, phase: sera}
+    adult_component: private_emotional_negotiation
+    consent_exit_required: true
+    choices: [buy, buy_with_conditions, refinance, delay_binding_talks, end_without_agreement]
+    completion_flag: resort_final_decision

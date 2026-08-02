@@ -1,0 +1,35 @@
+================================================================
+DEBUG TURNO 6 — modalità: check
+sessione: 7a4956bc-9c83-46fb-b653-d30095280f71 | location: loc_suite
+================================================================
+
+[INPUT GIOCATORE]
+vorrei conoscerti meglio se sei d accordo
+
+[PROPOSTA DEL GM]
+azione: social | skill: carisma | difficoltà: 2
+motivo: perché l'esito è incerto
+
+[TIRO]
+pool: 4d6 | difficoltà: 2 | dadi: (nessun tiro — esito sicuro)
+esito: full_success
+posta: Luna si apre a te, condividendo dettagli intimi e creando un legame più profondo.
+
+[NARRAZIONE]
+Luna ti guarda con attenzione, il suo sguardo si fa più profondo mentre le parole fluiscono tra di voi. Con un tono sincero, inizia a raccontare alcuni dei suoi sogni e paure, rivelando un lato di sé che raramente mostra agli altri. La connessione che si crea è palpabile, un'intimità che si costruisce lentamente e con rispetto reciproco. Senti che la barriera tra di voi si sta abbattendo, permettendoti di entrare in un mondo di vulnerabilità e apertura che non avresti mai immaginato possibile con lei.
+
+[DIALOGHI]
+- Luna: Ho sempre avuto paura di non essere all'altezza delle aspettative degli altri...
+
+[PROMPT POSITIVO]
+score_9, score_8_up, masterpiece, photorealistic, detailed, atmospheric, stsdebbie, dynamic pose, 1girl, mature woman, brown hair, athletic body, shiny skin, head tilt, massive breasts, cleavage, <lora:stsDebbie-10e:0.7>, elegant ivory resort dress, open back, delicate sandals, observant adult private companion, full body, eye-level camera, side view, side orientation, soft lighting, Luna leans closer to you, her expression softening as she shares her personal fears, creating an intimate atmosphere.
+
+[PROMPT NEGATIVO]
+score_6, score_5, score_4, score_3, score_2, score_1, lowres, worst quality, low quality, blurry, bad anatomy, bad hands, extra fingers, missing fingers, extra limbs, deformed, text, watermark, signature, child, young-looking, underage, teenager, coercion, violence, duplicate person, plain background, white background, grey background, studio background, seamless backdrop, isolated figure, empty background, blank wall, multiple people, extra person, background people, duplicate character, cloned face, merged bodies, fused bodies, extra face
+
+[PROSA DI SCENA (visual_en)]
+Luna leans closer to you, her expression softening as she shares her personal fears, creating an intimate atmosphere.
+
+[RENDER]
+status: complete | backend: a1111
+immagine: saves\7a4956bc-9c83-46fb-b653-d30095280f71\turns\0006\image.png

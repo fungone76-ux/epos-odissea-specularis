@@ -20,7 +20,7 @@ from __future__ import annotations
 import random
 from copy import deepcopy
 from collections.abc import Callable
-from dataclasses import dataclass, field, replace
+from dataclasses import replace
 from typing import Any
 
 from .commit import apply_scene
@@ -61,94 +61,30 @@ from .rules import (
     resolve_check,
 )
 from .state_store import StateStore
+from .turn_diagnostics import _phase_response_to_dict, _scene_to_dict
 from .validators import ValidationReport, validate_check_proposal, validate_confront_proposal, validate_scene
+from .turn_resolution import NPC_SKILL_ALIASES, npc_confront_rating
+from .turn_types import (
+    DecisionProvider,
+    NarrationProvider,
+    PlayerDecision,
+    PostTurnProcessor,
+    SplitProvider,
+    TemerarioProvider,
+    TurnResult,
+    default_decision,
+    default_narration,
+    default_post_turn_processor,
+    default_split,
+    default_temerario,
+)
 from .visual import VisualContract, build_visual_contract
 from .worldpack import WorldPack
 
 
 # ---------------------------------------------------------------------------
-# Provider delle decisioni del giocatore
+# Facciata compatibile: tipi/provider e helper risoluzione sono re-export importati.
 # ---------------------------------------------------------------------------
-
-
-@dataclass
-class PlayerDecision:
-    """Decisione completa alla proposta di prova."""
-
-    choice: str = "roll"  # roll | safe
-    use_riserva: bool = False  # -1 dado riserva, +1 pool
-    dado_temerario_price: str | None = None  # se valorizzato: +1 pool, prezzo scommesso
-    use_trigger: bool = False  # attiva l'innesco pre-scritto
-
-DecisionProvider = Callable[[CheckProposal, int, int, WorldState], PlayerDecision]
-NarrationProvider = Callable[[str], str]  # contesto -> descrizione del giocatore
-SplitProvider = Callable[[ConfrontProposal, int, int], int]  # -> dadi in mano sinistra
-TemerarioProvider = Callable[[Roll], str | None]  # -> prezzo per ritirare, oppure None
-PostTurnProcessor = Callable[[WorldState, "TurnResult"], dict[str, Any] | None]
-
-# Le abilità degli NPC nei pack sono in lingua libera (persuasione, scherma…),
-# mentre la proposta di confronto usa le skill canoniche del giocatore
-# (social, physical…). Mappa canonico -> nomi liberi equivalenti: il rating
-# dell'NPC è il migliore tra corrispondenza esatta e alias, mai inventato.
-NPC_SKILL_ALIASES: dict[str, tuple[str, ...]] = {
-    "social": ("persuasione", "comando_sala", "comando", "diplomazia", "intimidazione", "inganno", "manipolazione", "lettura_persone"),
-    "physical": ("combattimento", "scherma", "forza", "atletica", "resistenza"),
-    "stealth": ("furtivita", "furtività", "sotterfugo", "inganno"),
-    "investigate": ("indagine", "osservazione", "lettura_persone", "erboristeria", "conoscenza"),
-    "intimate": ("seduzione", "manipolazione", "intimità", "intimita"),
-    "power": ("potere", "potere_acqua", "magia", "erboristeria"),
-}
-
-
-def npc_confront_rating(canon_skills: dict[str, int], skill: str) -> int:
-    """Rating di un NPC in un confronto: esatto prima, alias poi, altrimenti 0."""
-
-    if skill in canon_skills:
-        return canon_skills[skill]
-    return max(
-        (int(canon_skills[alias]) for alias in NPC_SKILL_ALIASES.get(skill, ()) if alias in canon_skills),
-        default=0,
-    )
-
-
-def default_decision(_proposal, _rating, _difficulty, _state) -> PlayerDecision:
-    return PlayerDecision()
-
-
-def default_narration(_context: str) -> str:
-    return ""
-
-
-def default_split(_proposal, player_pool, _npc_pool) -> int:
-    return player_pool  # tutto nella mano della vittoria
-
-
-def default_temerario(_roll) -> str | None:
-    return None
-
-
-def default_post_turn_processor(_state: WorldState, _result: "TurnResult") -> dict[str, Any] | None:
-    return None
-
-
-@dataclass
-class TurnResult:
-    turn: int
-    mode: str  # "no_check" | "check" | "confront"
-    narration: str
-    dialogue: list[dict[str, str]] = field(default_factory=list)
-    proposal: CheckProposal | None = None
-    roll: Roll | None = None
-    confront_result: ConfrontResult | None = None
-    player_narration: str = ""
-    temerario_price: str | None = None
-    stake: str = ""
-    visual_contract: VisualContract | None = None
-    render_record: RenderRecord | None = None
-    scene_mutations: list[dict[str, Any]] = field(default_factory=list)
-    campaign_changes: dict[str, Any] = field(default_factory=dict)
-    resumed: bool = False
-
 
 class TurnService:
     def __init__(
@@ -1113,71 +1049,3 @@ def _combine_reports(*reports: ValidationReport) -> ValidationReport:
         errors.extend(report.errors)
         warnings.extend(report.warnings)
     return ValidationReport(problems, errors, warnings)
-
-
-def _phase_response_to_dict(phase1: GmPhaseResponse) -> dict[str, Any]:
-    if phase1.mode == "no_check":
-        return {"mode": "no_check", "scene": _scene_to_dict(phase1.scene)}
-    if phase1.mode == "confront_proposal":
-        return {"mode": "confront_proposal", "confront": phase1.confront.to_dict()}
-    if phase1.mode == "clarification":
-        return {"mode": "clarification", "clarification": phase1.clarification}
-    return {"mode": "check_proposal", "check": phase1.check.to_dict()}
-
-
-def _scene_to_dict(scene: FinalScene) -> dict[str, Any]:
-    return {
-        "narration": scene.narration,
-        "dialogue": [{"speaker": d.speaker, "text": d.text, "to": d.to} for d in scene.dialogue],
-        "npc_actions": scene.npc_actions,
-        "intentions": scene.intentions,
-        "initiatives": [
-            {
-                "source": i.source,
-                "type": i.type,
-                "summary": i.summary,
-                "reason": i.reason,
-                "target": i.target,
-            }
-            for i in scene.initiatives
-        ],
-        "disclosure_events": [
-            {"npc_id": d.npc_id, "fact": d.fact, "action": d.action, "tactic": d.tactic}
-            for d in scene.disclosure_events
-        ],
-        "mutations": [
-            {"type": m.type, "target": m.target, "payload": m.payload, "reason": m.reason}
-            for m in scene.mutations
-        ],
-        "memory_events": [
-            {
-                "summary": m.summary,
-                "witnesses": m.witnesses,
-                "source": m.source,
-                "credibility": m.credibility,
-                "level": m.level,
-                "emotional_impact": m.emotional_impact,
-                "public": m.public,
-            }
-            for m in scene.memory_events
-        ],
-                "visual": (
-            {
-                "summary": scene.visual.summary,
-                "focus_character": scene.visual.focus_character,
-                "visible_characters": scene.visual.visible_characters,
-                "shared_action": scene.visual.shared_action,
-                "visual_en": scene.visual.visual_en,
-                "tags_en": scene.visual.tags_en,
-                "moment_type": scene.visual.moment_type,
-                "speaker_character": scene.visual.speaker_character,
-                "actor_character": scene.visual.actor_character,
-                "reactor_character": scene.visual.reactor_character,
-                "intimate_shared_moment": scene.visual.intimate_shared_moment,
-                "multi_character_reason": scene.visual.multi_character_reason,
-                "multi_character_participants": scene.visual.multi_character_participants,
-            }
-            if scene.visual
-            else None
-        ),
-    }

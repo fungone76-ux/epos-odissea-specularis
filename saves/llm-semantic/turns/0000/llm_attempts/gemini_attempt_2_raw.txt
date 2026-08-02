@@ -1,0 +1,1 @@
+{"mode": "check_proposal", "check": {"action_kind": "physical", "skill": "sarissa", "difficulty": 99, "target_ids": [], "opposition": "none", "reason": "bad", "stakes": {"full_success": "a", "partial_success": "b", "failure": "c", "critical_failure": "d"}}}

@@ -1,0 +1,36 @@
+schema_version: 1
+world_id: resort_world
+phases: [mattina, pomeriggio, sera, notte]
+schedules:
+  victoria:
+    1: {mattina: loc_lobby, pomeriggio: loc_victoria_office, sera: loc_restaurant, notte: loc_lounge}
+    2: {mattina: loc_restaurant, pomeriggio: loc_victoria_office, sera: loc_lounge, notte: loc_suite}
+    3: {mattina: loc_lobby, pomeriggio: loc_pool, sera: loc_victoria_office, notte: loc_lounge}
+    4: {mattina: loc_victoria_office, pomeriggio: loc_spa, sera: loc_restaurant, notte: loc_victoria_office}
+    5: {mattina: loc_private_beach, pomeriggio: loc_victoria_office, sera: loc_lounge, notte: loc_suite}
+    6: {mattina: loc_lobby, pomeriggio: loc_restaurant, sera: loc_victoria_office, notte: loc_lounge}
+    7: {mattina: loc_victoria_office, pomeriggio: loc_lobby, sera: loc_victoria_office, notte: loc_suite}
+  stella:
+    1: {mattina: loc_pool, pomeriggio: loc_private_beach, sera: loc_lounge, notte: loc_suite}
+    2: {mattina: loc_restaurant, pomeriggio: loc_pool, sera: loc_lounge, notte: loc_private_beach}
+    3: {mattina: loc_private_beach, pomeriggio: loc_spa, sera: loc_restaurant, notte: loc_lounge}
+    4: {mattina: loc_lobby, pomeriggio: loc_pool, sera: loc_lounge, notte: loc_suite}
+    5: {mattina: loc_restaurant, pomeriggio: loc_private_beach, sera: loc_victoria_office, notte: loc_lounge}
+    6: {mattina: loc_pool, pomeriggio: loc_spa, sera: loc_restaurant, notte: loc_private_beach}
+    7: {mattina: loc_lobby, pomeriggio: loc_lounge, sera: loc_victoria_office, notte: loc_suite}
+  maria:
+    1: {mattina: loc_restaurant, pomeriggio: loc_suite, sera: loc_suite, notte: loc_spa}
+    2: {mattina: loc_lobby, pomeriggio: loc_spa, sera: loc_restaurant, notte: loc_suite}
+    3: {mattina: loc_suite, pomeriggio: loc_restaurant, sera: loc_spa, notte: loc_suite}
+    4: {mattina: loc_restaurant, pomeriggio: loc_private_beach, sera: loc_suite, notte: loc_lounge}
+    5: {mattina: loc_spa, pomeriggio: loc_suite, sera: loc_restaurant, notte: loc_suite}
+    6: {mattina: loc_lobby, pomeriggio: loc_restaurant, sera: loc_spa, notte: loc_suite}
+    7: {mattina: loc_suite, pomeriggio: loc_victoria_office, sera: loc_restaurant, notte: loc_suite}
+  luna:
+    1: {mattina: loc_private_beach, pomeriggio: loc_wild_beach, sera: loc_lounge, notte: loc_wild_beach}
+    2: {mattina: loc_pool, pomeriggio: loc_private_beach, sera: loc_restaurant, notte: loc_lounge}
+    3: {mattina: loc_wild_beach, pomeriggio: loc_spa, sera: loc_wild_beach, notte: loc_suite}
+    4: {mattina: loc_private_beach, pomeriggio: loc_lobby, sera: loc_restaurant, notte: loc_wild_beach}
+    5: {mattina: loc_pool, pomeriggio: loc_wild_beach, sera: loc_lounge, notte: loc_private_beach}
+    6: {mattina: loc_spa, pomeriggio: loc_private_beach, sera: loc_restaurant, notte: loc_wild_beach}
+    7: {mattina: loc_wild_beach, pomeriggio: loc_lobby, sera: loc_victoria_office, notte: loc_suite}

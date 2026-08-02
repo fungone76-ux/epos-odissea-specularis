@@ -1,0 +1,23 @@
+================================================================
+DEBUG TURNO 0 — modalità: no_check
+sessione: llm-semantic | location: loc_ciclopi
+================================================================
+
+[INPUT GIOCATORE]
+osservo
+
+[NARRAZIONE]
+La scena si chiude in modo valido.
+
+[PROMPT POSITIVO]
+score_9, score_8_up, masterpiece, photorealistic, detailed, atmospheric, stsdebbie, dynamic pose, 1girl, mature woman, brown hair, athletic body, shiny skin, head tilt, massive breasts, cleavage, <lora:stsDebbie-10e:0.7>, very short crimson wool chiton with deep low-cut neckline, bare thighs clearly visible, worn revealing leather armor with bronze studs, exposed shoulders, recurved bow with bronze tips, thigh straps for quiver, barefoot, full body, low camera, front three quarter view, facing camera three quarter, volcanic coast, Ulisse on all fours, both hands on volcanic rock, <lora:Expressive_H-000001:0.35>, <lora:FantasyWorldPonyV2:0.40>
+
+[PROMPT NEGATIVO]
+score_6, score_5, score_4, score_3, score_2, score_1, lowres, worst quality, low quality, blurry, bad anatomy, bad hands, extra fingers, missing fingers, extra limbs, deformed, text, watermark, signature, child, young-looking, modern clothes, futuristic, cartoon, anime, young girl, bright colors, smiling, clean face, fantasy armor, elf ears, heavy makeup, city background, soft lighting, bokeh, cheerful, weak, thin, futuristic elements, bright saturated colors, clean cheerful faces, portrait lens, excessive jewelry, cyberpunk, steampunk, neon, plastic, glass, asphalt, cars, electricity, multiple people, extra person, background people, duplicate character, cloned face, merged bodies, fused bodies, extra face
+
+[PROSA DI SCENA (visual_en)]
+Ulisse on all fours, both hands on volcanic rock
+
+[RENDER]
+status: pending | backend: pending
+immagine: -

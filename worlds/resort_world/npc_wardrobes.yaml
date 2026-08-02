@@ -1,0 +1,157 @@
+schema_version: 1
+world_id: resort_world
+wardrobes:
+  victoria:
+    1:
+      mattina: [ivory bodycon blazer mini dress, deep neckline, nude stiletto pumps, pearl earrings]
+      pomeriggio: [black ultra fitted blazer dress, plunging neckline, sheer black stockings, black stilettos]
+      sera: [emerald satin slit gown, low cut bodice, gold high heels, emerald earrings]
+      notte: [midnight blue backless cocktail mini dress, thigh high stockings, silver stilettos]
+    2:
+      mattina: [cream silk wrap blouse, fitted white pencil skirt, nude stockings, beige stilettos]
+      pomeriggio: [charcoal bodycon executive dress, deep V neckline, sheer stockings, black pumps]
+      sera: [burgundy off shoulder slit dress, sculpted bodice, black stilettos, ruby earrings]
+      notte: [black silk slip mini dress, lace trim, barefoot, gold necklace]
+    3:
+      mattina: [white fitted blazer mini dress, champagne camisole, sheer stockings, white heels]
+      pomeriggio: [navy high cut one piece swimsuit, plunging neckline, sheer white cover up, barefoot]
+      sera: [plum bodycon office dress, deep neckline, pointed stilettos, pearl necklace]
+      notte: [deep red satin wrap mini dress, high slit, gold strappy heels, delicate bracelet]
+    4:
+      mattina: [stone grey fitted skirt suit, low cut ivory blouse, sheer stockings, black stilettos]
+      pomeriggio: [short white spa robe, loosely tied, lace lingerie glimpses, barefoot]
+      sera: [black velvet thigh slit gown, plunging neckline, crystal stilettos, diamond earrings]
+      notte: [dark green silk wrap mini dress, deep neckline, thigh high stockings, low heels]
+    5:
+      mattina: [black cutout swimsuit, high cut hips, sheer black beach kaftan, barefoot]
+      pomeriggio: [sand bodycon executive dress, low neckline, sheer stockings, brown stilettos]
+      sera: [white sculpted mini cocktail dress, open back, metallic stilettos, pearl earrings]
+      notte: [champagne satin slip mini dress, lace trim, barefoot, fine gold necklace]
+    6:
+      mattina: [powder blue bodycon blazer dress, deep neckline, nude stockings, nude stilettos]
+      pomeriggio: [cream silk fitted blouse, black leather pencil skirt, sheer stockings, black heels]
+      sera: [sapphire satin slit gown, plunging bodice, silver stilettos, sapphire earrings]
+      notte: [black asymmetric mini dress, cutout waist, red stilettos, diamond bracelet]
+    7:
+      mattina: [white fitted power suit, low cut silk camisole, pencil skirt, white stilettos]
+      pomeriggio: [black bodycon lobby dress, deep neckline, gold belt, black heels]
+      sera: [crimson formal slit gown, sculpted corset bodice, black stilettos, diamond necklace]
+      notte: [ivory silk private mini dress, open back, barefoot, pearl bracelet]
+  stella:
+    1:
+      mattina: [red micro bikini, high cut bottoms, oversized sunglasses, barefoot]
+      pomeriggio: [coral string bikini, sheer coral sarong, gold anklet, barefoot]
+      sera: [gold sequin bodycon mini dress, plunging neckline, gold stilettos, hoop earrings]
+      notte: [black lace lingerie set, sheer thigh high stockings, black stilettos]
+    2:
+      mattina: [white halter bodycon mini dress, deep neckline, nude stockings, wedge heels]
+      pomeriggio: [electric blue micro bikini, white mesh crop cover up, barefoot]
+      sera: [scarlet satin backless mini dress, thigh slit, black stilettos, crystal earrings]
+      notte: [silver metallic micro bikini, side cutout bottoms, sheer silver beach wrap, barefoot, choker]
+    3:
+      mattina: [yellow bandeau bikini, tiny bottoms, open white shirt, barefoot]
+      pomeriggio: [short sheer spa robe, loosely tied, lace lingerie, barefoot]
+      sera: [violet bodycon dinner mini dress, plunging neckline, nude stilettos, statement earrings]
+      notte: [midnight blue backless micro dress, thigh high stockings, black heels]
+    4:
+      mattina: [luxury resort hostess mini dress, plunging neckline, sheer stockings, high heels]
+      pomeriggio: [black high cut one piece swimsuit, deep V front, sheer red cover up, barefoot]
+      sera: [emerald sequin micro cocktail dress, open back, gold stilettos, emerald earrings]
+      notte: [red silk lingerie slip, lace trim, thigh high stockings, barefoot]
+    5:
+      mattina: [pink bodycon restaurant mini dress, deep neckline, sheer stockings, white stilettos]
+      pomeriggio: [white string bikini, turquoise sheer sarong, barefoot]
+      sera: [black blazer micro dress, no blouse, sheer stockings, high heels, gold chain]
+      notte: [purple satin cutout club dress, very short hem, silver stilettos, crystal bracelet]
+    6:
+      mattina: [turquoise cutout swimsuit, high cut hips, sheer white kaftan, barefoot]
+      pomeriggio: [champagne short spa robe, loosely tied, black lace lingerie, barefoot]
+      sera: [red off shoulder bodycon mini dress, thigh slit, black stilettos, ruby earrings]
+      notte: [gold string bikini, high cut bottoms, sheer gold beach kaftan, barefoot, gold anklet]
+    7:
+      mattina: [white tailored micro romper, deep neckline, sheer stockings, gold sandals]
+      pomeriggio: [black fitted cocktail mini dress, side cutouts, red stilettos, hoop earrings]
+      sera: [gold gala slit gown, plunging neckline, metallic stilettos, diamond choker]
+      notte: [crimson silk lingerie dress, lace trim, barefoot, gold bracelet]
+  maria:
+    1:
+      mattina: [cream fitted service mini dress, low neckline, sheer stockings, low heels]
+      pomeriggio: [black fitted maid mini dress, white lace trim, sheer stockings, high heels]
+      sera: [black silk service mini dress, deep neckline, sheer stockings, black pumps]
+      notte: [short white spa robe, loosely tied, lace lingerie, barefoot]
+    2:
+      mattina: [ivory fitted blouse, deep neckline, beige pencil skirt, sheer stockings, nude pumps]
+      pomeriggio: [white fitted spa tunic mini dress, side slit, barefoot]
+      sera: [navy bodycon dinner service dress, plunging neckline, sheer stockings, low heels]
+      notte: [champagne satin private service mini dress, lace trim, barefoot, pearl earrings]
+    3:
+      mattina: [white tailored maid mini dress, corset waist, nude stockings, low heels]
+      pomeriggio: [sage fitted service blouse, black leather pencil skirt, sheer stockings, black pumps]
+      sera: [burgundy short spa wrap dress, loosely tied, lace lingerie, barefoot]
+      notte: [ivory silk lingerie dress, lace cups, barefoot, pearl necklace]
+    4:
+      mattina: [light blue fitted restaurant mini dress, low neckline, sheer stockings, white pumps]
+      pomeriggio: [navy cutout one piece swimsuit, high cut hips, sheer white cover up, barefoot]
+      sera: [black fitted suite mini dress, deep neckline, sheer stockings, black stilettos]
+      notte: [deep green bodycon lounge mini dress, open back, low heels, gold earrings]
+    5:
+      mattina: [short white spa robe, loosely tied, nude lingerie, barefoot]
+      pomeriggio: [cream tailored suite mini uniform, fitted bodice, nude stockings, pumps]
+      sera: [wine red bodycon dinner mini dress, thigh slit, black stilettos, pearl earrings]
+      notte: [soft pink satin lingerie dress, lace trim, barefoot, delicate necklace]
+    6:
+      mattina: [grey fitted lobby mini dress, deep neckline, sheer stockings, black pumps]
+      pomeriggio: [ivory silk blouse, black leather pencil skirt, sheer stockings, low heels]
+      sera: [short white spa wrap dress, loosely tied, lace bodysuit, barefoot]
+      notte: [midnight blue suite mini dress, open back, sheer stockings, barefoot]
+    7:
+      mattina: [champagne fitted maid mini dress, low neckline, nude stockings, low heels]
+      pomeriggio: [black formal office mini dress, fitted waist, sheer stockings, pumps]
+      sera: [ivory elegant dinner slit dress, deep neckline, gold stilettos, pearl necklace]
+      notte: [white silk private lingerie dress, lace trim, barefoot, delicate bracelet]
+  luna:
+    1:
+      mattina: [ivory string bikini, high cut bottoms, sheer white crop cover up, barefoot]
+      pomeriggio: [sand colored micro bikini, sheer linen sarong, woven bracelet, barefoot]
+      sera: [ivory backless bodycon mini dress, deep neckline, delicate stilettos]
+      notte: [moonlight blue string bikini, sheer layered beach mini dress, high slit, barefoot, silver pendant]
+    2:
+      mattina: [white high cut one piece swimsuit, plunging neckline, sheer ivory shirt, barefoot]
+      pomeriggio: [pale blue string bikini, sheer white sarong, shell necklace, barefoot]
+      sera: [sage green bodycon dinner mini dress, deep neckline, low heels, silver earrings]
+      notte: [black soft knit bodycon mini dress, open back, thigh high stockings, barefoot]
+    3:
+      mattina: [cream crochet micro bikini, sheer beach wrap, leather anklet, barefoot]
+      pomeriggio: [short white spa robe, loosely tied, pale lace lingerie, barefoot]
+      sera: [dark blue sheer beach dress, high slit, bikini visible beneath, barefoot]
+      notte: [ivory silk lingerie slip, lace trim, barefoot, delicate anklet]
+    4:
+      mattina: [white micro bikini, light blue sheer sarong, barefoot]
+      pomeriggio: [ivory fitted lobby mini dress, open back, deep neckline, delicate heels]
+      sera: [burgundy bodycon dinner mini dress, thigh slit, low heels, silver necklace]
+      notte: [deep violet micro bikini, sheer beach mini dress, side cutouts, barefoot, moon pendant]
+    5:
+      mattina: [pale green high cut one piece swimsuit, deep V neckline, sheer cream cover up, barefoot]
+      pomeriggio: [white string bikini, transparent linen shirt, woven bracelet, barefoot]
+      sera: [black backless bodycon mini dress, plunging neckline, silver stilettos, moon earrings]
+      notte: [soft ivory sheer beach wrap dress, bikini visible beneath, barefoot, silver pendant]
+    6:
+      mattina: [short white spa wrap dress, loosely tied, ivory lace lingerie, barefoot]
+      pomeriggio: [sky blue micro bikini, sheer white sarong, shell necklace, barefoot]
+      sera: [emerald bodycon dinner mini dress, deep neckline, thigh slit, low heels]
+      notte: [midnight blue string bikini, sheer beach mini dress, side slit, barefoot, moon pendant]
+    7:
+      mattina: [cream crochet bikini, sheer wild beach cover up, woven bracelet, barefoot]
+      pomeriggio: [ivory tailored lobby mini dress, plunging neckline, sheer stockings, delicate heels]
+      sera: [silver grey fitted office mini dress, low neckline, sheer stockings, low heels]
+      notte: [white silk private lingerie dress, lace trim, barefoot, delicate silver bracelet]
+location_overrides:
+  loc_pool: revealing_swimwear_required
+  loc_private_beach: revealing_beachwear_required
+  loc_wild_beach: sensual_natural_beachwear_required
+  loc_spa: short_revealing_spa_attire_required
+  loc_victoria_office: fitted_revealing_executive_attire_required
+  loc_lobby: fitted_luxury_resort_attire_required
+  loc_restaurant: fitted_revealing_dinner_attire_required
+  loc_lounge: very_sexy_evening_attire_required
+  loc_suite: intimate_private_attire_preferred

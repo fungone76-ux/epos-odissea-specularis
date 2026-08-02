@@ -1,0 +1,48 @@
+schema_version: 1
+world_id: resort_world
+visual_style_en: realistic luxury mediterranean resort, adult sensual atmosphere, elegant cinematic photography
+negative_extra_en: underage, child, teenager, coercion, violence, bad anatomy, extra limbs, duplicate person, plain background, white background, grey background, studio background, seamless backdrop, isolated figure, empty background, blank wall
+visual_policy:
+  protected_base_prompts: true
+  single_character_default: true
+  multi_character_mode: shared_action
+  speaker_action_focus: true
+  include_sheet_negative: true
+  sanitize_identity_layers: true
+  concise_role_prompts: true
+  max_role_prompt_words: 12
+  visual_en_primary: true
+  dedupe_across_layers: true
+  max_scene_tags: 8
+  role_prompt_optional: true
+  preserve_revealing_outfit_traits: true
+  revealing_outfit_priority: true
+  visual_director_enabled: true
+  structured_camera: true
+  camera_variety_enabled: true
+  camera_history_size: 6
+  avoid_repeating_camera: true
+characters:
+  - id: player
+    base_prompt: adult billionaire man, confident, refined, masculine
+    role_prompt_en: luxury resort VIP guest
+    starting_outfit_en: [luxury travel suit, tailored shirt, elegant shoes]
+  - id: victoria
+    base_prompt: "score_9,score_8_up,score_7_up,masterpiece , realistic, zatanna, mature woman, , black hair, long hair,  , cute, huge ass, bottom heavy, wide hips, huge breast,  grey eyes,  pink lips,  ,  <lora:Zatanna_-_DC_Animated_Universe:0.6> <lora:Expressive_H:0.4> <lora:FantasyWorldPonyV2:0.3>"
+    role_prompt_en: authoritative adult VIP director
+    starting_outfit_en: [black bodycon blazer mini dress, deep neckline, sheer black stockings, black stilettos, elegant jewelry]
+  - id: stella
+    base_prompt: "score_9, score_8_up, masterpiece, photorealistic, 1girl, alice_milf_catchers, massive breasts, cleavage, blonde hair, beautiful blue eyes, shapely legs, hourglass figure, skinny body, narrow waist, wide hips"
+    character_lora_en: "<lora:alice_milf_catchers_lora.safetensors:0.7>"
+    role_prompt_en: ambitious adult VIP entertainer
+    starting_outfit_en: [fitted resort hostess micro dress, plunging neckline, very short hem, sheer stockings, gold name tag, high heels]
+  - id: maria
+    base_prompt: "score_9, score_8_up, stsSmith, ultra-detailed, realistic lighting, 1girl, mature female, veiny breasts, big breasts, saggy tits, black hair, short hair"
+    character_lora_en: "<lora:stsSmith-10e:0.65>"
+    role_prompt_en: professional adult suite attendant
+    starting_outfit_en: [fitted luxury maid mini dress, deep neckline, white lace trim, sheer stockings, high heels]
+  - id: luna
+    base_prompt: "score_9, score_8_up, masterpiece, photorealistic, detailed, atmospheric, stsdebbie, dynamic pose, 1girl, mature woman, brown hair, athletic body, shiny skin, head tilt, massive breasts, cleavage"
+    character_lora_en: "<lora:stsDebbie-10e:0.7>"
+    role_prompt_en: observant adult private companion
+    starting_outfit_en: [fitted ivory VIP attendant mini dress, low neckline, open back, sheer stockings, delicate high heels]

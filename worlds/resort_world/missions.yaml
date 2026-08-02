@@ -1,0 +1,47 @@
+schema_version: 1
+world_id: resort_world
+missions:
+  - id: mission_resort_future
+    reveal: initial
+    deadline: {day: 7, phase: sera}
+    success_points: 25
+    failure_points: -15
+    required_flags: [resort_service_assessed, bank_debt_disclosed, resort_final_decision]
+    terminal_success_flags: [resort_saved]
+    terminal_failure_flags: [negotiations_refused]
+  - id: mission_stella_promotion
+    reveal: progressive
+    unlock_when: {relationship: stella, field: respect, minimum: 1}
+    success_points: 10
+    failure_points: -5
+    required_flags: [stella_vip_event_success, stella_positive_review, stella_victoria_test_passed]
+    terminal_success_flags: [stella_promotion_approved]
+    terminal_failure_flags: [stella_grave_misconduct]
+  - id: mission_maria_stability
+    reveal: progressive
+    unlock_when: {event_completed: event_bath_for_two}
+    success_points: 10
+    failure_points: -5
+    required_flags: [maria_bath_service_recovered, maria_service_problem_solved, maria_positive_review]
+    terminal_success_flags: [maria_contract_approved]
+    terminal_failure_flags: [maria_grave_negligence]
+  - id: mission_luna_letter
+    reveal: progressive
+    unlock_when: {relationship: luna, field: trust, minimum: 2}
+    success_points: 10
+    failure_points: -10
+    reveal_gates:
+      mention: luna_letter_mention_unlocked
+      show: luna_letter_reveal_unlocked
+      full_truth: luna_letter_truth_unlocked
+    required_flags: [luna_letter_mentioned, luna_letter_revealed, luna_letter_author_confirmed, luna_promise_answered]
+    terminal_success_flags: [luna_truth_clarified]
+    terminal_failure_flags: [luna_letter_abused]
+  - id: mission_victoria_save_resort
+    reveal: progressive
+    unlock_when: {flag: bank_debt_disclosed, expected: true}
+    success_points: 10
+    failure_points: -5
+    required_flags: [victoria_strengths_shown, bank_debt_disclosed, victoria_team_proven]
+    terminal_success_flags: [resort_saved]
+    terminal_failure_flags: [victoria_trust_destroyed]

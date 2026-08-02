@@ -1,0 +1,256 @@
+{
+  "turn": 0,
+  "location_id": "loc_ciclopi",
+  "moment": "frame",
+  "focus_character": "player",
+  "visible_characters": [
+    "player"
+  ],
+  "shared_action": false,
+  "characters": [
+    {
+      "id": "player",
+      "outfit_worn": [
+        "very short crimson wool chiton with deep low-cut neckline",
+        "bare thighs clearly visible",
+        "worn revealing leather armor with bronze studs",
+        "exposed shoulders",
+        "recurved bow with bronze tips",
+        "thigh straps for quiver",
+        "barefoot"
+      ],
+      "outfit_removed": [],
+      "outfit_revision": 0,
+      "outfit_state": {
+        "worn_items": [
+          "very short crimson wool chiton with deep low-cut neckline",
+          "bare thighs clearly visible",
+          "worn revealing leather armor with bronze studs",
+          "exposed shoulders",
+          "recurved bow with bronze tips",
+          "thigh straps for quiver",
+          "barefoot"
+        ],
+        "removed_items": [],
+        "torso_slot": [
+          "very short crimson wool chiton with deep low-cut neckline",
+          "worn revealing leather armor with bronze studs"
+        ],
+        "lower_body_slot": [
+          "very short crimson wool chiton with deep low-cut neckline"
+        ],
+        "footwear": [],
+        "nudity_mode": "clothed",
+        "revision": 0,
+        "source_of_truth": "character.outfit"
+      },
+      "wounds": [],
+      "conditions": []
+    }
+  ],
+  "time_phase": "giorno",
+  "visual_en": "Ulisse on all fours, both hands on volcanic rock",
+  "tags_en": [
+    "full body",
+    "low camera",
+    "front three quarter view",
+    "facing camera three quarter",
+    "volcanic coast"
+  ],
+  "prompt_package": {
+    "positive": "score_9, score_8_up, masterpiece, photorealistic, detailed, atmospheric, stsdebbie, dynamic pose, 1girl, mature woman, brown hair, athletic body, shiny skin, head tilt, massive breasts, cleavage, <lora:stsDebbie-10e:0.7>, very short crimson wool chiton with deep low-cut neckline, bare thighs clearly visible, worn revealing leather armor with bronze studs, exposed shoulders, recurved bow with bronze tips, thigh straps for quiver, barefoot, full body, low camera, front three quarter view, facing camera three quarter, volcanic coast, Ulisse on all fours, both hands on volcanic rock, <lora:Expressive_H-000001:0.35>, <lora:FantasyWorldPonyV2:0.40>",
+    "negative": "score_6, score_5, score_4, score_3, score_2, score_1, lowres, worst quality, low quality, blurry, bad anatomy, bad hands, extra fingers, missing fingers, extra limbs, deformed, text, watermark, signature, child, young-looking, modern clothes, futuristic, cartoon, anime, young girl, bright colors, smiling, clean face, fantasy armor, elf ears, heavy makeup, city background, soft lighting, bokeh, cheerful, weak, thin, futuristic elements, bright saturated colors, clean cheerful faces, portrait lens, excessive jewelry, cyberpunk, steampunk, neon, plastic, glass, asphalt, cars, electricity, multiple people, extra person, background people, duplicate character, cloned face, merged bodies, fused bodies, extra face",
+    "base_prompt_by_character": {
+      "player": "score_9, score_8_up, masterpiece, photorealistic, detailed, atmospheric, stsdebbie, dynamic pose, 1girl, mature woman, brown hair, athletic body, shiny skin, head tilt, massive breasts, cleavage"
+    },
+    "character_lora_by_character": {
+      "player": "<lora:stsDebbie-10e:0.7>"
+    },
+    "outfit_prompt_by_character": {
+      "player": "very short crimson wool chiton with deep low-cut neckline, bare thighs clearly visible, worn revealing leather armor with bronze studs, exposed shoulders, recurved bow with bronze tips, thigh straps for quiver, barefoot"
+    },
+    "role_prompt_by_character": {},
+    "role_prompt_original_by_character": {},
+    "role_prompt_sanitization": {
+      "removed_terms_by_character": {},
+      "max_words": 12
+    },
+    "scene_tags": [
+      "full body",
+      "low camera",
+      "front three quarter view",
+      "facing camera three quarter",
+      "volcanic coast"
+    ],
+    "scene_visual": "Ulisse on all fours, both hands on volcanic rock",
+    "original_scene_tags": [
+      "full body",
+      "low camera",
+      "front three quarter view",
+      "facing camera three quarter",
+      "volcanic coast"
+    ],
+    "original_scene_visual": "Ulisse on all fours, both hands on volcanic rock",
+    "sanitized_scene_tags": [
+      "full body",
+      "low camera",
+      "front three quarter view",
+      "facing camera three quarter",
+      "volcanic coast"
+    ],
+    "sanitized_scene_visual": "Ulisse on all fours, both hands on volcanic rock",
+    "identity_sanitization": {
+      "removed_terms": [],
+      "reason": ""
+    },
+    "facial_expression_sanitization": {
+      "removed_terms": [],
+      "reason": ""
+    },
+    "broken_chunk_sanitization": {
+      "removed_chunks": [],
+      "reason": ""
+    },
+    "camera_tag_conflicts": [],
+    "revealing_outfit_policy": {
+      "preserve_revealing_outfit_traits": true,
+      "revealing_outfit_priority": true
+    },
+    "multi_character_composition": {
+      "grouped_per_character": false
+    },
+    "cross_layer_deduplication": {
+      "removed": {
+        "tags": [],
+        "visual": []
+      },
+      "max_scene_tags": 6
+    },
+    "nudity_diagnostics": {
+      "detected_clothing_state": "torso_and_lower_clothed",
+      "nudity_mode": "revealing",
+      "nudity_tags_added": [],
+      "clothing_block_tags_added": [],
+      "canonical_outfit_state": {
+        "worn_items": [
+          "very short crimson wool chiton with deep low-cut neckline",
+          "bare thighs clearly visible",
+          "worn revealing leather armor with bronze studs",
+          "exposed shoulders",
+          "recurved bow with bronze tips",
+          "thigh straps for quiver",
+          "barefoot"
+        ],
+        "removed_items": [],
+        "torso_slot": [
+          "very short crimson wool chiton with deep low-cut neckline",
+          "worn revealing leather armor with bronze studs"
+        ],
+        "lower_body_slot": [
+          "very short crimson wool chiton with deep low-cut neckline"
+        ],
+        "footwear": [],
+        "nudity_mode": "clothed",
+        "revision": 0,
+        "source_of_truth": "character.outfit"
+      }
+    },
+    "detected_clothing_state": "torso_and_lower_clothed",
+    "nudity_mode": "revealing",
+    "nudity_tags_added": [],
+    "clothing_block_tags_added": [],
+    "outfit_tags_added": [
+      "very short crimson wool chiton with deep low-cut neckline, bare thighs clearly visible, worn revealing leather armor with bronze studs, exposed shoulders, recurved bow with bronze tips, thigh straps for quiver, barefoot"
+    ],
+    "outfit_tags_suppressed": {},
+    "source_of_truth": "character.outfit",
+    "negative_prompt_by_character": {
+      "player": "modern clothes, futuristic, cartoon, anime, child, young girl, bright colors, smiling, clean face, fantasy armor, elf ears, heavy makeup, city background, soft lighting, bokeh, cheerful, weak, thin"
+    },
+    "visible_characters": [
+      "player"
+    ],
+    "positive_prompt": "score_9, score_8_up, masterpiece, photorealistic, detailed, atmospheric, stsdebbie, dynamic pose, 1girl, mature woman, brown hair, athletic body, shiny skin, head tilt, massive breasts, cleavage, <lora:stsDebbie-10e:0.7>, very short crimson wool chiton with deep low-cut neckline, bare thighs clearly visible, worn revealing leather armor with bronze studs, exposed shoulders, recurved bow with bronze tips, thigh straps for quiver, barefoot, full body, low camera, front three quarter view, facing camera three quarter, volcanic coast, Ulisse on all fours, both hands on volcanic rock, <lora:Expressive_H-000001:0.35>, <lora:FantasyWorldPonyV2:0.40>",
+    "negative_prompt": "score_6, score_5, score_4, score_3, score_2, score_1, lowres, worst quality, low quality, blurry, bad anatomy, bad hands, extra fingers, missing fingers, extra limbs, deformed, text, watermark, signature, child, young-looking, modern clothes, futuristic, cartoon, anime, young girl, bright colors, smiling, clean face, fantasy armor, elf ears, heavy makeup, city background, soft lighting, bokeh, cheerful, weak, thin, futuristic elements, bright saturated colors, clean cheerful faces, portrait lens, excessive jewelry, cyberpunk, steampunk, neon, plastic, glass, asphalt, cars, electricity, multiple people, extra person, background people, duplicate character, cloned face, merged bodies, fused bodies, extra face",
+    "focus_character": "player",
+    "focus_reason": "actor",
+    "multi_character_reason": "not_validated_intimate_shared_moment",
+    "proposed_camera": "",
+    "selected_camera": "front_three_quarter",
+    "camera_override_applied": false,
+    "camera_override_reason": "",
+    "shot_type": "full_body",
+    "camera_angle": "low",
+    "camera_side": "front_three_quarter",
+    "subject_orientation": "facing_camera_three_quarter",
+    "camera_history": [],
+    "director_reason": "default_structured_camera",
+    "explicit_pose": "",
+    "pose_tags_added": []
+  },
+  "focus_reason": "actor",
+  "multi_character_reason": "not_validated_intimate_shared_moment",
+  "camera_director": {
+    "proposed_camera": "",
+    "selected_camera": "front_three_quarter",
+    "camera_override_applied": false,
+    "camera_override_reason": "",
+    "shot_type": "full_body",
+    "camera_angle": "low",
+    "camera_side": "front_three_quarter",
+    "subject_orientation": "facing_camera_three_quarter",
+    "camera_history": [],
+    "director_reason": "default_structured_camera",
+    "explicit_pose": "",
+    "pose_tags_added": []
+  },
+  "concrete_action": "frame",
+  "place": "Isola dei Ciclopi",
+  "canonical_outfit": {
+    "player": {
+      "worn": [
+        "very short crimson wool chiton with deep low-cut neckline",
+        "bare thighs clearly visible",
+        "worn revealing leather armor with bronze studs",
+        "exposed shoulders",
+        "recurved bow with bronze tips",
+        "thigh straps for quiver",
+        "barefoot"
+      ],
+      "removed": [],
+      "outfit_state": {
+        "worn_items": [
+          "very short crimson wool chiton with deep low-cut neckline",
+          "bare thighs clearly visible",
+          "worn revealing leather armor with bronze studs",
+          "exposed shoulders",
+          "recurved bow with bronze tips",
+          "thigh straps for quiver",
+          "barefoot"
+        ],
+        "removed_items": [],
+        "torso_slot": [
+          "very short crimson wool chiton with deep low-cut neckline",
+          "worn revealing leather armor with bronze studs"
+        ],
+        "lower_body_slot": [
+          "very short crimson wool chiton with deep low-cut neckline"
+        ],
+        "footwear": [],
+        "nudity_mode": "clothed",
+        "revision": 0,
+        "source_of_truth": "character.outfit"
+      },
+      "conditions": [],
+      "wounds": []
+    }
+  },
+  "pose": "Ulisse on all fours, both hands on volcanic rock volcanic coast",
+  "shot_type": "full_body",
+  "camera_side": "front_three_quarter",
+  "camera_angle": "low",
+  "lighting": "worldpack_default",
+  "positive_prompt": "score_9, score_8_up, masterpiece, photorealistic, detailed, atmospheric, stsdebbie, dynamic pose, 1girl, mature woman, brown hair, athletic body, shiny skin, head tilt, massive breasts, cleavage, <lora:stsDebbie-10e:0.7>, very short crimson wool chiton with deep low-cut neckline, bare thighs clearly visible, worn revealing leather armor with bronze studs, exposed shoulders, recurved bow with bronze tips, thigh straps for quiver, barefoot, full body, low camera, front three quarter view, facing camera three quarter, volcanic coast, Ulisse on all fours, both hands on volcanic rock, <lora:Expressive_H-000001:0.35>, <lora:FantasyWorldPonyV2:0.40>",
+  "negative_prompt": "score_6, score_5, score_4, score_3, score_2, score_1, lowres, worst quality, low quality, blurry, bad anatomy, bad hands, extra fingers, missing fingers, extra limbs, deformed, text, watermark, signature, child, young-looking, modern clothes, futuristic, cartoon, anime, young girl, bright colors, smiling, clean face, fantasy armor, elf ears, heavy makeup, city background, soft lighting, bokeh, cheerful, weak, thin, futuristic elements, bright saturated colors, clean cheerful faces, portrait lens, excessive jewelry, cyberpunk, steampunk, neon, plastic, glass, asphalt, cars, electricity, multiple people, extra person, background people, duplicate character, cloned face, merged bodies, fused bodies, extra face",
+  "visual_reason": "actor; not_validated_intimate_shared_moment; default_structured_camera"
+}

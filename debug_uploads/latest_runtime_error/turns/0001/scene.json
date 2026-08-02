@@ -1,0 +1,48 @@
+{
+  "narration": "Victoria lascia spazio a Luna. La giovane donna si presenta con modi misurati e uno sguardo attento, spiegando che seguirà personalmente gli aspetti più riservati e discreti del soggiorno.",
+  "dialogue": [
+    {
+      "speaker": "Luna",
+      "text": "Piacere, sono Luna. Mi occupo dell'assistenza privata e discreta degli ospiti. Preferisco osservare e capire ciò che serve davvero, prima di intervenire.",
+      "to": "player"
+    }
+  ],
+  "npc_actions": [
+    {
+      "npc_id": "luna",
+      "action": "si presenta personalmente al cliente VIP"
+    }
+  ],
+  "intentions": [],
+  "initiatives": [],
+  "disclosure_events": [],
+  "mutations": [],
+  "memory_events": [],
+  "visual": {
+    "summary": "Luna si presenta e descrive il proprio ruolo di assistente privata.",
+    "focus_character": "luna",
+    "visible_characters": [
+      "luna"
+    ],
+    "shared_action": false,
+    "visual_en": "Luna introduces herself to the unseen VIP guest, reserved attentive posture, elegant cinematic composition, inside the grand Azure Crown luxury resort lobby, polished white marble floor, marble reception desk, floor-to-ceiling glass walls, visible Mediterranean sea, warm natural daylight, elegant brass details, luxury interior clearly visible, detailed environmental background, no studio backdrop",
+    "tags_en": [
+      "NPC introduction",
+      "grand luxury resort lobby interior",
+      "polished marble floor",
+      "marble reception desk",
+      "floor-to-ceiling glass walls",
+      "Mediterranean sea view",
+      "detailed environmental background"
+    ],
+    "moment_type": "speech",
+    "speaker_character": "luna",
+    "actor_character": "luna",
+    "reactor_character": "luna",
+    "intimate_shared_moment": false,
+    "multi_character_reason": "",
+    "multi_character_participants": [
+      "luna"
+    ]
+  }
+}

@@ -135,6 +135,39 @@ def _quoted_player_texts(player_text: str) -> set[str]:
     return quoted
 
 
+_ALLOWED_NPC_ECHOES = {"si", "sì", "no", "grazie", "va bene", "ok", "okay"}
+_SPEECH_VERB_TAIL = re.compile(
+    r"\s+(?:lo|la|le|gli|ti|vi)?\s*(?:dico|chiedo|domando|rispondo|sussurro|grido|urlo)\b.*$",
+    re.IGNORECASE,
+)
+_SPEECH_VERB_HEAD = re.compile(
+    r"^(?:lo|la|le|gli|ti|vi)?\s*(?:dico|chiedo|domando|rispondo|sussurro|grido|urlo)\b\s*(?:a\s+\w+)?\s*",
+    re.IGNORECASE,
+)
+
+
+def _speech_key(text: str) -> str:
+    cleaned = _norm(text)
+    cleaned = re.sub(r"[^\w\s]", " ", cleaned, flags=re.UNICODE)
+    return " ".join(cleaned.split())
+
+
+def _player_spoken_text_key(player_text: str) -> str:
+    text = _SPEECH_VERB_TAIL.sub("", player_text.strip())
+    text = _SPEECH_VERB_HEAD.sub("", text.strip())
+    return _speech_key(text)
+
+
+def _npc_line_copies_player_utterance(line_text: str, player_text: str) -> bool:
+    line_key = _speech_key(line_text)
+    if line_key in _ALLOWED_NPC_ECHOES or len(line_key) < 8:
+        return False
+    player_key = _player_spoken_text_key(player_text)
+    if not player_key:
+        return False
+    return line_key == player_key or (len(line_key.split()) >= 2 and line_key in player_key)
+
+
 def _is_player_speaker(state: WorldState, speaker: str) -> bool:
     return speaker.strip().casefold() in player_aliases_for_state(state)
 
@@ -215,6 +248,22 @@ def validate_scene_player_agency(
                     f"dialogue[{index}]",
                     message,
                     {"speaker": line.speaker, "text": line.text},
+                )
+            )
+        elif (
+            player_action == "speaking"
+            and not _is_player_speaker(state, line.speaker)
+            and str(line.to or "").strip().casefold() in player_aliases_for_state(state)
+            and _npc_line_copies_player_utterance(line.text, player_text)
+        ):
+            message = "autonomia player: dialogo NPC copia l'input del player invertendo i ruoli"
+            problems.append(message)
+            errors.append(
+                ValidationErrorDetail(
+                    "npc_dialogue_copies_player_input",
+                    f"dialogue[{index}]",
+                    message,
+                    {"speaker": line.speaker, "text": line.text, "player_text": player_text},
                 )
             )
 
@@ -298,7 +347,8 @@ def player_agency_diagnostics(
         player_input_action=player_action,
         proposed_player_action=proposed_action,
         player_agency_violation=bool(problems),
-        invented_player_dialogue="invented_player_dialogue" in codes,
+        invented_player_dialogue="invented_player_dialogue" in codes
+        or "npc_dialogue_copies_player_input" in codes,
         invented_player_intention="invented_player_intention" in codes,
         action_semantic_drift="player_action_semantic_drift" in codes
         or "player_action_semantic_drift" in codes,

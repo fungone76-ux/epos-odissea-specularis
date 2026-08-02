@@ -1,0 +1,110 @@
+schema_version: 1
+id: resort_world
+world_id: resort_world
+title: Seven Nights at Azure Crown
+premise: Un miliardario adulto trascorre sette notti all'Azure Crown Resort sull'isola di Calista, tra servizio VIP, relazioni e una possibile acquisizione.
+start_time_phase: mattina
+start_location_id: loc_lobby
+interactive_creation: true
+open_end: true
+riserva_dice: 0
+opening_narration: L'elicottero privato atterra all'Azure Crown. Victoria Hale accoglie il protagonista nella lobby e gli presenta Stella, Maria e Luna.
+player_start:
+  name: null
+  skills: {carisma: 3, intuito: 3, autorita: 2, negoziazione: 2, prestanza: 1}
+  inventory: []
+  conditions: []
+  outfit: [luxury travel suit, tailored shirt, elegant shoes]
+  resources: {wealth: 5}
+locations:
+  - {id: loc_suite, name: Suite presidenziale, description: Suite mediterranea moderna con bagno di lusso e terrazza sul mare.}
+  - {id: loc_lobby, name: Lobby, description: Grande lobby di marmo e vetro con vista sul Mediterraneo.}
+  - {id: loc_restaurant, name: Ristorante, description: Ristorante elegante sul mare con terrazza panoramica.}
+  - {id: loc_pool, name: Piscina infinity, description: Piscina panoramica con deck privato.}
+  - {id: loc_spa, name: Spa, description: Area benessere con sauna bagno turco e sale massaggi.}
+  - {id: loc_private_beach, name: Spiaggia privata, description: Spiaggia riservata con lettini eleganti.}
+  - {id: loc_wild_beach, name: Spiaggia selvaggia, description: Cala rocciosa isolata e naturale.}
+  - {id: loc_lounge, name: Lounge bar, description: Cocktail lounge con terrazza panoramica.}
+  - {id: loc_victoria_office, name: Ufficio di Victoria, description: Ufficio executive elegante con vista sul resort.}
+pressures:
+  - {id: pressure_bank_debt, summary: Il debito bancario scade durante il settimo giorno., escalation_hint: Victoria deve ottenere una soluzione concreta.}
+world_facts:
+  - {id: fact_all_adults, statement: Tutti i personaggi coinvolti in dinamiche romantiche o sensuali sono adulti., visibility: public, does_not_imply: [Il consenso è automatico.]}
+  - {id: fact_no_conspiracy, statement: Le difficoltà del resort non nascondono un complotto., visibility: contextual, does_not_imply: [Esistono sabotaggi nascosti.]}
+  - {id: fact_victoria_knows_purchase, statement: Solo Victoria conosce inizialmente il possibile interesse per l'acquisto., visibility: secret, does_not_imply: [Le altre lo sanno già.]}
+relationships:
+  - {from: victoria, to: stella, statement: Victoria premia l'iniziativa di Stella ma ne controlla l'ambizione., known_by: [victoria, stella]}
+  - {from: victoria, to: maria, statement: Victoria considera Maria il riferimento professionale più affidabile., known_by: [victoria, maria]}
+  - {from: victoria, to: luna, statement: Victoria considera Luna la più difficile da controllare., known_by: [victoria, luna]}
+missions:
+  - id: mission_resort_future
+    location_id: loc_victoria_office
+    name: Il futuro dell'Azure Crown
+    description: Valutare il resort e decidere come affrontare il debito entro il settimo giorno.
+    state: active
+    objectives:
+      - {id: assess_service, type: flag, key: resort_service_assessed, expected: true}
+      - {id: learn_debt, type: flag, key: bank_debt_disclosed, expected: true}
+      - {id: final_decision, type: flag, key: resort_final_decision, expected: true}
+    success_conditions: [{type: flag, key: resort_saved, expected: true}]
+    failure_conditions: [{type: flag, key: negotiations_refused, expected: true}]
+    rewards: [{type: flag, key: campaign_complete, value: true}]
+    consequences: [{type: flag, key: resort_evaluation_consequence, value: recorded}]
+    transitions: [{type: remain, location_id: loc_victoria_office}]
+  - id: mission_stella_promotion
+    location_id: loc_lounge
+    name: La promozione internazionale
+    description: Stella deve meritare la promozione nel servizio VIP internazionale.
+    state: locked
+    objectives:
+      - {id: vip_event, type: flag, key: stella_vip_event_success, expected: true}
+      - {id: positive_review, type: flag, key: stella_positive_review, expected: true}
+      - {id: victoria_test, type: flag, key: stella_victoria_test_passed, expected: true}
+    success_conditions: [{type: flag, key: stella_promotion_approved, expected: true}]
+    failure_conditions: [{type: flag, key: stella_grave_misconduct, expected: true}]
+    rewards: [{type: relationship, target_id: stella, field: respect, delta: 2}]
+    consequences: [{type: flag, key: stella_mission_consequence, value: recorded}]
+    transitions: [{type: remain, location_id: loc_lounge}]
+  - id: mission_maria_stability
+    location_id: loc_suite
+    name: Un futuro stabile
+    description: Maria deve ottenere un contratto stabile e meglio retribuito.
+    state: locked
+    objectives:
+      - {id: recover_bath_service, type: flag, key: maria_bath_service_recovered, expected: true}
+      - {id: solve_service_problem, type: flag, key: maria_service_problem_solved, expected: true}
+      - {id: positive_review, type: flag, key: maria_positive_review, expected: true}
+    success_conditions: [{type: flag, key: maria_contract_approved, expected: true}]
+    failure_conditions: [{type: flag, key: maria_grave_negligence, expected: true}]
+    rewards: [{type: relationship, target_id: maria, field: trust, delta: 2}]
+    consequences: [{type: flag, key: maria_mission_consequence, value: recorded}]
+    transitions: [{type: remain, location_id: loc_suite}]
+  - id: mission_luna_letter
+    location_id: loc_wild_beach
+    name: Il legame nascosto
+    description: Luna vuole chiarire la promessa incompiuta nella lettera del padre del protagonista.
+    state: locked
+    objectives:
+      - {id: mention_letter, type: flag, key: luna_letter_mentioned, expected: true}
+      - {id: show_letter, type: flag, key: luna_letter_revealed, expected: true}
+      - {id: confirm_author, type: flag, key: luna_letter_author_confirmed, expected: true}
+      - {id: answer_promise, type: flag, key: luna_promise_answered, expected: true}
+    success_conditions: [{type: flag, key: luna_truth_clarified, expected: true}]
+    failure_conditions: [{type: flag, key: luna_letter_abused, expected: true}]
+    rewards: [{type: relationship, target_id: luna, field: trust, delta: 3}]
+    consequences: [{type: flag, key: luna_mission_consequence, value: recorded}]
+    transitions: [{type: remain, location_id: loc_wild_beach}]
+  - id: mission_victoria_save_resort
+    location_id: loc_victoria_office
+    name: Salvare l'Azure Crown
+    description: Victoria deve ottenere un acquisto un rifinanziamento o una trattativa vincolante.
+    state: locked
+    objectives:
+      - {id: show_strengths, type: flag, key: victoria_strengths_shown, expected: true}
+      - {id: disclose_debt, type: flag, key: bank_debt_disclosed, expected: true}
+      - {id: prove_team, type: flag, key: victoria_team_proven, expected: true}
+    success_conditions: [{type: flag, key: resort_saved, expected: true}]
+    failure_conditions: [{type: flag, key: victoria_trust_destroyed, expected: true}]
+    rewards: [{type: relationship, target_id: victoria, field: trust, delta: 2}]
+    consequences: [{type: flag, key: victoria_mission_consequence, value: recorded}]
+    transitions: [{type: remain, location_id: loc_victoria_office}]

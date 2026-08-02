@@ -24,6 +24,12 @@ PURE_REACTION_TOKENS = (
     "scrollata",
     "osserva in silenzio",
     "annuisce",
+    "resta vicina",
+    "resta vicino",
+    "rimane vicina",
+    "rimane vicino",
+    "certo",
+    "va bene",
     "gaze",
     "smile",
     "sigh",
@@ -98,13 +104,25 @@ def apply_initiatives(state: WorldState, events: list[InitiativeEvent]) -> None:
 def initiative_context(state: WorldState) -> dict:
     """Vista compatta per lo snapshot del GM."""
 
+    consecutive = state.initiative.consecutive_reactive_turns
+    if consecutive >= 5:
+        pressure = "mandatory"
+        hint = (
+            "Gli NPC restano passivi da 5 o piu turni: se non ci sono eccezioni "
+            "canoniche, includi una iniziativa autonoma concreta di una NPC presente."
+        )
+    elif consecutive >= 3:
+        pressure = "strong"
+        hint = (
+            "Gli NPC restano reattivi da diversi turni: valuta fortemente una "
+            "iniziativa autonoma coerente con obiettivi, luogo e stato canonico."
+        )
+    else:
+        pressure = "none"
+        hint = ""
+
     return {
-        "consecutive_reactive_turns": state.initiative.consecutive_reactive_turns,
+        "consecutive_reactive_turns": consecutive,
         "recent": state.initiative.recent[-3:],
-        "hint": (
-            "Gli NPC restano passivi da troppi turni: valuta un'iniziativa "
-            "autonoma coerente con i loro obiettivi."
-            if state.initiative.consecutive_reactive_turns >= 2
-            else ""
-        ),
+        "hint": hint,
     }

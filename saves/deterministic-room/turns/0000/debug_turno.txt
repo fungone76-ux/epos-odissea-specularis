@@ -1,0 +1,10 @@
+================================================================
+DEBUG TURNO 0 — modalità: no_check
+sessione: deterministic-room | location: loc_suite
+================================================================
+
+[INPUT GIOCATORE]
+Adesso andrei nella mia stanza: vorrei rilassarmi dopo il viaggio.
+
+[NARRAZIONE]
+Lasci la Lobby e raggiungi Suite presidenziale. Qui puoi finalmente prenderti un momento per ambientarti e rilassarti.

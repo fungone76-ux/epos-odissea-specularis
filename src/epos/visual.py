@@ -25,20 +25,54 @@ from typing import Any
 from .contract import VisualMoment
 from .models import WorldState, outfit_state
 from .schemas import validate_visual_contract_shape
-from .visual_director import direct_visual
-from .worldpack import WorldPack
-
-# Negativo corto in stile Pony/SDXL: i negativi lunghi diluiscono
-# l'attenzione e peggiorano il risultato. Le esclusioni specifiche del
-# mondo restano in `negative_extra_en` del pack; quelle di scena al
-# visual del turno.
-DEFAULT_NEGATIVE = (
-    "score_6, score_5, score_4, score_3, score_2, score_1, lowres, "
-    "worst quality, low quality, blurry, bad anatomy, bad hands, "
-    "extra fingers, missing fingers, extra limbs, deformed, "
-    "text, watermark, signature, child, young-looking"
+from .visual_composition import (
+    _character_gender,
+    _count_anchor_tag,
+    _position_tags,
 )
-
+from .visual_director import direct_visual
+from .visual_policy import (
+    DEFAULT_NEGATIVE,
+    _avoid_facial_policy_enabled,
+    _concise_role_policy_enabled,
+    _identity_layer_policy_enabled,
+    _multi_character_negative,
+    _single_character_negative,
+)
+from .visual_prompt_builder import (
+    _CLOTHING_OUTFIT_WORDS,
+    _LAYER_STOPWORDS,
+    _OUTFIT_LAYER_WORDS,
+    _POSE_OR_SCENE_WORDS,
+    _dedupe_chunks,
+    _dedupe_layer,
+    _dedupe_scene_tags_for_pack,
+    _dedupe_visual_against_outfit_for_pack,
+    _join_nonempty,
+    _tokens,
+)
+from .visual_sanitizer import (
+    _BROKEN_GENERATED_CHUNK_PATTERNS,
+    _CLOSE_CAMERA,
+    _FACIAL_EXPRESSION_PATTERNS,
+    _FULL_BODY_CAMERA,
+    _IDENTITY_TEXT_PATTERNS,
+    _WIDE_CAMERA,
+    _remove_camera_conflicts_from_text,
+    _resolve_camera_conflicts,
+    _sanitize_broken_generated_tags,
+    _sanitize_broken_generated_text,
+    _sanitize_facial_tags,
+    _sanitize_facial_text,
+    _sanitize_identity_tags,
+    _sanitize_identity_text,
+)
+from .visual_subjects import (
+    _first_present,
+    _focus_for_policy,
+    _validated_intimate_participants,
+)
+from .worldpack import WorldPack
 
 @dataclass(frozen=True)
 class VisualContract:
@@ -153,27 +187,6 @@ def _authoritative_character(state: WorldState, character_id: str) -> dict[str, 
     }
 
 
-def _dedupe_chunks(text: str) -> str:
-    """Rimuove i chunk duplicati da un prompt separato da virgole.
-
-    SD/Pony non guadagna nulla dai tag ripetuti: diluiscono l'attenzione
-    e sprecano token CLIP. Il confronto è normalizzato (lowercase, spazi
-    compattati); la prima occorrenza vince e l'ordine resta invariato.
-    I tag LoRA (<lora:nome:peso>) non contengono virgole, quindi passano
-    indenni; la prosa di scena viene solo ri-giuntata com'era.
-    """
-
-    seen: set[str] = set()
-    kept: list[str] = []
-    for chunk in text.split(","):
-        norm = " ".join(chunk.lower().split())
-        if not norm or norm in seen:
-            continue
-        seen.add(norm)
-        kept.append(chunk.strip())
-    return ", ".join(kept)
-
-
 def _compact_sheet(base_prompt: str, max_chunks: int, identity_chunks: int = 8) -> str:
     """Versione corta di una sheet: trigger + LoRA + tratti identitari.
 
@@ -204,222 +217,6 @@ def _compact_sheet(base_prompt: str, max_chunks: int, identity_chunks: int = 8) 
     return ", ".join(kept)
 
 
-def _dedupe_layer(text: str) -> str:
-    return _dedupe_chunks(text)
-
-
-def _join_nonempty(parts: list[str]) -> str:
-    return ", ".join(p.strip() for p in parts if p and p.strip())
-
-
-_IDENTITY_TEXT_PATTERNS: tuple[re.Pattern[str], ...] = tuple(
-    re.compile(pattern, re.IGNORECASE)
-    for pattern in (
-        r"\b(?:her|his|their)\s+[^,.;]*\b(?:hair|hairstyle|braid(?:ed)?|ponytail)\b[^,.;]*",
-        r"\b(?:bronze[- ]ringed|sea[- ]salt(?:ed)?|wind[- ]swept|loose|long|short|dark|black|brown|blonde|brunette)\s+(?:[\w-]+\s+){0,2}hair\b",
-        r"\b(?:hair|hairstyle|haircut|hair\s+rings?|hair\s+ornaments?|braid(?:ed)?|ponytail)\b(?:\s+[\w-]+){0,3}",
-        r"\b(?:green|blue|grey|gray|black|brown|amber|piercing|bloodshot)\s+eyes?\b",
-        r"\beye\s+colou?r\b",
-        r"\b(?:olive|pale|dark|fair|tanned|sun[- ]worn|glowing)\s+skin\b",
-        r"\bskin\s+colou?r\b",
-        r"\b(?:deep\s+)?scar(?:s|red)?(?:\s+across\s+[^,.;]*)?\b",
-        r"\btattoos?(?:\s+[^,.;]*)?\b",
-        r"\b(?:three|two|[0-9]+)\s+meters?\s+tall\b",
-        r"\b(?:very\s+)?(?:tall|short)\s+(?:woman|man|figure|body)\b",
-        r"\b(?:massive|muscular|athletic|curvy|skinny|lean|wiry|hourglass|shapely)\s+(?:body|build|figure|proportions)\b",
-        r"\bbody\s+shape\b",
-        r"\b(?:young|old|middle[- ]aged|mature|elderly)\s+(?:woman|man|female|male|girl|boy)\b",
-        r"\bage\s+appearance\b",
-        r"\b(?:male|female)\s+anatomy\b",
-        r"\b(?:breasts?|hips?|waist)\b",
-        r"\bsingle\s+(?:large\s+)?(?:bloodshot\s+)?eye(?:\s+in\s+[^,.;]*)?\b",
-    )
-)
-
-
-def _sanitize_identity_text(text: str) -> tuple[str, list[str]]:
-    """Rimuove tratti identitari fisici dai layer generati o mutabili.
-
-    La base sheet resta l'unica sorgente autorevole per capelli, occhi,
-    pelle, anatomia e altri tratti permanenti. Il filtro opera su frammenti
-    separati da virgola per preservare posa, azione e camera quando sono in
-    chunk distinti dalla parte identitaria.
-    """
-
-    removed: list[str] = []
-    kept: list[str] = []
-    for raw_clause in text.split(","):
-        clause = raw_clause.strip()
-        if not clause:
-            continue
-        clean = clause
-        for pattern in _IDENTITY_TEXT_PATTERNS:
-            matches = [m.group(0).strip() for m in pattern.finditer(clean)]
-            if matches:
-                removed.extend(m for m in matches if m)
-                clean = pattern.sub("", clean)
-        clean = re.sub(r"\s+", " ", clean)
-        clean = re.sub(r"\s+([.;:])", r"\1", clean)
-        clean = clean.strip(" ,;:-")
-        if clean:
-            kept.append(clean)
-    return ", ".join(kept), removed
-
-
-def _sanitize_identity_tags(tags: list[str]) -> tuple[list[str], list[str]]:
-    sanitized: list[str] = []
-    removed: list[str] = []
-    for idx, tag in enumerate(tags):
-        clean, tag_removed = _sanitize_identity_text(str(tag))
-        if tag_removed:
-            removed.extend(tag_removed)
-        if clean:
-            sanitized.append(clean)
-    return sanitized, removed
-
-
-def _identity_layer_policy_enabled(pack: WorldPack) -> bool:
-    return bool(getattr(pack.visual_policy, "sanitize_identity_layers", False))
-
-
-_FACIAL_EXPRESSION_PATTERNS: tuple[re.Pattern[str], ...] = tuple(
-    re.compile(pattern, re.IGNORECASE)
-    for pattern in (
-        r"\bwith\s+(?:an?\s+)?[^,.;]*\bexpression\b",
-        r"\b(?:with\s+)?(?:a\s+)?(?:facial\s+)?(?:subtle|weary|determined|angry|stern|sad|seductive|cold|focused)?\s*expression\b",
-        r"\b(?:(?:subtle|weary|determined|angry|stern|sad|seductive|cold|focused)\s+)?(?:smile|smiling|smirk|frown|glaring)\b",
-        r"\bnarrowed\s+eyes\b",
-        r"\bclenched\s+jaw\b",
-    )
-)
-
-
-def _avoid_facial_policy_enabled(pack: WorldPack) -> bool:
-    return bool(getattr(pack.visual_policy, "avoid_facial_expressions", False))
-
-
-def _sanitize_facial_text(text: str) -> tuple[str, list[str]]:
-    removed: list[str] = []
-    kept: list[str] = []
-    for raw_clause in text.split(","):
-        clause = raw_clause.strip()
-        if not clause:
-            continue
-        clean = clause
-        for pattern in _FACIAL_EXPRESSION_PATTERNS:
-            matches = [m.group(0).strip() for m in pattern.finditer(clean)]
-            if matches:
-                removed.extend(m for m in matches if m)
-                clean = pattern.sub("", clean)
-        clean = re.sub(r"\s+", " ", clean)
-        clean = re.sub(r"\bwith\s*$", "", clean, flags=re.IGNORECASE)
-        clean = clean.strip(" ,;:-")
-        if clean:
-            kept.append(clean)
-    return ", ".join(kept), removed
-
-
-def _sanitize_facial_tags(tags: list[str]) -> tuple[list[str], list[str]]:
-    sanitized: list[str] = []
-    removed: list[str] = []
-    for tag in tags:
-        clean, tag_removed = _sanitize_facial_text(str(tag))
-        if tag_removed:
-            removed.extend(tag_removed)
-        if clean:
-            sanitized.append(clean)
-    return sanitized, removed
-
-
-_BROKEN_GENERATED_CHUNK_PATTERNS: tuple[re.Pattern[str], ...] = tuple(
-    re.compile(pattern, re.IGNORECASE)
-    for pattern in (
-        r"^(?:one\s+|both\s+|her\s+|his\s+|their\s+)?hands?\s+on$",
-        r"^looking\s+(?:at|toward|towards|into|down|up)$",
-        r"^holding$",
-        r"^(?:with|at|on|in|near|toward|towards|into|from|by|beside)$",
-        r"^with\s+(?:an?\s+)?[\w-]+$",
-        r"^standing\s+with$",
-        r"^sitting\s+with$",
-    )
-)
-
-
-def _sanitize_broken_generated_text(text: str) -> tuple[str, list[str]]:
-    removed: list[str] = []
-    kept: list[str] = []
-    for raw_clause in text.split(","):
-        clause = raw_clause.strip()
-        if not clause:
-            continue
-        if any(pattern.match(clause) for pattern in _BROKEN_GENERATED_CHUNK_PATTERNS):
-            removed.append(clause)
-            continue
-        kept.append(clause)
-    return ", ".join(kept), removed
-
-
-def _sanitize_broken_generated_tags(tags: list[str]) -> tuple[list[str], list[str]]:
-    sanitized: list[str] = []
-    removed: list[str] = []
-    for tag in tags:
-        clean, tag_removed = _sanitize_broken_generated_text(str(tag))
-        if tag_removed:
-            removed.extend(tag_removed)
-        if clean:
-            sanitized.append(clean)
-    return sanitized, removed
-
-
-_FULL_BODY_CAMERA = re.compile(r"\bfull\s+body(?:\s+shot)?\b", re.IGNORECASE)
-_WIDE_CAMERA = re.compile(r"\bwide\s+shot\b", re.IGNORECASE)
-_CLOSE_CAMERA = re.compile(r"\bclose[- ]?up(?:\s+shot)?\b", re.IGNORECASE)
-
-
-def _remove_camera_conflicts_from_text(text: str, remove_close_up: bool) -> tuple[str, list[str]]:
-    if not remove_close_up:
-        return text, []
-    removed: list[str] = []
-    kept: list[str] = []
-    for raw_clause in text.split(","):
-        clause = raw_clause.strip()
-        if not clause:
-            continue
-        matches = [m.group(0) for m in _CLOSE_CAMERA.finditer(clause)]
-        if matches:
-            removed.extend(matches)
-            clause = _CLOSE_CAMERA.sub("", clause)
-        clause = re.sub(r"\s+", " ", clause).strip(" ,;:-")
-        if clause:
-            kept.append(clause)
-    return ", ".join(kept), removed
-
-
-def _resolve_camera_conflicts(
-    visual_en: str,
-    tags_en: list[str],
-) -> tuple[str, list[str], list[dict[str, Any]]]:
-    all_text = " ".join([visual_en, *tags_en])
-    has_close = bool(_CLOSE_CAMERA.search(all_text))
-    has_full = bool(_FULL_BODY_CAMERA.search(all_text))
-    has_wide = bool(_WIDE_CAMERA.search(all_text))
-    conflicts: list[dict[str, Any]] = []
-    if not has_close or not (has_full or has_wide):
-        return visual_en, tags_en, conflicts
-
-    if has_full:
-        conflicts.append({"type": "full_body_close_up", "resolved_by": "removed_close_up"})
-    if has_wide:
-        conflicts.append({"type": "wide_shot_close_up", "resolved_by": "removed_close_up"})
-    visual_en, _removed_visual = _remove_camera_conflicts_from_text(visual_en, True)
-    resolved_tags: list[str] = []
-    for tag in tags_en:
-        if _CLOSE_CAMERA.search(str(tag)):
-            continue
-        resolved_tags.append(tag)
-    return visual_en, resolved_tags, conflicts
-
-
 _ROLE_PROMPT_FORBIDDEN_PATTERNS: tuple[re.Pattern[str], ...] = tuple(
     re.compile(pattern, re.IGNORECASE)
     for pattern in (
@@ -433,10 +230,6 @@ _ROLE_PROMPT_FORBIDDEN_PATTERNS: tuple[re.Pattern[str], ...] = tuple(
         r"\bnoble\s+lineage\b",
     )
 )
-
-
-def _concise_role_policy_enabled(pack: WorldPack) -> bool:
-    return bool(getattr(pack.visual_policy, "concise_role_prompts", False))
 
 
 def _normalize_role_prompt_for_pack(text: str, pack: WorldPack) -> tuple[str, list[str]]:
@@ -463,59 +256,6 @@ def _normalize_role_prompt_for_pack(text: str, pack: WorldPack) -> tuple[str, li
         normalized = " ".join(words[:max_words]).strip(" ,")
     return normalized, removed
 
-
-_LAYER_STOPWORDS = {
-    "a",
-    "an",
-    "and",
-    "at",
-    "by",
-    "for",
-    "from",
-    "her",
-    "his",
-    "in",
-    "near",
-    "of",
-    "on",
-    "the",
-    "to",
-    "with",
-}
-
-_OUTFIT_LAYER_WORDS = {
-    "aegis",
-    "armor",
-    "arm",
-    "barefoot",
-    "belt",
-    "bow",
-    "bracelets",
-    "braziers",
-    "chiton",
-    "cloak",
-    "club",
-    "corselet",
-    "cups",
-    "greaves",
-    "helmet",
-    "himation",
-    "jewelry",
-    "leather",
-    "loom",
-    "pelt",
-    "pelts",
-    "peplos",
-    "quiver",
-    "rings",
-    "robe",
-    "sandals",
-    "spear",
-    "staff",
-    "straps",
-    "threads",
-    "thighs",
-}
 
 _REVEALING_OUTFIT_WORDS = {
     "bare",
@@ -671,69 +411,6 @@ _WEAK_FULL_NUDE_SUBSTITUTES = {
     "exposed shoulders",
     "bare-skinned",
 }
-
-
-def _tokens(text: str) -> set[str]:
-    return {
-        token
-        for token in re.findall(r"[a-z0-9]+", text.lower())
-        if token not in _LAYER_STOPWORDS and len(token) > 2
-    }
-
-
-def _dedupe_scene_tags_for_pack(
-    tags: list[str],
-    outfit_blocks: list[str],
-    visual_en: str,
-    pack: WorldPack,
-) -> tuple[list[str], list[str]]:
-    if not getattr(pack.visual_policy, "dedupe_across_layers", False):
-        return tags, []
-    outfit_tokens = _tokens(" ".join(outfit_blocks))
-    visual_tokens = _tokens(visual_en)
-    max_tags = int(getattr(pack.visual_policy, "max_scene_tags", 0) or 0)
-    kept: list[str] = []
-    counted_scene_tags = 0
-    removed: list[str] = []
-    director_tags = {
-        "full body",
-        "medium",
-        "close up",
-        "low camera",
-        "eye-level camera",
-        "high camera",
-        "rear three quarter view",
-        "rear view",
-        "side view",
-        "front three quarter view",
-        "front view",
-        "facing away",
-        "facing camera three quarter",
-        "side orientation",
-        "cavern entrance ahead",
-    }
-    for idx, tag in enumerate(tags):
-        tag_tokens = _tokens(tag)
-        if not tag_tokens:
-            continue
-        if tag in director_tags:
-            kept.append(tag)
-            continue
-        if tag_tokens & _OUTFIT_LAYER_WORDS and (tag_tokens & outfit_tokens):
-            removed.append(tag)
-            continue
-        if tag_tokens and tag_tokens <= visual_tokens:
-            removed.append(tag)
-            continue
-        if len(tag_tokens & visual_tokens) >= max(2, len(tag_tokens) - 1):
-            removed.append(tag)
-            continue
-        kept.append(tag)
-        counted_scene_tags += 1
-        if max_tags and counted_scene_tags >= max_tags:
-            removed.extend(tags[idx + 1 :])
-            break
-    return kept, removed
 
 
 def _revealing_outfit_policy_enabled(pack: WorldPack) -> bool:
@@ -974,22 +651,6 @@ def _normalize_visual_outfits_for_pack(state: WorldState, pack: WorldPack) -> No
         ]
 
 
-def _single_character_negative() -> str:
-    return (
-        "multiple people, extra person, background people, duplicate character, "
-        "cloned face, merged bodies, fused bodies, extra face"
-    )
-
-
-def _multi_character_negative() -> str:
-    return (
-        "merged bodies, fused faces, same face, identical faces, twins, "
-        "cloned face, duplicate character, same hair, same hairstyle, "
-        "swapped outfits, costume leak, incorrect anatomy, extra person, "
-        "background people"
-    )
-
-
 # ---------------------------------------------------------------------------
 # Composizione multi-personaggio (raggruppata per soggetto)
 # ---------------------------------------------------------------------------
@@ -1008,54 +669,6 @@ def _downscale_lora_blocks(text: str, cap: float) -> str:
         return f"<lora:{match.group(1)}:{min(weight, cap):g}>"
 
     return _LORA_TAG_PATTERN.sub(_sub, text)
-
-
-def _character_gender(base_prompt: str) -> str | None:
-    match = re.search(r"\b(1girl|1boy|1man|1woman)\b", base_prompt, re.IGNORECASE)
-    if not match:
-        return None
-    return "girl" if match.group(1).lower() in ("1girl", "1woman") else "boy"
-
-
-def _count_anchor_tag(
-    visible_characters: list[str], base_prompt_by_character: dict[str, str]
-) -> str:
-    """Tag di conteggio in testa al prompt: l'ancora piu' forte che Pony/SDXL
-    ha per il multi-soggetto (2girls / 2boys / 1girl and 1boy)."""
-
-    girls = sum(
-        1
-        for c in visible_characters
-        if _character_gender(base_prompt_by_character.get(c, "")) == "girl"
-    )
-    boys = sum(
-        1
-        for c in visible_characters
-        if _character_gender(base_prompt_by_character.get(c, "")) == "boy"
-    )
-    total = len(visible_characters)
-    if girls + boys != total:
-        return f"{total}people"
-    if girls == 1 and boys == 1:
-        return "1girl and 1boy"
-    parts: list[str] = []
-    if girls:
-        parts.append(f"{girls}girl{'s' if girls > 1 else ''}")
-    if boys:
-        parts.append(f"{boys}boy{'s' if boys > 1 else ''}")
-    if len(parts) == 1:
-        return parts[0]
-    return f"{total}people, " + ", ".join(parts)
-
-
-def _position_tags(count: int) -> list[str]:
-    if count == 2:
-        return ["on the left", "on the right"]
-    if count == 3:
-        return ["on the left", "in the center", "on the right"]
-    if count == 4:
-        return ["on the far left", "on the left", "on the right", "on the far right"]
-    return [f"position {index + 1}" for index in range(count)]
 
 
 def _dedupe_base_chunks(text: str, seen: set[str]) -> str:
@@ -1432,62 +1045,6 @@ def compile_prompt_package(
         "positive_prompt": positive,
         "negative_prompt": negative_final,
     }
-
-
-def _first_present(candidates: list[str], present: set[str]) -> str | None:
-    for candidate in candidates:
-        if candidate and candidate in present:
-            return candidate
-    return None
-
-
-def _focus_for_policy(
-    visual: VisualMoment, present: set[str]
-) -> tuple[str, str]:
-    moment_type = visual.moment_type.strip().lower()
-    if moment_type == "speech":
-        speaker = _first_present([visual.speaker_character], present)
-        if speaker:
-            return speaker, "speaker"
-    if moment_type == "action":
-        actor = _first_present([visual.actor_character], present)
-        if actor:
-            return actor, "actor"
-    if moment_type == "reaction":
-        reactor = _first_present([visual.reactor_character], present)
-        if reactor:
-            return reactor, "reactor"
-
-    explicit = _first_present(
-        [
-            visual.actor_character,
-            visual.speaker_character,
-            visual.reactor_character,
-            visual.focus_character,
-        ],
-        present,
-    )
-    if explicit:
-        return explicit, "explicit_visual_focus"
-    return "player", "fallback_player"
-
-
-def _validated_intimate_participants(
-    visual: VisualMoment, present: set[str]
-) -> tuple[list[str], str]:
-    participants = [
-        c for c in visual.multi_character_participants if c in present
-    ]
-    if not participants:
-        participants = [c for c in visual.visible_characters if c in present]
-    participants = list(dict.fromkeys(participants))
-    if (
-        visual.intimate_shared_moment
-        and visual.moment_type.strip().lower() == "intimate"
-        and len(participants) >= 2
-    ):
-        return participants, visual.multi_character_reason or "intimate_shared_moment"
-    return [], "not_validated_intimate_shared_moment"
 
 
 def _contract_place(state: WorldState, pack: WorldPack) -> str:

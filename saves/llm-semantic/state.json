@@ -1,0 +1,479 @@
+{
+  "session_id": "llm-semantic",
+  "turn": 1,
+  "time_phase": "giorno",
+  "location_id": "loc_ciclopi",
+  "player": {
+    "name": "Ulisse",
+    "location_id": "loc_ciclopi",
+    "adult_age": true,
+    "skills": {
+      "sarissa": 3,
+      "dolos": 4,
+      "eros": 2,
+      "thumos": 3,
+      "pontos": 3
+    },
+    "talent": null,
+    "trigger": null,
+    "identity": "",
+    "appearance": "",
+    "inventory": [
+      "arco ricurvo ancestrale di Itaca",
+      "pugnale di bronzo",
+      "mantello di lana impregnato di sale e sangue"
+    ],
+    "conditions": [],
+    "outfit": {
+      "worn": [
+        "very short crimson wool chiton with deep low-cut neckline",
+        "bare thighs clearly visible",
+        "worn revealing leather armor with bronze studs",
+        "exposed shoulders",
+        "recurved bow with bronze tips",
+        "thigh straps for quiver",
+        "barefoot"
+      ],
+      "removed": [],
+      "revision": 0,
+      "torso_slot": [
+        "very short crimson wool chiton with deep low-cut neckline",
+        "worn revealing leather armor with bronze studs"
+      ],
+      "lower_body_slot": [
+        "very short crimson wool chiton with deep low-cut neckline"
+      ],
+      "footwear": [],
+      "nudity_mode": "clothed"
+    },
+    "wounds": [],
+    "resources": {
+      "kleos": 0,
+      "poseidon_curse": 0,
+      "moly": 0,
+      "underworld_passage": 0,
+      "phaeacian_ship": 0
+    },
+    "knowledge": [],
+    "knowledge_log": []
+  },
+  "npcs": {
+    "penelope": {
+      "id": "penelope",
+      "name": "Penelope",
+      "age": 42,
+      "location_id": "loc_itaca",
+      "present": false,
+      "knowledge": [
+        "Le Proche sono divise tra Antinoo e Eurimaco",
+        "Eumea è l'unica persona del palazzo di cui si fida",
+        "Il letto di legno d'ulivo è l'unica prova d'amore che accetterà"
+      ],
+      "knowledge_log": [],
+      "memories": [],
+      "relationships": {},
+      "emotional_state": {},
+      "current_intention": "",
+      "conditions": [],
+      "outfit": {
+        "worn": [
+          "simple white wool himation with thin gold border",
+          "wooden loom and wool threads",
+          "bare feet on stone floor"
+        ],
+        "removed": [],
+        "revision": 0,
+        "torso_slot": [
+          "simple white wool himation with thin gold border"
+        ],
+        "lower_body_slot": [
+          "simple white wool himation with thin gold border"
+        ],
+        "footwear": [],
+        "nudity_mode": "clothed"
+      },
+      "wounds": [],
+      "disclosed_facts": []
+    },
+    "polifemo": {
+      "id": "polifemo",
+      "name": "Polifemo",
+      "age": 300,
+      "location_id": "loc_ciclopi",
+      "present": true,
+      "knowledge": [
+        "I ciclope sono figli di Poseidone",
+        "Gli uomini mentono sempre",
+        "Il latte di pecora guarisce le ferite"
+      ],
+      "knowledge_log": [],
+      "memories": [],
+      "relationships": {},
+      "emotional_state": {},
+      "current_intention": "",
+      "conditions": [],
+      "outfit": {
+        "worn": [
+          "skimpy crude stitched animal pelts with rough revealing cut",
+          "rope belt",
+          "bare feet covered in mud",
+          "massive wooden club with obsidian"
+        ],
+        "removed": [],
+        "revision": 0,
+        "torso_slot": [
+          "skimpy crude stitched animal pelts with rough revealing cut"
+        ],
+        "lower_body_slot": [
+          "skimpy crude stitched animal pelts with rough revealing cut"
+        ],
+        "footwear": [],
+        "nudity_mode": "clothed"
+      },
+      "wounds": [],
+      "disclosed_facts": []
+    },
+    "circe": {
+      "id": "circe",
+      "name": "Circe",
+      "age": 350,
+      "location_id": "loc_circe",
+      "present": false,
+      "knowledge": [
+        "Il rituale per entrare nell'Ade",
+        "La lingua degli uccelli",
+        "La ricetta del farmakon"
+      ],
+      "knowledge_log": [],
+      "memories": [],
+      "relationships": {},
+      "emotional_state": {},
+      "current_intention": "",
+      "conditions": [],
+      "outfit": {
+        "worn": [
+          "dark purple silk chiton with gold embroidery",
+          "gold embroidery with solar motifs",
+          "amber rings on fingers",
+          "bronze braziers and herbs"
+        ],
+        "removed": [],
+        "revision": 0,
+        "torso_slot": [
+          "dark purple silk chiton with gold embroidery",
+          "bronze braziers and herbs"
+        ],
+        "lower_body_slot": [
+          "dark purple silk chiton with gold embroidery"
+        ],
+        "footwear": [],
+        "nudity_mode": "clothed"
+      },
+      "wounds": [],
+      "disclosed_facts": []
+    },
+    "calipso": {
+      "id": "calipso",
+      "name": "Calipso",
+      "age": 2000,
+      "location_id": "loc_calipso",
+      "present": false,
+      "knowledge": [
+        "Il futuro di Ulisse fino al ritorno a Itaca",
+        "La posizione di tutte le isole dell'Egeo",
+        "Il canto delle Sirene"
+      ],
+      "knowledge_log": [],
+      "memories": [],
+      "relationships": {},
+      "emotional_state": {},
+      "current_intention": "",
+      "conditions": [],
+      "outfit": {
+        "worn": [
+          "translucent white silk chiton",
+          "crown of wildflowers",
+          "bare feet on moss",
+          "golden cups and silk drapes"
+        ],
+        "removed": [],
+        "revision": 0,
+        "torso_slot": [
+          "translucent white silk chiton"
+        ],
+        "lower_body_slot": [
+          "translucent white silk chiton"
+        ],
+        "footwear": [],
+        "nudity_mode": "clothed"
+      },
+      "wounds": [],
+      "disclosed_facts": []
+    },
+    "tiresia": {
+      "id": "tiresia",
+      "name": "Tiresia",
+      "age": 90,
+      "location_id": "loc_cimmeri",
+      "present": false,
+      "knowledge": [
+        "La strada verso Itaca passa per il sacrificio",
+        "Le Proche moriranno tutte in un solo giorno",
+        "Penelope non ha mai tradito"
+      ],
+      "knowledge_log": [],
+      "memories": [],
+      "relationships": {},
+      "emotional_state": {},
+      "current_intention": "",
+      "conditions": [],
+      "outfit": {
+        "worn": [
+          "dark grey wool himation",
+          "olive wood staff",
+          "blindfold over empty sockets",
+          "blood pool at feet"
+        ],
+        "removed": [],
+        "revision": 0,
+        "torso_slot": [
+          "dark grey wool himation"
+        ],
+        "lower_body_slot": [
+          "dark grey wool himation"
+        ],
+        "footwear": [],
+        "nudity_mode": "clothed"
+      },
+      "wounds": [],
+      "disclosed_facts": []
+    },
+    "atena": {
+      "id": "atena",
+      "name": "Atena",
+      "age": 9999,
+      "location_id": "loc_itaca",
+      "present": false,
+      "knowledge": [
+        "La posizione esatta di Ulisse in ogni momento",
+        "Il piano delle Proche",
+        "Il futuro di Itaca"
+      ],
+      "knowledge_log": [],
+      "memories": [],
+      "relationships": {},
+      "emotional_state": {},
+      "current_intention": "",
+      "conditions": [],
+      "outfit": {
+        "worn": [
+          "revealing bronze corselet with low-cut neckline",
+          "short battle chiton with bare thighs visible",
+          "exposed shoulders",
+          "aegis cloak with snake trim",
+          "crest of horse helmet",
+          "long spear",
+          "owl on shoulder"
+        ],
+        "removed": [],
+        "revision": 0,
+        "torso_slot": [
+          "revealing bronze corselet with low-cut neckline",
+          "short battle chiton with bare thighs visible",
+          "aegis cloak with snake trim"
+        ],
+        "lower_body_slot": [
+          "short battle chiton with bare thighs visible"
+        ],
+        "footwear": [],
+        "nudity_mode": "clothed"
+      },
+      "wounds": [],
+      "disclosed_facts": []
+    },
+    "antinoo": {
+      "id": "antinoo",
+      "name": "Antinoo",
+      "age": 28,
+      "location_id": "loc_itaca",
+      "present": false,
+      "knowledge": [
+        "Penelope sta tessendo un inganno",
+        "Telemaca è partita per cercare notizie",
+        "Le altre Proche sono divise"
+      ],
+      "knowledge_log": [],
+      "memories": [],
+      "relationships": {},
+      "emotional_state": {},
+      "current_intention": "",
+      "conditions": [],
+      "outfit": {
+        "worn": [
+          "very short red wool combat chiton with deep low-cut neckline",
+          "bare thighs clearly visible",
+          "bronze greaves and arm guards",
+          "leather bracelets",
+          "short heavy spear"
+        ],
+        "removed": [],
+        "revision": 0,
+        "torso_slot": [
+          "very short red wool combat chiton with deep low-cut neckline",
+          "leather bracelets"
+        ],
+        "lower_body_slot": [
+          "very short red wool combat chiton with deep low-cut neckline"
+        ],
+        "footwear": [
+          "bronze greaves and arm guards"
+        ],
+        "nudity_mode": "clothed"
+      },
+      "wounds": [],
+      "disclosed_facts": []
+    },
+    "eurimaco": {
+      "id": "eurimaco",
+      "name": "Eurimaco",
+      "age": 35,
+      "location_id": "loc_itaca",
+      "present": false,
+      "knowledge": [
+        "Antinoo è instabile e pericolosa",
+        "Penelope è più forte di quanto sembri",
+        "Il palazzo ha passaggi segreti"
+      ],
+      "knowledge_log": [],
+      "memories": [],
+      "relationships": {},
+      "emotional_state": {},
+      "current_intention": "",
+      "conditions": [],
+      "outfit": {
+        "worn": [
+          "expensive blue peplos with deep low-cut neckline",
+          "revealing draped fit",
+          "silver snake jewelry",
+          "carved wooden throne",
+          "silver wine cup"
+        ],
+        "removed": [],
+        "revision": 0,
+        "torso_slot": [
+          "expensive blue peplos with deep low-cut neckline"
+        ],
+        "lower_body_slot": [
+          "expensive blue peplos with deep low-cut neckline"
+        ],
+        "footwear": [],
+        "nudity_mode": "clothed"
+      },
+      "wounds": [],
+      "disclosed_facts": []
+    },
+    "eumea": {
+      "id": "eumea",
+      "name": "Eumea",
+      "age": 52,
+      "location_id": "loc_itaca",
+      "present": false,
+      "knowledge": [
+        "Ogni sentiero segreto di Itaca",
+        "Le abitudini delle Proche",
+        "Il punto debole di Antinoo: l'ira"
+      ],
+      "knowledge_log": [],
+      "memories": [],
+      "relationships": {},
+      "emotional_state": {},
+      "current_intention": "",
+      "conditions": [],
+      "outfit": {
+        "worn": [
+          "simple brown wool chiton",
+          "worn leather belt",
+          "wooden sandals",
+          "shepherd staff",
+          "mud and straw"
+        ],
+        "removed": [],
+        "revision": 0,
+        "torso_slot": [
+          "simple brown wool chiton"
+        ],
+        "lower_body_slot": [
+          "simple brown wool chiton"
+        ],
+        "footwear": [
+          "wooden sandals"
+        ],
+        "nudity_mode": "clothed"
+      },
+      "wounds": [],
+      "disclosed_facts": []
+    },
+    "ermete": {
+      "id": "ermete",
+      "name": "Ermete",
+      "age": 9999,
+      "location_id": "loc_circe",
+      "present": false,
+      "knowledge": [
+        "La debolezza di ogni mago",
+        "La strada più breve per l'Ade",
+        "Il piano di Zeus per Ulisse"
+      ],
+      "knowledge_log": [],
+      "memories": [],
+      "relationships": {},
+      "emotional_state": {},
+      "current_intention": "",
+      "conditions": [],
+      "outfit": {
+        "worn": [
+          "green traveler chiton",
+          "winged golden sandals",
+          "staff with intertwined snakes",
+          "traveler hat"
+        ],
+        "removed": [],
+        "revision": 0,
+        "torso_slot": [
+          "green traveler chiton"
+        ],
+        "lower_body_slot": [
+          "green traveler chiton"
+        ],
+        "footwear": [
+          "winged golden sandals"
+        ],
+        "nudity_mode": "clothed"
+      },
+      "wounds": [],
+      "disclosed_facts": []
+    }
+  },
+  "active_threads": [],
+  "discovered_evidence": [],
+  "story_markers": [],
+  "flags": {
+    "visual_camera_history": [
+      {
+        "camera_side": "front_three_quarter",
+        "shot_type": "full_body",
+        "camera_angle": "low",
+        "focus_character": "player",
+        "posture": "crawling"
+      }
+    ]
+  },
+  "initiative": {
+    "consecutive_reactive_turns": 1,
+    "last_autonomous_turn": -1,
+    "recent": []
+  },
+  "pressures": {},
+  "riserva": 0,
+  "last_scene": "La scena si chiude in modo valido."
+}

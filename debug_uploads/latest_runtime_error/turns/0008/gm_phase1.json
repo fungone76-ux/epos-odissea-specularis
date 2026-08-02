@@ -1,0 +1,19 @@
+{
+  "mode": "check_proposal",
+  "check": {
+    "action_kind": "intimate",
+    "skill": "carisma",
+    "difficulty": 2,
+    "target_ids": [
+      "luna"
+    ],
+    "opposition": "none",
+    "reason": "perché l'esito è incerto",
+    "stakes": {
+      "full_success": "Luna accetta con entusiasmo la tua proposta e si mostra visibilmente felice.",
+      "partial_success": "Luna sembra sorpresa e considererà la tua proposta, ma non si impegna completamente.",
+      "failure": "Luna rifiuta la tua proposta, creando un momento di imbarazzo.",
+      "critical_failure": "Luna si allontana da te, sentendosi a disagio o offesa."
+    }
+  }
+}

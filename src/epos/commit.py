@@ -79,11 +79,12 @@ def apply_mutation(state: WorldState, mutation: Mutation) -> None:
         if mutation.target == "player":
             state.player.location_id = destination
             state.location_id = destination
-            # la presenza degli NPC si aggiorna rispetto alla nuova scena
             for npc in state.npcs.values():
                 npc.present = npc.location_id == destination
         else:
-            state.npcs[mutation.target].location_id = destination
+            npc = state.npcs[mutation.target]
+            npc.location_id = destination
+            npc.present = destination == state.location_id
 
     elif mutation.type == "resource_delta":
         for key, delta in payload.items():
@@ -141,15 +142,13 @@ def apply_mutation(state: WorldState, mutation: Mutation) -> None:
             }
         )
 
-    else:  # pragma: no cover - il contratto impedisce tipi sconosciuti
+    else:
         raise CommitError(f"mutazione non gestita: {mutation.type}")
 
 
 def apply_scene(state: WorldState, scene: FinalScene, pack=None) -> None:
     """Applica scena validata: mutazioni, memoria, intenzioni, iniziative,
-    pressioni, disclosure e scena corrente.
-
-    `pack` è necessario per le pressioni (definite nel world-pack)."""
+    pressioni, disclosure e scena corrente."""
 
     for mutation in scene.mutations:
         apply_mutation(state, mutation)
@@ -174,7 +173,6 @@ def apply_scene(state: WorldState, scene: FinalScene, pack=None) -> None:
         if npc_id in state.npcs:
             state.npcs[npc_id].current_intention = intention.get("intention", "")
 
-    # iniziative autonome e pressioni
     from .initiative import apply_initiatives
     from .spine import apply_pressure_advance
 
@@ -184,7 +182,6 @@ def apply_scene(state: WorldState, scene: FinalScene, pack=None) -> None:
             if event.type == "pressure_advance":
                 apply_pressure_advance(pack, state, event)
 
-    # disclosure di segreti e conoscenze
     from .disclosure import apply_disclosure
 
     for event in scene.disclosure_events:

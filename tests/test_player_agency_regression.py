@@ -313,3 +313,20 @@ def test_diagnostica_agency_regressione():
     assert diag["player_agency_violation"] is True
     assert diag["invented_player_dialogue"] is True
     assert diag["action_semantic_drift"] is True
+
+
+
+def test_npc_dialogue_copying_player_input_is_rejected_when_roles_are_inverted():
+    pack, state = _pack_state()
+    scene = _scene(dialogue=[{"speaker": "Polifemo", "text": "Comincia pure!", "to": "player"}])
+    report = validate_scene_player_agency(state, pack, scene, "comincia pure! gli dico")
+    assert not report.ok
+    assert any(error.code == "npc_dialogue_copies_player_input" for error in report.errors)
+
+
+def test_short_legitimate_npc_replies_are_not_rejected_as_player_input_copy():
+    pack, state = _pack_state()
+    for text in ("S?", "No", "Grazie", "Va bene"):
+        scene = _scene(dialogue=[{"speaker": "Polifemo", "text": text, "to": "player"}])
+        report = validate_scene_player_agency(state, pack, scene, f"{text}, gli dico")
+        assert report.ok
