@@ -1,11 +1,4 @@
-"""Single-call intent guidance for the Resort runtime.
-
-Python derives a conservative intent hint from the player's text and injects it
-into the same canonical snapshot already sent to the Game Master. No extra LLM
-call is introduced. Explicit visual and outfit-action requests are represented
-as structured mandatory requirements so they survive scene planning, state
-mutation and prompt construction.
-"""
+"""Conservative structured intent hints for the Resort runtime."""
 
 from __future__ import annotations
 
@@ -220,7 +213,7 @@ def _serialize_requirement(requirement: VisualRequirement) -> str:
     return f"kind={requirement.kind};value={requirement.value};priority={requirement.priority};mandatory={'true' if requirement.mandatory else 'false'}"
 
 
-def _directive(hint: ResortIntentHint) -> str:
+def resort_intent_directive(hint: ResortIntentHint) -> str:
     requirements = " || ".join(_serialize_requirement(item) for item in hint.visual_requirements) or "none"
     parts = [
         "RESORT SINGLE-CALL INTENT CONTRACT",
@@ -245,21 +238,3 @@ def _directive(hint: ResortIntentHint) -> str:
     if hint.requires_location_change:
         parts.append(f"MANDATORY MUTATION: include the canonical player location change to '{hint.location_target}'.")
     return " | ".join(parts)
-
-
-def install_resort_single_call_intent_patch() -> None:
-    from . import resort_playable_turn_service as playable
-
-    if getattr(playable, "_single_call_intent_patch_installed", False):
-        return
-    original_play = playable.ResortPlayableTurnService.play
-
-    def patched_play(self, state, player_text: str):
-        hint = interpret_resort_intent(self.pack, state, player_text)
-        previous = str(getattr(state, "last_scene", "") or "").strip()
-        directive = _directive(hint)
-        state.last_scene = f"{previous}\n\n{directive}" if previous else directive
-        return original_play(self, state, player_text)
-
-    playable.ResortPlayableTurnService.play = patched_play
-    playable._single_call_intent_patch_installed = True

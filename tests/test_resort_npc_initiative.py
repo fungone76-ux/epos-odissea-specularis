@@ -171,7 +171,7 @@ def test_absent_npc_initiative_does_not_satisfy_resort_policy():
             "disclosure_events": [],
             "mutations": [],
             "memory_events": [],
-            "visual": _visual(focus="maria", visible=["maria"]),
+            "visual": None,
         }
     )
 

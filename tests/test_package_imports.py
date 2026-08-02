@@ -19,12 +19,10 @@ builtins.__import__ = guarded_import
 import epos
 
 assert "PySide6" not in sys.modules
-assert "epos.resort_manual_time_gui_patch" not in sys.modules
-assert "epos.resort_runtime_patches" not in sys.modules
-assert "epos.resort_npc_action_patch" not in sys.modules
-assert "epos.resort_beach_runtime_patch" not in sys.modules
-assert "epos.resort_save_audit_patch" not in sys.modules
-assert "epos.resort_single_call_intent_patch" not in sys.modules
+assert not any(
+    name.startswith("epos.resort_") and name.endswith("_patch")
+    for name in sys.modules
+)
 '''
     env = dict(os.environ)
     completed = subprocess.run(
@@ -55,7 +53,10 @@ from epos.resort_bootstrap import bootstrap_resort_runtime
 bootstrap_resort_runtime()
 
 assert "PySide6" not in sys.modules
-assert "epos.resort_manual_time_gui_patch" not in sys.modules
+assert not any(
+    name.startswith("epos.resort_") and name.endswith("_patch")
+    for name in sys.modules
+)
 '''
     completed = subprocess.run(
         [sys.executable, "-c", code],

@@ -1,6 +1,6 @@
 from types import SimpleNamespace
 
-from epos.resort_single_call_intent_patch import interpret_resort_intent
+from epos.resort_intent import interpret_resort_intent
 
 
 class _State:

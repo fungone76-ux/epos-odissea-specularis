@@ -106,3 +106,59 @@ def test_dict_npc_action_becomes_visual_focus():
     assert corrected.visual.focus_character == "maria"
     assert corrected.visual.visible_characters == ["maria"]
     assert corrected.visual.actor_character == "maria"
+
+
+def test_visual_actor_reaction_satisfies_resort_response_policy_without_dialogue_or_action():
+    pack, state = _state_with_only_maria_present()
+    scene = FinalScene.from_dict(
+        {
+            "narration": "Maria reagisce in silenzio ma in modo visibile.",
+            "dialogue": [],
+            "npc_actions": [],
+            "intentions": [],
+            "mutations": [],
+            "initiatives": [],
+            "disclosure_events": [],
+            "memory_events": [],
+            "visual": {
+                "summary": "Maria reagisce chiaramente nella suite.",
+                "focus_character": "maria",
+                "visible_characters": ["maria"],
+                "shared_action": False,
+                "moment_type": "action",
+                "speaker_character": "",
+                "actor_character": "maria",
+                "reactor_character": "maria",
+                "intimate_shared_moment": False,
+                "multi_character_reason": "",
+                "multi_character_participants": ["maria"],
+                "visual_en": "Maria visibly reacts inside the presidential suite.",
+                "tags_en": ["NPC reaction", "suite"],
+            },
+        }
+    )
+
+    report = validate_resort_scene_policy(state, pack.world, scene)
+
+    assert report.ok
+
+
+def test_absent_npc_action_does_not_satisfy_resort_response_policy():
+    pack, state = _state_with_only_maria_present()
+    scene = FinalScene.from_dict(
+        {
+            "narration": "Luna agirebbe, ma non e presente.",
+            "dialogue": [],
+            "npc_actions": [{"npc_id": "luna", "action": "risponde da lontano"}],
+            "intentions": [],
+            "mutations": [],
+            "initiatives": [],
+            "disclosure_events": [],
+            "memory_events": [],
+            "visual": None,
+        }
+    )
+
+    report = validate_resort_scene_policy(state, pack.world, scene)
+
+    assert any(error.code == "resort_npc_response_required" for error in report.errors)

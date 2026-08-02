@@ -3,8 +3,8 @@ from types import SimpleNamespace
 from epos.contract import FinalScene
 from epos.entity_ids import normalize_scene_entity_ids
 from epos.models import Outfit, outfit_state
-from epos.resort_save_audit_patch import (
-    _scene_has_real_npc_participation,
+from epos.resort_presence import (
+    scene_has_real_npc_participation,
     reconcile_resort_presence,
 )
 
@@ -115,7 +115,7 @@ def test_visual_actor_counts_as_real_npc_reaction_for_turn_11_shape():
         ),
     )
 
-    assert _scene_has_real_npc_participation(state, scene) is True
+    assert scene_has_real_npc_participation(state, scene) is True
 
 
 def test_luxury_travel_suit_is_not_bottomless():

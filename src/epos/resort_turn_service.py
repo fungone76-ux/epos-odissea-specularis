@@ -16,6 +16,7 @@ import re
 from dataclasses import replace
 
 from .contract import FinalScene
+from .resort_presence import scene_has_real_npc_participation
 from .resort_intro import (
     advance_resort_intro,
     current_intro_step,
@@ -30,6 +31,12 @@ _PLAYER_VISUAL_TERMS = re.compile(
     r"\b(player|protagonist|the billionaire|billionaire man|male guest|adult man)\b",
     re.IGNORECASE,
 )
+
+
+def _field(item, name: str, default=""):
+    if isinstance(item, dict):
+        return item.get(name, default)
+    return getattr(item, name, default)
 
 
 def _speaker_id(state, speaker: str) -> str | None:
@@ -97,12 +104,12 @@ def _npc_from_scene(state, scene: FinalScene) -> str | None:
             return npc_id
 
     for action in scene.npc_actions:
-        npc_id = str(getattr(action, "npc_id", ""))
+        npc_id = str(_field(action, "npc_id", ""))
         if npc_id in present:
             return npc_id
 
     for initiative in scene.initiatives:
-        npc_id = str(getattr(initiative, "source", ""))
+        npc_id = str(_field(initiative, "source", ""))
         if npc_id in present:
             return npc_id
 
@@ -175,12 +182,22 @@ def enforce_resort_player_pov(state, pack, scene: FinalScene) -> FinalScene:
     return replace(scene, visual=corrected_visual)
 
 
+
+def _valid_visual_npc_participation(state, scene: FinalScene) -> bool:
+    visual = scene.visual
+    if visual is None:
+        return False
+    if visual.focus_character == "player" or "player" in visual.visible_characters:
+        return False
+    return scene_has_real_npc_participation(state, scene)
+
+
 def _npc_participates(state, scene: FinalScene, npc_id: str) -> bool:
     if any(_speaker_id(state, getattr(line, "speaker", "")) == npc_id for line in scene.dialogue):
         return True
-    if any(str(getattr(action, "npc_id", "")) == npc_id for action in scene.npc_actions):
+    if any(str(_field(action, "npc_id", "")) == npc_id for action in scene.npc_actions):
         return True
-    if any(str(getattr(event, "source", "")) == npc_id for event in scene.initiatives):
+    if any(str(_field(event, "source", "")) == npc_id for event in scene.initiatives):
         return True
     return False
 
@@ -199,14 +216,15 @@ def validate_resort_scene_policy(state, pack, scene: FinalScene) -> ValidationRe
         for line in scene.dialogue
     )
     npc_action = any(
-        str(getattr(action, "npc_id", "")) in present_npcs
+        str(_field(action, "npc_id", "")) in present_npcs
         for action in scene.npc_actions
     )
     npc_initiative = any(
-        str(getattr(event, "source", "")) in present_npcs
+        str(_field(event, "source", "")) in present_npcs
         for event in scene.initiatives
     )
-    if present_npcs and not (npc_dialogue or npc_action or npc_initiative):
+    npc_visual = _valid_visual_npc_participation(state, scene)
+    if present_npcs and not (npc_dialogue or npc_action or npc_initiative or npc_visual):
         message = (
             "Resort: il turno deve contenere una risposta, reazione o iniziativa "
             "di almeno una NPC presente"

@@ -101,7 +101,7 @@ def test_headless_bootstrap_does_not_load_deleted_runtime_patch_module():
 import sys
 from epos.resort_bootstrap import bootstrap_resort_runtime
 bootstrap_resort_runtime()
-assert 'epos.resort_runtime_patches' not in sys.modules
+assert not any(name.startswith('epos.resort_') and name.endswith('_patch') for name in sys.modules)
 """
     completed = subprocess.run(
         [sys.executable, "-c", code],
