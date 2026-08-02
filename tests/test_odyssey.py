@@ -38,6 +38,21 @@ def test_ciclopi_dolos(engine):
         print(f"  Kleos: {result.kleos_gained}, Next location: {engine.current_location_id()}")
 
 
+def test_ciclopi_second_failure_uses_location_attempts(engine):
+    """Il secondo fallimento dei Ciclopi usa il contatore canonico della location."""
+    engine.state.player.skills["dolos"] = 0
+
+    first = engine.attempt_mission(skill_choice="dolos", use_safe=True)
+    second = engine.attempt_mission(skill_choice="dolos", use_safe=True)
+
+    assert first.success is False
+    assert first.game_over is False
+    assert second.success is False
+    assert second.game_over is True
+    assert engine.state.flags["game_over"] is True
+    assert engine.state.flags["location_attempts"] == 2
+
+
 def test_full_run_simulation():
     """Simula una partita completa con tiri casuali."""
     pack_dir = Path(__file__).parent.parent / "worlds" / "odyssey_specularis"
