@@ -142,17 +142,23 @@ class Outfit:
     revision: int = 0
 
     def wear(self, item: str) -> None:
+        item = str(item).strip()
+        if not item or _is_invalid_outfit_item(item):
+            return
         if item in self.removed:
             self.removed.remove(item)
         if item not in self.worn:
             self.worn.append(item)
+        _normalize_outfit_integrity(self)
         self.revision += 1
 
     def remove_item(self, item: str) -> None:
+        item = str(item).strip()
         if item in self.worn:
             self.worn.remove(item)
-        if item not in self.removed:
+        if item and not _is_visual_outfit_descriptor(item) and item not in self.removed:
             self.removed.append(item)
+        _normalize_outfit_integrity(self)
         self.revision += 1
 
     def to_dict(self) -> dict[str, Any]:
@@ -169,11 +175,13 @@ class Outfit:
 
     @classmethod
     def from_dict(cls, data: dict[str, Any]) -> "Outfit":
-        return cls(
+        outfit = cls(
             worn=[str(item) for item in data.get("worn", [])],
             removed=[str(item) for item in data.get("removed", [])],
             revision=int(data.get("revision", 0)),
         )
+        _normalize_outfit_integrity(outfit)
+        return outfit
 
 
 TORSO_CLOTHING_TERMS = frozenset({
@@ -189,11 +197,22 @@ LOWER_CLOTHING_TERMS = frozenset({
     "pelts", "robe", "shorts", "skirt", "tunic", "chitone", "tunica", "vestito",
     "bikini", "bottoms", "briefs", "lingerie", "micro dress", "mini dress", "one piece",
     "panties", "sarong", "slip", "suit", "swimsuit", "swimwear", "uniform",
+    "stocking", "stockings", "pantyhose", "tights", "hosiery",
 })
 
 FOOTWEAR_TERMS = frozenset({
     "boots", "greaves", "sandals", "shoes", "sandali", "scarpe", "stivali",
     "heels", "loafers", "pumps", "stilettos", "wedges",
+})
+
+OUTFIT_VISUAL_DESCRIPTORS = frozenset({
+    "low neckline",
+    "open back",
+})
+
+INVALID_OUTFIT_ITEM_TERMS = frozenset({
+    "pose outfit",
+    "provocative pose outfit",
 })
 
 
@@ -202,7 +221,55 @@ def _contains_clothing_term(text: str, terms: AbstractSet[str]) -> bool:
     return any(term in lowered for term in terms)
 
 
+def _is_visual_outfit_descriptor(item: str) -> bool:
+    return item.strip().casefold() in OUTFIT_VISUAL_DESCRIPTORS
+
+
+def _is_invalid_outfit_item(item: str) -> bool:
+    lowered = item.strip().casefold()
+    return any(term in lowered for term in INVALID_OUTFIT_ITEM_TERMS)
+
+
+def _normalize_outfit_integrity(outfit: Outfit) -> None:
+    """Ripara descrittori orfani e pseudo-capi senza inventare nuovi abiti.
+
+    I tratti come ``low neckline`` e ``open back`` sono proprietà di un capo
+    superiore, non indumenti autonomi. Restano validi finché esiste un vero
+    capo torso; vengono eliminati quando quel capo viene rimosso. Stringhe
+    narrative come ``provocative pose outfit`` non possono entrare nello stato
+    canonico. La normalizzazione si applica anche ai salvataggi già corrotti.
+    """
+
+    cleaned_worn = [
+        str(item).strip()
+        for item in outfit.worn
+        if str(item).strip() and not _is_invalid_outfit_item(str(item))
+    ]
+    cleaned_removed = [
+        str(item).strip()
+        for item in outfit.removed
+        if str(item).strip()
+        and not _is_invalid_outfit_item(str(item))
+        and not _is_visual_outfit_descriptor(str(item))
+    ]
+
+    real_torso = [
+        item
+        for item in cleaned_worn
+        if not _is_visual_outfit_descriptor(item)
+        and _contains_clothing_term(item, TORSO_CLOTHING_TERMS)
+    ]
+    if not real_torso:
+        cleaned_worn = [
+            item for item in cleaned_worn if not _is_visual_outfit_descriptor(item)
+        ]
+
+    outfit.worn[:] = list(dict.fromkeys(cleaned_worn))
+    outfit.removed[:] = list(dict.fromkeys(cleaned_removed))
+
+
 def outfit_state(outfit: Outfit) -> dict[str, Any]:
+    _normalize_outfit_integrity(outfit)
     worn = [str(item) for item in outfit.worn]
     torso = [item for item in worn if _contains_clothing_term(item, TORSO_CLOTHING_TERMS)]
     lower = [item for item in worn if _contains_clothing_term(item, LOWER_CLOTHING_TERMS)]
