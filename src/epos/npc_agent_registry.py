@@ -82,6 +82,60 @@ class NpcAgentRegistry:
         target = str(memory_id or "").strip()
         memories = tuple(memory for memory in agent.short_memories if memory.memory_id != target)
         return self.upsert(replace(agent, short_memories=memories))
+
+    def upsert_long_memory(self, memory, *, current_turn: int, policy=None) -> "NpcAgentRegistry":
+        agent = self.get(memory.npc_id)
+        if agent is None:
+            raise ValueError(f"unknown NPC agent id: {memory.npc_id}")
+        from .npc_memory_long import prune_long_memories
+        from .npc_memory_long_policy import NpcLongMemoryPolicy
+
+        effective_policy = policy or NpcLongMemoryPolicy()
+        memories = prune_long_memories(
+            tuple(agent.long_memories) + (memory,),
+            policy=effective_policy,
+            current_turn=int(current_turn),
+        )
+        return self.upsert(replace(agent, long_memories=memories))
+
+    def remove_long_memory(self, npc_id: str, memory_id: str) -> "NpcAgentRegistry":
+        agent = self.get(npc_id)
+        if agent is None:
+            raise ValueError(f"unknown NPC agent id: {npc_id}")
+        target = str(memory_id or "").strip()
+        memories = tuple(memory for memory in agent.long_memories if memory.memory_id != target)
+        return self.upsert(replace(agent, long_memories=memories))
+
+    def get_long_memory(self, npc_id: str, memory_id: str):
+        agent = self.get(npc_id)
+        if agent is None:
+            return None
+        target = str(memory_id or "").strip()
+        for memory in agent.long_memories:
+            if memory.memory_id == target:
+                return memory
+        return None
+
+    def promote_short_memory_for_npc(self, npc_id: str, short_memory, *, current_turn: int, policy=None) -> tuple["NpcAgentRegistry", object]:
+        agent = self.get(npc_id)
+        if agent is None:
+            raise ValueError(f"unknown NPC agent id: {npc_id}")
+        if short_memory.npc_id != agent.npc_id:
+            raise ValueError("short memory npc_id does not match target agent")
+        from .npc_memory_long_policy import NpcLongMemoryPolicy
+        from .npc_memory_promotion import promote_short_memory
+
+        effective_policy = policy or NpcLongMemoryPolicy()
+        result = promote_short_memory(
+            short_memory,
+            policy=effective_policy,
+            existing_long_memories=tuple(agent.long_memories),
+            current_turn=int(current_turn),
+        )
+        memory = result.reinforced or result.promoted
+        if memory is None:
+            return self, result
+        return self.upsert_long_memory(memory, current_turn=current_turn, policy=effective_policy), result
     def to_dict(self) -> dict[str, Any]:
         return {"agents": [state.to_dict() for state in self._agents]}
 

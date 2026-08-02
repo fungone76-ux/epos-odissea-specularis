@@ -59,6 +59,7 @@ class NpcAgentState:
     open_thread_ids: tuple[str, ...] = ()
     mission_refs: tuple[str, ...] = ()
     short_memories: tuple[Any, ...] = ()
+    long_memories: tuple[Any, ...] = ()
     initiative_priority: int = 0
     next_evaluation_turn: int = 0
     enabled: bool = True
@@ -74,6 +75,7 @@ class NpcAgentState:
         object.__setattr__(self, "open_thread_ids", _unique_refs(self.open_thread_ids))
         object.__setattr__(self, "mission_refs", _unique_refs(self.mission_refs))
         object.__setattr__(self, "short_memories", _short_memories(self.short_memories))
+        object.__setattr__(self, "long_memories", _long_memories(self.long_memories))
         priority = int(self.initiative_priority)
         if priority < _MIN_PRIORITY or priority > _MAX_PRIORITY:
             raise ValueError("initiative_priority must be between 0 and 100")
@@ -99,6 +101,10 @@ class NpcAgentState:
                 memory.to_dict() if hasattr(memory, "to_dict") else dict(memory)
                 for memory in self.short_memories
             ],
+            "long_memories": [
+                memory.to_dict() if hasattr(memory, "to_dict") else dict(memory)
+                for memory in self.long_memories
+            ],
             "initiative_priority": self.initiative_priority,
             "next_evaluation_turn": self.next_evaluation_turn,
             "enabled": self.enabled,
@@ -117,6 +123,7 @@ class NpcAgentState:
             open_thread_ids=tuple(data.get("open_thread_ids", ())),
             mission_refs=tuple(data.get("mission_refs", ())),
             short_memories=tuple(data.get("short_memories", ())),
+            long_memories=tuple(data.get("long_memories", ())),
             initiative_priority=int(data.get("initiative_priority", 0)),
             next_evaluation_turn=int(data.get("next_evaluation_turn", 0)),
             enabled=bool(data.get("enabled", True)),
@@ -136,4 +143,20 @@ def _short_memories(values: Any) -> tuple[Any, ...]:
             result.append(NpcShortMemory.from_dict(value))
         else:
             raise ValueError("short_memories must contain memory objects or dictionaries")
+    return tuple(result)
+
+
+def _long_memories(values: Any) -> tuple[Any, ...]:
+    if values is None:
+        return ()
+    result: list[Any] = []
+    for value in values:
+        if hasattr(value, "to_dict"):
+            result.append(value)
+        elif isinstance(value, dict):
+            from .npc_memory_long import NpcLongMemory
+
+            result.append(NpcLongMemory.from_dict(value))
+        else:
+            raise ValueError("long_memories must contain memory objects or dictionaries")
     return tuple(result)
